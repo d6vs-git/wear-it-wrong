@@ -1,6 +1,6 @@
-import HeroSection from "@/components/HeroSection";
-import InfoSection from "@/components/InfoSection";
-import StyleSection from "@/components/StyleSection";
+import HeroSection from "@/components/hero-section";
+import InfoSection from "@/components/info-section";
+import StyleSection from "@/components/style-section";
 
 export default function Home() {
   return (
