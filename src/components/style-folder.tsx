@@ -102,7 +102,7 @@ export default function StyleFolder({
               onHoverStart={() => setIsHovered(true)}
               onHoverEnd={() => setIsHovered(false)}
             >
-              <div className="relative w-20 h-28 rounded-lg overflow-hidden border-2 border-foreground drop-shadow-lg bg-white">
+              <div className="relative w-20 h-28 rounded-lg overflow-hidden ">
                 <Image
                   src={`/assets/styles/${folderPath}/${imgNum}.png`}
                   alt={`${title} ${imgNum}`}

@@ -1,13 +1,22 @@
 'use client';
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { motion, useAnimation, useInView } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { Search } from 'lucide-react';
 import StyleFolder from './style-folder';
 
 export default function StyleSection() {
-  const [searchQuery, setSearchQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
+
+  // In-view controls to re-trigger animations whenever the section enters viewport
+  const controls = useAnimation();
+  const ref = useRef<HTMLDivElement | null>(null);
+  const inView = useInView(ref, { amount: 0.2 });
+
+  useEffect(() => {
+    if (inView) controls.start('visible');
+    else controls.start('hidden');
+  }, [inView, controls]);
 
   const folders = [
     { title: 'Brands', path: 'brands', count: 12 },
@@ -53,46 +62,40 @@ export default function StyleSection() {
   };
 
   return (
+    
     <motion.section
+      ref={ref}
       className="min-h-screen bg-background text-foreground py-20 px-4 flex flex-col items-center justify-center"
       variants={sectionVariants}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      animate={controls}
     >
-      <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
-        {/* Search Bar with Image */}
+      {/* Framed container to match reference */}
+      <div className="w-full  bg-background max-w-6xl mx-auto p-8 md:p-12">
+        {/* Dummy Search Bar (static text) */}
         <motion.div
           variants={searchBarVariants}
-          className="flex justify-center mb-32 w-full"
+          className="flex justify-center mb-24 w-full"
         >
           <motion.div
             className="relative w-full max-w-2xl"
             initial={{ boxShadow: '0px 0px 0px rgba(0, 0, 0, 0)' }}
             animate={
               isFocused
-                ? { boxShadow: '0px 12px 32px rgba(154, 63, 63, 0.15)' }
-                : { boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.08)' }
+                ? { boxShadow: '0px 12px 32px rgba(0, 0, 0, 0.12)' }
+                : { boxShadow: '0px 6px 16px rgba(0, 0, 0, 0.08)' }
             }
             transition={{ duration: 0.3 }}
           >
-            <div className="relative h-16 md:h-20">
-              <Image
-                src="/assets/styles/search-bar.png"
-                alt="Search bar background"
-                fill
-                className="object-cover"
-                priority
-              />
-              <input
-                type="text"
-                placeholder="What do I style?"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
-                className="absolute inset-0 w-full h-full bg-transparent text-foreground placeholder-muted-foreground px-6 md:px-8 font-open-sans text-base md:text-lg outline-none"
-              />
+            <div
+              className="relative h-14 md:h-16 rounded-md border border-border bg-card px-5 md:px-6 flex items-center gap-3"
+              onMouseEnter={() => setIsFocused(true)}
+              onMouseLeave={() => setIsFocused(false)}
+            >
+              <Search className="w-5 h-5 text-muted-foreground" aria-hidden="true" />
+              <span className="font-open-sans text-base md:text-lg text-foreground select-none">
+                What do I style?
+              </span>
             </div>
           </motion.div>
         </motion.div>
@@ -101,9 +104,6 @@ export default function StyleSection() {
         <motion.div
           className="flex justify-center w-full"
           variants={foldersContainerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-20 md:gap-32 w-full max-w-6xl">
             {folders.map((folder, index) => (

@@ -70,6 +70,11 @@
   --shadow-2xl: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.13);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+
+  /* Landing section tokens */
+  --landing-bg: #FDFEF3;
+  --landing-frame: #6b6b6b;
+  --landing-frame-width: 6px;
 }
 
 .dark {
@@ -125,6 +130,10 @@
   --shadow-lg: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.20), 0rem 4px 6px -1px hsl(0 0% 0% / 0.20);
   --shadow-xl: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.20), 0rem 8px 10px -1px hsl(0 0% 0% / 0.20);
   --shadow-2xl: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.50);
+
+  /* Optional dark variants */
+  --landing-bg: #151515;
+  --landing-frame: #a3a3a3;
 }
 
 @theme inline {
@@ -161,6 +170,10 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  /* Map landing tokens to Tailwind colors */
+  --color-landing: var(--landing-bg);
+  --color-landing-frame: var(--landing-frame);
+
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
@@ -194,5 +207,28 @@
 @layer utilities {
   .font-porter-sans-block {
     font-family: 'Porter Sans Block', 'Arial Black', sans-serif;
+  }
+  /* Utilities for landing background and frame */
+  .bg-landing {
+    background-color: var(--landing-bg);
+  }
+  .border-landing-frame {
+    border-color: var(--landing-frame);
+    border-width: var(--landing-frame-width);
+    border-style: solid;
+  }
+  
+  /* Reusable 3D text shadow utility (configurable via CSS vars) */
+  .text-3d {
+    --text-3d-color: var(--primary);
+    --text-3d-opacity1: 35%;
+    --text-3d-opacity2: 15%;
+    --text-3d-x1: -4px; /* horizontal offset for first shadow */
+    --text-3d-y1: 6px;  /* vertical offset for first shadow */
+    --text-3d-x2: -8px; /* horizontal offset for second shadow */
+    --text-3d-y2: 12px; /* vertical offset for second shadow */
+    text-shadow:
+      var(--text-3d-x1) var(--text-3d-y1) 0 color-mix(in srgb, var(--text-3d-color) var(--text-3d-opacity1), transparent),
+      var(--text-3d-x2) var(--text-3d-y2) 0 color-mix(in srgb, var(--text-3d-color) var(--text-3d-opacity2), transparent);
   }
 }
