@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { getFolderAnimations } from '@/lib/folder-animations';
 
 interface StyleFolderProps {
   title: string;
@@ -10,17 +11,6 @@ interface StyleFolderProps {
   imageCount: number;
   delay: number;
 }
-
-// Generate pseudo-random positions for corners/sides
-const generateImagePositions = (index: number) => {
-  const positions = [
-    { x: -80, y: -100, rotate: -15 },  // Top left
-    { x: 80, y: -100, rotate: 15 },   // Top right
-    { x: -60, y: 20, rotate: -8 },    // Left
-    { x: 60, y: 20, rotate: 8 },      // Right
-  ];
-  return positions[index % positions.length];
-};
 
 export default function StyleFolder({
   title,
@@ -30,8 +20,8 @@ export default function StyleFolder({
 }: StyleFolderProps) {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Generate array of image indices
-  const images = Array.from({ length: imageCount }, (_, i) => i + 1);
+  // Get animation data from JSON
+  const animationData = getFolderAnimations(folderPath);
 
   // Container animation
   const containerVariants = {
@@ -55,22 +45,24 @@ export default function StyleFolder({
     },
   };
 
-  // Individual image animation - scattered inside, then comes to corners
+  // Individual image animation using JSON data
   const getImageVariants = (index: number) => {
-    const pos = generateImagePositions(index);
+    const imageData = animationData[index];
+    if (!imageData) {
+      // Fallback if data not found
+      return {
+        initial: { x: 0, y: 0, rotate: 0, opacity: 0.6, scale: 0.95, zIndex: 1 },
+        hover: { x: 0, y: 0, rotate: 0, opacity: 1, scale: 1, zIndex: 10 },
+      };
+    }
+
     return {
       initial: {
-        x: (Math.random() - 0.5) * 40,
-        y: (Math.random() - 0.5) * 30,
-        rotate: (Math.random() - 0.5) * 20,
-        opacity: 0.6,
+        ...imageData.initial,
         zIndex: 1,
       },
       hover: {
-        x: pos.x,
-        y: pos.y,
-        rotate: pos.rotate,
-        opacity: 1,
+        ...imageData.hover,
         zIndex: 10,
         transition: {
           delay: index * 0.1,
@@ -92,9 +84,9 @@ export default function StyleFolder({
       <div className="relative w-80 h-56">
         {/* Images Container - scattered inside initially, burst out on hover */}
         <div className="absolute inset-0 overflow-visible flex items-center justify-center">
-          {images.slice(0, 4).map((imgNum, index) => (
+          {animationData.map((imageData, index) => (
             <motion.div
-              key={imgNum}
+              key={imageData.id}
               variants={getImageVariants(index)}
               initial="initial"
               animate={isHovered ? 'hover' : 'initial'}
@@ -104,8 +96,8 @@ export default function StyleFolder({
             >
               <div className="relative w-20 h-28 rounded-lg overflow-hidden ">
                 <Image
-                  src={`/assets/styles/${folderPath}/${imgNum}.png`}
-                  alt={`${title} ${imgNum}`}
+                  src={`/assets/styles/${folderPath}/${imageData.filename}`}
+                  alt={`${title} ${imageData.id}`}
                   fill
                   className="object-cover"
                 />
