@@ -1,39 +1,36 @@
-# Portfolio (Next.js App Router, Static, SEO-Optimized)
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-High-performance, fully static portfolio built with Next.js 14+, TypeScript, and Tailwind CSS.
+## Getting Started
 
-## Commands
-- Development: `npm run dev`
-- Build: `npm run build`
-- Start (preview production): `npm run start`
+First, run the development server:
 
-## Structure
-- `src/lib/constants.ts`: Single source of truth (site name, url, bio, social links, defaults).
-- `src/lib/metadata.ts`: Static metadata builder with `metadataBase`, Open Graph, and Twitter card.
-- `src/app/layout.tsx`: Static metadata export, forced static rendering, global Header/Footer, page transitions.
-- `src/app/sitemap.ts`, `src/app/robots.ts`: Static SEO files.
-- `src/lib/projects.data.ts` and `src/app/projects/[id]/page.tsx`: Static project pages with per-page metadata.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Why this is SEO-optimized
-- Fully static rendering: `export const dynamic = 'force-static'` and `generateStaticParams` ensure pages are pre-rendered, cacheable, and fast (better LCP and crawlability).
-- Canonical, absolute metadata: `metadataBase` and absolute Open Graph/Twitter images prevent broken previews; consistent titles and descriptions from `SITE_CONFIG`.
-- Sitemaps and robots: `app/sitemap.ts` and `app/robots.ts` help crawlers discover and index content.
-- Clean URL structure: `/`, `/about`, `/projects`, `/contact`, `/projects/[id]`.
-- Performance-focused UI: Server Components by default, client boundary only for page transitions (no SEO impact).
-- Accessible, semantic markup and optimized fonts.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Teach me: Key Next.js SEO concepts
-- Static vs dynamic rendering: Prefer static for marketing/portfolio content. It ships HTML that bots can index immediately.
-- metadata.ts vs static metadata: Export a static `metadata` in layout for global defaults; use `generateMetadata` in routes that need per-page dynamic values (still static when data is local at build time).
-- metadataBase: Set to your domain to generate absolute URLs for OG/Twitter images and canonical URLs.
-- Sitemaps/robots: Add them as file conventions in `app/` for correct URLs (`/sitemap.xml`, `/robots.txt`).
-- Open Graph/Twitter: Always use absolute image URLs; ensure `summary_large_image` for better previews.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Customize
-- Update placeholders in `src/lib/constants.ts` (name, job title, bio, siteUrl, socials, email, ogImage).
-- Replace demo images under `public/` or switch to external image URLs.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## References
-- Next.js Metadata (App Router): https://nextjs.org/docs/app/building-your-application/optimizing/metadata
-- Sitemaps/Robots: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap and https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots
-- Static Rendering: https://nextjs.org/docs/app/building-your-application/rendering/static-and-dynamic-rendering
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -1,19 +1,15 @@
-import HeroSection from "@/components/hero-section";
-import InfoSection from "@/components/info-section";
-import InstagramSection from "@/components/instagram-section";
-import StyleSection from "@/components/style-section";
-import SectionSlideshow from "@/components/section-slideshow";
-import ReviewSection from "@/components/ review-section";
+import { BookNowButton } from "@/components/book-now-button";
+import FontDemo from "@/components/fonts";
+import { Heading } from "@/components/heading";
+import PersonalSection from "@/components/people-components/personal-section";
 
 export default function Home() {
-  return (
-    <>
-      <HeroSection />
-      <StyleSection />
-      <InfoSection />
-      <InstagramSection />
-      <SectionSlideshow />
-      <ReviewSection />
-    </>
+  return (<>
+  {/* <Heading text="Font Demo" />
+  <FontDemo />
+  <BookNowButton /> */}
+  
+  <PersonalSection />
+  </>
   );
 }
