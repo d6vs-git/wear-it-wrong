@@ -41,50 +41,52 @@ const imagePositions = [
   //   delay: 0.6
   // },
   {
+    src: "/assets/brand/brandshoots/10.png",
+    alt: "Brand Shoot 10",
+    width: 70,
+    height: 65,
+    position: { top: '-300px', left: '90%' },
+    animation: { x: 0, y: -20, opacity: 0, rotate: 0 },
+    delay: 0.8
+  },
+  {
     src: "/assets/brand/main/brand-shoots2.png",
     alt: "Brand Shoots 2",
-    width: 150,
-    height: 170,
-    position: { top: '-300px', left: '73%' },
+    width: 200,
+    height: 210,
+    position: { top: '-340px', left: '88%' },
     animation: { x: 0, y: -20, opacity: 0, rotate: 0 },
     delay: 0.65
   },
   {
     src: "/assets/brand/main/concept-development.png",
     alt: "Concept Development",
-    width: 130,
-    height: 150,
-    position: { top: '-300px', left: '70%' },
+    width: 300,
+    height: 300,
+    position: { top: '-400px', left: '75%' },
     animation: { x: 0, y: -20, opacity: 0, rotate: 0 },
     delay: 0.7
   },
   {
     src: "/assets/brand/concept-development/1.png",
     alt: "Concept Dev 1",
-    width: 110,
-    height: 130,
-    position: { top: '-300px', left: '65%' },
+    width: 300,
+    height: 300,
+    position: { top: '-400px', left: '63%' },
     animation: { x: 0, y: -20, opacity: 0, rotate: 0 },
     delay: 0.75
   },
   {
     src: "/assets/brand/concept-development/2.png",
     alt: "Concept Dev 2",
-    width: 105,
-    height: 125,
-    position: { top: '-300px', left: '75%' },
+    width: 300,
+    height: 300,
+    position: { top: '-400px', left: '51%' },
     animation: { x: 0, y: -20, opacity: 0, rotate: 0 },
     delay: 0.8
   },
-  {
-    src: "/assets/brand/concept-development/4.jpg",
-    alt: "Concept Dev 4",
-    width: 100,
-    height: 120,
-    position: { top: '-300px', left: '63%' },
-    animation: { x: 0, y: -20, opacity: 0, rotate: 0 },
-    delay: 0.85
-  },
+  
+ 
   {
     src: "/assets/brand/concept-development/5.jpg",
     alt: "Concept Dev 5",
@@ -97,9 +99,9 @@ const imagePositions = [
   {
     src: "/assets/brand/concept-development/6.png",
     alt: "Concept Dev 6",
-    width: 90,
+    width: 200,
     height: 110,
-    position: { top: '-300px', left: '61%' },
+    position: { top: '-410px', left: '42%' },
     animation: { x: 0, y: -20, opacity: 0, rotate: 0 },
     delay: 0.95
   },
@@ -109,6 +111,24 @@ const imagePositions = [
     width: 85,
     height: 105,
     position: { top: '-300px', left: '79%' },
+    animation: { x: 0, y: -20, opacity: 0, rotate: 0 },
+    delay: 1.0
+  },
+  {
+    src: "/assets/brand/concept-development/8.png",
+    alt: "Concept Dev 8",
+    width: 130,
+    height: 105,
+    position: { top: '-250px', left: '38%' },
+    animation: { x: 0, y: -20, opacity: 0, rotate: 0 },
+    delay: 1.0
+  },
+  {
+    src: "/assets/brand/concept-development/9.png",
+    alt: "Concept Dev 9",
+    width: 150,
+    height: 105,
+    position: { top: '-410px', left: '38%' },
     animation: { x: 0, y: -20, opacity: 0, rotate: 0 },
     delay: 1.0
   },
@@ -206,7 +226,7 @@ export default function InstagramSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          Instagram
+          Not just fashion
         </motion.h1>
 
         {/* Dynamically render all images from configuration */}
