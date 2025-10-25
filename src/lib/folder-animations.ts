@@ -127,11 +127,7 @@ export const folderAnimations: FolderAnimationData = {
       filename: '9.png',
       hover: { x: 0, y: -95, rotate: 0, scale: 1 },
     },
-    {
-      id: 10,
-      filename: '10.png',
-      hover: { x: 130, y: -90, rotate: 22, scale: 1 },
-    },
+   
   ],
   spaces: [
     // Back row - FLAT horizontal

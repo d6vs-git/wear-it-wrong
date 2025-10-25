@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { getFolderAnimations } from "@/lib/folder-animations";
 
 interface StyleFolderProps {
@@ -17,6 +18,7 @@ export default function StyleFolder({
   onHoverChange,
 }: StyleFolderProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const router = useRouter();
   const animationData = getFolderAnimations(folderPath);
 
   const handleHoverStart = () => {
@@ -29,13 +31,18 @@ export default function StyleFolder({
     onHoverChange?.(false);
   };
 
+  const handleClick = () => {
+    router.push(`/${folderPath}`);
+  };
+
   return (
     <div className="flex flex-col items-center gap-6">
       {/* Folder Container */}
       <div 
-        className="relative w-80 h-56"
+        className="relative w-80 h-56 cursor-pointer"
         onMouseEnter={handleHoverStart}
         onMouseLeave={handleHoverEnd}
+        onClick={handleClick}
       >
         {/* Images - hidden by default, pop dramatically upward on hover */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-visible">
@@ -86,7 +93,7 @@ export default function StyleFolder({
         </div>
 
         {/* Folder - Static, no animations */}
-        <div className="absolute inset-0 cursor-pointer z-10 pointer-events-none">
+        <div className="absolute inset-0 z-10 pointer-events-auto cursor-pointer">
           <Image
             src="/assets/images/styles/folder.png"
             alt={`${title} folder`}
