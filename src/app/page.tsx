@@ -7,6 +7,12 @@ import OccasionStyling from "@/components/people-components/occasion-styling";
 import PersonalShopping from "@/components/people-components/personal-shopping";
 import StyleDrop from "@/components/people-components/style-drop";
 import WardrobeDetox from "@/components/people-components/wardrobe-detox";
+import VisualMerchandising from "@/components/brand-components/visual-merchandising";
+import ConceptDevelopment from "@/components/brand-components/concept-development";
+import BrandShoots from "@/components/brand-components/brand-shoots";
+import SpaceEdit from "@/components/space-components/space-edit";
+import MakeoverProject from "@/components/space-components/makeover-project";
+import BrandSpaces from "@/components/space-components/brand-spaces";
 
 // Enhanced logo animation with bounce
 const logoVariants = {
@@ -72,6 +78,6 @@ export default function Home() {
     //     }}
     //   />
     // </motion.section>
-    <WardrobeDetox />
+    <BrandSpaces/>
   );
 }
