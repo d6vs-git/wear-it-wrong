@@ -10,6 +10,8 @@ interface StyleFolderProps {
   title: string;
   folderPath: string;
   onHoverChange?: (isHovered: boolean) => void;
+  /** optional entrance/animation delay (seconds) */
+  delay?: number;
 }
 
 export default function StyleFolder({
