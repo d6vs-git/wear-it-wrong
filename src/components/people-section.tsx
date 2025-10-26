@@ -175,7 +175,11 @@ const badgePositions = [
   
 ];
 
-export default function PeopleSection() {
+interface PeopleSectionProps {
+  onBadgeClick: (service: string) => void;
+}
+
+export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   return (
@@ -241,6 +245,15 @@ export default function PeopleSection() {
      const isBadgeHovered = hoveredCategory === badge.category;
      const isOtherBadgeHovered = hoveredCategory !== null && hoveredCategory !== badge.category;
      
+     // Map category to service name for navigation
+     const serviceMap: Record<string, string> = {
+       "wardrobe-detox": "wardrobe-detox",
+       "package-offers": "package-offers",
+       "occasion-styling": "occasion-styling",
+       "style-drop": "style-drop",
+       "personal-shopper": "personal-shopping"
+     };
+     
      return (
      <motion.div
        key={`badge-${index}`}
@@ -265,6 +278,7 @@ export default function PeopleSection() {
        }}
        onHoverStart={() => setHoveredCategory(badge.category)}
        onHoverEnd={() => setHoveredCategory(null)}
+       onClick={() => onBadgeClick(serviceMap[badge.category])}
        viewport={{ once: true }}
        transition={{ 
          scale: { duration: 0.25, ease: "easeOut" },

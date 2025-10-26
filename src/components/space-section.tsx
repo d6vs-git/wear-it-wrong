@@ -225,7 +225,11 @@ const badgePositions = [
   }
 ];
 
-export default function SpaceSection() {
+interface SpaceSectionProps {
+  onBadgeClick: (service: string) => void;
+}
+
+export default function SpaceSection({ onBadgeClick }: SpaceSectionProps) {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   return (
@@ -291,6 +295,13 @@ export default function SpaceSection() {
      const isBadgeHovered = hoveredCategory === badge.category;
      const isOtherBadgeHovered = hoveredCategory !== null && hoveredCategory !== badge.category;
      
+     // Map category to service name for navigation
+     const serviceMap: Record<string, string> = {
+       "space-edit": "space-edit",
+       "brand-space": "brand-spaces",
+       "makeover-projects": "makeover-projects"
+     };
+     
      return (
      <motion.div
        key={`badge-${index}`}
@@ -315,6 +326,7 @@ export default function SpaceSection() {
        }}
        onHoverStart={() => setHoveredCategory(badge.category)}
        onHoverEnd={() => setHoveredCategory(null)}
+       onClick={() => onBadgeClick(serviceMap[badge.category])}
        viewport={{ once: true }}
        transition={{ 
          scale: { duration: 0.25, ease: "easeOut" },

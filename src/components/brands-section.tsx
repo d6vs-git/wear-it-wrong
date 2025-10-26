@@ -166,7 +166,11 @@ const badgePositions = [
   }
 ];
 
-export default function BrandSection() {
+interface BrandSectionProps {
+  onBadgeClick: (service: string) => void;
+}
+
+export default function BrandSection({ onBadgeClick }: BrandSectionProps) {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   return (
@@ -232,6 +236,13 @@ export default function BrandSection() {
      const isBadgeHovered = hoveredCategory === badge.category;
      const isOtherBadgeHovered = hoveredCategory !== null && hoveredCategory !== badge.category;
      
+     // Map category to service name for navigation
+     const serviceMap: Record<string, string> = {
+       "merchandising": "visual-merchandising",
+       "concept": "concept-development",
+       "brandShoot": "brand-shoots"
+     };
+     
      return (
      <motion.div
        key={`badge-${index}`}
@@ -256,6 +267,7 @@ export default function BrandSection() {
        }}
        onHoverStart={() => setHoveredCategory(badge.category)}
        onHoverEnd={() => setHoveredCategory(null)}
+       onClick={() => onBadgeClick(serviceMap[badge.category])}
        viewport={{ once: true }}
        transition={{ 
          scale: { duration: 0.25, ease: "easeOut" },

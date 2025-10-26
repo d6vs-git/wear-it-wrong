@@ -65,7 +65,7 @@ export default function StyleSection() {
       <div className="w-full max-w-6xl mx-auto flex flex-col justify-between flex-1 relative z-20">
         {/* Search Bar */}
         <motion.div
-          className="flex justify-center items-center pb-8"
+          className="flex justify-center items-center pb-8 relative"
           animate={{
             opacity: hoveredFolder ? 0.3 : 1,
             scale: hoveredFolder ? 0.95 : 1,
@@ -78,6 +78,20 @@ export default function StyleSection() {
             width={600}
             height={40}
           />
+          {/* Text overlay on search bar */}
+          <motion.p
+            className="absolute text-xl md:text-2xl lg:text-2xl text-black pointer-events-none"
+            style={{
+              top: '58%',
+              left: '37%',
+              transform: 'translate(-50%, -50%)',
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            What do I Style?
+          </motion.p>
         </motion.div>
 
         {/* Folders Grid */}
