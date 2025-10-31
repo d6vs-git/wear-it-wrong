@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
+import useHoverWiggle from "@/lib/useHoverWiggle";
 
 type ImageConfig = {
   src: string;
@@ -132,6 +134,7 @@ const ImageItem = ({
 }: ImageItemProps) => {
   const [isMoving, setIsMoving] = useState(false);
   const [key, setKey] = useState(0);
+  const { x, y, rot, onMove, onLeave } = useHoverWiggle(6);
 
   const baseStyle = {
     top: img.position.top,
@@ -239,14 +242,14 @@ const ImageItem = ({
   return (
     <motion.div
       className="absolute cursor-pointer"
-      style={baseStyle}
-      initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
+      style={{ ...baseStyle, x, y, rotate: rot }}
+      initial={{ opacity: 1 }}
       whileHover={{
         scale: img.hoverScale || 1.08,
-        y: img.hoverY || -10,
-        rotate: img.hoverRotate || 0,
       }}
-      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+      transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
     >
       <Image
         src={img.src}
@@ -277,18 +280,22 @@ export default function VisualMerchandising() {
   }, []);
 
   return (
-    <div className="w-screen overflow-hidden">
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
-        <div className="flex justify-between items-center gap-3">
-          <Heading text="VISUAL MERCHANDISING" />
-          <BookNowButton />
+    <div className="w-screen overflow-x-hidden overflow-y-auto max-h-screen bg-landing">
+      {/* Sticky top bar with title and About button */}
+      <div className="sticky top-0 z-50 bg-landing/80 backdrop-blur-sm border-b border-black/5">
+        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-4 flex items-center justify-between">
+          <h1 className="font-badtyp text-primary text-2xl sm:text-3xl md:text-4xl">VISUAL MERCHANDISING</h1>
+          <div className="flex items-center gap-4">
+            <Link href="/about" className="font-atbserif text-black text-base sm:text-lg underline underline-offset-4">
+              About
+            </Link>
+            <BookNowButton />
+          </div>
         </div>
-        {/* <div className="text-2xl sm:text-3xl md:text-4xl mt-4 sm:mt-6">
-          ₹5,000 
-        </div> */}
       </div>
 
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-8 mb-12">
+      {/* Scrollable content */}
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12 pb-20">
         <div className="flex flex-col-reverse lg:flex-row gap-6 lg:gap-4">
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
@@ -299,7 +306,7 @@ export default function VisualMerchandising() {
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-              <p className="text-sm sm:text-base md:text-lg text-black leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-black leading-relaxed font-atbserif">
                 How your store looks says everything before anything else.
                 <br />
                 I help you make sure it&apos;s saying the right thing.
@@ -348,6 +355,9 @@ export default function VisualMerchandising() {
             ))}
           </motion.div>
         </div>
+
+        {/* Spacer content to ensure page scrolls nicely */}
+        <div className="h-24" />
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
+import useHoverWiggle from "@/lib/useHoverWiggle";
 
 type ImageConfig = {
   src: string;
@@ -204,6 +205,7 @@ const ImageItem = ({
 }: ImageItemProps) => {
   const [isMoving, setIsMoving] = useState(false);
   const [key, setKey] = useState(0);
+  const { x, y, rot, onMove, onLeave } = useHoverWiggle(6);
 
   const baseStyle = {
     top: img.position.top,
@@ -311,14 +313,14 @@ const ImageItem = ({
   return (
     <motion.div
       className="absolute cursor-pointer"
-      style={baseStyle}
-      initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
+      style={{ ...baseStyle, x, y, rotate: rot }}
+      initial={{ opacity: 1 }}
       whileHover={{
         scale: img.hoverScale || 1.08,
-        y: img.hoverY || -10,
-        rotate: img.hoverRotate || 0,
       }}
-      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+      transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
     >
       <Image
         src={img.src}

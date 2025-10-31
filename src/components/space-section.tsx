@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import SubHeading from "@/components/ConceptBadge";
+import useHoverWiggle from "@/lib/useHoverWiggle";
 
 const imagePositions = [
   
@@ -229,6 +230,45 @@ interface SpaceSectionProps {
   onBadgeClick: (service: string) => void;
 }
 
+function SectionImageItem({ img, index, hoveredCategory }: { img: any; index: number; hoveredCategory: string | null }) {
+  const { x, y, rot, onMove, onLeave } = useHoverWiggle(6);
+  const isHovered = hoveredCategory === img.category;
+  const isOtherHovered = hoveredCategory !== null && hoveredCategory !== img.category;
+
+  return (
+    <motion.div
+      key={index}
+      className="absolute z-20 transition-all duration-300 cursor-pointer"
+      style={{
+        top: img.position.top,
+        left: img.position.left,
+        transform: "translate(-50%, -50%)",
+        x,
+        y,
+        rotate: rot,
+      }}
+      initial={{ x: img.animation.x, y: img.animation.y, opacity: img.animation.opacity, rotate: img.animation.rotate }}
+      whileInView={{ x: 0, y: 0, opacity: 1, rotate: img.animation.rotate }}
+      animate={{
+        scale: isHovered ? 1.3 : isOtherHovered ? 0.85 : 1,
+        filter: isOtherHovered ? "blur(6px)" : "blur(0px)",
+        opacity: isOtherHovered ? 0.4 : 1,
+      }}
+      whileHover={{ scale: 1.08 }}
+      viewport={{ once: true }}
+      transition={{
+        scale: { duration: 0.25, ease: "easeOut" },
+        filter: { duration: 0.2, ease: "easeOut" },
+        opacity: { duration: 0.2, ease: "easeOut" },
+      }}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+    >
+      <Image src={img.src} alt={img.alt} width={img.width} height={img.height} className="object-contain" priority={index < 2} />
+    </motion.div>
+  );
+}
+
 export default function SpaceSection({ onBadgeClick }: SpaceSectionProps) {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
@@ -240,55 +280,10 @@ export default function SpaceSection({ onBadgeClick }: SpaceSectionProps) {
          exit={{ opacity: 0 }}
          transition={{ duration: 0.6 }}
        >
-         {/* Dynamically render all images from configuration */}
-        {imagePositions.map((img, index) => {
-          const isHovered = hoveredCategory === img.category;
-          const isOtherHovered = hoveredCategory !== null && hoveredCategory !== img.category;
-          
-          return (
-     <motion.div
-       key={index}
-       className="absolute z-20 transition-all duration-300"
-       style={{
-         top: img.position.top,
-         left: img.position.left,
-         transform: "translate(-50%, -50%)",
-       }}
-       initial={{
-         x: img.animation.x,
-         y: img.animation.y,
-         opacity: img.animation.opacity,
-         rotate: img.animation.rotate,
-       }}
-       whileInView={{
-         x: 0,
-         y: 0,
-         opacity: 1,
-         rotate: img.animation.rotate,
-       }}
-       animate={{
-         scale: isHovered ? 1.3 : isOtherHovered ? 0.85 : 1,
-         filter: isOtherHovered ? "blur(6px)" : "blur(0px)",
-         opacity: isOtherHovered ? 0.4 : 1,
-       }}
-       viewport={{ once: true }}
-       transition={{ 
-         scale: { duration: 0.3, ease: "easeOut" },
-         filter: { duration: 0.25, ease: "easeOut" },
-         opacity: { duration: 0.25, ease: "easeOut" }
-       }}
-     >
-       <Image
-         src={img.src}
-         alt={img.alt}
-         width={img.width}
-         height={img.height}
-         className="object-contain"
-         priority={index < 2}
-       />
-     </motion.div>
-   );
-        })}
+         {/* Dynamically render all images from configuration with wiggle */}
+        {imagePositions.map((img, index) => (
+          <SectionImageItem key={index} img={img} index={index} hoveredCategory={hoveredCategory} />
+        ))}
 
    {/* Badge Components */}
    {badgePositions.map((badge, index) => {
@@ -336,7 +331,7 @@ export default function SpaceSection({ onBadgeClick }: SpaceSectionProps) {
      >
        <SubHeading text={badge.text} />
      </motion.div>
-   );
+     );
    })}
    
        </motion.section>
