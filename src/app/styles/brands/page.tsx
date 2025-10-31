@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import BrandSection from "@/components/brands-section";
+import BrandSection from "@/components/styles/brands-section";
 import VisualMerchandising from "@/components/brand-components/visual-merchandising";
 import ConceptDevelopment from "@/components/brand-components/concept-development";
 import BrandShoots from "@/components/brand-components/brand-shoots";

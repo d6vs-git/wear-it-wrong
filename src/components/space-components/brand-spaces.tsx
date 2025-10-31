@@ -1,11 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
-import { useState, useRef, useEffect } from "react";
-import useHoverWiggle from "@/lib/useHoverWiggle";
+import { useState, useRef, MouseEvent } from "react";
+
+// Smooth spring configuration for buttery animations
+const springConfig = {
+  stiffness: 150,
+  damping: 20,
+  mass: 0.5,
+};
 
 type ImageConfig = {
   src: string;
@@ -14,11 +20,6 @@ type ImageConfig = {
   height: number;
   position: { top: string; left: string };
   zIndex?: number;
-  type: "flower" | "carpet" | "hover" | "walk";
-  moveDuration?: number;
-  hoverScale?: number;
-  hoverY?: number;
-  hoverRotate?: number;
 };
 
 const images: ImageConfig[] = [
@@ -28,7 +29,6 @@ const images: ImageConfig[] = [
     width: 200,
     height: 200,
     position: { top: "10%", left: "4%" },
-    type: "hover",
     zIndex: 5,
   },
   {
@@ -37,7 +37,6 @@ const images: ImageConfig[] = [
     width: 200,
     height: 200,
     position: { top: "10%", left: "26%" },
-    type: "hover",
     zIndex: 5,
   },
   {
@@ -46,7 +45,6 @@ const images: ImageConfig[] = [
     width: 160,
     height: 160,
     position: { top: "22%", left: "18%" },
-    type: "hover",
     zIndex: 5,
   },
   {
@@ -55,7 +53,6 @@ const images: ImageConfig[] = [
     width: 100,
     height: 100,
     position: { top: "12%", left: "21%" },
-    type: "hover",
     zIndex: 5,
   },
   {
@@ -64,7 +61,6 @@ const images: ImageConfig[] = [
     width: 500,
     height: 500,
     position: { top: "10%", left: "40%" },
-    type: "hover",
     zIndex: 5,
   },
   {
@@ -73,7 +69,6 @@ const images: ImageConfig[] = [
     width: 160,
     height: 160,
     position: { top: "61%", left: "87%" },
-    type: "hover",
     zIndex: 5,
   },
   {
@@ -82,7 +77,6 @@ const images: ImageConfig[] = [
     width: 100,
     height: 100,
     position: { top: "51%", left: "90%" },
-    type: "hover",
     zIndex: 5,
   },
   {
@@ -91,7 +85,6 @@ const images: ImageConfig[] = [
     width: 160,
     height: 160,
     position: { top: "82%", left: "72%" },
-    type: "hover",
     zIndex: 5,
   },
   {
@@ -100,7 +93,6 @@ const images: ImageConfig[] = [
     width: 100,
     height: 100,
     position: { top: "72%", left: "75%" },
-    type: "hover",
     zIndex: 5,
   },
   {
@@ -109,18 +101,14 @@ const images: ImageConfig[] = [
     width: 240,
     height: 240,
     position: { top: "72%", left: "89%" },
-    type: "hover",
     zIndex: 5,
   },
-  
-
   {
     src: "/assets/images/space/brand-spaces/1.png",
     alt: "chair-left",
     width: 200,
     height: 200,
     position: { top: "60%", left: "-6%" },
-    type: "hover",
     zIndex: 5,
   },
   {
@@ -129,7 +117,6 @@ const images: ImageConfig[] = [
     width: 200,
     height: 200,
     position: { top: "60%", left: "16%" },
-    type: "hover",
     zIndex: 5,
   },
   {
@@ -138,7 +125,6 @@ const images: ImageConfig[] = [
     width: 160,
     height: 160,
     position: { top: "72%", left: "8%" },
-    type: "hover",
     zIndex: 5,
   },
   {
@@ -147,16 +133,14 @@ const images: ImageConfig[] = [
     width: 100,
     height: 100,
     position: { top: "62%", left: "11%" },
-    type: "hover",
     zIndex: 5,
   },
-   {
+  {
     src: "/assets/images/space/brand-spaces/3.png",
     alt: "table",
     width: 160,
     height: 160,
     position: { top: "57%", left: "42%" },
-    type: "hover",
     zIndex: 0,
   },
   {
@@ -165,7 +149,6 @@ const images: ImageConfig[] = [
     width: 100,
     height: 100,
     position: { top: "47%", left: "45%" },
-    type: "hover",
     zIndex: 5,
   },
   {
@@ -174,7 +157,6 @@ const images: ImageConfig[] = [
     width: 160,
     height: 160,
     position: { top: "79%", left: "38%" },
-    type: "hover",
     zIndex: 9,
   },
   {
@@ -183,7 +165,6 @@ const images: ImageConfig[] = [
     width: 100,
     height: 100,
     position: { top: "69%", left: "41%" },
-    type: "hover",
     zIndex: 11,
   },
 ];
@@ -191,144 +172,83 @@ const images: ImageConfig[] = [
 type ImageItemProps = {
   img: ImageConfig;
   index: number;
-  isFlowersHovered: boolean;
-  onFlowerHover: () => void;
-  areaWidth: number;
 };
 
-const ImageItem = ({
-  img,
-  index,
-  isFlowersHovered,
-  onFlowerHover,
-  areaWidth,
-}: ImageItemProps) => {
-  const [isMoving, setIsMoving] = useState(false);
-  const [key, setKey] = useState(0);
-  const { x, y, rot, onMove, onLeave } = useHoverWiggle(6);
+const ImageItem = ({ img, index }: ImageItemProps) => {
+  const ref = useRef<HTMLDivElement>(null);
 
-  const baseStyle = {
-    top: img.position.top,
-    left: img.position.left,
-    transform: "translate(-50%, -50%)",
-    width: `${img.width}px`,
-    height: `${img.height}px`,
-    zIndex: img.zIndex ?? index,
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+
+  const springX = useSpring(x, springConfig);
+  const springY = useSpring(y, springConfig);
+  const springRotateX = useSpring(rotateX, springConfig);
+  const springRotateY = useSpring(rotateY, springConfig);
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+
+    const rect = ref.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const deltaX = e.clientX - centerX;
+    const deltaY = e.clientY - centerY;
+
+    const wiggleStrength = 0.15;
+    x.set(deltaX * wiggleStrength);
+    y.set(deltaY * wiggleStrength);
+    rotateX.set(-(deltaY / rect.height) * 8);
+    rotateY.set((deltaX / rect.width) * 8);
   };
 
-  // Flower animation
-  if (img.type === "flower") {
-    return (
-      <motion.div
-        className="absolute cursor-pointer"
-        style={baseStyle}
-        initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
-        animate={{ y: isFlowersHovered ? [0, -15, 0] : 0 }}
-        transition={{
-          y: {
-            duration: 2.5,
-            repeat: isFlowersHovered ? Infinity : 0,
-            ease: "easeInOut",
-          },
-        }}
-        onMouseEnter={onFlowerHover}
-        onMouseLeave={onFlowerHover}
-      >
-        <Image
-          src={img.src}
-          alt={img.alt}
-          width={img.width}
-          height={img.height}
-          className="object-contain w-full h-full"
-          priority={index < 2}
-        />
-      </motion.div>
-    );
-  }
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+    rotateX.set(0);
+    rotateY.set(0);
+  };
 
-  // Carpet (static)
-  if (img.type === "carpet") {
-    return (
-      <motion.div
-        className="absolute"
-        style={baseStyle}
-        initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
-      >
-        <Image
-          src={img.src}
-          alt={img.alt}
-          width={img.width}
-          height={img.height}
-          className="object-contain w-full h-full"
-          priority={index < 2}
-        />
-      </motion.div>
-    );
-  }
-
-  // Walking animation
-  if (img.type === "walk") {
-    const isDress2 = img.alt === "dress2";
-    const leftPercent = parseFloat(img.position.left) / 100;
-    const leftPx = areaWidth * leftPercent;
-    const margin = 16;
-
-    const targetX = isDress2
-      ? areaWidth - img.width / 2 - margin - leftPx
-      : img.width / 2 + margin - leftPx;
-
-    return (
-      <motion.div
-        key={key}
-        className="absolute cursor-pointer"
-        style={baseStyle}
-        initial={{ x: 0, opacity: 0 }}
-        animate={isMoving ? { x: targetX, opacity: 1 } : { x: 0, opacity: 1 }}
-        transition={
-          isMoving
-            ? { duration: img.moveDuration || 5, ease: "linear" }
-            : { opacity: { duration: 0.25 } }
-        }
-        onMouseEnter={() => !isMoving && setIsMoving(true)}
-        onAnimationComplete={() => {
-          if (isMoving) {
-            setIsMoving(false);
-            setKey((k) => k + 1);
-          }
-        }}
-      >
-        <Image
-          src={img.src}
-          alt={img.alt}
-          width={img.width}
-          height={img.height}
-          className="object-contain w-full h-full"
-          priority={index < 2}
-        />
-      </motion.div>
-    );
-  }
-
-  // Hover animation
   return (
     <motion.div
+      ref={ref}
       className="absolute cursor-pointer"
-      style={{ ...baseStyle, x, y, rotate: rot }}
-      initial={{ opacity: 1 }}
-      whileHover={{
-        scale: img.hoverScale || 1.08,
+      style={{
+        top: img.position.top,
+        left: img.position.left,
+        transform: "translate(-50%, -50%)",
+        width: `${img.width}px`,
+        height: `${img.height}px`,
+        zIndex: img.zIndex ?? index,
+        x: springX,
+        y: springY,
+        rotateX: springRotateX,
+        rotateY: springRotateY,
       }}
-      transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      whileHover={{ scale: 1.08 }}
+      transition={{
+        opacity: { duration: 0.4 },
+        scale: {
+          type: "spring",
+          stiffness: 300,
+          damping: 25,
+          mass: 0.8,
+        },
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       <Image
         src={img.src}
         alt={img.alt}
         width={img.width}
         height={img.height}
-        className="object-contain w-full h-full"
+        className="object-contain w-full h-full pointer-events-none"
         priority={index < 2}
+        draggable={false}
       />
     </motion.div>
   );
@@ -337,18 +257,7 @@ const ImageItem = ({
 export default function BrandSpaces() {
   const [isTextHovered, setIsTextHovered] = useState(false);
   const [isImageHovered, setIsImageHovered] = useState(false);
-  const [isFlowersHovered, setIsFlowersHovered] = useState(false);
   const imageAreaRef = useRef<HTMLDivElement>(null);
-  const [areaWidth, setAreaWidth] = useState(0);
-
-  useEffect(() => {
-    const measure = () => {
-      if (imageAreaRef.current) setAreaWidth(imageAreaRef.current.offsetWidth);
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, []);
 
   return (
     <div className="w-screen overflow-hidden">
@@ -357,9 +266,6 @@ export default function BrandSpaces() {
           <Heading text="BRAND SPACES" />
           <BookNowButton />
         </div>
-        {/* <div className="text-2xl sm:text-3xl md:text-4xl mt-4 sm:mt-6">
-          ₹5,000 
-        </div> */}
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-8 mb-12">
@@ -371,7 +277,12 @@ export default function BrandSpaces() {
             animate={{
               scale: isImageHovered ? 0.92 : isTextHovered ? 1.08 : 1,
             }}
-            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 25,
+              mass: 0.8,
+            }}
           >
             <p className="text-sm sm:text-base md:text-lg text-black leading-relaxed">
               Your space is often the first time someone experiences your brand,
@@ -403,18 +314,22 @@ export default function BrandSpaces() {
               scale: isTextHovered ? 0.92 : isImageHovered ? 1.08 : 1,
               filter: isTextHovered ? "blur(2px)" : "blur(0px)",
             }}
-            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+            transition={{
+              scale: {
+                type: "spring",
+                stiffness: 300,
+                damping: 25,
+                mass: 0.8,
+              },
+              filter: {
+                duration: 0.35,
+                ease: [0.22, 1, 0.36, 1],
+              },
+            }}
             style={{ overflow: "visible" }}
           >
             {images.map((img, idx) => (
-              <ImageItem
-                key={idx}
-                img={img}
-                index={idx}
-                isFlowersHovered={isFlowersHovered}
-                onFlowerHover={() => setIsFlowersHovered((prev) => !prev)}
-                areaWidth={areaWidth}
-              />
+              <ImageItem key={idx} img={img} index={idx} />
             ))}
           </motion.div>
         </div>

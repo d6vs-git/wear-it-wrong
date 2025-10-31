@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export default function HomeHero() {
+export default function Hero() {
   const router = useRouter();
 
   return (
@@ -12,7 +12,7 @@ export default function HomeHero() {
         <button
           type="button"
           aria-label="Go to folders"
-          onClick={() => router.push("/folders")}
+          onClick={() => router.push("/styles")}
           className="inline-block transition-transform duration-200 hover:scale-105 focus:scale-105 focus:outline-none"
         >
           <Image

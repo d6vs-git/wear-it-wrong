@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
 
 const imagePositions = [
   {
@@ -43,8 +42,7 @@ const imagePositions = [
   },
 ];
 
-export default function HomeTestimonials() {
-  const [active, setActive] = useState(false);
+export default function Testimonials() {
 
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center bg-landing overflow-hidden">

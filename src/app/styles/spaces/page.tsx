@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import SpaceSection from "@/components/space-section";
+import SpaceSection from "@/components/styles/space-section";
 import SpaceEdit from "@/components/space-components/space-edit";
 import BrandSpaces from "@/components/space-components/brand-spaces";
 import MakeoverProject from "@/components/space-components/makeover-project";

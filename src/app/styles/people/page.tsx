@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import PeopleSection from "@/components/people-section";
+import PeopleSection from "@/components/styles/people-section";
 import PersonalShopping from "@/components/people-components/personal-shopping";
 import OccasionStyling from "@/components/people-components/occasion-styling";
 import StyleDrop from "@/components/people-components/style-drop";

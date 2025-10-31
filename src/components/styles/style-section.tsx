@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { motion, useAnimation, useInView } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
-import StyleFolder from './style-folder';
+import Image from "next/image";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import StyleFolder from "./style-folder";
 
 export default function StyleSection() {
   const controls = useAnimation();
@@ -12,14 +12,14 @@ export default function StyleSection() {
   const [hoveredFolder, setHoveredFolder] = useState<string | null>(null);
 
   useEffect(() => {
-    if (inView) controls.start('visible');
-    else controls.start('hidden');
+    if (inView) controls.start("visible");
+    else controls.start("hidden");
   }, [inView, controls]);
 
   const folders = [
-    { title: 'Brands', path: 'brands', count: 12 },
-    { title: 'People', path: 'people', count: 9 },
-    { title: 'Space', path: 'spaces', count: 9 },
+    { title: "Brands", path: "styles/brands", count: 12 },
+    { title: "People", path: "styles/people", count: 9 },
+    { title: "Space", path: "styles/spaces", count: 9 },
   ];
 
   // Section entrance animation
@@ -49,7 +49,7 @@ export default function StyleSection() {
   return (
     <motion.section
       ref={ref}
-      className="min-h-screen bg-background text-foreground py-20 px-4 flex flex-col justify-between relative overflow-hidden"
+      className="bg-background text-foreground min-h-screen px-4 flex flex-col items-center justify-center relative overflow-hidden"
       variants={sectionVariants}
       initial="hidden"
       animate={controls}
@@ -62,10 +62,10 @@ export default function StyleSection() {
         transition={{ duration: 0.3 }}
       />
 
-      <div className="w-full max-w-6xl mx-auto flex flex-col justify-between flex-1 relative z-20">
+      <div className="w-full max-w-6xl mx-auto flex flex-col relative z-20">
         {/* Search Bar */}
         <motion.div
-          className="flex justify-center items-center pb-8 relative"
+          className="flex justify-center items-center pb-8 relative mb-16"
           animate={{
             opacity: hoveredFolder ? 0.3 : 1,
             scale: hoveredFolder ? 0.95 : 1,
@@ -78,25 +78,11 @@ export default function StyleSection() {
             width={600}
             height={40}
           />
-          {/* Text overlay on search bar */}
-          <motion.p
-            className="absolute text-xl md:text-2xl lg:text-2xl text-black pointer-events-none"
-            style={{
-              top: '58%',
-              left: '37%',
-              transform: 'translate(-50%, -50%)',
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            What do I Style?
-          </motion.p>
         </motion.div>
 
         {/* Folders Grid */}
         <motion.div
-          className="flex justify-center w-full pt-8"
+          className="flex justify-center w-full pt-8 mt-12"
           variants={foldersContainerVariants}
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-20 md:gap-32 w-full max-w-6xl">
@@ -105,11 +91,16 @@ export default function StyleSection() {
                 key={folder.path}
                 className="flex justify-center relative"
                 animate={{
-                  opacity: hoveredFolder && hoveredFolder !== folder.path ? 0.2 : 1,
-                  scale: hoveredFolder && hoveredFolder !== folder.path ? 0.9 : 1,
-                  filter: hoveredFolder && hoveredFolder !== folder.path ? 'blur(4px)' : 'blur(0px)',
+                  opacity:
+                    hoveredFolder && hoveredFolder !== folder.path ? 0.2 : 1,
+                  scale:
+                    hoveredFolder && hoveredFolder !== folder.path ? 0.9 : 1,
+                  filter:
+                    hoveredFolder && hoveredFolder !== folder.path
+                      ? "blur(4px)"
+                      : "blur(0px)",
                 }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
                 style={{
                   zIndex: hoveredFolder === folder.path ? 50 : 1,
                 }}
@@ -118,7 +109,7 @@ export default function StyleSection() {
                   title={folder.title}
                   folderPath={folder.path}
                   delay={index * 0.1}
-                  onHoverChange={(isHovered) => 
+                  onHoverChange={(isHovered) =>
                     setHoveredFolder(isHovered ? folder.path : null)
                   }
                 />
