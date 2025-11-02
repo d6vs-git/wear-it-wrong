@@ -1,312 +1,297 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
 
+type ResponsivePosition = {
+  mobile: { top: string; left: string };
+  tablet: { top: string; left: string };
+  desktop: { top: string; left: string };
+};
+
+type ResponsiveDimensions = {
+  mobile: { width: number; height: number };
+  tablet: { width: number; height: number };
+  desktop: { width: number; height: number };
+};
+
 type ImageConfig = {
   src: string;
   alt: string;
-  width: number;
-  height: number;
-  position: { top: string; left: string };
+  dimensions: ResponsiveDimensions;
+  position: ResponsivePosition;
   zIndex?: number;
-  type: "flower" | "carpet" | "hover" | "walk";
-  moveDuration?: number;
-  hoverScale?: number;
-  hoverY?: number;
-  hoverRotate?: number;
 };
 
 const images: ImageConfig[] = [
-
   {
     src: "/assets/images/people/occasion-styling/flower-pot.png",
     alt: "flower pot with leaves",
-    width: 200,
-    height: 200,
-    position: { top: "58%", left: "-11%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 120, height: 120 },
+      tablet: { width: 160, height: 160 },
+      desktop: { width: 200, height: 200 },
+    },
+    position: {
+      mobile: { top: "60%", left: "-5%" },
+      tablet: { top: "59%", left: "-8%" },
+      desktop: { top: "58%", left: "-11%" },
+    },
     zIndex: 10,
   },
- 
   {
     src: "/assets/images/people/occasion-styling/table.png",
     alt: "table",
-    width: 170,
-    height: 170,
-    position: { top: "62%", left: "34%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 100, height: 100 },
+      tablet: { width: 135, height: 135 },
+      desktop: { width: 170, height: 170 },
+    },
+    position: {
+      mobile: { top: "64%", left: "38%" },
+      tablet: { top: "63%", left: "36%" },
+      desktop: { top: "62%", left: "34%" },
+    },
     zIndex: 12,
   },
   {
     src: "/assets/images/people/occasion-styling/dress-roller.png",
     alt: "Standing Dress Roller",
-    width: 500,
-    height: 500,
-    position: { top: "-19%", left: "-14%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 280, height: 280 },
+      tablet: { width: 390, height: 390 },
+      desktop: { width: 500, height: 500 },
+    },
+    position: {
+      mobile: { top: "-10%", left: "-8%" },
+      tablet: { top: "-15%", left: "-12%" },
+      desktop: { top: "-19%", left: "-14%" },
+    },
     zIndex: 6,
-    hoverScale: 1.05,
-    hoverY: -8,
-    hoverRotate: 1,
   },
-
   {
     src: "/assets/images/people/occasion-styling/carpet2.png",
-    alt: "Carpet ",
-    width: 420,
-    height: 420,
-    position: { top: "25%", left: "-1%" },
-    type: "hover",
+    alt: "Carpet",
+    dimensions: {
+      mobile: { width: 240, height: 240 },
+      tablet: { width: 330, height: 330 },
+      desktop: { width: 420, height: 420 },
+    },
+    position: {
+      mobile: { top: "28%", left: "2%" },
+      tablet: { top: "26%", left: "0%" },
+      desktop: { top: "25%", left: "-1%" },
+    },
     zIndex: 1,
   },
   {
     src: "/assets/images/people/occasion-styling/box.png",
     alt: "box",
-    width: 140,
-    height: 140,
-    position: { top: "59%", left: "19%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 80, height: 80 },
+      tablet: { width: 110, height: 110 },
+      desktop: { width: 140, height: 140 },
+    },
+    position: {
+      mobile: { top: "61%", left: "22%" },
+      tablet: { top: "60%", left: "20%" },
+      desktop: { top: "59%", left: "19%" },
+    },
     zIndex: 10,
-    hoverScale: 1.1,
-    hoverY: -6,
-    hoverRotate: 3,
   },
   {
     src: "/assets/images/people/occasion-styling/carpet1.png",
     alt: "Carpet 1",
-    width: 530,
-    height: 530,
-    position: { top: "15%", left: "43%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 300, height: 300 },
+      tablet: { width: 420, height: 420 },
+      desktop: { width: 530, height: 530 },
+    },
+    position: {
+      mobile: { top: "18%", left: "48%" },
+      tablet: { top: "16%", left: "45%" },
+      desktop: { top: "15%", left: "43%" },
+    },
     zIndex: 1,
   },
-
   {
     src: "/assets/images/people/occasion-styling/dress2.png",
     alt: "dress2",
-    width: 200,
-    height: 200,
-    position: { top: "27%", left: "56%" },
-    type: "hover",
-    moveDuration: 6,
+    dimensions: {
+      mobile: { width: 120, height: 120 },
+      tablet: { width: 160, height: 160 },
+      desktop: { width: 200, height: 200 },
+    },
+    position: {
+      mobile: { top: "30%", left: "60%" },
+      tablet: { top: "28%", left: "58%" },
+      desktop: { top: "27%", left: "56%" },
+    },
     zIndex: 9,
   },
   {
     src: "/assets/images/people/occasion-styling/dress3.png",
     alt: "dress3",
-    width: 400,
-    height: 400,
-    position: { top: "-1%", left: "32%" },
-    type: "hover",
-    moveDuration: 5,
+    dimensions: {
+      mobile: { width: 240, height: 240 },
+      tablet: { width: 320, height: 320 },
+      desktop: { width: 400, height: 400 },
+    },
+    position: {
+      mobile: { top: "3%", left: "36%" },
+      tablet: { top: "1%", left: "34%" },
+      desktop: { top: "-1%", left: "32%" },
+    },
     zIndex: 8,
   },
-
   {
     src: "/assets/images/people/occasion-styling/hanging-lamp.png",
     alt: "Hanging Lamp",
-    width: 200,
-    height: 200,
-    position: { top: "-19%", left: "30%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 120, height: 120 },
+      tablet: { width: 160, height: 160 },
+      desktop: { width: 200, height: 200 },
+    },
+    position: {
+      mobile: { top: "-15%", left: "34%" },
+      tablet: { top: "-17%", left: "32%" },
+      desktop: { top: "-19%", left: "30%" },
+    },
     zIndex: 10,
-    hoverScale: 1.08,
-    hoverY: -10,
-    hoverRotate: -2,
   },
   {
     src: "/assets/images/people/occasion-styling/shoes.png",
     alt: "Shoes",
-    width: 100,
-    height: 100,
-    position: { top: "50%", left: "38%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 60, height: 60 },
+      tablet: { width: 80, height: 80 },
+      desktop: { width: 100, height: 100 },
+    },
+    position: {
+      mobile: { top: "52%", left: "41%" },
+      tablet: { top: "51%", left: "39%" },
+      desktop: { top: "50%", left: "38%" },
+    },
     zIndex: 13,
-    hoverScale: 1.12,
-    hoverY: -8,
-    hoverRotate: 3,
   },
   {
     src: "/assets/images/people/occasion-styling/dress1.png",
     alt: "dress-4",
-    width: 240,
-    height: 240,
-    position: { top: "6%", left: "53%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 140, height: 140 },
+      tablet: { width: 190, height: 190 },
+      desktop: { width: 240, height: 240 },
+    },
+    position: {
+      mobile: { top: "9%", left: "56%" },
+      tablet: { top: "7%", left: "54%" },
+      desktop: { top: "6%", left: "53%" },
+    },
     zIndex: 9,
-    hoverScale: 1.08,
-    hoverY: -10,
-    hoverRotate: -1,
   },
   {
     src: "/assets/images/people/occasion-styling/dress4.png",
     alt: "dress-5",
-    width: 400,
-    height: 400,
-    position: { top: "18%", left: "62%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 240, height: 240 },
+      tablet: { width: 320, height: 320 },
+      desktop: { width: 400, height: 400 },
+    },
+    position: {
+      mobile: { top: "21%", left: "66%" },
+      tablet: { top: "19%", left: "64%" },
+      desktop: { top: "18%", left: "62%" },
+    },
     zIndex: 6,
-    hoverScale: 1.1,
-    hoverY: -8,
-    hoverRotate: 2,
   },
   {
     src: "/assets/images/people/occasion-styling/rod.png",
     alt: "rod",
-    width: 360,
-    height: 360,
-    position: { top: "-28%", left: "54%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 200, height: 200 },
+      tablet: { width: 280, height: 280 },
+      desktop: { width: 360, height: 360 },
+    },
+    position: {
+      mobile: { top: "-23%", left: "57%" },
+      tablet: { top: "-26%", left: "55%" },
+      desktop: { top: "-28%", left: "54%" },
+    },
     zIndex: 7,
-    hoverScale: 1.06,
-    hoverY: -8,
-    hoverRotate: 1,
   },
 ];
+
+type Breakpoint = "mobile" | "tablet" | "desktop";
 
 type ImageItemProps = {
   img: ImageConfig;
   index: number;
-  isFlowersHovered: boolean;
-  onFlowerHover: () => void;
-  areaWidth: number;
+  breakpoint: Breakpoint;
 };
 
-const ImageItem = ({
-  img,
-  index,
-  isFlowersHovered,
-  onFlowerHover,
-  areaWidth,
-}: ImageItemProps) => {
-  const [isMoving, setIsMoving] = useState(false);
-  const [key, setKey] = useState(0);
+const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const springConfig = { damping: 20, stiffness: 300, mass: 0.5 };
+  const springX = useSpring(x, springConfig);
+  const springY = useSpring(y, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current || breakpoint === "mobile") return;
+
+    const rect = ref.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const deltaX = (e.clientX - centerX) * 0.15;
+    const deltaY = (e.clientY - centerY) * 0.15;
+
+    x.set(deltaX);
+    y.set(deltaY);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  const position = img.position[breakpoint];
+  const dimensions = img.dimensions[breakpoint];
 
   const baseStyle = {
-    top: img.position.top,
-    left: img.position.left,
+    top: position.top,
+    left: position.left,
     transform: "translate(-50%, -50%)",
-    width: `${img.width}px`,
-    height: `${img.height}px`,
+    width: `${dimensions.width}px`,
+    height: `${dimensions.height}px`,
     zIndex: img.zIndex ?? index,
   };
 
-  // Flower animation
-  if (img.type === "flower") {
-    return (
-      <motion.div
-        className="absolute cursor-pointer"
-        style={baseStyle}
-        initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
-        animate={{ y: isFlowersHovered ? [0, -15, 0] : 0 }}
-        transition={{
-          y: {
-            duration: 2.5,
-            repeat: isFlowersHovered ? Infinity : 0,
-            ease: "easeInOut",
-          },
-        }}
-        onMouseEnter={onFlowerHover}
-        onMouseLeave={onFlowerHover}
-      >
-        <Image
-          src={img.src}
-          alt={img.alt}
-          width={img.width}
-          height={img.height}
-          className="object-contain w-full h-full"
-          priority={index < 2}
-        />
-      </motion.div>
-    );
-  }
-
-  // Carpet (static)
-  if (img.type === "carpet") {
-    return (
-      <motion.div
-        className="absolute"
-        style={baseStyle}
-        initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
-      >
-        <Image
-          src={img.src}
-          alt={img.alt}
-          width={img.width}
-          height={img.height}
-          className="object-contain w-full h-full"
-          priority={index < 2}
-        />
-      </motion.div>
-    );
-  }
-
-  // Walking animation
-  if (img.type === "walk") {
-    const isDress2 = img.alt === "dress2";
-    const leftPercent = parseFloat(img.position.left) / 100;
-    const leftPx = areaWidth * leftPercent;
-    const margin = 16;
-
-    const targetX = isDress2
-      ? areaWidth - img.width / 2 - margin - leftPx
-      : img.width / 2 + margin - leftPx;
-
-    return (
-      <motion.div
-        key={key}
-        className="absolute cursor-pointer"
-        style={baseStyle}
-        initial={{ x: 0, opacity: 0 }}
-        animate={isMoving ? { x: targetX, opacity: 1 } : { x: 0, opacity: 1 }}
-        transition={
-          isMoving
-            ? { duration: img.moveDuration || 5, ease: "linear" }
-            : { opacity: { duration: 0.25 } }
-        }
-        onMouseEnter={() => !isMoving && setIsMoving(true)}
-        onAnimationComplete={() => {
-          if (isMoving) {
-            setIsMoving(false);
-            setKey((k) => k + 1);
-          }
-        }}
-      >
-        <Image
-          src={img.src}
-          alt={img.alt}
-          width={img.width}
-          height={img.height}
-          className="object-contain w-full h-full"
-          priority={index < 2}
-        />
-      </motion.div>
-    );
-  }
-
-  // Hover animation
   return (
     <motion.div
-      className="absolute cursor-pointer"
-      style={baseStyle}
-      initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
-      whileHover={{
-        scale: img.hoverScale || 1.08,
-        y: img.hoverY || -10,
-        rotate: img.hoverRotate || 0,
+      ref={ref}
+      className="absolute cursor-pointer will-change-transform"
+      style={{ ...baseStyle, x: springX, y: springY }}
+      whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
+      whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
+      transition={{
+        scale: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
       }}
-      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       <Image
         src={img.src}
         alt={img.alt}
-        width={img.width}
-        height={img.height}
-        className="object-contain w-full h-full"
+        width={dimensions.width}
+        height={dimensions.height}
+        className="object-contain w-full h-full pointer-events-none"
         priority={index < 2}
       />
     </motion.div>
@@ -316,17 +301,22 @@ const ImageItem = ({
 export default function OccasionStyling() {
   const [isTextHovered, setIsTextHovered] = useState(false);
   const [isImageHovered, setIsImageHovered] = useState(false);
-  const [isFlowersHovered, setIsFlowersHovered] = useState(false);
-  const imageAreaRef = useRef<HTMLDivElement>(null);
-  const [areaWidth, setAreaWidth] = useState(0);
+  const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
 
   useEffect(() => {
-    const measure = () => {
-      if (imageAreaRef.current) setAreaWidth(imageAreaRef.current.offsetWidth);
+    const updateBreakpoint = () => {
+      if (window.innerWidth < 768) {
+        setBreakpoint("mobile");
+      } else if (window.innerWidth < 1024) {
+        setBreakpoint("tablet");
+      } else {
+        setBreakpoint("desktop");
+      }
     };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+
+    updateBreakpoint();
+    window.addEventListener("resize", updateBreakpoint);
+    return () => window.removeEventListener("resize", updateBreakpoint);
   }, []);
 
   return (
@@ -336,25 +326,37 @@ export default function OccasionStyling() {
           <Heading text="OCCASION STYLING" />
           <BookNowButton />
         </div>
-        <div className="text-2xl sm:text-3xl md:text-4xl mt-4 sm:mt-6">
-          ₹3,500 <span className="text-xl"> per look </span>
+        <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 sm:mt-6">
+          ₹3,500 <span className="text-base sm:text-lg md:text-xl lg:text-2xl"> per look </span>
         </div>
       </div>
 
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-8 mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-6 lg:gap-4">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
+        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
-            onMouseEnter={() => setIsTextHovered(true)}
-            onMouseLeave={() => setIsTextHovered(false)}
+            onMouseEnter={() =>
+              breakpoint !== "mobile" && setIsTextHovered(true)
+            }
+            onMouseLeave={() =>
+              breakpoint !== "mobile" && setIsTextHovered(false)
+            }
             animate={{
-              scale: isImageHovered ? 0.92 : isTextHovered ? 1.08 : 1,
+              scale:
+                breakpoint === "mobile"
+                  ? 1
+                  : isImageHovered
+                  ? 0.92
+                  : isTextHovered
+                  ? 1.08
+                  : 1,
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-sm sm:text-base md:text-lg text-black leading-relaxed">
+            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               Tell me about your occasion; the event, the mood you&apos;re going for,
               and any ideas you already have.
+              <br />
               <br />
               I&apos;ll take a look at your wardrobe, see what pieces you want to
               wear, and figure out how to make them feel fresh, elevated, and
@@ -378,25 +380,46 @@ export default function OccasionStyling() {
           </motion.div>
 
           <motion.div
-            ref={imageAreaRef}
             className="w-full lg:w-2/3 relative aspect-video"
-            onMouseEnter={() => setIsImageHovered(true)}
-            onMouseLeave={() => setIsImageHovered(false)}
+            onMouseEnter={() =>
+              breakpoint !== "mobile" && setIsImageHovered(true)
+            }
+            onMouseLeave={() =>
+              breakpoint !== "mobile" && setIsImageHovered(false)
+            }
             animate={{
-              scale: isTextHovered ? 0.92 : isImageHovered ? 1.08 : 1,
-              filter: isTextHovered ? "blur(2px)" : "blur(0px)",
+              scale:
+                breakpoint === "mobile"
+                  ? 1
+                  : isTextHovered
+                  ? 0.92
+                  : isImageHovered
+                  ? 1.08
+                  : 1,
+              filter:
+                breakpoint === "mobile"
+                  ? "blur(0px)"
+                  : isTextHovered
+                  ? "blur(2px)"
+                  : "blur(0px)",
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-            style={{ overflow: "visible" }}
+            style={{
+              overflow: "visible",
+              padding:
+                breakpoint === "mobile"
+                  ? "40px"
+                  : breakpoint === "tablet"
+                  ? "60px"
+                  : "80px",
+            }}
           >
             {images.map((img, idx) => (
               <ImageItem
                 key={idx}
                 img={img}
                 index={idx}
-                isFlowersHovered={isFlowersHovered}
-                onFlowerHover={() => setIsFlowersHovered((prev) => !prev)}
-                areaWidth={areaWidth}
+                breakpoint={breakpoint}
               />
             ))}
           </motion.div>

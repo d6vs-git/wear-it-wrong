@@ -1,298 +1,282 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
 
+type ResponsivePosition = {
+  mobile: { top: string; left: string };
+  tablet: { top: string; left: string };
+  desktop: { top: string; left: string };
+};
+
+type ResponsiveDimensions = {
+  mobile: { width: number; height: number };
+  tablet: { width: number; height: number };
+  desktop: { width: number; height: number };
+};
+
 type ImageConfig = {
   src: string;
   alt: string;
-  width: number;
-  height: number;
-  position: { top: string; left: string };
+  dimensions: ResponsiveDimensions;
+  position: ResponsivePosition;
   zIndex?: number;
-  type: "flower" | "carpet" | "hover" | "walk";
-  moveDuration?: number;
-  hoverScale?: number;
-  hoverY?: number;
-  hoverRotate?: number;
 };
 
 const images: ImageConfig[] = [
   {
     src: "/assets/images/people/wardrobe-detox/1.png",
     alt: "flower pot with leaves",
-    width: 280,
-    height: 280,
-    position: { top: "42%", left: "32%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 160, height: 160 },
+      tablet: { width: 220, height: 220 },
+      desktop: { width: 280, height: 280 },
+    },
+    position: {
+      mobile: { top: "45%", left: "36%" },
+      tablet: { top: "43%", left: "34%" },
+      desktop: { top: "42%", left: "32%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/people/wardrobe-detox/2.png",
     alt: "hanger-with cloths on it",
-    width: 500,
-    height: 500,
-    position: { top: "-29%", left: "1%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 280, height: 280 },
+      tablet: { width: 390, height: 390 },
+      desktop: { width: 500, height: 500 },
+    },
+    position: {
+      mobile: { top: "-24%", left: "4%" },
+      tablet: { top: "-27%", left: "2%" },
+      desktop: { top: "-29%", left: "1%" },
+    },
     zIndex: 3,
   },
   {
     src: "/assets/images/people/wardrobe-detox/3.png",
     alt: "bag",
-    width: 220,
-    height: 220,
-    position: { top: "-17%", left: "18%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 130, height: 130 },
+      tablet: { width: 175, height: 175 },
+      desktop: { width: 220, height: 220 },
+    },
+    position: {
+      mobile: { top: "-13%", left: "21%" },
+      tablet: { top: "-15%", left: "19%" },
+      desktop: { top: "-17%", left: "18%" },
+    },
     zIndex: 6,
-    hoverScale: 1.05,
-    hoverY: -8,
-    hoverRotate: 1,
   },
-//do
   {
     src: "/assets/images/people/wardrobe-detox/4.png",
     alt: "umbrella",
-    width: 420,
-    height: 420,
-    position: { top: "34%", left: "54%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 240, height: 240 },
+      tablet: { width: 330, height: 330 },
+      desktop: { width: 420, height: 420 },
+    },
+    position: {
+      mobile: { top: "37%", left: "58%" },
+      tablet: { top: "35%", left: "56%" },
+      desktop: { top: "34%", left: "54%" },
+    },
     zIndex: 1,
   },
   {
     src: "/assets/images/people/wardrobe-detox/5.png",
     alt: "frame-1",
-    width: 140,
-    height: 140,
-    position: { top: "-3%", left: "68%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 80, height: 80 },
+      tablet: { width: 110, height: 110 },
+      desktop: { width: 140, height: 140 },
+    },
+    position: {
+      mobile: { top: "0%", left: "71%" },
+      tablet: { top: "-2%", left: "69%" },
+      desktop: { top: "-3%", left: "68%" },
+    },
     zIndex: 4,
-    hoverScale: 1.1,
-    hoverY: -6,
-    hoverRotate: 3,
   },
   {
     src: "/assets/images/people/wardrobe-detox/6.png",
     alt: "frame-2",
-    width: 140,
-    height: 140,
-    position: { top: "6%", left: "60%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 80, height: 80 },
+      tablet: { width: 110, height: 110 },
+      desktop: { width: 140, height: 140 },
+    },
+    position: {
+      mobile: { top: "9%", left: "63%" },
+      tablet: { top: "7%", left: "61%" },
+      desktop: { top: "6%", left: "60%" },
+    },
     zIndex: 5,
   },
-
   {
     src: "/assets/images/people/wardrobe-detox/7.png",
     alt: "clock",
-    width: 150,
-    height: 150,
-    position: { top: "-4%", left: "79%" },
-    type: "hover",
-    moveDuration: 6,
+    dimensions: {
+      mobile: { width: 90, height: 90 },
+      tablet: { width: 120, height: 120 },
+      desktop: { width: 150, height: 150 },
+    },
+    position: {
+      mobile: { top: "-1%", left: "82%" },
+      tablet: { top: "-3%", left: "80%" },
+      desktop: { top: "-4%", left: "79%" },
+    },
     zIndex: 7,
   },
   {
     src: "/assets/images/people/wardrobe-detox/8.png",
     alt: "dress3",
-    width: 450,
-    height: 450,
-    position: { top: "21%", left: "68%" },
-    type: "hover",
-    moveDuration: 5,
+    dimensions: {
+      mobile: { width: 260, height: 260 },
+      tablet: { width: 355, height: 355 },
+      desktop: { width: 450, height: 450 },
+    },
+    position: {
+      mobile: { top: "24%", left: "72%" },
+      tablet: { top: "22%", left: "70%" },
+      desktop: { top: "21%", left: "68%" },
+    },
     zIndex: 8,
   },
-
   {
     src: "/assets/images/people/wardrobe-detox/9.png",
     alt: "Shoes-2",
-    width: 300,
-    height: 300,
-    position: { top: "57%", left: "3%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 180, height: 180 },
+      tablet: { width: 240, height: 240 },
+      desktop: { width: 300, height: 300 },
+    },
+    position: {
+      mobile: { top: "59%", left: "6%" },
+      tablet: { top: "58%", left: "4%" },
+      desktop: { top: "57%", left: "3%" },
+    },
     zIndex: 10,
-    hoverScale: 1.08,
-    hoverY: -10,
-    hoverRotate: -2,
   },
   {
     src: "/assets/images/people/wardrobe-detox/10.png",
     alt: "Shoes",
-    width: 120,
-    height: 120,
-    position: { top: "18%", left: "72%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 70, height: 70 },
+      tablet: { width: 95, height: 95 },
+      desktop: { width: 120, height: 120 },
+    },
+    position: {
+      mobile: { top: "21%", left: "75%" },
+      tablet: { top: "19%", left: "73%" },
+      desktop: { top: "18%", left: "72%" },
+    },
     zIndex: 1,
-    hoverScale: 1.12,
-    hoverY: -8,
-    hoverRotate: 3,
   },
   {
     src: "/assets/images/people/wardrobe-detox/11.png",
     alt: "dress",
-    width: 240,
-    height: 240,
-    position: { top: "69%", left: "86%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 140, height: 140 },
+      tablet: { width: 190, height: 190 },
+      desktop: { width: 240, height: 240 },
+    },
+    position: {
+      mobile: { top: "71%", left: "89%" },
+      tablet: { top: "70%", left: "87%" },
+      desktop: { top: "69%", left: "86%" },
+    },
     zIndex: 2,
-    hoverScale: 1.08,
-    hoverY: -10,
-    hoverRotate: -1,
   },
   {
     src: "/assets/images/people/wardrobe-detox/12.png",
     alt: "dress4",
-    width: 160,
-    height: 160,
-    position: { top: "73%", left: "43%" },
-    type: "hover",
+    dimensions: {
+      mobile: { width: 95, height: 95 },
+      tablet: { width: 127, height: 127 },
+      desktop: { width: 160, height: 160 },
+    },
+    position: {
+      mobile: { top: "75%", left: "46%" },
+      tablet: { top: "74%", left: "44%" },
+      desktop: { top: "73%", left: "43%" },
+    },
     zIndex: 6,
-    hoverScale: 1.1,
-    hoverY: -8,
-    hoverRotate: 2,
   },
 ];
+
+type Breakpoint = "mobile" | "tablet" | "desktop";
 
 type ImageItemProps = {
   img: ImageConfig;
   index: number;
-  isFlowersHovered: boolean;
-  onFlowerHover: () => void;
-  areaWidth: number;
+  breakpoint: Breakpoint;
 };
 
-const ImageItem = ({
-  img,
-  index,
-  isFlowersHovered,
-  onFlowerHover,
-  areaWidth,
-}: ImageItemProps) => {
-  const [isMoving, setIsMoving] = useState(false);
-  const [key, setKey] = useState(0);
+const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const springConfig = { damping: 20, stiffness: 300, mass: 0.5 };
+  const springX = useSpring(x, springConfig);
+  const springY = useSpring(y, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current || breakpoint === "mobile") return;
+
+    const rect = ref.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const deltaX = (e.clientX - centerX) * 0.15;
+    const deltaY = (e.clientY - centerY) * 0.15;
+
+    x.set(deltaX);
+    y.set(deltaY);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  const position = img.position[breakpoint];
+  const dimensions = img.dimensions[breakpoint];
 
   const baseStyle = {
-    top: img.position.top,
-    left: img.position.left,
+    top: position.top,
+    left: position.left,
     transform: "translate(-50%, -50%)",
-    width: `${img.width}px`,
-    height: `${img.height}px`,
+    width: `${dimensions.width}px`,
+    height: `${dimensions.height}px`,
     zIndex: img.zIndex ?? index,
   };
 
-  // Flower animation
-  if (img.type === "flower") {
-    return (
-      <motion.div
-        className="absolute cursor-pointer"
-        style={baseStyle}
-        initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
-        animate={{ y: isFlowersHovered ? [0, -15, 0] : 0 }}
-        transition={{
-          y: {
-            duration: 2.5,
-            repeat: isFlowersHovered ? Infinity : 0,
-            ease: "easeInOut",
-          },
-        }}
-        onMouseEnter={onFlowerHover}
-        onMouseLeave={onFlowerHover}
-      >
-        <Image
-          src={img.src}
-          alt={img.alt}
-          width={img.width}
-          height={img.height}
-          className="object-contain w-full h-full"
-          priority={index < 2}
-        />
-      </motion.div>
-    );
-  }
-
-  // Carpet (static)
-  if (img.type === "carpet") {
-    return (
-      <motion.div
-        className="absolute"
-        style={baseStyle}
-        initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
-      >
-        <Image
-          src={img.src}
-          alt={img.alt}
-          width={img.width}
-          height={img.height}
-          className="object-contain w-full h-full"
-          priority={index < 2}
-        />
-      </motion.div>
-    );
-  }
-
-  // Walking animation
-  if (img.type === "walk") {
-    const isDress2 = img.alt === "dress2";
-    const leftPercent = parseFloat(img.position.left) / 100;
-    const leftPx = areaWidth * leftPercent;
-    const margin = 16;
-
-    const targetX = isDress2
-      ? areaWidth - img.width / 2 - margin - leftPx
-      : img.width / 2 + margin - leftPx;
-
-    return (
-      <motion.div
-        key={key}
-        className="absolute cursor-pointer"
-        style={baseStyle}
-        initial={{ x: 0, opacity: 0 }}
-        animate={isMoving ? { x: targetX, opacity: 1 } : { x: 0, opacity: 1 }}
-        transition={
-          isMoving
-            ? { duration: img.moveDuration || 5, ease: "linear" }
-            : { opacity: { duration: 0.25 } }
-        }
-        onMouseEnter={() => !isMoving && setIsMoving(true)}
-        onAnimationComplete={() => {
-          if (isMoving) {
-            setIsMoving(false);
-            setKey((k) => k + 1);
-          }
-        }}
-      >
-        <Image
-          src={img.src}
-          alt={img.alt}
-          width={img.width}
-          height={img.height}
-          className="object-contain w-full h-full"
-          priority={index < 2}
-        />
-      </motion.div>
-    );
-  }
-
-  // Hover animation
   return (
     <motion.div
-      className="absolute cursor-pointer"
-      style={baseStyle}
-      initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
-      whileHover={{
-        scale: img.hoverScale || 1.08,
-        y: img.hoverY || -10,
-        rotate: img.hoverRotate || 0,
+      ref={ref}
+      className="absolute cursor-pointer will-change-transform"
+      style={{ ...baseStyle, x: springX, y: springY }}
+      whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
+      whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
+      transition={{
+        scale: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
       }}
-      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       <Image
         src={img.src}
         alt={img.alt}
-        width={img.width}
-        height={img.height}
-        className="object-contain w-full h-full"
+        width={dimensions.width}
+        height={dimensions.height}
+        className="object-contain w-full h-full pointer-events-none"
         priority={index < 2}
       />
     </motion.div>
@@ -302,17 +286,22 @@ const ImageItem = ({
 export default function WardrobeDetox() {
   const [isTextHovered, setIsTextHovered] = useState(false);
   const [isImageHovered, setIsImageHovered] = useState(false);
-  const [isFlowersHovered, setIsFlowersHovered] = useState(false);
-  const imageAreaRef = useRef<HTMLDivElement>(null);
-  const [areaWidth, setAreaWidth] = useState(0);
+  const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
 
   useEffect(() => {
-    const measure = () => {
-      if (imageAreaRef.current) setAreaWidth(imageAreaRef.current.offsetWidth);
+    const updateBreakpoint = () => {
+      if (window.innerWidth < 768) {
+        setBreakpoint("mobile");
+      } else if (window.innerWidth < 1024) {
+        setBreakpoint("tablet");
+      } else {
+        setBreakpoint("desktop");
+      }
     };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+
+    updateBreakpoint();
+    window.addEventListener("resize", updateBreakpoint);
+    return () => window.removeEventListener("resize", updateBreakpoint);
   }, []);
 
   return (
@@ -322,32 +311,46 @@ export default function WardrobeDetox() {
           <Heading text="WARDROBE DETOX" />
           <BookNowButton />
         </div>
-        <div className="text-2xl sm:text-3xl md:text-4xl mt-4 sm:mt-6">
-          ₹6,500 
+        <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 sm:mt-6">
+          ₹6,500
         </div>
       </div>
 
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-8 mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-6 lg:gap-4">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
+        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
-            onMouseEnter={() => setIsTextHovered(true)}
-            onMouseLeave={() => setIsTextHovered(false)}
+            onMouseEnter={() =>
+              breakpoint !== "mobile" && setIsTextHovered(true)
+            }
+            onMouseLeave={() =>
+              breakpoint !== "mobile" && setIsTextHovered(false)
+            }
             animate={{
-              scale: isImageHovered ? 0.92 : isTextHovered ? 1.08 : 1,
+              scale:
+                breakpoint === "mobile"
+                  ? 1
+                  : isImageHovered
+                  ? 0.92
+                  : isTextHovered
+                  ? 1.08
+                  : 1,
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-sm sm:text-base md:text-lg text-black leading-relaxed">
+            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               We go through your wardrobe together: what you wear often, what
               just sits there, and what you actually love.
+              <br />
               <br />
               I&apos;ll ask a few questions, get you to try some pieces, and
               understand your style in real life and not just on paper.
               <br />
+              <br />
               We&apos;ll build new outfit combinations, organize your space so
               it&apos;s easy to use, and note what&apos;s missing to make it work
               better.
+              <br />
               <br />
               After the session, you&apos;ll receive a personalized presentation
               with:
@@ -359,31 +362,53 @@ export default function WardrobeDetox() {
               <br />
               - a mini guide on how to mix and match everything.
               <br />
+              <br />
               It&apos;s a practical, no-drama reset for your wardrobe so you
               know exactly what you own and how to wear it.
             </p>
           </motion.div>
 
           <motion.div
-            ref={imageAreaRef}
             className="w-full lg:w-2/3 relative aspect-video"
-            onMouseEnter={() => setIsImageHovered(true)}
-            onMouseLeave={() => setIsImageHovered(false)}
+            onMouseEnter={() =>
+              breakpoint !== "mobile" && setIsImageHovered(true)
+            }
+            onMouseLeave={() =>
+              breakpoint !== "mobile" && setIsImageHovered(false)
+            }
             animate={{
-              scale: isTextHovered ? 0.92 : isImageHovered ? 1.08 : 1,
-              filter: isTextHovered ? "blur(2px)" : "blur(0px)",
+              scale:
+                breakpoint === "mobile"
+                  ? 1
+                  : isTextHovered
+                  ? 0.92
+                  : isImageHovered
+                  ? 1.08
+                  : 1,
+              filter:
+                breakpoint === "mobile"
+                  ? "blur(0px)"
+                  : isTextHovered
+                  ? "blur(2px)"
+                  : "blur(0px)",
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-            style={{ overflow: "visible" }}
+            style={{
+              overflow: "visible",
+              padding:
+                breakpoint === "mobile"
+                  ? "40px"
+                  : breakpoint === "tablet"
+                  ? "60px"
+                  : "80px",
+            }}
           >
             {images.map((img, idx) => (
               <ImageItem
                 key={idx}
                 img={img}
                 index={idx}
-                isFlowersHovered={isFlowersHovered}
-                onFlowerHover={() => setIsFlowersHovered((prev) => !prev)}
-                areaWidth={areaWidth}
+                breakpoint={breakpoint}
               />
             ))}
           </motion.div>

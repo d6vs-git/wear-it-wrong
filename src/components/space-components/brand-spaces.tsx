@@ -4,21 +4,25 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
-import { useState, useRef, MouseEvent } from "react";
+import { useState, useRef, useEffect } from "react";
 
-// Smooth spring configuration for buttery animations
-const springConfig = {
-  stiffness: 150,
-  damping: 20,
-  mass: 0.5,
+type ResponsivePosition = {
+  mobile: { top: string; left: string };
+  tablet: { top: string; left: string };
+  desktop: { top: string; left: string };
+};
+
+type ResponsiveDimensions = {
+  mobile: { width: number; height: number };
+  tablet: { width: number; height: number };
+  desktop: { width: number; height: number };
 };
 
 type ImageConfig = {
   src: string;
   alt: string;
-  width: number;
-  height: number;
-  position: { top: string; left: string };
+  dimensions: ResponsiveDimensions;
+  position: ResponsivePosition;
   zIndex?: number;
 };
 
@@ -26,217 +30,333 @@ const images: ImageConfig[] = [
   {
     src: "/assets/images/space/brand-spaces/1.png",
     alt: "chair-left",
-    width: 200,
-    height: 200,
-    position: { top: "10%", left: "4%" },
+    dimensions: {
+      mobile: { width: 120, height: 120 },
+      tablet: { width: 160, height: 160 },
+      desktop: { width: 200, height: 200 },
+    },
+    position: {
+      mobile: { top: "12%", left: "7%" },
+      tablet: { top: "11%", left: "5%" },
+      desktop: { top: "10%", left: "4%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/2.png",
-    alt: "chair-right ",
-    width: 200,
-    height: 200,
-    position: { top: "10%", left: "26%" },
+    alt: "chair-right",
+    dimensions: {
+      mobile: { width: 120, height: 120 },
+      tablet: { width: 160, height: 160 },
+      desktop: { width: 200, height: 200 },
+    },
+    position: {
+      mobile: { top: "12%", left: "29%" },
+      tablet: { top: "11%", left: "27%" },
+      desktop: { top: "10%", left: "26%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/3.png",
     alt: "table",
-    width: 160,
-    height: 160,
-    position: { top: "22%", left: "18%" },
+    dimensions: {
+      mobile: { width: 95, height: 95 },
+      tablet: { width: 127, height: 127 },
+      desktop: { width: 160, height: 160 },
+    },
+    position: {
+      mobile: { top: "24%", left: "21%" },
+      tablet: { top: "23%", left: "19%" },
+      desktop: { top: "22%", left: "18%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/4.png",
     alt: "lamp",
-    width: 100,
-    height: 100,
-    position: { top: "12%", left: "21%" },
+    dimensions: {
+      mobile: { width: 60, height: 60 },
+      tablet: { width: 80, height: 80 },
+      desktop: { width: 100, height: 100 },
+    },
+    position: {
+      mobile: { top: "14%", left: "24%" },
+      tablet: { top: "13%", left: "22%" },
+      desktop: { top: "12%", left: "21%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/5.png",
     alt: "seat-sofa",
-    width: 500,
-    height: 500,
-    position: { top: "10%", left: "40%" },
+    dimensions: {
+      mobile: { width: 280, height: 280 },
+      tablet: { width: 390, height: 390 },
+      desktop: { width: 500, height: 500 },
+    },
+    position: {
+      mobile: { top: "13%", left: "44%" },
+      tablet: { top: "11%", left: "42%" },
+      desktop: { top: "10%", left: "40%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/3.png",
     alt: "table",
-    width: 160,
-    height: 160,
-    position: { top: "61%", left: "87%" },
+    dimensions: {
+      mobile: { width: 95, height: 95 },
+      tablet: { width: 127, height: 127 },
+      desktop: { width: 160, height: 160 },
+    },
+    position: {
+      mobile: { top: "63%", left: "84%" },
+      tablet: { top: "62%", left: "86%" },
+      desktop: { top: "61%", left: "87%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/4.png",
     alt: "lamp",
-    width: 100,
-    height: 100,
-    position: { top: "51%", left: "90%" },
+    dimensions: {
+      mobile: { width: 60, height: 60 },
+      tablet: { width: 80, height: 80 },
+      desktop: { width: 100, height: 100 },
+    },
+    position: {
+      mobile: { top: "53%", left: "87%" },
+      tablet: { top: "52%", left: "89%" },
+      desktop: { top: "51%", left: "90%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/3.png",
     alt: "table",
-    width: 160,
-    height: 160,
-    position: { top: "82%", left: "72%" },
+    dimensions: {
+      mobile: { width: 95, height: 95 },
+      tablet: { width: 127, height: 127 },
+      desktop: { width: 160, height: 160 },
+    },
+    position: {
+      mobile: { top: "84%", left: "69%" },
+      tablet: { top: "83%", left: "71%" },
+      desktop: { top: "82%", left: "72%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/4.png",
     alt: "lamp",
-    width: 100,
-    height: 100,
-    position: { top: "72%", left: "75%" },
+    dimensions: {
+      mobile: { width: 60, height: 60 },
+      tablet: { width: 80, height: 80 },
+      desktop: { width: 100, height: 100 },
+    },
+    position: {
+      mobile: { top: "74%", left: "72%" },
+      tablet: { top: "73%", left: "74%" },
+      desktop: { top: "72%", left: "75%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/2.png",
-    alt: "chair-right ",
-    width: 240,
-    height: 240,
-    position: { top: "72%", left: "89%" },
+    alt: "chair-right",
+    dimensions: {
+      mobile: { width: 140, height: 140 },
+      tablet: { width: 190, height: 190 },
+      desktop: { width: 240, height: 240 },
+    },
+    position: {
+      mobile: { top: "74%", left: "86%" },
+      tablet: { top: "73%", left: "88%" },
+      desktop: { top: "72%", left: "89%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/1.png",
     alt: "chair-left",
-    width: 200,
-    height: 200,
-    position: { top: "60%", left: "-6%" },
+    dimensions: {
+      mobile: { width: 120, height: 120 },
+      tablet: { width: 160, height: 160 },
+      desktop: { width: 200, height: 200 },
+    },
+    position: {
+      mobile: { top: "62%", left: "-3%" },
+      tablet: { top: "61%", left: "-5%" },
+      desktop: { top: "60%", left: "-6%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/2.png",
-    alt: "chair-right ",
-    width: 200,
-    height: 200,
-    position: { top: "60%", left: "16%" },
+    alt: "chair-right",
+    dimensions: {
+      mobile: { width: 120, height: 120 },
+      tablet: { width: 160, height: 160 },
+      desktop: { width: 200, height: 200 },
+    },
+    position: {
+      mobile: { top: "62%", left: "19%" },
+      tablet: { top: "61%", left: "17%" },
+      desktop: { top: "60%", left: "16%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/3.png",
     alt: "table",
-    width: 160,
-    height: 160,
-    position: { top: "72%", left: "8%" },
+    dimensions: {
+      mobile: { width: 95, height: 95 },
+      tablet: { width: 127, height: 127 },
+      desktop: { width: 160, height: 160 },
+    },
+    position: {
+      mobile: { top: "74%", left: "11%" },
+      tablet: { top: "73%", left: "9%" },
+      desktop: { top: "72%", left: "8%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/4.png",
     alt: "lamp",
-    width: 100,
-    height: 100,
-    position: { top: "62%", left: "11%" },
+    dimensions: {
+      mobile: { width: 60, height: 60 },
+      tablet: { width: 80, height: 80 },
+      desktop: { width: 100, height: 100 },
+    },
+    position: {
+      mobile: { top: "64%", left: "14%" },
+      tablet: { top: "63%", left: "12%" },
+      desktop: { top: "62%", left: "11%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/3.png",
     alt: "table",
-    width: 160,
-    height: 160,
-    position: { top: "57%", left: "42%" },
+    dimensions: {
+      mobile: { width: 95, height: 95 },
+      tablet: { width: 127, height: 127 },
+      desktop: { width: 160, height: 160 },
+    },
+    position: {
+      mobile: { top: "59%", left: "45%" },
+      tablet: { top: "58%", left: "43%" },
+      desktop: { top: "57%", left: "42%" },
+    },
     zIndex: 0,
   },
   {
     src: "/assets/images/space/brand-spaces/4.png",
     alt: "lamp",
-    width: 100,
-    height: 100,
-    position: { top: "47%", left: "45%" },
+    dimensions: {
+      mobile: { width: 60, height: 60 },
+      tablet: { width: 80, height: 80 },
+      desktop: { width: 100, height: 100 },
+    },
+    position: {
+      mobile: { top: "49%", left: "48%" },
+      tablet: { top: "48%", left: "46%" },
+      desktop: { top: "47%", left: "45%" },
+    },
     zIndex: 5,
   },
   {
     src: "/assets/images/space/brand-spaces/3.png",
     alt: "table",
-    width: 160,
-    height: 160,
-    position: { top: "79%", left: "38%" },
+    dimensions: {
+      mobile: { width: 95, height: 95 },
+      tablet: { width: 127, height: 127 },
+      desktop: { width: 160, height: 160 },
+    },
+    position: {
+      mobile: { top: "81%", left: "41%" },
+      tablet: { top: "80%", left: "39%" },
+      desktop: { top: "79%", left: "38%" },
+    },
     zIndex: 9,
   },
   {
     src: "/assets/images/space/brand-spaces/4.png",
     alt: "lamp",
-    width: 100,
-    height: 100,
-    position: { top: "69%", left: "41%" },
+    dimensions: {
+      mobile: { width: 60, height: 60 },
+      tablet: { width: 80, height: 80 },
+      desktop: { width: 100, height: 100 },
+    },
+    position: {
+      mobile: { top: "71%", left: "44%" },
+      tablet: { top: "70%", left: "42%" },
+      desktop: { top: "69%", left: "41%" },
+    },
     zIndex: 11,
   },
 ];
 
+type Breakpoint = "mobile" | "tablet" | "desktop";
+
 type ImageItemProps = {
   img: ImageConfig;
   index: number;
+  breakpoint: Breakpoint;
 };
 
-const ImageItem = ({ img, index }: ImageItemProps) => {
+const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useMotionValue(0);
-  const rotateY = useMotionValue(0);
 
+  const springConfig = { damping: 20, stiffness: 300, mass: 0.5 };
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
-  const springRotateX = useSpring(rotateX, springConfig);
-  const springRotateY = useSpring(rotateY, springConfig);
 
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current || breakpoint === "mobile") return;
 
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    const deltaX = e.clientX - centerX;
-    const deltaY = e.clientY - centerY;
 
-    const wiggleStrength = 0.15;
-    x.set(deltaX * wiggleStrength);
-    y.set(deltaY * wiggleStrength);
-    rotateX.set(-(deltaY / rect.height) * 8);
-    rotateY.set((deltaX / rect.width) * 8);
+    const deltaX = (e.clientX - centerX) * 0.15;
+    const deltaY = (e.clientY - centerY) * 0.15;
+
+    x.set(deltaX);
+    y.set(deltaY);
   };
 
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
-    rotateX.set(0);
-    rotateY.set(0);
+  };
+
+  const position = img.position[breakpoint];
+  const dimensions = img.dimensions[breakpoint];
+
+  const baseStyle = {
+    top: position.top,
+    left: position.left,
+    transform: "translate(-50%, -50%)",
+    width: `${dimensions.width}px`,
+    height: `${dimensions.height}px`,
+    zIndex: img.zIndex ?? index,
   };
 
   return (
     <motion.div
       ref={ref}
-      className="absolute cursor-pointer"
-      style={{
-        top: img.position.top,
-        left: img.position.left,
-        transform: "translate(-50%, -50%)",
-        width: `${img.width}px`,
-        height: `${img.height}px`,
-        zIndex: img.zIndex ?? index,
-        x: springX,
-        y: springY,
-        rotateX: springRotateX,
-        rotateY: springRotateY,
-      }}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      whileHover={{ scale: 1.08 }}
+      className="absolute cursor-pointer will-change-transform"
+      style={{ ...baseStyle, x: springX, y: springY }}
+      whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
+      whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
       transition={{
-        opacity: { duration: 0.4 },
-        scale: {
-          type: "spring",
-          stiffness: 300,
-          damping: 25,
-          mass: 0.8,
-        },
+        scale: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -244,11 +364,10 @@ const ImageItem = ({ img, index }: ImageItemProps) => {
       <Image
         src={img.src}
         alt={img.alt}
-        width={img.width}
-        height={img.height}
+        width={dimensions.width}
+        height={dimensions.height}
         className="object-contain w-full h-full pointer-events-none"
         priority={index < 2}
-        draggable={false}
       />
     </motion.div>
   );
@@ -257,7 +376,23 @@ const ImageItem = ({ img, index }: ImageItemProps) => {
 export default function BrandSpaces() {
   const [isTextHovered, setIsTextHovered] = useState(false);
   const [isImageHovered, setIsImageHovered] = useState(false);
-  const imageAreaRef = useRef<HTMLDivElement>(null);
+  const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
+
+  useEffect(() => {
+    const updateBreakpoint = () => {
+      if (window.innerWidth < 768) {
+        setBreakpoint("mobile");
+      } else if (window.innerWidth < 1024) {
+        setBreakpoint("tablet");
+      } else {
+        setBreakpoint("desktop");
+      }
+    };
+
+    updateBreakpoint();
+    window.addEventListener("resize", updateBreakpoint);
+    return () => window.removeEventListener("resize", updateBreakpoint);
+  }, []);
 
   return (
     <div className="w-screen overflow-hidden">
@@ -268,36 +403,47 @@ export default function BrandSpaces() {
         </div>
       </div>
 
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-8 mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-6 lg:gap-4">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
+        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
-            onMouseEnter={() => setIsTextHovered(true)}
-            onMouseLeave={() => setIsTextHovered(false)}
+            onMouseEnter={() =>
+              breakpoint !== "mobile" && setIsTextHovered(true)
+            }
+            onMouseLeave={() =>
+              breakpoint !== "mobile" && setIsTextHovered(false)
+            }
             animate={{
-              scale: isImageHovered ? 0.92 : isTextHovered ? 1.08 : 1,
+              scale:
+                breakpoint === "mobile"
+                  ? 1
+                  : isImageHovered
+                  ? 0.92
+                  : isTextHovered
+                  ? 1.08
+                  : 1,
             }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 25,
-              mass: 0.8,
-            }}
+            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-sm sm:text-base md:text-lg text-black leading-relaxed">
+            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               Your space is often the first time someone experiences your brand,
               so it should tell your story without saying a word.
+              <br />
               <br />
               I help brands design and style their physical spaces; whether
               it&apos;s a store, studio, or pop-up, so it looks good, feels
               cohesive, and makes sense for how people actually move through it.
+              <br />
+              <br />
               We start by understanding your identity and what you want the
               space to communicate. From there, I help plan the layout,
               materials, color story, and decor details that bring that feeling
               to life.
               <br />
+              <br />
               It&apos;s not just about making things pretty but about creating a
               space that feels intentional, on-brand, and easy to maintain.
+              <br />
               <br />
               Whether you&apos;re setting up from scratch or reworking an
               existing space, the goal is simple: to make your space feel like
@@ -306,30 +452,47 @@ export default function BrandSpaces() {
           </motion.div>
 
           <motion.div
-            ref={imageAreaRef}
             className="w-full lg:w-2/3 relative aspect-video"
-            onMouseEnter={() => setIsImageHovered(true)}
-            onMouseLeave={() => setIsImageHovered(false)}
+            onMouseEnter={() =>
+              breakpoint !== "mobile" && setIsImageHovered(true)
+            }
+            onMouseLeave={() =>
+              breakpoint !== "mobile" && setIsImageHovered(false)
+            }
             animate={{
-              scale: isTextHovered ? 0.92 : isImageHovered ? 1.08 : 1,
-              filter: isTextHovered ? "blur(2px)" : "blur(0px)",
+              scale:
+                breakpoint === "mobile"
+                  ? 1
+                  : isTextHovered
+                  ? 0.92
+                  : isImageHovered
+                  ? 1.08
+                  : 1,
+              filter:
+                breakpoint === "mobile"
+                  ? "blur(0px)"
+                  : isTextHovered
+                  ? "blur(2px)"
+                  : "blur(0px)",
             }}
-            transition={{
-              scale: {
-                type: "spring",
-                stiffness: 300,
-                damping: 25,
-                mass: 0.8,
-              },
-              filter: {
-                duration: 0.35,
-                ease: [0.22, 1, 0.36, 1],
-              },
+            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+            style={{
+              overflow: "visible",
+              padding:
+                breakpoint === "mobile"
+                  ? "40px"
+                  : breakpoint === "tablet"
+                  ? "60px"
+                  : "80px",
             }}
-            style={{ overflow: "visible" }}
           >
             {images.map((img, idx) => (
-              <ImageItem key={idx} img={img} index={idx} />
+              <ImageItem
+                key={idx}
+                img={img}
+                index={idx}
+                breakpoint={breakpoint}
+              />
             ))}
           </motion.div>
         </div>

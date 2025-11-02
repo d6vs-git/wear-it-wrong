@@ -344,7 +344,7 @@ export default function ConceptDevelopment() {
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-4">
+        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
             onMouseEnter={() =>
@@ -365,7 +365,7 @@ export default function ConceptDevelopment() {
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-sm sm:text-base md:text-lg text-black leading-relaxed">
+            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               Each brand has its own unique vision that defines its identity,
               and I help bring that vision to life.
               <br />
