@@ -391,7 +391,7 @@ export default function ConceptDevelopment() {
           </motion.div>
 
           <motion.div
-            className="w-full lg:w-2/3 relative aspect-video"
+            className="w-full lg:w-2/3 relative aspect-video overflow-visible p-8 sm:p-12 md:p-16 lg:p-20"
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsImageHovered(true)
             }

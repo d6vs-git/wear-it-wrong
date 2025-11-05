@@ -28,7 +28,7 @@ type ImageConfig = {
 
 const images: ImageConfig[] = [
   {
-    src: "/assets/images/space/space-edit/1.png",
+    src: "/assets/images/space/space-edit/painting1.png",
     alt: "painting",
     dimensions: {
       mobile: { width: 80, height: 80 },
@@ -43,7 +43,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/space-edit/2.png",
+    src: "/assets/images/space/space-edit/painting2.png",
     alt: "painting",
     dimensions: {
       mobile: { width: 90, height: 90 },
@@ -58,7 +58,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/space-edit/3.png",
+    src: "/assets/images/space/space-edit/painting3.png",
     alt: "painting",
     dimensions: {
       mobile: { width: 70, height: 70 },
@@ -73,8 +73,8 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/space-edit/4.png",
-    alt: "art",
+    src: "/assets/images/space/space-edit/perfume.png",
+    alt: "perfume",
     dimensions: {
       mobile: { width: 60, height: 60 },
       tablet: { width: 80, height: 80 },
@@ -88,7 +88,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/space-edit/5.png",
+    src: "/assets/images/space/space-edit/painting5.png",
     alt: "painting",
     dimensions: {
       mobile: { width: 135, height: 135 },
@@ -103,7 +103,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/space-edit/6.png",
+    src: "/assets/images/space/space-edit/sofa.png",
     alt: "sofa",
     dimensions: {
       mobile: { width: 210, height: 210 },
@@ -118,7 +118,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/space-edit/7.png",
+    src: "/assets/images/space/space-edit/table.png",
     alt: "furniture",
     dimensions: {
       mobile: { width: 210, height: 210 },
@@ -133,7 +133,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/space-edit/8.png",
+    src: "/assets/images/space/space-edit/painting6.png",
     alt: "painting",
     dimensions: {
       mobile: { width: 165, height: 165 },
@@ -148,7 +148,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/space-edit/9.png",
+    src: "/assets/images/space/space-edit/painting7.png",
     alt: "painting",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -163,7 +163,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/space-edit/10.png",
+    src: "/assets/images/space/space-edit/table.png",
     alt: "furniture",
     dimensions: {
       mobile: { width: 75, height: 75 },
@@ -178,7 +178,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/space-edit/11.png",
+    src: "/assets/images/space/space-edit/cactus.png",
     alt: "plant",
     dimensions: {
       mobile: { width: 60, height: 60 },
@@ -192,68 +192,68 @@ const images: ImageConfig[] = [
     },
     zIndex: 5,
   },
+  // {
+  //   src: "/assets/images/space/space-edit/12.png",
+  //   alt: "painting",
+  //   dimensions: {
+  //     mobile: { width: 120, height: 120 },
+  //     tablet: { width: 160, height: 160 },
+  //     desktop: { width: 200, height: 200 },
+  //   },
+  //   position: {
+  //     mobile: { top: "30%", left: "84%" },
+  //     tablet: { top: "28%", left: "82%" },
+  //     desktop: { top: "27%", left: "81%" },
+  //   },
+  //   zIndex: 5,
+  // },
+  // {
+  //   src: "/assets/images/space/space-edit/13.png",
+  //   alt: "sofa",
+  //   dimensions: {
+  //     mobile: { width: 165, height: 165 },
+  //     tablet: { width: 220, height: 220 },
+  //     desktop: { width: 275, height: 275 },
+  //   },
+  //   position: {
+  //     mobile: { top: "64%", left: "75%" },
+  //     tablet: { top: "63%", left: "73%" },
+  //     desktop: { top: "62%", left: "72%" },
+  //   },
+  //   zIndex: 5,
+  // },
+  // {
+  //   src: "/assets/images/space/space-edit/14.png",
+  //   alt: "painting",
+  //   dimensions: {
+  //     mobile: { width: 80, height: 80 },
+  //     tablet: { width: 107, height: 107 },
+  //     desktop: { width: 135, height: 135 },
+  //   },
+  //   position: {
+  //     mobile: { top: "10%", left: "90%" },
+  //     tablet: { top: "8%", left: "88%" },
+  //     desktop: { top: "7%", left: "87%" },
+  //   },
+  //   zIndex: 5,
+  // },
+  // {
+  //   src: "/assets/images/space/space-edit/15.png",
+  //   alt: "painting",
+  //   dimensions: {
+  //     mobile: { width: 135, height: 135 },
+  //     tablet: { width: 180, height: 180 },
+  //     desktop: { width: 225, height: 225 },
+  //   },
+  //   position: {
+  //     mobile: { top: "31%", left: "30%" },
+  //     tablet: { top: "29%", left: "28%" },
+  //     desktop: { top: "28%", left: "27%" },
+  //   },
+  //   zIndex: 5,
+  // },
   {
-    src: "/assets/images/space/space-edit/12.png",
-    alt: "painting",
-    dimensions: {
-      mobile: { width: 120, height: 120 },
-      tablet: { width: 160, height: 160 },
-      desktop: { width: 200, height: 200 },
-    },
-    position: {
-      mobile: { top: "30%", left: "84%" },
-      tablet: { top: "28%", left: "82%" },
-      desktop: { top: "27%", left: "81%" },
-    },
-    zIndex: 5,
-  },
-  {
-    src: "/assets/images/space/space-edit/13.png",
-    alt: "sofa",
-    dimensions: {
-      mobile: { width: 165, height: 165 },
-      tablet: { width: 220, height: 220 },
-      desktop: { width: 275, height: 275 },
-    },
-    position: {
-      mobile: { top: "64%", left: "75%" },
-      tablet: { top: "63%", left: "73%" },
-      desktop: { top: "62%", left: "72%" },
-    },
-    zIndex: 5,
-  },
-  {
-    src: "/assets/images/space/space-edit/14.png",
-    alt: "painting",
-    dimensions: {
-      mobile: { width: 80, height: 80 },
-      tablet: { width: 107, height: 107 },
-      desktop: { width: 135, height: 135 },
-    },
-    position: {
-      mobile: { top: "10%", left: "90%" },
-      tablet: { top: "8%", left: "88%" },
-      desktop: { top: "7%", left: "87%" },
-    },
-    zIndex: 5,
-  },
-  {
-    src: "/assets/images/space/space-edit/15.png",
-    alt: "painting",
-    dimensions: {
-      mobile: { width: 135, height: 135 },
-      tablet: { width: 180, height: 180 },
-      desktop: { width: 225, height: 225 },
-    },
-    position: {
-      mobile: { top: "31%", left: "30%" },
-      tablet: { top: "29%", left: "28%" },
-      desktop: { top: "28%", left: "27%" },
-    },
-    zIndex: 5,
-  },
-  {
-    src: "/assets/images/space/space-edit/16.png",
+    src: "/assets/images/space/space-edit/painting2.png",
     alt: "painting",
     dimensions: {
       mobile: { width: 105, height: 105 },

@@ -1,14 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { Suspense } from "react";
 import PeopleSection from "@/components/styles/people-section";
 import PersonalShopping from "@/components/people-components/personal-shopping";
 import OccasionStyling from "@/components/people-components/occasion-styling";
 import StyleDrop from "@/components/people-components/style-drop";
 import WardrobeDetox from "@/components/people-components/wardrobe-detox";
 
-export default function PeoplePage() {
-  const [activeService, setActiveService] = useState<string | null>(null);
+function PeopleContent() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const activeService = searchParams.get("service");
+
+  const handleServiceChange = (service: string) => {
+    router.push(`/styles/people?service=${service}`, { scroll: false });
+  };
 
   // Render the selected service component
   const renderServiceComponent = () => {
@@ -28,7 +35,7 @@ export default function PeoplePage() {
           </div>
         );
       default:
-        return <PeopleSection onBadgeClick={setActiveService} />;
+        return <PeopleSection onBadgeClick={handleServiceChange} />;
     }
   };
 
@@ -37,5 +44,13 @@ export default function PeoplePage() {
     <>
       {renderServiceComponent()}
     </>
+  );
+}
+
+export default function PeoplePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-landing" />}>
+      <PeopleContent />
+    </Suspense>
   );
 }

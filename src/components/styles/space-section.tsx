@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
-import { useState, useRef, MouseEvent } from "react";
+import { useState, useRef, useEffect, MouseEvent } from "react";
 import Badge from "@/components/badge";
 
 // Smooth spring configuration for buttery animations
@@ -242,6 +242,19 @@ function SectionImageItem({
 
   const isHovered = hoveredCategory === img.category;
   const isOtherHovered = hoveredCategory !== null && hoveredCategory !== img.category;
+  const [isCarMoving, setIsCarMoving] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Special handling for car and favourite-person
+  const isCar = img.alt === "car";
+  const isFavouritePerson = img.alt === "favourite-person";
+
+  // Handle mount animation for car
+  useEffect(() => {
+    if (isCar) {
+      setTimeout(() => setMounted(true), 100);
+    }
+  }, [isCar]);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -266,6 +279,74 @@ function SectionImageItem({
     rotateY.set(0);
   };
 
+  // For car, use continuous looping animation while hovered
+  if (isCar) {
+    return (
+      <motion.div
+        ref={ref}
+        className="absolute z-20 cursor-pointer"
+        style={{
+          top: img.position.top,
+          left: img.position.left,
+          transform: "translate(-50%, -50%)",
+        }}
+        initial={{
+          opacity: 0,
+          x: -30,
+        }}
+        animate={{
+          x: isCarMoving && mounted ? [0, -700, 0] : 0,
+          scale: isHovered ? 1.25 : isOtherHovered ? 0.88 : 1,
+          filter: isOtherHovered ? "blur(6px)" : "blur(0px)",
+          opacity: mounted ? (isOtherHovered ? 0.45 : 1) : 1,
+        }}
+        transition={{
+          x: isCarMoving && mounted ? { 
+            duration: 5, 
+            ease: "linear",
+            repeat: Infinity,
+            repeatType: "loop"
+          } : { duration: 0.5 },
+          scale: { 
+            type: "spring",
+            stiffness: 300,
+            damping: 25,
+            mass: 0.8,
+          },
+          filter: { 
+            type: "tween",
+            duration: 0.35,
+            ease: [0.22, 1, 0.36, 1],
+          },
+          opacity: { 
+            type: "tween",
+            duration: 0.5,
+            ease: "easeOut",
+          },
+        }}
+        onMouseEnter={() => {
+          console.log("Car hovered!");
+          setIsCarMoving(true);
+        }}
+        onMouseLeave={() => {
+          console.log("Car unhovered!");
+          setIsCarMoving(false);
+        }}
+      >
+        <Image
+          src={img.src}
+          alt={img.alt}
+          width={img.width}
+          height={img.height}
+          className="object-contain pointer-events-none"
+          priority={index < 2}
+          draggable={false}
+        />
+      </motion.div>
+    );
+  }
+
+  // Regular images with wiggle effect
   return (
     <motion.div
       ref={ref}
@@ -294,7 +375,7 @@ function SectionImageItem({
       animate={{
         scale: isHovered ? 1.25 : isOtherHovered ? 0.88 : 1,
         filter: isOtherHovered ? "blur(6px)" : "blur(0px)",
-        opacity: isOtherHovered ? 0.45 : 1,
+        opacity: isOtherHovered ? 0.45 : isFavouritePerson ? [1, 0.3, 1] : 1,
       }}
       viewport={{ once: true }}
       transition={{
@@ -309,7 +390,11 @@ function SectionImageItem({
           duration: 0.35,
           ease: [0.22, 1, 0.36, 1],
         },
-        opacity: { 
+        opacity: isFavouritePerson ? {
+          duration: 1.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        } : { 
           type: "tween",
           duration: 0.3,
           ease: "easeOut",

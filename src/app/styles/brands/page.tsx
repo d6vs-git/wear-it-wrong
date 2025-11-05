@@ -1,13 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { Suspense } from "react";
 import BrandSection from "@/components/styles/brands-section";
 import VisualMerchandising from "@/components/brand-components/visual-merchandising";
 import ConceptDevelopment from "@/components/brand-components/concept-development";
 import BrandShoots from "@/components/brand-components/brand-shoots";
 
-export default function BrandsPage() {
-  const [activeService, setActiveService] = useState<string | null>(null);
+function BrandsContent() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const activeService = searchParams.get("service");
+
+  const handleServiceChange = (service: string) => {
+    router.push(`/styles/brands?service=${service}`, { scroll: false });
+  };
 
   // Render the selected service component
   const renderServiceComponent = () => {
@@ -19,7 +26,7 @@ export default function BrandsPage() {
       case "brand-shoots":
         return <BrandShoots />;
       default:
-        return <BrandSection onBadgeClick={setActiveService} />;
+        return <BrandSection onBadgeClick={handleServiceChange} />;
     }
   };
 
@@ -27,5 +34,13 @@ export default function BrandsPage() {
     <>
       {renderServiceComponent()}
     </>
+  );
+}
+
+export default function BrandsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-landing" />}>
+      <BrandsContent />
+    </Suspense>
   );
 }
