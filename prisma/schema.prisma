@@ -8,21 +8,9 @@ generator client {
 }
 
 model User {
-  id        String    @id @default(cuid())
-  name      String?
-  email     String    @unique
-  image     String?
-  meetings  Meeting[]
-  createdAt DateTime  @default(now())
-}
-
-model Meeting {
-  id            String   @id @default(cuid())
-  title         String
-  startTime     DateTime
-  endTime       DateTime
-  googleEventId String?
-  meetLink      String?
-  user          User     @relation(fields: [userId], references: [id])
-  userId        String
+  id       String     @id @default(cuid())
+  username String
+  email    String     @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
