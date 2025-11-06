@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useSession } from "next-auth/react";
 import Hero from "../components/home/hero";
 import About from "../components/home/about";
 import Navbar from "@/components/navbar";
@@ -8,13 +9,15 @@ import Banner from "@/components/home/banner";
 import UnifiedServicesSection from "@/components/styles/brand-overview";
 
 export default function Home() {
+  const { status } = useSession();
   // Initialize state to false to avoid hydration mismatch
   const [showBanner, setShowBanner] = useState(false);
   const hasCheckedBanner = useRef(false);
 
   // Check sessionStorage only on client-side after mount
   useEffect(() => {
-    if (!hasCheckedBanner.current) {
+    // Only check sessionStorage for unauthenticated users
+    if (status === "unauthenticated" && !hasCheckedBanner.current) {
       hasCheckedBanner.current = true;
       const hasSeenBanner = sessionStorage.getItem("bannerShown");
       if (!hasSeenBanner) {
@@ -22,7 +25,7 @@ export default function Home() {
         setTimeout(() => setShowBanner(true), 0);
       }
     }
-  }, []);
+  }, [status]);
 
   const handleCloseBanner = () => {
     setShowBanner(false);
