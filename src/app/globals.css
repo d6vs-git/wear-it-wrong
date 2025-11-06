@@ -2,39 +2,46 @@
 @import "tw-animate-css";
 
 @font-face {
-  font-family: 'ATBSerif';
-  src: url('/assets/fonts/atbserif-rg.otf') format('opentype');
+  font-family: "ATBSerif";
+  src: url("/assets/fonts/atbserif-rg.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'ATBSerif';
-  src: url('/assets/fonts/atbserif-it.otf') format('opentype');
+  font-family: "ATBSerif";
+  src: url("/assets/fonts/atbserif-it.otf") format("opentype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'BadTyp';
-  src: url('/assets/fonts/badtyp-rg.otf') format('opentype');
+  font-family: "BadTyp";
+  src: url("/assets/fonts/badtyp-rg.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'DogmaOutline';
-  src: url('/assets/fonts/dogma-outline-rg.otf') format('opentype');
+  font-family: "DogmaOutline";
+  src: url("/assets/fonts/dogma-outline-rg.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 /* New: Above the Beyond Script (requires the font file to be present at the path below) */
 @font-face {
-  font-family: 'AboveTheBeyondScript';
-  src: url('/assets/fonts/abovethebeyond-script.otf') format('opentype');
+  font-family: "AboveTheBeyondScript";
+  src: url("/assets/fonts/abovethebeyond-script.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Futura";
+  src: url("/assets/fonts/futura.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -75,14 +82,14 @@
   --sidebar-accent-foreground: #1c1c1c;
   --sidebar-border: #d9d9d9;
   --sidebar-ring: #9e1515;
-  --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Lora', serif;
-  --font-mono: 'Fira Mono', monospace;
-  --font-atbserif: 'ATBSerif', serif;
-  --font-badtyp: 'BadTyp', sans-serif;
-  --font-dogmaoutline: 'DogmaOutline', sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Lora", serif;
+  --font-mono: "Fira Mono", monospace;
+  --font-atbserif: "ATBSerif", serif;
+  --font-badtyp: "BadTyp", sans-serif;
+  --font-dogmaoutline: "DogmaOutline", sans-serif;
   /* New: expose Above the Beyond Script */
-  --font-abovebeyond: 'AboveTheBeyondScript', cursive;
+  --font-abovebeyond: "AboveTheBeyondScript", cursive;
   --radius: 0.5rem;
   --shadow-x: 0rem;
   --shadow-y: 0.25rem;
@@ -92,11 +99,16 @@
   --shadow-color: #000000;
   --shadow-2xs: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.03);
   --shadow-xs: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.03);
-  --shadow-sm: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.05), 0rem 1px 2px -1px hsl(0 0% 0% / 0.05);
-  --shadow: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.05), 0rem 1px 2px -1px hsl(0 0% 0% / 0.05);
-  --shadow-md: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.05), 0rem 2px 4px -1px hsl(0 0% 0% / 0.05);
-  --shadow-lg: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.05), 0rem 4px 6px -1px hsl(0 0% 0% / 0.05);
-  --shadow-xl: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.05), 0rem 8px 10px -1px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.05),
+    0rem 1px 2px -1px hsl(0 0% 0% / 0.05);
+  --shadow: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.05),
+    0rem 1px 2px -1px hsl(0 0% 0% / 0.05);
+  --shadow-md: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.05),
+    0rem 2px 4px -1px hsl(0 0% 0% / 0.05);
+  --shadow-lg: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.05),
+    0rem 4px 6px -1px hsl(0 0% 0% / 0.05);
+  --shadow-xl: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.05),
+    0rem 8px 10px -1px hsl(0 0% 0% / 0.05);
   --shadow-2xl: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.13);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
@@ -135,14 +147,14 @@
   --sidebar-accent-foreground: #fdfef3;
   --sidebar-border: #3a3a3a;
   --sidebar-ring: #9e1515;
-  --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Lora', serif;
-  --font-mono: 'Fira Mono', monospace;
-  --font-atbserif: 'ATBSerif', serif;
-  --font-badtyp: 'BadTyp', sans-serif;
-  --font-dogmaoutline: 'DogmaOutline', sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Lora", serif;
+  --font-mono: "Fira Mono", monospace;
+  --font-atbserif: "ATBSerif", serif;
+  --font-badtyp: "BadTyp", sans-serif;
+  --font-dogmaoutline: "DogmaOutline", sans-serif;
   /* Dark mode font var for Above the Beyond */
-  --font-abovebeyond: 'AboveTheBeyondScript', cursive;
+  --font-abovebeyond: "AboveTheBeyondScript", cursive;
   --radius: 0.5rem;
   --shadow-x: 0rem;
   --shadow-y: 0.25rem;
@@ -150,23 +162,31 @@
   --shadow-spread: 0rem;
   --shadow-opacity: 0.2;
   --shadow-color: #000000;
-  --shadow-2xs: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.10);
-  --shadow-xs: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.10);
-  --shadow-sm: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.20), 0rem 1px 2px -1px hsl(0 0% 0% / 0.20);
-  --shadow: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.20), 0rem 1px 2px -1px hsl(0 0% 0% / 0.20);
-  --shadow-md: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.20), 0rem 2px 4px -1px hsl(0 0% 0% / 0.20);
-  --shadow-lg: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.20), 0rem 4px 6px -1px hsl(0 0% 0% / 0.20);
-  --shadow-xl: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.20), 0rem 8px 10px -1px hsl(0 0% 0% / 0.20);
-  --shadow-2xl: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.50);
+  --shadow-2xs: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.1);
+  --shadow-xs: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.1);
+  --shadow-sm: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.2),
+    0rem 1px 2px -1px hsl(0 0% 0% / 0.2);
+  --shadow: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.2),
+    0rem 1px 2px -1px hsl(0 0% 0% / 0.2);
+  --shadow-md: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.2),
+    0rem 2px 4px -1px hsl(0 0% 0% / 0.2);
+  --shadow-lg: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.2),
+    0rem 4px 6px -1px hsl(0 0% 0% / 0.2);
+  --shadow-xl: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.2),
+    0rem 8px 10px -1px hsl(0 0% 0% / 0.2);
+  --shadow-2xl: 0rem 0.25rem 0.5rem 0rem hsl(0 0% 0% / 0.5);
 }
 
 /* Utility to use the Above the Beyond Script font */
 .font-abovebeyond {
-  font-family: 'AboveTheBeyondScript', 'Brush Script MT', 'Lucida Handwriting', 'Apple Chancery', cursive;
+  font-family: "AboveTheBeyondScript", "Brush Script MT", "Lucida Handwriting",
+    "Apple Chancery", cursive;
 }
 
 /* Utility to force ATB Serif */
-.font-atbserif { font-family: 'ATBSerif', serif; }
+.font-atbserif {
+  font-family: "ATBSerif", serif;
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -202,7 +222,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-    --font-sans: var(--font-sans);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
   --font-atbserif: var(--font-atbserif);
@@ -235,10 +255,16 @@
   }
 }
 @keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0; }
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
 }
 .animate-blink {
   animation: blink 1.8s infinite;
 }
-
