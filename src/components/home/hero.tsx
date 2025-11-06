@@ -212,6 +212,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Banner from "./banner";
 
 export default function Hero() {
   const router = useRouter();

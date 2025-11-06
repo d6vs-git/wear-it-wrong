@@ -18,7 +18,9 @@ export default function RootLayout({
       <body>
         {" "}
         <AuthProvider>
-          <div className="fixed top-3 right-4 z-50">{/* <UserMenu /> */}</div>
+          <div className="fixed top-3 right-4 z-50">
+            <UserMenu />
+          </div>
           {children}
         </AuthProvider>
       </body>

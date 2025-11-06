@@ -214,32 +214,17 @@ export default function Navbar() {
               transition={{ duration: 0.2 }}
             >
               <Image
-                src="/assets/logo/logo-navbar.png"
-                alt="Logo"
-                width={140}
-                height={60}
-                className="w-24 sm:w-28 md:w-36 h-auto"
-                priority
+                src="/assets/logo/logo-black.png" // Path to your image (public folder or remote)
+                alt="Profile picture"
+                width={100}
+                height={100}
               />
-            </motion.div>
+            </motion.h1>
           </Link>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center ml-[10vw] space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* Right Icons */}
-          <div className="flex items-center gap-3 sm:gap-4 md:gap-6" ref={ref}>
-            {/* Search */}
+          {/* Right - Icons */}
+          <div className="flex-1 flex items-center justify-end gap-3 sm:gap-4 md:gap-6">
+            {/* Search Icon */}
             <motion.button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="relative p-2 rounded-full hover:bg-muted transition-colors duration-200"
