@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import StyleFolder from "./style-folder";
+import SearchBar from "@/components/ui/search-bar";
 
 export default function StyleSection() {
   const controls = useAnimation();
@@ -65,18 +66,17 @@ export default function StyleSection() {
       <div className="w-full max-w-6xl mx-auto flex flex-col relative z-20">
         {/* Search Bar */}
         <motion.div
-          className="flex justify-center items-center pb-8 relative mb-16"
+          className="flex justify-center items-center pb-8 relative mb-16 w-full max-w-[600px] mx-auto"
           animate={{
             opacity: hoveredFolder ? 0.3 : 1,
             scale: hoveredFolder ? 0.95 : 1,
           }}
           transition={{ duration: 0.3 }}
         >
-          <Image
-            src="/assets/images/styles/search-bar.png"
-            alt="Search Bar"
-            width={600}
-            height={40}
+          <SearchBar
+            variant="page"
+            className="w-full"
+            placeholder="What do I style?"
           />
         </motion.div>
 
