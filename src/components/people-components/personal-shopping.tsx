@@ -441,7 +441,7 @@ export default function PersonalShopping() {
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex justify-between items-center gap-3">
           <Heading text="PERSONAL SHOPPING" />
-          <BookNowButton />
+          <BookNowButton sessionType="personal-shopping" />
         </div>
         <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 sm:mt-6">
           ₹4,500

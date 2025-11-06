@@ -8,9 +8,23 @@ generator client {
 }
 
 model User {
-  id       String     @id @default(cuid())
-  username String
-  email    String     @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        String    @id @default(cuid())
+  username  String
+  email     String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  bookings  Booking[]
+}
+
+model Booking {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessionType String   // e.g., "wardrobe-detox", "occasion-styling", etc.
+  status      String   @default("pending") // pending, confirmed, cancelled
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+  @@index([sessionType])
 }

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useState, useCallback } from "react";
 import { useTypewriter } from "@/hooks/useTypewriter";
+import toast from "react-hot-toast";
 
 interface SearchBarProps {
   variant?: "navbar" | "page";
@@ -16,7 +17,6 @@ interface SearchBarProps {
 
 export default function SearchBar({
   variant = "navbar",
-  placeholder = "Search for styles, brands, or services...",
   onSearch,
   className = "",
   autoFocus = false,
@@ -29,7 +29,7 @@ export default function SearchBar({
       ? ["brands", "people", "spaces"]
       : ["What do I style?"];
 
-  const { displayText, showCursor } = useTypewriter({
+  const { displayText } = useTypewriter({
     prefix: variant === "navbar" ? "Search for " : "",
     words,
     typingSpeed: 100,
@@ -44,8 +44,9 @@ export default function SearchBar({
         if (onSearch) {
           onSearch(searchQuery);
         } else {
-          // Unified search routing logic for both navbar and page
+          // Check if query matches brands, people, or spaces (case-insensitive)
           const query = searchQuery.toLowerCase();
+
           if (query.includes("brand")) {
             router.push(`/styles/brands?q=${encodeURIComponent(searchQuery)}`);
           } else if (query.includes("people")) {
@@ -53,9 +54,14 @@ export default function SearchBar({
           } else if (query.includes("space")) {
             router.push(`/styles/spaces?q=${encodeURIComponent(searchQuery)}`);
           } else {
-            // Default to the general styles search
-            router.push(`/styles/search?q=${encodeURIComponent(searchQuery)}`);
+            // Invalid query - redirect to styles with toast
+            toast.success(
+              "Explore our curated collections: Brands, People & Spaces!"
+            );
+            router.push("/styles");
           }
+          // Clear search after submitting
+          setSearchQuery("");
         }
       }
     },
@@ -78,9 +84,6 @@ export default function SearchBar({
           className={`${variants[variant]} focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-foreground placeholder:text-muted-foreground transition-all duration-200`}
           autoFocus={autoFocus}
         />
-        {showCursor && searchQuery.length === 0 && (
-          <span className="absolute left-[calc(0.75rem+{displayText.length}ch)] top-1/2 -translate-y-1/2 h-5 w-0.5 bg-muted-foreground animate-blink pointer-events-none" />
-        )}
       </div>
       <motion.button
         type="submit"

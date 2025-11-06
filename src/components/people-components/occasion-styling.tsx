@@ -324,7 +324,7 @@ export default function OccasionStyling() {
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex justify-between items-center gap-3">
           <Heading text="OCCASION STYLING" />
-          <BookNowButton />
+          <BookNowButton sessionType="occasion-styling" />
         </div>
         <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 sm:mt-6">
           ₹3,500 <span className="text-base sm:text-lg md:text-xl lg:text-2xl"> per look </span>

@@ -1,29 +1,32 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Hero from "../components/home/hero";
 import About from "../components/home/about";
-import Testimonials from "../components/home/testimonials";
 import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
 import Banner from "@/components/home/banner";
 import UnifiedServicesSection from "@/components/styles/brand-overview";
 
 export default function Home() {
+  // Initialize state to false to avoid hydration mismatch
   const [showBanner, setShowBanner] = useState(false);
+  const hasCheckedBanner = useRef(false);
 
-  // Show banner after component mounts (to avoid hydration mismatch)
+  // Check sessionStorage only on client-side after mount
   useEffect(() => {
-    // Check if the banner was already shown in this session
-    const wasShown = sessionStorage.getItem("bannerShown");
-    if (!wasShown) {
-      setShowBanner(true);
-      sessionStorage.setItem("bannerShown", "true");
+    if (!hasCheckedBanner.current) {
+      hasCheckedBanner.current = true;
+      const hasSeenBanner = sessionStorage.getItem("bannerShown");
+      if (!hasSeenBanner) {
+        // Use setTimeout to avoid setState in effect warning
+        setTimeout(() => setShowBanner(true), 0);
+      }
     }
   }, []);
 
   const handleCloseBanner = () => {
     setShowBanner(false);
+    sessionStorage.setItem("bannerShown", "true");
   };
 
   const handleBadgeClick = (service: string) => {
@@ -32,14 +35,15 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-background text-foreground flex flex-col">
-      <Navbar />
+    <main className="bg-background text-foreground overflow-x-hidden">
       {showBanner && <Banner onClose={handleCloseBanner} />}
-      <Hero />
-      <About />
-      <UnifiedServicesSection onBadgeClick={handleBadgeClick} />
-      {/* <Testimonials /> */}
-      {/* <Footer /> */}
+      <Navbar />
+      
+      <div className="snap-y snap-mandatory">
+        <Hero />
+        <About />
+        <UnifiedServicesSection onBadgeClick={handleBadgeClick} />
+      </div>
     </main>
   );
 }

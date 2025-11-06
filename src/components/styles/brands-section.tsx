@@ -2,8 +2,20 @@
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
-import { useState, useRef, MouseEvent } from "react";
+import { useState, useRef, MouseEvent, useEffect } from "react";
 import Badge from "../badge";
+
+type ResponsivePosition = {
+  mobile: { top: string; left: string };
+  tablet: { top: string; left: string };
+  desktop: { top: string; left: string };
+};
+
+type ResponsiveDimensions = {
+  mobile: { width: number; height: number };
+  tablet: { width: number; height: number };
+  desktop: { width: number; height: number };
+};
 
 // Smooth spring configuration for buttery animations
 const springConfig = {
@@ -17,154 +29,296 @@ const imagePositions = [
   {
     src: "/assets/images/brand/concept-development/2.png",
     alt: "cafe -> mon bar a couture",
-    width: 440,
-    height: 400,
-    position: { top: "10%", left: "43%" },
+    dimensions: {
+      mobile: { width: 330, height: 300 },
+      tablet: { width: 330, height: 300 },
+      desktop: { width: 440, height: 400 },
+    },
+    position: {
+      mobile: { top: "53%", left: "18%" },
+      tablet: { top: "11%", left: "44%" },
+      desktop: { top: "10%", left: "43%" },
+    },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "merchandising",
+    zIndex: 5,
   },
   {
     src: "/assets/images/brand/concept-development/6.png",
     alt: "cafe-2",
-    width: 370,
-    height: 370,
-    position: { top: "17%", left: "28%" },
+    dimensions: {
+      mobile: { width: 230, height: 230 },
+      tablet: { width: 277, height: 277 },
+      desktop: { width: 370, height: 370 },
+    },
+    position: {
+      mobile: { top: "60%", left: "5%" },
+      tablet: { top: "18%", left: "29%" },
+      desktop: { top: "17%", left: "28%" },
+    },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "merchandising",
+    zIndex: 4,
   },
   {
     src: "/assets/images/brand/concept-development/7.png",
-    alt: "chairs ",
-    width: 250,
-    height: 250,
-    position: { top: "49%", left: "30%" },
+    alt: "chairs",
+    dimensions: {
+      mobile: { width: 175, height: 175 },
+      tablet: { width: 187, height: 187 },
+      desktop: { width: 250, height: 250 },
+    },
+    position: {
+      mobile: { top: "75%", left: "15%" },
+      tablet: { top: "31%", left: "31%" },
+      desktop: { top: "49%", left: "30%" },
+    },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "merchandising",
+    zIndex: 3,
   },
   {
     src: "/assets/images/brand/main/image69.png",
     alt: "M symbol",
-    width: 50,
-    height: 50,
-    position: { top: "36.5%", left: "48%" },
+    dimensions: {
+      mobile: { width: 35, height: 25 },
+      tablet: { width: 37, height: 37 },
+      desktop: { width: 50, height: 50 },
+    },
+    position: {
+      mobile: { top: "70.5%", left: "42%" },
+      tablet: { top: "24.5%", left: "49%" },
+      desktop: { top: "36.5%", left: "48%" },
+    },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "merchandising",
+    zIndex: 6,
   },
   {
     src: "/assets/images/brand/main/image70.png",
     alt: "V symbol",
-    width: 50,
-    height: 50,
-    position: { top: "34%", left: "36%" },
+    dimensions: {
+      mobile: { width: 25, height: 25 },
+      tablet: { width: 37, height: 37 },
+      desktop: { width: 50, height: 50 },
+    },
+    position: {
+      mobile: { top: "36%", left: "38%" },
+      tablet: { top: "35%", left: "37%" },
+      desktop: { top: "34%", left: "36%" },
+    },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "merchandising",
+    zIndex: 6,
   },
   //concept-development image
   {
     src: "/assets/images/brand/concept-development/9.png",
     alt: "cafe-23vins Hotel",
-    width: 300,
-    height: 300,
-    position: { top: "14%", left: "1.5%" },
+    dimensions: {
+      mobile: { width: 250, height: 250 },
+      tablet: { width: 225, height: 225 },
+      desktop: { width: 300, height: 300 },
+    },
+    position: {
+      mobile: { top: "4%", left: "3.5%" },
+      tablet: { top: "15%", left: "2.5%" },
+      desktop: { top: "14%", left: "1.5%" },
+    },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "concept",
+    zIndex: 4,
   },
   {
     src: "/assets/images/brand/concept-development/8.png",
     alt: "cafe-23vins Hotel-2",
-    width: 300,
-    height: 300,
-    position: { top: "52%", left: "6%" },
+    dimensions: {
+      mobile: { width: 225, height: 225 },
+      tablet: { width: 225, height: 225 },
+      desktop: { width: 300, height: 300 },
+    },
+    position: {
+      mobile: { top: "13%", left: "32%" },
+      tablet: { top: "53%", left: "7%" },
+      desktop: { top: "52%", left: "6%" },
+    },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "concept",
+    zIndex: 4,
   },
   {
     src: "/assets/images/brand/main/image62.png",
     alt: "my-girl",
-    width: 110,
-    height: 110,
-    position: { top: "54%", left: "7.5%" },
+    dimensions: {
+      mobile: { width: 55, height: 55 },
+      tablet: { width: 82, height: 82 },
+      desktop: { width: 110, height: 110 },
+    },
+    position: {
+      mobile: { top: "76%", left: "81.5%" },
+      tablet: { top: "55%", left: "8.5%" },
+      desktop: { top: "54%", left: "7.5%" },
+    },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "concept",
+    zIndex: 5,
   },
   {
     src: "/assets/images/space/main/makeover1.png",
     alt: "cat",
-    width: 60,
-    height: 50,
-    position: { top: "61%", left: "8%" },
+    dimensions: {
+      mobile: { width: 50, height: 50 },
+      tablet: { width: 45, height: 37 },
+      desktop: { width: 60, height: 50 },
+    },
+    position: {
+      mobile: { top: "79%", left: "73%" },
+      tablet: { top: "62%", left: "9%" },
+      desktop: { top: "61%", left: "8%" },
+    },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "concept",
+    zIndex: 5,
   },
   {
     src: "/assets/images/brand/main/image64.png",
-    alt: "women with dog ",
-    width: 170,
-    height: 150,
-    position: { top: "67%", left: "12%" },
+    alt: "women with dog",
+    dimensions: {
+      mobile: { width: 200, height: 200 },
+      tablet: { width: 127, height: 112 },
+      desktop: { width: 170, height: 150 },
+    },
+    position: {
+      mobile: { top: "40%", left: "11%" },
+      tablet: { top: "68%", left: "13%" },
+      desktop: { top: "67%", left: "12%" },
+    },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "concept",
+    zIndex: 10,
   },
-  //brand-shoot images
+  // //brand-shoot images
   {
     src: "/assets/images/brand/concept-development/1.png",
-    alt: "apartment ",
-    width: 500,
-    height: 500,
-    position: { top: "35%", left: "65%" },
+    alt: "apartment",
+    dimensions: {
+      mobile: { width: 300, height: 300 },
+      tablet: { width: 375, height: 375 },
+      desktop: { width: 500, height: 500 },
+    },
+    position: {
+      mobile: { top: "98%", left: "9%" },
+      tablet: { top: "36%", left: "66%" },
+      desktop: { top: "35%", left: "65%" },
+    },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "brandShoot",
+    zIndex: 3,
   },
   {
     src: "/assets/images/brand/main/image65.png",
-    alt: "ladies group ",
-    width: 300,
-    height: 300,
-    position: { top: "27%", left: "75%" },
+    alt: "ladies group",
+    dimensions: {
+      mobile: { width: 175, height: 150 },
+      tablet: { width: 225, height: 225 },
+      desktop: { width: 300, height: 300 },
+    },
+    position: {
+      mobile: { top: "96%", left: "32%" },
+      tablet: { top: "28%", left: "76%" },
+      desktop: { top: "27%", left: "75%" },
+    },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "brandShoot",
+    zIndex: 4,
   },
   {
     src: "/assets/images/brand/main/brand-shoots2.png",
-    alt: "camera ",
-    width: 230,
-    height: 230,
-    position: { top: "19%", left: "76%" },
+    alt: "camera",
+    dimensions: {
+      mobile: { width: 140, height: 115 },
+      tablet: { width: 172, height: 172 },
+      desktop: { width: 230, height: 230 },
+    },
+    position: {
+      mobile: { top: "92%", left: "32%" },
+      tablet: { top: "25%", left: "77%" },
+      desktop: { top: "19%", left: "76%" },
+    },
     animation: { x: -30, y: 0, opacity: 0, rotate: -110 },
     category: "brandShoot",
+    zIndex: 5,
   },
 ];
 
-const badgePositions = [
+const badgePositions: Badge[] = [
   {
     text: "VISUAL MERCHANDISING",
-    position: { top: "28%", left: "37%" },
+    dimensions: {
+      mobile: { width: 231, height: 32 },
+      tablet: { width: 231, height: 32 },
+      desktop: { width: 345, height: 56 },
+    },
+    position: {
+      mobile: { top: "65%", left: "27%" },
+      tablet: { top: "67%", left: "30%" },
+      desktop: { top: "28%", left: "37%" },
+    },
     category: "merchandising",
+    zIndex: 31,
   },
   {
     text: "CONCEPT DEVELOPMENT",
-    position: { top: "67%", left: "30%" },
+    dimensions: {
+      mobile: { width: 231, height: 32 },
+      tablet: { width: 231, height: 32 },
+      desktop: { width: 323, height: 56 },
+    },
+    position: {
+      mobile: { top: "30%", left: "34%" },
+      tablet: { top: "28%", left: "37%" },
+      desktop: { top: "67%", left: "30%" },
+    },
     category: "concept",
+    zIndex: 31,
   },
   {
     text: "BRAND SHOOTS",
-    position: { top: "74%", left: "82%" },
+    dimensions: {
+      mobile: { width: 146, height: 32 },
+      tablet: { width: 146, height: 32 },
+      desktop: { width: 220, height: 56 },
+    },
+    position: {
+      mobile: { top: "118%", left: "44%" },
+      tablet: { top: "45%", left: "78%" },
+      desktop: { top: "74%", left: "82%" },
+    },
     category: "brandShoot",
+    zIndex: 31,
   },
 ];
 
-interface BrandSectionProps {
+interface BrandsSectionProps {
   onBadgeClick: (service: string) => void;
 }
+
+type Badge = {
+  text: string;
+  dimensions: ResponsiveDimensions;
+  position: ResponsivePosition;
+  category: string;
+  zIndex?: number;
+};
 
 type SectionImage = {
   src: string;
   alt: string;
-  width: number;
-  height: number;
-  position: { top: string; left: string };
+  dimensions: ResponsiveDimensions;
+  position: ResponsivePosition;
   animation?: { x: number; y: number; opacity: number; rotate: number };
   category: string;
+  zIndex?: number;
 };
 
 function SectionImageItem({
@@ -177,6 +331,7 @@ function SectionImageItem({
   hoveredCategory: string | null;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">("desktop");
   
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -187,6 +342,21 @@ function SectionImageItem({
   const springY = useSpring(y, springConfig);
   const springRotateX = useSpring(rotateX, springConfig);
   const springRotateY = useSpring(rotateY, springConfig);
+
+  // Update breakpoint based on window width
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    const updateBreakpoint = () => {
+      if (window.innerWidth < 640) setBreakpoint("mobile");
+      else if (window.innerWidth < 1024) setBreakpoint("tablet");
+      else setBreakpoint("desktop");
+    };
+
+    updateBreakpoint();
+    window.addEventListener("resize", updateBreakpoint);
+    return () => window.removeEventListener("resize", updateBreakpoint);
+  }, []);
 
   const isHovered = hoveredCategory === img.category;
   const isOtherHovered = hoveredCategory !== null && hoveredCategory !== img.category;
@@ -215,17 +385,18 @@ function SectionImageItem({
   };
 
   return (
-    <motion.div
+          <motion.div
       ref={ref}
-      className="absolute z-20 cursor-pointer"
+      className="absolute cursor-pointer"
       style={{
-        top: img.position.top,
-        left: img.position.left,
+        top: img.position[breakpoint].top,
+        left: img.position[breakpoint].left,
         transform: "translate(-50%, -50%)",
         x: springX,
         y: springY,
         rotateX: springRotateX,
         rotateY: springRotateY,
+        zIndex: img.zIndex ?? 20,
       }}
       initial={{
         x: img.animation?.x ?? 0,
@@ -269,8 +440,8 @@ function SectionImageItem({
       <Image
         src={img.src}
         alt={img.alt}
-        width={img.width}
-        height={img.height}
+        width={img.dimensions[breakpoint].width}
+        height={img.dimensions[breakpoint].height}
         className="object-contain pointer-events-none"
         priority={index < 2}
         draggable={false}
@@ -293,6 +464,7 @@ function BadgeItem({
   onClick: () => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">("desktop");
   
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -301,6 +473,21 @@ function BadgeItem({
   const springX = useSpring(x, { ...springConfig, stiffness: 200 });
   const springY = useSpring(y, { ...springConfig, stiffness: 200 });
   const springRotateZ = useSpring(rotateZ, { ...springConfig, stiffness: 250 });
+
+  // Update breakpoint based on window width
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    const updateBreakpoint = () => {
+      if (window.innerWidth < 640) setBreakpoint("mobile");
+      else if (window.innerWidth < 1024) setBreakpoint("tablet");
+      else setBreakpoint("desktop");
+    };
+
+    updateBreakpoint();
+    window.addEventListener("resize", updateBreakpoint);
+    return () => window.removeEventListener("resize", updateBreakpoint);
+  }, []);
 
   const isBadgeHovered = hoveredCategory === badge.category;
   const isOtherBadgeHovered = hoveredCategory !== null && hoveredCategory !== badge.category;
@@ -331,8 +518,8 @@ function BadgeItem({
       ref={ref}
       className="absolute z-30 cursor-pointer"
       style={{
-        top: badge.position.top,
-        left: badge.position.left,
+        top: badge.position[breakpoint].top,
+        left: badge.position[breakpoint].left,
         transform: "translate(-50%, -50%)",
         x: springX,
         y: springY,
@@ -372,23 +559,27 @@ function BadgeItem({
         },
       }}
     >
-      <Badge text={badge.text} isHovered={isBadgeHovered} />
+      <Badge 
+        text={badge.text} 
+        isHovered={isBadgeHovered}
+        dimensions={badge.dimensions[breakpoint]}
+      />
     </motion.div>
   );
 }
 
-export default function BrandSection({ onBadgeClick }: BrandSectionProps) {
+export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   const serviceMap: Record<string, string> = {
-    merchandising: "visual-merchandising",
-    concept: "concept-development",
-    brandShoot: "brand-shoots",
+    "merchandising": "visual-merchandising",
+    "concept": "concept-development",
+    "brandShoot": "brand-shoots",
   };
 
   return (
     <motion.section
-      className="relative w-full h-screen flex items-center justify-center bg-landing overflow-hidden"
+      className="relative w-full lg:h-screen flex items-center justify-center bg-landing overflow-y-auto lg:overflow-hidden min-h-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

@@ -2,6 +2,53 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+### Prerequisites
+
+- Node.js 18.x or higher
+- PostgreSQL database
+- Google OAuth credentials
+
+### Environment Setup
+
+1. Copy the example environment file:
+```bash
+cp .env.example .env
+```
+
+2. Update the `.env` file with your credentials:
+
+**NextAuth Configuration:**
+- `NEXTAUTH_URL`: Your app URL (e.g., `http://localhost:3000`)
+- `NEXTAUTH_SECRET`: Generate with: `openssl rand -base64 32`
+
+**Google OAuth Setup:**
+1. Go to [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+2. Create a new project or select existing
+3. Enable Google+ API
+4. Create OAuth 2.0 credentials
+5. Add authorized redirect URI: `http://localhost:3000/api/auth/callback/google`
+6. Copy Client ID and Client Secret to `.env`
+
+**Database:**
+- Set up PostgreSQL and update `DATABASE_URL` in `.env`
+
+### Installation
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### Database Setup
+
+```bash
+npx prisma generate
+npx prisma db push
+```
+
+### Running the Development Server
+
 First, run the development server:
 
 ```bash

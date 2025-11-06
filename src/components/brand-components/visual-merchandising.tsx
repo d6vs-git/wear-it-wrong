@@ -264,7 +264,7 @@ export default function VisualMerchandising() {
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex justify-between items-center gap-3">
           <Heading text="VISUAL MERCHANDISING" />
-          <BookNowButton />
+          <BookNowButton sessionType="visual-merchandising" />
         </div>
       </div>
 
