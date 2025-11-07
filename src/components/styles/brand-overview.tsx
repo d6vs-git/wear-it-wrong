@@ -28,6 +28,8 @@ interface BadgeConfig {
   px: number;
   py: number;
   fs: number;
+  mobileTop?: string;
+  mobileLeft?: string;
 }
 
 const springConfig = { stiffness: 150, damping: 20, mass: 0.5 };
@@ -450,6 +452,8 @@ const CONFIG = {
       text: "SPACE EDIT",
       top: "25%",
       left: "8%",
+      mobileTop: "18%",
+      mobileLeft: "28%",
       z: 35,
       cat: "space-edit",
       px: 6,
@@ -460,6 +464,8 @@ const CONFIG = {
       text: "WARDROBE DETOX",
       top: "58%",
       left: "8%",
+      mobileTop: "40%",
+      mobileLeft: "22%",
       z: 34,
       cat: "wardrobe-detox",
       px: 6,
@@ -470,6 +476,8 @@ const CONFIG = {
       text: "PACKAGES AND OFFERS",
       top: "75%",
       left: "8%",
+      mobileTop: "78%",
+      mobileLeft: "28%",
       z: 33,
       cat: "package-offers",
       px: 6,
@@ -480,6 +488,8 @@ const CONFIG = {
       text: "STYLE DROP",
       top: "92%",
       left: "12%",
+      mobileTop: "92%",
+      mobileLeft: "32%",
       z: 32,
       cat: "style-drop",
       px: 6,
@@ -490,6 +500,8 @@ const CONFIG = {
       text: "CONCEPT DEVELOPMENT",
       top: "50%",
       left: "45%",
+      mobileTop: "47%",
+      mobileLeft: "50%",
       z: 31,
       cat: "concept",
       px: 6,
@@ -500,6 +512,8 @@ const CONFIG = {
       text: "OCCASION STYLING",
       top: "66%",
       left: "30%",
+      mobileTop: "60%",
+      mobileLeft: "48%",
       z: 30,
       cat: "occasion-styling",
       px: 6,
@@ -510,6 +524,8 @@ const CONFIG = {
       text: "PERSONAL SHOPPER",
       top: "78%",
       left: "35%",
+      mobileTop: "84%",
+      mobileLeft: "52%",
       z: 36,
       cat: "personal-shopper",
       px: 6,
@@ -520,6 +536,8 @@ const CONFIG = {
       text: "VISUAL MERCHANDISING",
       top: "22%",
       left: "60%",
+      mobileTop: "24%",
+      mobileLeft: "65%",
       z: 35,
       cat: "visual-merchandising",
       px: 6,
@@ -530,6 +548,8 @@ const CONFIG = {
       text: "BRAND SHOOTS",
       top: "45%",
       left: "78%",
+      mobileTop: "42%",
+      mobileLeft: "72%",
       z: 34,
       cat: "brand-shoots",
       px: 6,
@@ -540,6 +560,8 @@ const CONFIG = {
       text: "BRAND SPACES",
       top: "52%",
       left: "65%",
+      mobileTop: "52%",
+      mobileLeft: "72%",
       z: 33,
       cat: "brand-spaces",
       px: 6,
@@ -550,6 +572,8 @@ const CONFIG = {
       text: "MAKEOVER PROJECTS",
       top: "90%",
       left: "75%",
+      mobileTop: "88%",
+      mobileLeft: "72%",
       z: 3,
       cat: "makeover-projects",
       px: 6,
@@ -583,8 +607,8 @@ function ImageItem({
   const isHovered = hovered === img.cat,
     isOtherHovered = hovered && hovered !== img.cat;
   const dim = {
-    mobile: Math.round(img.width * 0.7),
-    tablet: Math.round(img.width * 0.85),
+    mobile: Math.round(img.width * 0.50),
+    tablet: Math.round(img.width * 0.75),
     desktop: img.width,
   }[bp];
 
@@ -616,7 +640,9 @@ function ImageItem({
       initial={{ x: -30, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
       animate={{
-        scale: isHovered ? 1.25 : isOtherHovered ? 0.88 : 1,
+        scale: bp === "mobile"
+          ? (isHovered ? 1.08 : isOtherHovered ? 0.92 : 1)
+          : (isHovered ? 1.25 : isOtherHovered ? 0.88 : 1),
         filter: isOtherHovered ? "blur(6px)" : "blur(0px)",
         opacity: isOtherHovered ? 0.45 : 1,
       }}
@@ -685,10 +711,26 @@ function BadgeItem({
 
   const isHovered = hovered === badge.cat,
     isOtherHovered = hovered && hovered !== badge.cat;
-  const posOffsets = { mobile: "5%", tablet: "2%", desktop: "0%" };
+
+  // Responsive positioning
+  const badgeTop = bp === "mobile" && badge.mobileTop ? badge.mobileTop : badge.top;
+  const badgeLeft = bp === "mobile" && badge.mobileLeft ? badge.mobileLeft : badge.left;
+
+  // Responsive badge sizing
+  const badgePadding = {
+    mobile: { px: 3.5, py: 2 },
+    tablet: { px: 5, py: 3 },
+    desktop: { px: badge.px, py: badge.py },
+  }[bp];
+
+  const badgeFontSize = {
+    mobile: 9.5,
+    tablet: 12,
+    desktop: badge.fs,
+  }[bp];
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
+    if (!ref.current || bp === "mobile") return;
     const rect = ref.current.getBoundingClientRect();
     const cx = rect.left + rect.width / 2,
       cy = rect.top + rect.height / 2;
@@ -702,8 +744,8 @@ function BadgeItem({
       ref={ref}
       className="absolute z-30 cursor-pointer will-change-transform"
       style={{
-        top: badge.top,
-        left: `calc(${badge.left} + ${posOffsets[bp]})`,
+        top: badgeTop,
+        left: badgeLeft,
         transform: "translate(-50%, -50%)",
         x: sx,
         y: sy,
@@ -713,7 +755,9 @@ function BadgeItem({
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       animate={{
-        scale: isHovered ? 1.12 : isOtherHovered ? 0.92 : 1,
+        scale: bp === "mobile" 
+          ? (isHovered ? 1.05 : isOtherHovered ? 0.95 : 1)
+          : (isHovered ? 1.12 : isOtherHovered ? 0.92 : 1),
         filter: isOtherHovered ? "blur(3px)" : "blur(0px)",
         opacity: isOtherHovered ? 0.5 : 1,
       }}
@@ -749,9 +793,9 @@ function BadgeItem({
       <Badge
         text={badge.text}
         isHovered={isHovered}
-        paddingX={badge.px}
-        paddingY={badge.py}
-        fontSize={badge.fs}
+        paddingX={badgePadding.px}
+        paddingY={badgePadding.py}
+        fontSize={badgeFontSize}
       />
     </motion.div>
   );
@@ -804,7 +848,7 @@ export default function BrandOverview({
     <motion.section
       className={`relative w-full flex items-center justify-center bg-landing ${
         bp === "mobile" 
-          ? "min-h-screen overflow-y-auto px-4" 
+          ? "h-screen overflow-hidden px-3" 
           : bp === "tablet" 
           ? "h-screen overflow-hidden px-8" 
           : "h-screen overflow-hidden px-12"
