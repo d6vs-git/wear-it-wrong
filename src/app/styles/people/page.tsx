@@ -30,8 +30,10 @@ function PeopleContent() {
         return <WardrobeDetox />;
       case "package-offers":
         return (
-          <div className="min-h-screen bg-landing flex items-center justify-center">
-            <h1 className="text-4xl font-bold font-badtyp text-primary">Package and Offers - Coming Soon</h1>
+          <div className="min-h-screen bg-landing flex items-center justify-center px-4 text-center">
+            <h1 className="text-3xl sm:text-4xl font-bold font-badtyp text-primary leading-snug">
+              Package and Offers — Coming Soon
+            </h1>
           </div>
         );
       default:
@@ -39,7 +41,7 @@ function PeopleContent() {
     }
   };
 
-  
+
   return (
     <>
       {renderServiceComponent()}

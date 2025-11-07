@@ -26,28 +26,28 @@ const springConfig = {
 
 const imagePositions = [
   //space-edit
-  {
-    src: "/assets/images/people/main/space-edit2.png",
-    alt: "heyy-text",
-    dimensions: {
-      mobile: { width: 100, height: 113 },
-      tablet: { width: 120, height: 136 },
-      desktop: { width: 150, height: 170 },
-    },
-    position: {
-      mobile: { top: "8%", left: "30%" },
-      tablet: { top: "7%", left: "25%" },
-      desktop: { top: "5%", left: "18%" },
-    },
-    animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
-    category: "space-edit",
-    zIndex: 5,
-  },
+  // {
+  //   src: "/assets/images/people/main/space-edit2.png",
+  //   alt: "heyy-text",
+  //   dimensions: {
+  //     mobile: { width: 100, height: 113 },
+  //     tablet: { width: 120, height: 136 },
+  //     desktop: { width: 150, height: 170 },
+  //   },
+  //   position: {
+  //     mobile: { top: "8%", left: "30%" },
+  //     tablet: { top: "7%", left: "25%" },
+  //     desktop: { top: "5%", left: "18%" },
+  //   },
+  //   animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
+  //   category: "space-edit",
+  //   zIndex: 5,
+  // },
   {
     src: "/assets/images/people/main/space-edit1.png",
     alt: "Hanger",
     dimensions: {
-      mobile: { width: 153, height: 113 },
+      mobile: { width: 130, height: 100 },
       tablet: { width: 184, height: 136 },
       desktop: { width: 230, height: 170 },
     },
@@ -64,36 +64,36 @@ const imagePositions = [
     src: "/assets/images/people/main/space-edit3.png",
     alt: "Disco-ball",
     dimensions: {
-      mobile: { width: 87, height: 113 },
+      mobile: { width: 75, height: 113 },
       tablet: { width: 104, height: 136 },
       desktop: { width: 130, height: 170 },
     },
     position: {
-      mobile: { top: "24%", left: "20%" },
+      mobile: { top: "16%", left: "22%" },
       tablet: { top: "23%", left: "16%" },
       desktop: { top: "22%", left: "12.6%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "space-edit",
-    zIndex: 3,
+    zIndex: 10,
   },
-  {
-    src: "/assets/images/people/main/image78.png",
-    alt: "favourite-person",
-    dimensions: {
-      mobile: { width: 73, height: 113 },
-      tablet: { width: 88, height: 136 },
-      desktop: { width: 110, height: 170 },
-    },
-    position: {
-      mobile: { top: "5%", left: "12%" },
-      tablet: { top: "5%", left: "10%" },
-      desktop: { top: "4%", left: "6%" },
-    },
-    animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
-    category: "space-edit",
-    zIndex: 6,
-  },
+  // {
+  //   src: "/assets/images/people/main/image78.png",
+  //   alt: "favourite-person",
+  //   dimensions: {
+  //     mobile: { width: 73, height: 113 },
+  //     tablet: { width: 88, height: 136 },
+  //     desktop: { width: 110, height: 170 },
+  //   },
+  //   position: {
+  //     mobile: { top: "12%", left: "54%" },
+  //     tablet: { top: "5%", left: "10%" },
+  //     desktop: { top: "4%", left: "6%" },
+  //   },
+  //   animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
+  //   category: "space-edit",
+  //   zIndex: 6,
+  // },
   {
     src: "/assets/images/space/main/image54.jpg",
     alt: "portrait frame",
@@ -103,7 +103,7 @@ const imagePositions = [
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "65%", left: "15%" },
+      mobile: { top: "32%", left: "19%" },
       tablet: { top: "60%", left: "12%" },
       desktop: { top: "55%", left: "5%" },
     },
@@ -115,12 +115,12 @@ const imagePositions = [
     src: "/assets/images/space/main/image90.png",
     alt: "photo frame",
     dimensions: {
-      mobile: { width: 100, height: 113 },
+      mobile: { width: 110, height: 113 },
       tablet: { width: 120, height: 136 },
       desktop: { width: 150, height: 170 },
     },
     position: {
-      mobile: { top: "32%", left: "50%" },
+      mobile: { top: "43%", left: "63%" },
       tablet: { top: "30%", left: "42%" },
       desktop: { top: "27%", left: "33%" },
     },
@@ -132,12 +132,12 @@ const imagePositions = [
     src: "/assets/images/space/main/image77.png",
     alt: "recorder",
     dimensions: {
-      mobile: { width: 60, height: 113 },
+      mobile: { width: 80, height: 113 },
       tablet: { width: 72, height: 136 },
       desktop: { width: 90, height: 170 },
     },
     position: {
-      mobile: { top: "47%", left: "35%" },
+      mobile: { top: "28%", left: "58%" },
       tablet: { top: "45%", left: "30%" },
       desktop: { top: "42%", left: "23%" },
     },
@@ -149,12 +149,12 @@ const imagePositions = [
     src: "/assets/images/space/main/image88.png",
     alt: "pot plant",
     dimensions: {
-      mobile: { width: 87, height: 113 },
+      mobile: { width: 110, height: 113 },
       tablet: { width: 104, height: 136 },
       desktop: { width: 130, height: 170 },
     },
     position: {
-      mobile: { top: "32%", left: "40%" },
+      mobile: { top: "22%", left: "71%" },
       tablet: { top: "30%", left: "36%" },
       desktop: { top: "27%", left: "28%" },
     },
@@ -166,12 +166,12 @@ const imagePositions = [
     src: "/assets/images/space/main/image87.png",
     alt: "necklace",
     dimensions: {
-      mobile: { width: 67, height: 113 },
+      mobile: { width: 78, height: 113 },
       tablet: { width: 80, height: 136 },
       desktop: { width: 100, height: 170 },
     },
     position: {
-      mobile: { top: "53%", left: "55%" },
+      mobile: { top: "52%", left: "74%" },
       tablet: { top: "50%", left: "47%" },
       desktop: { top: "48%", left: "38%" },
     },
@@ -183,12 +183,12 @@ const imagePositions = [
     src: "/assets/images/space/main/image71.jpg",
     alt: "music-player",
     dimensions: {
-      mobile: { width: 67, height: 113 },
+      mobile: { width: 130, height: 113 },
       tablet: { width: 80, height: 136 },
       desktop: { width: 100, height: 170 },
     },
     position: {
-      mobile: { top: "88%", left: "30%" },
+      mobile: { top: "40%", left: "0%" },
       tablet: { top: "46%", left: "56%" },
       desktop: { top: "43%", left: "46%" },
     },
@@ -200,12 +200,29 @@ const imagePositions = [
     src: "/assets/images/space/main/image76.png",
     alt: "car",
     dimensions: {
-      mobile: { width: 160, height: 133 },
+      mobile: { width: 180, height: 133 },
       tablet: { width: 192, height: 160 },
       desktop: { width: 240, height: 200 },
     },
     position: {
-      mobile: { top: "25%", left: "70%" },
+      mobile: { top: "58%", left: "55%" },
+      tablet: { top: "23%", left: "62%" },
+      desktop: { top: "20%", left: "50%" },
+    },
+    animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
+    category: "brand-space",
+    zIndex: 6,
+  },
+  {
+    src: "/assets/images/space/makeover/8.png",
+    alt: "slippers",
+    dimensions: {
+      mobile: { width: 140, height: 133 },
+      tablet: { width: 192, height: 160 },
+      desktop: { width: 100, height: 200 },
+    },
+    position: {
+      mobile: { top: "42%", left: "33%" },
       tablet: { top: "23%", left: "62%" },
       desktop: { top: "20%", left: "50%" },
     },
@@ -217,12 +234,12 @@ const imagePositions = [
     src: "/assets/images/space/main/image79.png",
     alt: "cupboard",
     dimensions: {
-      mobile: { width: 147, height: 133 },
+      mobile: { width: 120, height: 133 },
       tablet: { width: 176, height: 160 },
       desktop: { width: 220, height: 200 },
     },
     position: {
-      mobile: { top: "78%", left: "75%" },
+      mobile: { top: "64%", left: "34%" },
       tablet: { top: "8%", left: "82%" },
       desktop: { top: "6%", left: "75%" },
     },
@@ -234,46 +251,46 @@ const imagePositions = [
     src: "/assets/images/space/main/image81.png",
     alt: "flower-pots",
     dimensions: {
-      mobile: { width: 93, height: 133 },
+      mobile: { width: 85, height: 133 },
       tablet: { width: 112, height: 160 },
       desktop: { width: 140, height: 200 },
     },
     position: {
-      mobile: { top: "85%", left: "60%" },
+      mobile: { top: "73%", left: "23%" },
       tablet: { top: "31%", left: "76%" },
       desktop: { top: "28%", left: "68%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "makeover-projects",
-    zIndex: 3,
+    zIndex: 6,
   },
   {
     src: "/assets/images/space/main/image81.png",
     alt: "flower-pots-2",
     dimensions: {
-      mobile: { width: 93, height: 133 },
+      mobile: { width: 85, height: 133 },
       tablet: { width: 112, height: 160 },
       desktop: { width: 140, height: 200 },
     },
     position: {
-      mobile: { top: "85%", left: "85%" },
+      mobile: { top: "73%", left: "56%" },
       tablet: { top: "31%", left: "92%" },
       desktop: { top: "28%", left: "89%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "makeover-projects",
-    zIndex: 3,
+    zIndex: 6,
   },
   {
     src: "/assets/images/space/main/image80.png",
     alt: "chair-1",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 90, height: 80 },
       tablet: { width: 96, height: 96 },
       desktop: { width: 120, height: 120 },
     },
     position: {
-      mobile: { top: "98%", left: "70%" },
+      mobile: { top: "85%", left: "39%" },
       tablet: { top: "52%", left: "82%" },
       desktop: { top: "49%", left: "78%" },
     },
@@ -290,7 +307,7 @@ const imagePositions = [
       desktop: { width: 180, height: 70 },
     },
     position: {
-      mobile: { top: "99%", left: "85%" },
+      mobile: { top: "89%", left: "65%" },
       tablet: { top: "53%", left: "90%" },
       desktop: { top: "50%", left: "87%" },
     },
@@ -302,12 +319,12 @@ const imagePositions = [
     src: "/assets/images/space/main/image84.png",
     alt: "table",
     dimensions: {
-      mobile: { width: 160, height: 133 },
+      mobile: { width: 180, height: 133 },
       tablet: { width: 192, height: 160 },
       desktop: { width: 240, height: 200 },
     },
     position: {
-      mobile: { top: "112%", left: "65%" },
+      mobile: { top: "94%", left: "30%" },
       tablet: { top: "69%", left: "80%" },
       desktop: { top: "66%", left: "74%" },
     },
@@ -319,12 +336,12 @@ const imagePositions = [
     src: "/assets/images/space/main/image85.png",
     alt: "flower vase",
     dimensions: {
-      mobile: { width: 47, height: 47 },
+      mobile: { width: 65, height: 47 },
       tablet: { width: 56, height: 56 },
       desktop: { width: 70, height: 70 },
     },
     position: {
-      mobile: { top: "104%", left: "70%" },
+      mobile: { top: "88%", left: "42%" },
       tablet: { top: "59%", left: "83%" },
       desktop: { top: "56%", left: "79.5%" },
     },
@@ -341,7 +358,7 @@ const imagePositions = [
       desktop: { width: 180, height: 70 },
     },
     position: {
-      mobile: { top: "99%", left: "50%" },
+      mobile: { top: "88%", left: "7%" },
       tablet: { top: "53%", left: "70%" },
       desktop: { top: "50%", left: "65%" },
     },
@@ -360,7 +377,7 @@ const badgePositions: Badge[] = [
       desktop: { width: 220, height: 56 },
     },
     position: {
-      mobile: { top: "38%", left: "28%" },
+      mobile: { top: "23%", left: "30%" },
       tablet: { top: "37%", left: "24%" },
       desktop: { top: "36%", left: "15%" },
     },
@@ -375,7 +392,7 @@ const badgePositions: Badge[] = [
       desktop: { width: 263, height: 56 },
     },
     position: {
-      mobile: { top: "72%", left: "45%" },
+      mobile: { top: "54%", left: "34%" },
       tablet: { top: "70%", left: "40%" },
       desktop: { top: "67%", left: "30%" },
     },
@@ -390,7 +407,7 @@ const badgePositions: Badge[] = [
       desktop: { width: 346, height: 56 },
     },
     position: {
-      mobile: { top: "108%", left: "50%" },
+      mobile: { top: "108%", left: "27%" },
       tablet: { top: "77%", left: "84%" },
       desktop: { top: "74%", left: "72%" },
     },
