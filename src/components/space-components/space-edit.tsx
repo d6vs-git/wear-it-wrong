@@ -27,245 +27,275 @@ type ImageConfig = {
 };
 
 const images: ImageConfig[] = [
+  // Top Row - 6 Paintings (Left to Right)
   {
     src: "/assets/images/space/space-edit/painting1.png",
-    alt: "painting",
+    alt: "painting-top-1",
     dimensions: {
-      mobile: { width: 80, height: 80 },
-      tablet: { width: 107, height: 107 },
-      desktop: { width: 135, height: 135 },
+      mobile: { width: 95, height: 95 },
+      tablet: { width: 127, height: 127 },
+      desktop: { width: 155, height: 155 },
     },
     position: {
-      mobile: { top: "17%", left: "2%" },
-      tablet: { top: "15%", left: "0%" },
-      desktop: { top: "14%", left: "-1%" },
+      mobile: { top: "12%", left: "10%" },
+      tablet: { top: "10%", left: "9%" },
+      desktop: { top: "9%", left: "8%" },
     },
-    zIndex: 5,
+    zIndex: 3,
   },
   {
-    src: "/assets/images/space/space-edit/painting2.png",
-    alt: "painting",
+    src: "/assets/images/space/space-edit/painting5.png",
+    alt: "painting-top-2",
     dimensions: {
-      mobile: { width: 90, height: 90 },
-      tablet: { width: 120, height: 120 },
-      desktop: { width: 150, height: 150 },
+      mobile: { width: 110, height: 110 },
+      tablet: { width: 147, height: 147 },
+      desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "23%", left: "6%" },
-      tablet: { top: "21%", left: "4%" },
-      desktop: { top: "20%", left: "3%" },
+      mobile: { top: "10%", left: "26%" },
+      tablet: { top: "8%", left: "25%" },
+      desktop: { top: "7%", left: "24%" },
     },
-    zIndex: 5,
+    zIndex: 3,
   },
   {
     src: "/assets/images/space/space-edit/painting3.png",
-    alt: "painting",
+    alt: "painting-top-3",
     dimensions: {
-      mobile: { width: 70, height: 70 },
-      tablet: { width: 93, height: 93 },
-      desktop: { width: 117, height: 117 },
+      mobile: { width: 100, height: 100 },
+      tablet: { width: 133, height: 133 },
+      desktop: { width: 165, height: 165 },
     },
     position: {
-      mobile: { top: "19%", left: "13%" },
-      tablet: { top: "17%", left: "11%" },
-      desktop: { top: "16%", left: "10%" },
+      mobile: { top: "11%", left: "43%" },
+      tablet: { top: "9%", left: "42%" },
+      desktop: { top: "8%", left: "41%" },
     },
-    zIndex: 5,
+    zIndex: 3,
   },
+  {
+    src: "/assets/images/space/space-edit/painting4.png",
+    alt: "painting-top-4",
+    dimensions: {
+      mobile: { width: 115, height: 115 },
+      tablet: { width: 153, height: 153 },
+      desktop: { width: 190, height: 190 },
+    },
+    position: {
+      mobile: { top: "9%", left: "61%" },
+      tablet: { top: "7%", left: "60%" },
+      desktop: { top: "6%", left: "59%" },
+    },
+    zIndex: 3,
+  },
+  {
+    src: "/assets/images/space/space-edit/painting3.png",
+    alt: "painting-top-5",
+    dimensions: {
+      mobile: { width: 95, height: 95 },
+      tablet: { width: 127, height: 127 },
+      desktop: { width: 155, height: 155 },
+    },
+    position: {
+      mobile: { top: "12%", left: "78%" },
+      tablet: { top: "10%", left: "77%" },
+      desktop: { top: "9%", left: "76%" },
+    },
+    zIndex: 3,
+  },
+  {
+    src: "/assets/images/space/space-edit/painting5.png",
+    alt: "painting-top-6",
+    dimensions: {
+      mobile: { width: 105, height: 105 },
+      tablet: { width: 140, height: 140 },
+      desktop: { width: 170, height: 170 },
+    },
+    position: {
+      mobile: { top: "10%", left: "93%" },
+      tablet: { top: "8%", left: "92%" },
+      desktop: { top: "7%", left: "91%" },
+    },
+    zIndex: 3,
+  },
+
+  // Middle Row - Perfume (far left, small)
   {
     src: "/assets/images/space/space-edit/perfume.png",
     alt: "perfume",
     dimensions: {
-      mobile: { width: 60, height: 60 },
-      tablet: { width: 80, height: 80 },
-      desktop: { width: 100, height: 100 },
+      mobile: { width: 50, height: 50 },
+      tablet: { width: 67, height: 67 },
+      desktop: { width: 80, height: 80 },
     },
     position: {
-      mobile: { top: "9%", left: "7%" },
-      tablet: { top: "7%", left: "5%" },
-      desktop: { top: "6%", left: "4%" },
+      mobile: { top: "31%", left: "10%" },
+      tablet: { top: "29%", left: "9%" },
+      desktop: { top: "28%", left: "8%" },
     },
-    zIndex: 5,
+    zIndex: 3,
+  },
+
+  // Middle Row - 5 Paintings
+  {
+    src: "/assets/images/space/space-edit/painting4.png",
+    alt: "painting-middle-2",
+    dimensions: {
+      mobile: { width: 95, height: 95 },
+      tablet: { width: 127, height: 127 },
+      desktop: { width: 155, height: 155 },
+    },
+    position: {
+      mobile: { top: "30%", left: "26%" },
+      tablet: { top: "28%", left: "25%" },
+      desktop: { top: "27%", left: "24%" },
+    },
+    zIndex: 3,
   },
   {
-    src: "/assets/images/space/space-edit/painting5.png",
-    alt: "painting",
+    src: "/assets/images/space/space-edit/painting1.png",
+    alt: "painting-middle-3",
     dimensions: {
-      mobile: { width: 135, height: 135 },
-      tablet: { width: 180, height: 180 },
-      desktop: { width: 225, height: 225 },
+      mobile: { width: 100, height: 100 },
+      tablet: { width: 133, height: 133 },
+      desktop: { width: 165, height: 165 },
     },
     position: {
-      mobile: { top: "35%", left: "9%" },
-      tablet: { top: "33%", left: "7%" },
-      desktop: { top: "32%", left: "6%" },
+      mobile: { top: "29%", left: "43%" },
+      tablet: { top: "27%", left: "42%" },
+      desktop: { top: "26%", left: "41%" },
     },
-    zIndex: 5,
+    zIndex: 3,
   },
+  {
+    src: "/assets/images/space/space-edit/painting3.png",
+    alt: "painting-middle-4",
+    dimensions: {
+      mobile: { width: 105, height: 105 },
+      tablet: { width: 140, height: 140 },
+      desktop: { width: 170, height: 170 },
+    },
+    position: {
+      mobile: { top: "28%", left: "61%" },
+      tablet: { top: "26%", left: "60%" },
+      desktop: { top: "25%", left: "59%" },
+    },
+    zIndex: 3,
+  },
+  {
+    src: "/assets/images/space/space-edit/painting6.png",
+    alt: "painting-middle-5",
+    dimensions: {
+      mobile: { width: 100, height: 100 },
+      tablet: { width: 133, height: 133 },
+      desktop: { width: 165, height: 165 },
+    },
+    position: {
+      mobile: { top: "29%", left: "78%" },
+      tablet: { top: "27%", left: "77%" },
+      desktop: { top: "26%", left: "76%" },
+    },
+    zIndex: 3,
+  },
+  {
+    src: "/assets/images/space/space-edit/painting4.png",
+    alt: "painting-middle-6",
+    dimensions: {
+      mobile: { width: 95, height: 95 },
+      tablet: { width: 127, height: 127 },
+      desktop: { width: 155, height: 155 },
+    },
+    position: {
+      mobile: { top: "30%", left: "93%" },
+      tablet: { top: "28%", left: "92%" },
+      desktop: { top: "27%", left: "91%" },
+    },
+    zIndex: 3,
+  },
+
+  // Lamp (standing, left side, below perfume)
+  {
+    src: "/assets/images/space/space-edit/lamp.png",
+    alt: "standing-lamp",
+    dimensions: {
+      mobile: { width: 55, height: 55 },
+      tablet: { width: 73, height: 73 },
+      desktop: { width: 90, height: 90 },
+    },
+    position: {
+      mobile: { top: "50%", left: "12%" },
+      tablet: { top: "48%", left: "11%" },
+      desktop: { top: "47%", left: "10%" },
+    },
+    zIndex: 4,
+  },
+
+  // Bottom Section - Large Sofa (Center)
   {
     src: "/assets/images/space/space-edit/sofa.png",
     alt: "sofa",
     dimensions: {
-      mobile: { width: 210, height: 210 },
-      tablet: { width: 280, height: 280 },
-      desktop: { width: 350, height: 350 },
+      mobile: { width: 320, height: 187 },
+      tablet: { width: 427, height: 249 },
+      desktop: { width: 530, height: 309 },
     },
     position: {
-      mobile: { top: "10%", left: "63%" },
-      tablet: { top: "8%", left: "61%" },
-      desktop: { top: "7%", left: "60%" },
+      mobile: { top: "66%", left: "50%" },
+      tablet: { top: "64%", left: "49%" },
+      desktop: { top: "63%", left: "48%" },
     },
     zIndex: 5,
   },
+
+  // Bottom Right - Side Table (right of sofa)
   {
     src: "/assets/images/space/space-edit/table.png",
-    alt: "furniture",
+    alt: "side-table",
     dimensions: {
-      mobile: { width: 210, height: 210 },
-      tablet: { width: 280, height: 280 },
-      desktop: { width: 350, height: 350 },
+      mobile: { width: 100, height: 100 },
+      tablet: { width: 133, height: 133 },
+      desktop: { width: 165, height: 165 },
     },
     position: {
-      mobile: { top: "57%", left: "7%" },
-      tablet: { top: "56%", left: "5%" },
-      desktop: { top: "55%", left: "4%" },
+      mobile: { top: "68%", left: "80%" },
+      tablet: { top: "66%", left: "79%" },
+      desktop: { top: "65%", left: "78%" },
     },
-    zIndex: 5,
+    zIndex: 4,
   },
-  {
-    src: "/assets/images/space/space-edit/painting6.png",
-    alt: "painting",
-    dimensions: {
-      mobile: { width: 165, height: 165 },
-      tablet: { width: 220, height: 220 },
-      desktop: { width: 275, height: 275 },
-    },
-    position: {
-      mobile: { top: "74%", left: "32%" },
-      tablet: { top: "73%", left: "30%" },
-      desktop: { top: "72%", left: "29%" },
-    },
-    zIndex: 5,
-  },
-  {
-    src: "/assets/images/space/space-edit/painting7.png",
-    alt: "painting",
-    dimensions: {
-      mobile: { width: 150, height: 150 },
-      tablet: { width: 200, height: 200 },
-      desktop: { width: 250, height: 250 },
-    },
-    position: {
-      mobile: { top: "45%", left: "55%" },
-      tablet: { top: "43%", left: "53%" },
-      desktop: { top: "42%", left: "52%" },
-    },
-    zIndex: 5,
-  },
-  {
-    src: "/assets/images/space/space-edit/table.png",
-    alt: "furniture",
-    dimensions: {
-      mobile: { width: 75, height: 75 },
-      tablet: { width: 100, height: 100 },
-      desktop: { width: 125, height: 125 },
-    },
-    position: {
-      mobile: { top: "51%", left: "66%" },
-      tablet: { top: "50%", left: "64%" },
-      desktop: { top: "49%", left: "63%" },
-    },
-    zIndex: 5,
-  },
+
+  // Small Cactus on table
   {
     src: "/assets/images/space/space-edit/cactus.png",
-    alt: "plant",
+    alt: "small-cactus",
     dimensions: {
-      mobile: { width: 60, height: 60 },
-      tablet: { width: 80, height: 80 },
-      desktop: { width: 100, height: 100 },
+      mobile: { width: 50, height: 50 },
+      tablet: { width: 67, height: 67 },
+      desktop: { width: 80, height: 80 },
     },
     position: {
-      mobile: { top: "63%", left: "70%" },
-      tablet: { top: "62%", left: "68%" },
-      desktop: { top: "61%", left: "67%" },
+      mobile: { top: "62%", left: "81%" },
+      tablet: { top: "60%", left: "80%" },
+      desktop: { top: "59%", left: "79%" },
     },
-    zIndex: 5,
+    zIndex: 6,
   },
-  // {
-  //   src: "/assets/images/space/space-edit/12.png",
-  //   alt: "painting",
-  //   dimensions: {
-  //     mobile: { width: 120, height: 120 },
-  //     tablet: { width: 160, height: 160 },
-  //     desktop: { width: 200, height: 200 },
-  //   },
-  //   position: {
-  //     mobile: { top: "30%", left: "84%" },
-  //     tablet: { top: "28%", left: "82%" },
-  //     desktop: { top: "27%", left: "81%" },
-  //   },
-  //   zIndex: 5,
-  // },
-  // {
-  //   src: "/assets/images/space/space-edit/13.png",
-  //   alt: "sofa",
-  //   dimensions: {
-  //     mobile: { width: 165, height: 165 },
-  //     tablet: { width: 220, height: 220 },
-  //     desktop: { width: 275, height: 275 },
-  //   },
-  //   position: {
-  //     mobile: { top: "64%", left: "75%" },
-  //     tablet: { top: "63%", left: "73%" },
-  //     desktop: { top: "62%", left: "72%" },
-  //   },
-  //   zIndex: 5,
-  // },
-  // {
-  //   src: "/assets/images/space/space-edit/14.png",
-  //   alt: "painting",
-  //   dimensions: {
-  //     mobile: { width: 80, height: 80 },
-  //     tablet: { width: 107, height: 107 },
-  //     desktop: { width: 135, height: 135 },
-  //   },
-  //   position: {
-  //     mobile: { top: "10%", left: "90%" },
-  //     tablet: { top: "8%", left: "88%" },
-  //     desktop: { top: "7%", left: "87%" },
-  //   },
-  //   zIndex: 5,
-  // },
-  // {
-  //   src: "/assets/images/space/space-edit/15.png",
-  //   alt: "painting",
-  //   dimensions: {
-  //     mobile: { width: 135, height: 135 },
-  //     tablet: { width: 180, height: 180 },
-  //     desktop: { width: 225, height: 225 },
-  //   },
-  //   position: {
-  //     mobile: { top: "31%", left: "30%" },
-  //     tablet: { top: "29%", left: "28%" },
-  //     desktop: { top: "28%", left: "27%" },
-  //   },
-  //   zIndex: 5,
-  // },
+
+  // Large Flowerpot with plant (far right)
   {
-    src: "/assets/images/space/space-edit/painting2.png",
-    alt: "painting",
+    src: "/assets/images/space/space-edit/flowerpot.png",
+    alt: "large-flowerpot",
     dimensions: {
-      mobile: { width: 105, height: 105 },
-      tablet: { width: 140, height: 140 },
-      desktop: { width: 175, height: 175 },
+      mobile: { width: 110, height: 110 },
+      tablet: { width: 147, height: 147 },
+      desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "58%", left: "86%" },
-      tablet: { top: "57%", left: "84%" },
-      desktop: { top: "56%", left: "83%" },
+      mobile: { top: "58%", left: "94%" },
+      tablet: { top: "56%", left: "93%" },
+      desktop: { top: "55%", left: "92%" },
     },
-    zIndex: 5,
+    zIndex: 6,
   },
 ];
 

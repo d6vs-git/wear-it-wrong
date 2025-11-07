@@ -27,19 +27,19 @@ type ImageConfig = {
 };
 
 const images: ImageConfig[] = [
-  // First row with backgrounds
+  // First row
   {
     src: "/assets/images/brand/brandshoots/bg.png",
     alt: "bg",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "15%", left: "10%" },
-      tablet: { top: "15%", left: "8%" },
-      desktop: { top: "15%", left: "8%" },
+      mobile: { top: "10%", left: "3%" },
+      tablet: { top: "15%", left: "3%" },
+      desktop: { top: "15%", left: "3%" },
     },
     zIndex: 2,
   },
@@ -47,14 +47,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/1.png",
     alt: "1",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "15%", left: "10%" },
-      tablet: { top: "15%", left: "8%" },
-      desktop: { top: "15%", left: "8%" },
+      mobile: { top: "10%", left: "3%" },
+      tablet: { top: "15%", left: "3%" },
+      desktop: { top: "15%", left: "3%" },
     },
     zIndex: 5,
   },
@@ -62,14 +62,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/bg.png",
     alt: "bg",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "15%", left: "30%" },
-      tablet: { top: "15%", left: "24%" },
-      desktop: { top: "15%", left: "24%" },
+      mobile: { top: "10%", left: "18%" },
+      tablet: { top: "15%", left: "18%" },
+      desktop: { top: "15%", left: "18%" },
     },
     zIndex: 2,
   },
@@ -77,14 +77,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/2.png",
     alt: "2",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "15%", left: "30%" },
-      tablet: { top: "15%", left: "24%" },
-      desktop: { top: "15%", left: "24%" },
+     mobile: { top: "10%", left: "18%" },
+      tablet: { top: "15%", left: "18%" },
+      desktop: { top: "15%", left: "18%" },
     },
     zIndex: 5,
   },
@@ -92,14 +92,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/bg.png",
     alt: "bg",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "15%", left: "50%" },
-      tablet: { top: "15%", left: "40%" },
-      desktop: { top: "15%", left: "40%" },
+      mobile: { top: "10%", left: "33%" }, 
+      tablet: { top: "15%", left: "33%" },
+      desktop: { top: "15%", left: "33%" },
     },
     zIndex: 2,
   },
@@ -107,14 +107,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/3.png",
     alt: "3",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "15%", left: "50%" },
-      tablet: { top: "15%", left: "40%" },
-      desktop: { top: "15%", left: "40%" },
+      mobile:{ top: "10%", left: "33%" },
+      tablet: { top: "15%", left: "33%" },
+      desktop: { top: "15%", left: "33%" },
     },
     zIndex: 5,
   },
@@ -122,14 +122,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/bg.png",
     alt: "bg",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "15%", left: "70%" },
-      tablet: { top: "15%", left: "56%" },
-      desktop: { top: "15%", left: "56%" },
+      mobile: { top: "10%", left: "48%" },
+      tablet: { top: "15%", left: "48%" },
+      desktop: { top: "15%", left: "48%" },
     },
     zIndex: 2,
   },
@@ -137,14 +137,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/4.png",
     alt: "4",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "15%", left: "70%" },
-      tablet: { top: "15%", left: "56%" },
-      desktop: { top: "15%", left: "56%" },
+      mobile: { top: "10%", left: "48%" },
+      tablet: { top: "15%", left: "48%" },
+      desktop: { top: "15%", left: "48%" },
     },
     zIndex: 5,
   },
@@ -152,14 +152,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/bg.png",
     alt: "bg",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "15%", left: "90%" },
-      tablet: { top: "15%", left: "72%" },
-      desktop: { top: "15%", left: "72%" },
+      mobile: { top: "10%", left: "63%" },
+      tablet: { top: "15%", left: "63%" },
+      desktop: { top: "15%", left: "63%" },
     },
     zIndex: 2,
   },
@@ -167,14 +167,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/5.png",
     alt: "5",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "15%", left: "90%" },
-      tablet: { top: "15%", left: "72%" },
-      desktop: { top: "15%", left: "72%" },
+      mobile: { top: "10%", left: "63%" },
+      tablet: { top: "15%", left: "63%" },
+      desktop: { top: "15%", left: "63%" },
     },
     zIndex: 5,
   },
@@ -182,14 +182,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/bg.png",
     alt: "bg",
     dimensions: {
-      mobile: { width: 60, height: 60 },
-      tablet: { width: 100, height: 100 },
+      mobile: { width: 85, height: 85 },
+      tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "32%", left: "90%" },
-      tablet: { top: "28%", left: "88%" },
-      desktop: { top: "15%", left: "88%" },
+      mobile: { top: "10%", left: "78%" },
+      tablet: { top: "15%", left: "78%" },
+      desktop: { top: "15%", left: "78%" },
     },
     zIndex: 2,
   },
@@ -197,30 +197,31 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/6.png",
     alt: "6",
     dimensions: {
-      mobile: { width: 60, height: 60 },
-      tablet: { width: 100, height: 100 },
-      desktop: { width: 180, height: 180 },
-    },
-    position: {
-      mobile: { top: "32%", left: "90%" },
-      tablet: { top: "28%", left: "88%" },
-      desktop: { top: "15%", left: "88%" },
-    },
-    zIndex: 5,
-  },
-  // Second row
-  {
-    src: "/assets/images/brand/brandshoots/bg.png",
-    alt: "bg",
-    dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "48%", left: "10%" },
-      tablet: { top: "50%", left: "8%" },
-      desktop: { top: "50%", left: "8%" },
+      mobile: { top: "10%", left: "78%" },
+      tablet: { top: "15%", left: "78%" },
+      desktop: { top: "15%", left: "78%" },
+    },
+    zIndex: 5,
+  },
+
+  // Second row - offset pattern for tablet/desktop, aligned for mobile
+  {
+    src: "/assets/images/brand/brandshoots/bg.png",
+    alt: "bg",
+    dimensions: {
+      mobile: { width: 85, height: 85 },
+      tablet: { width: 120, height: 120 },
+      desktop: { width: 180, height: 180 },
+    },
+    position: {
+      mobile: { top: "55%", left: "3%" },
+      tablet: { top: "35%", left: "10.5%" },
+      desktop: { top: "35%", left: "10.5%" },
     },
     zIndex: 2,
   },
@@ -228,14 +229,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/7.png",
     alt: "7",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "48%", left: "10%" },
-      tablet: { top: "50%", left: "8%" },
-      desktop: { top: "50%", left: "8%" },
+      mobile: { top: "55%", left: "3%" },
+      tablet: { top: "35%", left: "10.5%" },
+      desktop: { top: "35%", left: "10.5%" },
     },
     zIndex: 5,
   },
@@ -243,14 +244,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/bg.png",
     alt: "bg",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "48%", left: "30%" },
-      tablet: { top: "50%", left: "24%" },
-      desktop: { top: "50%", left: "24%" },
+      mobile: { top: "55%", left: "18%" },
+      tablet: { top: "35%", left: "25.5%" },
+      desktop: { top: "35%", left: "25.5%" },
     },
     zIndex: 2,
   },
@@ -258,14 +259,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/8.png",
     alt: "8",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "48%", left: "30%" },
-      tablet: { top: "50%", left: "24%" },
-      desktop: { top: "50%", left: "24%" },
+      mobile: { top: "55%", left: "18%" },
+      tablet: { top: "35%", left: "25.5%" },
+      desktop: { top: "35%", left: "25.5%" },
     },
     zIndex: 5,
   },
@@ -273,14 +274,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/bg.png",
     alt: "bg",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "48%", left: "50%" },
-      tablet: { top: "50%", left: "40%" },
-      desktop: { top: "50%", left: "40%" },
+      mobile: { top: "55%", left: "33%" },
+      tablet: { top: "35%", left: "40.5%" },
+      desktop: { top: "35%", left: "40.5%" },
     },
     zIndex: 2,
   },
@@ -288,14 +289,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/9.png",
     alt: "9",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "48%", left: "50%" },
-      tablet: { top: "50%", left: "40%" },
-      desktop: { top: "50%", left: "40%" },
+      mobile: { top: "55%", left: "33%" },
+      tablet: { top: "35%", left: "40.5%" },
+      desktop: { top: "35%", left: "40.5%" },
     },
     zIndex: 5,
   },
@@ -303,14 +304,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/bg.png",
     alt: "bg",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "48%", left: "70%" },
-      tablet: { top: "50%", left: "56%" },
-      desktop: { top: "50%", left: "56%" },
+      mobile: { top: "55%", left: "48%" },
+      tablet: { top: "35%", left: "55.5%" },
+      desktop: { top: "35%", left: "55.5%" },
     },
     zIndex: 2,
   },
@@ -318,14 +319,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/10.png",
     alt: "10",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "48%", left: "70%" },
-      tablet: { top: "50%", left: "56%" },
-      desktop: { top: "50%", left: "56%" },
+      mobile: { top: "55%", left: "48%" },
+      tablet: { top: "35%", left: "55.5%" },
+      desktop: { top: "35%", left: "55.5%" },
     },
     zIndex: 5,
   },
@@ -333,14 +334,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/bg.png",
     alt: "bg",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "48%", left: "90%" },
-      tablet: { top: "50%", left: "72%" },
-      desktop: { top: "50%", left: "72%" },
+      mobile: { top: "55%", left: "63%" },
+      tablet: { top: "35%", left: "70.5%" },
+      desktop: { top: "35%", left: "70.5%" },
     },
     zIndex: 2,
   },
@@ -348,14 +349,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/11.png",
     alt: "11",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "48%", left: "90%" },
-      tablet: { top: "50%", left: "72%" },
-      desktop: { top: "50%", left: "72%" },
+      mobile: { top: "55%", left: "63%" },
+      tablet: { top: "35%", left: "70.5%" },
+      desktop: { top: "35%", left: "70.5%" },
     },
     zIndex: 5,
   },
@@ -363,14 +364,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/bg.png",
     alt: "bg",
     dimensions: {
-      mobile: { width: 60, height: 60 },
-      tablet: { width: 100, height: 100 },
+      mobile: { width: 85, height: 85 },
+      tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "65%", left: "90%" },
-      tablet: { top: "63%", left: "88%" },
-      desktop: { top: "50%", left: "88%" },
+      mobile: { top: "55%", left: "78%" },
+      tablet: { top: "35%", left: "85.5%" },
+      desktop: { top: "35%", left: "85.5%" },
     },
     zIndex: 2,
   },
@@ -378,14 +379,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/brandshoots/12.png",
     alt: "12",
     dimensions: {
-      mobile: { width: 60, height: 60 },
-      tablet: { width: 100, height: 100 },
+      mobile: { width: 85, height: 85 },
+      tablet: { width: 120, height: 120 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "65%", left: "90%" },
-      tablet: { top: "63%", left: "88%" },
-      desktop: { top: "50%", left: "88%" },
+      mobile: { top: "55%", left: "78%" },
+      tablet: { top: "35%", left: "85.5%" },
+      desktop: { top: "35%", left: "85.5%" },
     },
     zIndex: 5,
   },
@@ -399,71 +400,6 @@ type ImageItemProps = {
   breakpoint: Breakpoint;
 };
 
-// const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
-//   const ref = useRef<HTMLDivElement>(null);
-
-//   const x = useMotionValue(0);
-//   const y = useMotionValue(0);
-
-//   const springConfig = { damping: 20, stiffness: 300, mass: 0.5 };
-//   const springX = useSpring(x, springConfig);
-//   const springY = useSpring(y, springConfig);
-
-//   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-//     if (!ref.current || breakpoint === "mobile") return;
-
-//     const rect = ref.current.getBoundingClientRect();
-//     const centerX = rect.left + rect.width / 2;
-//     const centerY = rect.top + rect.height / 2;
-
-//     const deltaX = (e.clientX - centerX) * 0.15;
-//     const deltaY = (e.clientY - centerY) * 0.15;
-
-//     x.set(deltaX);
-//     y.set(deltaY);
-//   };
-
-//   const handleMouseLeave = () => {
-//     x.set(0);
-//     y.set(0);
-//   };
-
-//   const position = img.position[breakpoint];
-//   const dimensions = img.dimensions[breakpoint];
-
-//   const baseStyle = {
-//     top: position.top,
-//     left: position.left,
-//     transform: "translate(-50%, -50%)",
-//     width: `${dimensions.width}px`,
-//     height: `${dimensions.height}px`,
-//     zIndex: img.zIndex ?? index,
-//   };
-
-//   return (
-//     <motion.div
-//       ref={ref}
-//       className="absolute cursor-pointer will-change-transform"
-//       style={{ ...baseStyle, x: springX, y: springY }}
-//       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
-//       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
-//       transition={{
-//         scale: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
-//       }}
-//       onMouseMove={handleMouseMove}
-//       onMouseLeave={handleMouseLeave}
-//     >
-//       <Image
-//         src={img.src}
-//         alt={img.alt}
-//         width={dimensions.width}
-//         height={dimensions.height}
-//         className="object-contain w-full h-full pointer-events-none"
-//         priority={index < 2}
-//       />
-//     </motion.div>
-//   );
-// };
 const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
   const ref = useRef<HTMLDivElement>(null);
 

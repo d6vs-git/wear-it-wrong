@@ -337,14 +337,16 @@ export default function ConceptDevelopment() {
   return (
     <div className="w-screen overflow-hidden">
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
-        <div className="flex justify-between items-center gap-3">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <Heading text="CONCEPT DEVELOPMENT" />
-          <BookNowButton sessionType="concept-development" />
+          <div className="self-end sm:self-auto">
+            <BookNowButton sessionType="concept-development" />
+          </div>
         </div>
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
+        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4 lg:items-center">
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
             onMouseEnter={() =>
@@ -368,17 +370,14 @@ export default function ConceptDevelopment() {
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               Each brand has its own unique vision that defines its identity,
               and I help bring that vision to life.
-              <br />
-              <br />
+              
               Whether you&apos;re embarking on a new project, establishing a
               pop-up, or redefining your brand&apos;s visual narrative, I
               transform your identity into a concrete expression.
-              <br />
-              <br />
+              
               We delve into your vision, explore what your brand represents,
               what it should avoid, and the emotions it should evoke.
-              <br />
-              <br />
+              
               From this foundation, I develop a comprehensive concept deck that
               encompasses mood, tone, styling direction, and visual language,
               serving as your roadmap for photo shoots, campaigns, or store
@@ -391,7 +390,7 @@ export default function ConceptDevelopment() {
           </motion.div>
 
           <motion.div
-            className="w-full lg:w-2/3 relative aspect-video overflow-visible p-8 sm:p-12 md:p-16 lg:p-20"
+            className="w-full lg:w-2/3 relative aspect-video"
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsImageHovered(true)
             }
@@ -419,10 +418,10 @@ export default function ConceptDevelopment() {
               overflow: "visible",
               padding:
                 breakpoint === "mobile"
-                  ? "40px"
-                  : breakpoint === "tablet"
                   ? "60px"
-                  : "80px",
+                  : breakpoint === "tablet"
+                  ? "80px"
+                  : "100px",
             }}
           >
             {images.map((img, idx) => (
