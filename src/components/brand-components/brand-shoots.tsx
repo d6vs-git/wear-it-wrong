@@ -221,7 +221,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "3%" },
       tablet: { top: "35%", left: "10.5%" },
-      desktop: { top: "35%", left: "10.5%" },
+      desktop: { top: "55%", left: "3%" },
     },
     zIndex: 2,
   },
@@ -236,7 +236,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "3%" },
       tablet: { top: "35%", left: "10.5%" },
-      desktop: { top: "35%", left: "10.5%" },
+          desktop: { top: "55%", left: "3%" },
     },
     zIndex: 5,
   },
@@ -251,7 +251,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "18%" },
       tablet: { top: "35%", left: "25.5%" },
-      desktop: { top: "35%", left: "25.5%" },
+        desktop: { top: "55%", left: "18%" },
     },
     zIndex: 2,
   },
@@ -266,7 +266,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "18%" },
       tablet: { top: "35%", left: "25.5%" },
-      desktop: { top: "35%", left: "25.5%" },
+         desktop: { top: "55%", left: "18%" },
     },
     zIndex: 5,
   },
@@ -281,7 +281,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "33%" },
       tablet: { top: "35%", left: "40.5%" },
-      desktop: { top: "35%", left: "40.5%" },
+          desktop: { top: "55%", left: "33%" },
     },
     zIndex: 2,
   },
@@ -296,7 +296,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "33%" },
       tablet: { top: "35%", left: "40.5%" },
-      desktop: { top: "35%", left: "40.5%" },
+    desktop: { top: "55%", left: "33%" },
     },
     zIndex: 5,
   },
@@ -311,7 +311,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "48%" },
       tablet: { top: "35%", left: "55.5%" },
-      desktop: { top: "35%", left: "55.5%" },
+          desktop: { top: "55%", left: "48%" },
     },
     zIndex: 2,
   },
@@ -326,7 +326,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "48%" },
       tablet: { top: "35%", left: "55.5%" },
-      desktop: { top: "35%", left: "55.5%" },
+          desktop: { top: "55%", left: "48%" },
     },
     zIndex: 5,
   },
@@ -341,7 +341,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "63%" },
       tablet: { top: "35%", left: "70.5%" },
-      desktop: { top: "35%", left: "70.5%" },
+         desktop: { top: "55%", left: "63%" },
     },
     zIndex: 2,
   },
@@ -356,7 +356,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "63%" },
       tablet: { top: "35%", left: "70.5%" },
-      desktop: { top: "35%", left: "70.5%" },
+          desktop: { top: "55%", left: "63%" },
     },
     zIndex: 5,
   },
@@ -371,7 +371,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "78%" },
       tablet: { top: "35%", left: "85.5%" },
-      desktop: { top: "35%", left: "85.5%" },
+         desktop: { top: "55%", left: "78%" },
     },
     zIndex: 2,
   },
@@ -386,7 +386,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "78%" },
       tablet: { top: "35%", left: "85.5%" },
-      desktop: { top: "35%", left: "85.5%" },
+        desktop: { top: "55%", left: "78%" },
     },
     zIndex: 5,
   },
@@ -531,21 +531,17 @@ export default function BrandShoots() {
               <br />
               I help you build the entire visual direction: from concept and
               styling to how it all comes together on set.
-              <br />
-              <br />
+             
               We start with your brand story, what you&apos;re launching, and
               the mood you want to create.
-              <br />
-              <br />
+             
               Then I put together a concept deck covering mood, palette, styling
               cues, and references.
-              <br />
-              <br />
+             
               Once the direction&apos;s locked, I handle the styling: sourcing
               looks, creating the set mood, and making sure every shot feels
               cohesive and intentional.
-              <br />
-              <br />
+           
               Whether it&apos;s for a catalog, campaign, or editorial shoot, I
               work closely with your photographer and team to bring the concept
               to life.

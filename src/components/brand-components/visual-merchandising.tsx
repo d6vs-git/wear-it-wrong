@@ -31,27 +31,42 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/1.png",
     alt: "frame-1",
     dimensions: {
-      mobile: { width: 150, height: 150 },
+      mobile: { width: 220, height: 220 },
       tablet: { width: 220, height: 220 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "5%", left: "18%" },
+      mobile: { top: "-15%", left: "0%" },
       tablet: { top: "0%", left: "12%" },
       desktop: { top: "-3%", left: "12%" },
     },
     zIndex: 5,
   },
   {
+    src: "/assets/images/brand/visual-merch/4.png",
+    alt: "prada-hermlies",
+    dimensions: {
+      mobile: { width: 300, height: 300 },
+      tablet: { width: 320, height: 320 },
+      desktop: { width: 420, height: 420 },
+    },
+    position: {
+      mobile: { top: "-30%", left: "54%" },
+      tablet: { top: "-12%", left: "48%" },
+      desktop: { top: "-14%", left: "46%" },
+    },
+    zIndex: 1,
+  },
+  {
     src: "/assets/images/brand/visual-merch/2.png",
     alt: "frame-2",
     dimensions: {
-      mobile: { width: 150, height: 150 },
+      mobile: { width: 220, height: 220 },
       tablet: { width: 220, height: 220 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "45%", left: "18%" },
+      mobile: { top: "55%", left: "0%" },
       tablet: { top: "43%", left: "12%" },
       desktop: { top: "41%", left: "12%" },
     },
@@ -61,42 +76,28 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/3.png",
     alt: "H",
     dimensions: {
-      mobile: { width: 200, height: 200 },
+      mobile: { width: 280, height: 280 },
       tablet: { width: 280, height: 280 },
       desktop: { width: 380, height: 380 },
     },
     position: {
-      mobile: { top: "42%", left: "54%" },
+      mobile: { top: "55%", left: "54%" },
       tablet: { top: "42%", left: "48%" },
       desktop: { top: "40%", left: "46%" },
     },
     zIndex: 6,
   },
-  {
-    src: "/assets/images/brand/visual-merch/4.png",
-    alt: "prada-hermlies",
-    dimensions: {
-      mobile: { width: 220, height: 220 },
-      tablet: { width: 320, height: 320 },
-      desktop: { width: 420, height: 420 },
-    },
-    position: {
-      mobile: { top: "-8%", left: "54%" },
-      tablet: { top: "-12%", left: "48%" },
-      desktop: { top: "-14%", left: "46%" },
-    },
-    zIndex: 1,
-  },
+
   {
     src: "/assets/images/brand/visual-merch/5.png",
     alt: "fence",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 110, height: 110 },
       desktop: { width: 140, height: 140 },
     },
     position: {
-      mobile: { top: "82%", left: "5%" },
+      mobile: { top: "152%", left: "-10%" },
       tablet: { top: "84%", left: "2%" },
       desktop: { top: "85%", left: "1%" },
     },
@@ -106,12 +107,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/5.png",
     alt: "fence",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 110, height: 110 },
       desktop: { width: 140, height: 140 },
     },
     position: {
-      mobile: { top: "82%", left: "82%" },
+      mobile: { top: "152%", left: "122%" },
       tablet: { top: "84%", left: "85%" },
       desktop: { top: "85%", left: "87%" },
     },
@@ -121,12 +122,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/6.png",
     alt: "tree",
     dimensions: {
-      mobile: { width: 240, height: 240 },
+      mobile: { width: 300, height: 300 },
       tablet: { width: 360, height: 360 },
       desktop: { width: 480, height: 480 },
     },
     position: {
-      mobile: { top: "10%", left: "85%" },
+      mobile: { top: "20%", left: "120%" },
       tablet: { top: "8%", left: "88%" },
       desktop: { top: "6%", left: "88%" },
     },
@@ -136,27 +137,27 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/6.png",
     alt: "tree",
     dimensions: {
-      mobile: { width: 120, height: 120 },
+      mobile: { width: 160, height: 160 },
       tablet: { width: 160, height: 160 },
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "64%", left: "2%" },
+      mobile: { top: "104%", left: "-16%" },
       tablet: { top: "64%", left: "0%" },
       desktop: { top: "64%", left: "-1%" },
     },
-    zIndex: 9,
+    zIndex: 3,
   },
   {
     src: "/assets/images/brand/visual-merch/7.png",
     alt: "frame with nike",
     dimensions: {
-      mobile: { width: 140, height: 140 },
+      mobile: { width: 180, height: 180 },
       tablet: { width: 190, height: 190 },
       desktop: { width: 240, height: 240 },
     },
     position: {
-      mobile: { top: "78%", left: "24%" },
+      mobile: { top: "118%", left: "5%" },
       tablet: { top: "79%", left: "20%" },
       desktop: { top: "79%", left: "18%" },
     },
@@ -254,7 +255,7 @@ export default function VisualMerchandising() {
         setContainerScale(1);
       }
     };
-    
+
     updateBreakpoint();
     window.addEventListener("resize", updateBreakpoint);
     return () => window.removeEventListener("resize", updateBreakpoint);
@@ -277,24 +278,33 @@ export default function VisualMerchandising() {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <div className="w-screen overflow-x-hidden">
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
-        <div className="flex justify-between items-center gap-3">
+        {/* Desktop/Tablet: Side by side layout */}
+        <div className="hidden sm:flex justify-between items-center gap-3">
           <Heading text="VISUAL MERCHANDISING" />
           <BookNowButton sessionType="visual-merchandising" />
+        </div>
+
+        {/* Mobile: Stacked layout with button on new line at right */}
+        <div className="flex flex-col sm:hidden gap-3">
+          <Heading text="VISUAL MERCHANDISING" />
+          <div className="flex justify-end">
+            <BookNowButton sessionType="visual-merchandising" />
+          </div>
         </div>
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
+        <div className="flex flex-col-reverse lg:flex-row gap-8 md:gap-12 lg:gap-8 xl:gap-12">
           {/* Text Section */}
           <motion.div
-            className="w-full lg:w-1/3 shrink-0"
+            className="w-full lg:w-1/3 shrink-0 mt-[100px] sm:mt-0"
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsTextHovered(true)
             }
@@ -314,22 +324,22 @@ export default function VisualMerchandising() {
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
-              How your store looks says everything before anything else.
+              How your store looks says everything before anything else. I help
+              you make sure it&apos;s saying the right thing.
               <br />
               <br />
-              I help you make sure it&apos;s saying the right thing.
+              From window displays and shelf styling to layout flow and product
+              presentation; I style your space so people want to walk in and
+              stay. Whether you&apos;re a boutique, concept store, or brand
+              doing a pop-up, I help translate your identity into a physical
+              experience that feels good and looks right. We&apos;ll start by
+              understanding your brand and what you want people to feel when
+              they walk in. Then I plan, source, and style your space: ensuring
+              everything from color flow to product placement tells a story.
               <br />
               <br />
-              From window displays and shelf styling to layout flow and product presentation; I style your space so people want to walk in and stay.
-              <br />
-              <br />
-              Whether you&apos;re a boutique, concept store, or brand doing a pop-up, I help translate your identity into a physical experience that feels good and looks right.
-              <br />
-              <br />
-              We&apos;ll start by understanding your brand and what you want people to feel when they walk in. Then I plan, source, and style your space: ensuring everything from color flow to product placement tells a story.
-              <br />
-              <br />
-              Why it works: Because good styling doesn&apos;t just look pretty; it sells, connects, and makes people remember your brand.
+              Why it works: Because good styling doesn&apos;t just look pretty;
+              it sells, connects, and makes people remember your brand.
             </p>
           </motion.div>
 
@@ -360,7 +370,10 @@ export default function VisualMerchandising() {
               }}
               transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
             >
-              <div className="relative w-full" style={{ aspectRatio: "16/9", overflow: "visible" }}>
+              <div
+                className="relative w-full"
+                style={{ aspectRatio: "16/9", overflow: "visible" }}
+              >
                 <div
                   className="absolute inset-0"
                   style={{
