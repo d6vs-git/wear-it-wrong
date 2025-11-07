@@ -19,7 +19,7 @@ export default function Badge({
 }: BadgeProps) {
   return (
     <motion.div
-      className="relative inline-block px-1.5 py-0.5 sm:px-3 sm:py-1.5 md:px-4 md:py-2 lg:px-6 rounded-full overflow-hidden bg-[#A8C5E6]"
+      className="relative inline-block px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 lg:px-6 rounded-full overflow-hidden bg-[#A8C5E6]"
       style={
         dimensions
           ? {
@@ -47,7 +47,7 @@ export default function Badge({
         transition={{ duration: 0.6, ease: "easeOut" }}
       />
       <p
-        className="relative text-[9px] sm:text-sm md:text-md lg:text-xl text-black font-badtyp font-bold uppercase tracking-wider whitespace-nowrap"
+        className="relative text-[10px] sm:text-sm md:text-md lg:text-xl text-black font-badtyp font-bold uppercase tracking-wider whitespace-nowrap"
         style={{ fontSize: `${fontSize}px` }}
       >
         {text}

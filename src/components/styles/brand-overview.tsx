@@ -537,7 +537,7 @@ const CONFIG = {
       top: "22%",
       left: "60%",
       mobileTop: "24%",
-      mobileLeft: "65%",
+      mobileLeft: "58%",
       z: 35,
       cat: "visual-merchandising",
       px: 6,
@@ -549,7 +549,7 @@ const CONFIG = {
       top: "45%",
       left: "78%",
       mobileTop: "42%",
-      mobileLeft: "72%",
+      mobileLeft: "68%",
       z: 34,
       cat: "brand-shoots",
       px: 6,
@@ -561,7 +561,7 @@ const CONFIG = {
       top: "52%",
       left: "65%",
       mobileTop: "52%",
-      mobileLeft: "72%",
+      mobileLeft: "68%",
       z: 33,
       cat: "brand-spaces",
       px: 6,
@@ -572,9 +572,9 @@ const CONFIG = {
       text: "MAKEOVER PROJECTS",
       top: "90%",
       left: "75%",
-      mobileTop: "88%",
-      mobileLeft: "72%",
-      z: 3,
+      mobileTop: "66%",
+      mobileLeft: "48%",
+      z: 10,
       cat: "makeover-projects",
       px: 6,
       py: 4,
@@ -607,7 +607,7 @@ function ImageItem({
   const isHovered = hovered === img.cat,
     isOtherHovered = hovered && hovered !== img.cat;
   const dim = {
-    mobile: Math.round(img.width * 0.50),
+    mobile: Math.round(img.width * 0.58),
     tablet: Math.round(img.width * 0.75),
     desktop: img.width,
   }[bp];
@@ -718,13 +718,13 @@ function BadgeItem({
 
   // Responsive badge sizing
   const badgePadding = {
-    mobile: { px: 3.5, py: 2 },
+    mobile: { px: 4, py: 2 },
     tablet: { px: 5, py: 3 },
     desktop: { px: badge.px, py: badge.py },
   }[bp];
 
   const badgeFontSize = {
-    mobile: 9.5,
+    mobile: 10,
     tablet: 12,
     desktop: badge.fs,
   }[bp];
