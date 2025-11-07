@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 import Hero from "../components/home/hero";
 import About from "../components/home/about";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/landing-navbar";
 import Banner from "@/components/home/banner";
 import UnifiedServicesSection from "@/components/styles/brand-overview";
 

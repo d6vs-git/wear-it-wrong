@@ -67,7 +67,10 @@ export default function About() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="font-abovebeyond text-[#a4463a] text-center text-[2.5rem] xs:text-[3rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[6rem] leading-[0.95] tracking-tight mb-10 sm:mb-14 md:mb-16 lg:mb-20 whitespace-nowrap"
+          className="font-abovebeyond text-[#a4463a] text-center 
+             text-[1.75rem] xs:text-[2.25rem] sm:text-[3rem] 
+             md:text-[4rem] lg:text-[5rem] xl:text-[6rem]
+             leading-[0.95] tracking-tight mb-10 sm:mb-14 md:mb-16 lg:mb-20 whitespace-nowrap"
         >
           About{" "}
           <span
@@ -143,14 +146,14 @@ export default function About() {
             </p>
 
             <p className="font-normal">
-              The idea is simple: style isn&apos;t about perfection or trends. It&apos;s
-              about creating things that feel right; for who you are, what you
-              do, and how you live.
+              The idea is simple: style isn&apos;t about perfection or trends.
+              It&apos;s about creating things that feel right; for who you are,
+              what you do, and how you live.
             </p>
 
             <p className="font-normal">
-              Whether it&apos;s your clothes, your store, or your home, the goal is
-              always the same: to make it feel intentional, effortless, and
+              Whether it&apos;s your clothes, your store, or your home, the goal
+              is always the same: to make it feel intentional, effortless, and
               unmistakably you.
             </p>
           </div>

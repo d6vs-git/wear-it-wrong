@@ -602,7 +602,7 @@ function ImageItem({
   return (
     <motion.div
       ref={ref}
-      className="absolute cursor-pointer"
+      className="absolute cursor-pointer will-change-transform"
       style={{
         top: img.top,
         left: img.left,
@@ -619,6 +619,25 @@ function ImageItem({
         scale: isHovered ? 1.25 : isOtherHovered ? 0.88 : 1,
         filter: isOtherHovered ? "blur(6px)" : "blur(0px)",
         opacity: isOtherHovered ? 0.45 : 1,
+      }}
+      viewport={{ once: true }}
+      transition={{
+        scale: { 
+          type: "spring",
+          stiffness: 300,
+          damping: 25,
+          mass: 0.8,
+        },
+        filter: { 
+          type: "tween",
+          duration: 0.35,
+          ease: [0.22, 1, 0.36, 1],
+        },
+        opacity: { 
+          type: "tween",
+          duration: 0.3,
+          ease: "easeOut",
+        },
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => {
@@ -681,7 +700,7 @@ function BadgeItem({
   return (
     <motion.div
       ref={ref}
-      className="absolute cursor-pointer"
+      className="absolute z-30 cursor-pointer will-change-transform"
       style={{
         top: badge.top,
         left: `calc(${badge.left} + ${posOffsets[bp]})`,
@@ -697,6 +716,25 @@ function BadgeItem({
         scale: isHovered ? 1.12 : isOtherHovered ? 0.92 : 1,
         filter: isOtherHovered ? "blur(3px)" : "blur(0px)",
         opacity: isOtherHovered ? 0.5 : 1,
+      }}
+      viewport={{ once: true }}
+      transition={{
+        scale: {
+          type: "spring",
+          stiffness: 350,
+          damping: 22,
+          mass: 0.6,
+        },
+        filter: {
+          type: "tween",
+          duration: 0.3,
+          ease: [0.22, 1, 0.36, 1],
+        },
+        opacity: {
+          type: "tween",
+          duration: 0.25,
+          ease: "easeOut",
+        },
       }}
       onMouseEnter={onHoverStart}
       onMouseMove={handleMouseMove}
@@ -764,12 +802,20 @@ export default function BrandOverview({
 
   return (
     <motion.section
-      className={`relative w-full h-screen flex items-center justify-center bg-landing overflow-hidden ${
-        bp === "mobile" ? "px-4" : bp === "tablet" ? "px-8" : "px-12"
+      className={`relative w-full flex items-center justify-center bg-landing ${
+        bp === "mobile" 
+          ? "min-h-screen overflow-y-auto px-4" 
+          : bp === "tablet" 
+          ? "h-screen overflow-hidden px-8" 
+          : "h-screen overflow-hidden px-12"
       }`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ 
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
+      }}
     >
       {CONFIG.images.map((img, i) => (
         <ImageItem key={i} img={img} i={i} hovered={hovered} bp={bp} />
