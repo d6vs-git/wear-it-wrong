@@ -31,12 +31,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/1.png",
     alt: "Frame-1",
     dimensions: {
-      mobile: { width: 280, height: 280 },
+      mobile: { width: 250, height: 250 },
       tablet: { width: 390, height: 390 },
       desktop: { width: 500, height: 500 },
     },
     position: {
-      mobile: { top: "-5%", left: "-4%" },
+      mobile: { top: "3%", left: "-15%" },
       tablet: { top: "-8%", left: "-7%" },
       desktop: { top: "-10%", left: "-9%" },
     },
@@ -46,12 +46,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/2.png",
     alt: "wooden-box-1",
     dimensions: {
-      mobile: { width: 100, height: 100 },
+      mobile: { width: 90, height: 90 },
       tablet: { width: 140, height: 140 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "24%", left: "44%" },
+      mobile: { top: "32%", left: "30%" },
       tablet: { top: "22%", left: "42%" },
       desktop: { top: "21%", left: "40%" },
     },
@@ -61,12 +61,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/3.png",
     alt: "carpet",
     dimensions: {
-      mobile: { width: 220, height: 220 },
+      mobile: { width: 200, height: 200 },
       tablet: { width: 300, height: 300 },
       desktop: { width: 380, height: 380 },
     },
     position: {
-      mobile: { top: "49%", left: "65%" },
+      mobile: { top: "58%", left: "52%" },
       tablet: { top: "47%", left: "63%" },
       desktop: { top: "46%", left: "61%" },
     },
@@ -76,12 +76,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/4.png",
     alt: "Cake-2",
     dimensions: {
-      mobile: { width: 160, height: 160 },
+      mobile: { width: 145, height: 145 },
       tablet: { width: 215, height: 215 },
       desktop: { width: 270, height: 270 },
     },
     position: {
-      mobile: { top: "20%", left: "60%" },
+      mobile: { top: "28%", left: "47%" },
       tablet: { top: "18%", left: "58%" },
       desktop: { top: "17%", left: "57%" },
     },
@@ -91,12 +91,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/5.png",
     alt: "flowers",
     dimensions: {
-      mobile: { width: 120, height: 120 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 160, height: 160 },
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "1%", left: "66%" },
+      mobile: { top: "8%", left: "53%" },
       tablet: { top: "0%", left: "64%" },
       desktop: { top: "-2%", left: "63%" },
     },
@@ -106,12 +106,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/6.png",
     alt: "roller with cloths in it",
     dimensions: {
-      mobile: { width: 240, height: 240 },
+      mobile: { width: 220, height: 220 },
       tablet: { width: 320, height: 320 },
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "6%", left: "76%" },
+      mobile: { top: "13%", left: "63%" },
       tablet: { top: "4%", left: "74%" },
       desktop: { top: "3%", left: "72%" },
     },
@@ -121,12 +121,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/image55.png",
     alt: "wooden blocks",
     dimensions: {
-      mobile: { width: 120, height: 120 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 160, height: 160 },
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "20%", left: "34%" },
+      mobile: { top: "28%", left: "18%" },
       tablet: { top: "18%", left: "32%" },
       desktop: { top: "17%", left: "31%" },
     },
@@ -136,12 +136,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/7.png",
     alt: "lamp",
     dimensions: {
-      mobile: { width: 140, height: 140 },
+      mobile: { width: 125, height: 125 },
       tablet: { width: 185, height: 185 },
       desktop: { width: 230, height: 230 },
     },
     position: {
-      mobile: { top: "25%", left: "28%" },
+      mobile: { top: "33%", left: "12%" },
       tablet: { top: "23%", left: "26%" },
       desktop: { top: "22%", left: "25%" },
     },
@@ -151,12 +151,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/8.png",
     alt: "dress3",
     dimensions: {
-      mobile: { width: 180, height: 180 },
+      mobile: { width: 165, height: 165 },
       tablet: { width: 240, height: 240 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "57%", left: "31%" },
+      mobile: { top: "67%", left: "15%" },
       tablet: { top: "55%", left: "29%" },
       desktop: { top: "54%", left: "28%" },
     },
@@ -166,12 +166,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/9.png",
     alt: "table",
     dimensions: {
-      mobile: { width: 150, height: 90 },
+      mobile: { width: 140, height: 85 },
       tablet: { width: 200, height: 120 },
       desktop: { width: 250, height: 150 },
     },
     position: {
-      mobile: { top: "77%", left: "17%" },
+      mobile: { top: "85%", left: "3%" },
       tablet: { top: "76%", left: "15%" },
       desktop: { top: "75%", left: "14%" },
     },
@@ -287,7 +287,7 @@ export default function StyleDrop() {
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
+        <div className="flex flex-col-reverse lg:flex-row gap-16 md:gap-12 lg:gap-4">
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
             onMouseEnter={() =>

@@ -31,12 +31,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/wardrobe-detox/1.png",
     alt: "flower pot with leaves",
     dimensions: {
-      mobile: { width: 160, height: 160 },
+      mobile: { width: 140, height: 140 },
       tablet: { width: 220, height: 220 },
       desktop: { width: 280, height: 280 },
     },
     position: {
-      mobile: { top: "45%", left: "36%" },
+      mobile: { top: "50%", left: "15%" },
       tablet: { top: "43%", left: "34%" },
       desktop: { top: "42%", left: "32%" },
     },
@@ -46,12 +46,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/wardrobe-detox/2.png",
     alt: "hanger-with cloths on it",
     dimensions: {
-      mobile: { width: 280, height: 280 },
+      mobile: { width: 240, height: 240 },
       tablet: { width: 390, height: 390 },
       desktop: { width: 500, height: 500 },
     },
     position: {
-      mobile: { top: "-24%", left: "4%" },
+      mobile: { top: "5%", left: "5%" },
       tablet: { top: "-27%", left: "2%" },
       desktop: { top: "-29%", left: "1%" },
     },
@@ -61,12 +61,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/wardrobe-detox/3.png",
     alt: "bag",
     dimensions: {
-      mobile: { width: 130, height: 130 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 175, height: 175 },
       desktop: { width: 220, height: 220 },
     },
     position: {
-      mobile: { top: "-13%", left: "21%" },
+      mobile: { top: "12%", left: "28%" },
       tablet: { top: "-15%", left: "19%" },
       desktop: { top: "-17%", left: "18%" },
     },
@@ -76,12 +76,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/wardrobe-detox/4.png",
     alt: "umbrella",
     dimensions: {
-      mobile: { width: 240, height: 240 },
+      mobile: { width: 200, height: 200 },
       tablet: { width: 330, height: 330 },
       desktop: { width: 420, height: 420 },
     },
     position: {
-      mobile: { top: "37%", left: "58%" },
+      mobile: { top: "45%", left: "52%" },
       tablet: { top: "35%", left: "56%" },
       desktop: { top: "34%", left: "54%" },
     },
@@ -91,12 +91,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/wardrobe-detox/5.png",
     alt: "frame-1",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 70, height: 70 },
       tablet: { width: 110, height: 110 },
       desktop: { width: 140, height: 140 },
     },
     position: {
-      mobile: { top: "0%", left: "71%" },
+      mobile: { top: "8%", left: "68%" },
       tablet: { top: "-2%", left: "69%" },
       desktop: { top: "-3%", left: "68%" },
     },
@@ -106,12 +106,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/wardrobe-detox/6.png",
     alt: "frame-2",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 70, height: 70 },
       tablet: { width: 110, height: 110 },
       desktop: { width: 140, height: 140 },
     },
     position: {
-      mobile: { top: "9%", left: "63%" },
+      mobile: { top: "15%", left: "57%" },
       tablet: { top: "7%", left: "61%" },
       desktop: { top: "6%", left: "60%" },
     },
@@ -121,12 +121,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/wardrobe-detox/7.png",
     alt: "clock",
     dimensions: {
-      mobile: { width: 90, height: 90 },
+      mobile: { width: 80, height: 80 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 150, height: 150 },
     },
     position: {
-      mobile: { top: "-1%", left: "82%" },
+      mobile: { top: "5%", left: "80%" },
       tablet: { top: "-3%", left: "80%" },
       desktop: { top: "-4%", left: "79%" },
     },
@@ -136,12 +136,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/wardrobe-detox/8.png",
     alt: "dress3",
     dimensions: {
-      mobile: { width: 260, height: 260 },
+      mobile: { width: 210, height: 210 },
       tablet: { width: 355, height: 355 },
       desktop: { width: 450, height: 450 },
     },
     position: {
-      mobile: { top: "24%", left: "72%" },
+      mobile: { top: "30%", left: "65%" },
       tablet: { top: "22%", left: "70%" },
       desktop: { top: "21%", left: "68%" },
     },
@@ -151,12 +151,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/wardrobe-detox/9.png",
     alt: "Shoes-2",
     dimensions: {
-      mobile: { width: 180, height: 180 },
+      mobile: { width: 150, height: 150 },
       tablet: { width: 240, height: 240 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "59%", left: "6%" },
+      mobile: { top: "70%", left: "8%" },
       tablet: { top: "58%", left: "4%" },
       desktop: { top: "57%", left: "3%" },
     },
@@ -166,12 +166,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/wardrobe-detox/10.png",
     alt: "Shoes",
     dimensions: {
-      mobile: { width: 70, height: 70 },
+      mobile: { width: 60, height: 60 },
       tablet: { width: 95, height: 95 },
       desktop: { width: 120, height: 120 },
     },
     position: {
-      mobile: { top: "21%", left: "75%" },
+      mobile: { top: "25%", left: "78%" },
       tablet: { top: "19%", left: "73%" },
       desktop: { top: "18%", left: "72%" },
     },
@@ -181,12 +181,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/wardrobe-detox/11.png",
     alt: "dress",
     dimensions: {
-      mobile: { width: 140, height: 140 },
+      mobile: { width: 120, height: 120 },
       tablet: { width: 190, height: 190 },
       desktop: { width: 240, height: 240 },
     },
     position: {
-      mobile: { top: "71%", left: "89%" },
+      mobile: { top: "80%", left: "75%" },
       tablet: { top: "70%", left: "87%" },
       desktop: { top: "69%", left: "86%" },
     },
@@ -196,12 +196,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/wardrobe-detox/12.png",
     alt: "dress4",
     dimensions: {
-      mobile: { width: 95, height: 95 },
+      mobile: { width: 85, height: 85 },
       tablet: { width: 127, height: 127 },
       desktop: { width: 160, height: 160 },
     },
     position: {
-      mobile: { top: "75%", left: "46%" },
+      mobile: { top: "85%", left: "35%" },
       tablet: { top: "74%", left: "44%" },
       desktop: { top: "73%", left: "43%" },
     },
@@ -317,7 +317,7 @@ export default function WardrobeDetox() {
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
+        <div className="flex flex-col-reverse lg:flex-row gap-8 md:gap-10 lg:gap-4">
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
             onMouseEnter={() =>
@@ -369,7 +369,7 @@ export default function WardrobeDetox() {
           </motion.div>
 
           <motion.div
-            className="w-full lg:w-2/3 relative aspect-video"
+            className="w-full lg:w-2/3 relative aspect-video min-h-[400px] sm:min-h-[450px] md:min-h-[500px]"
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsImageHovered(true)
             }
@@ -397,7 +397,7 @@ export default function WardrobeDetox() {
               overflow: "visible",
               padding:
                 breakpoint === "mobile"
-                  ? "40px"
+                  ? "20px"
                   : breakpoint === "tablet"
                   ? "60px"
                   : "80px",

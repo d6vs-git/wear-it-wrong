@@ -36,7 +36,7 @@ const images: ImageConfig[] = [
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "60%", left: "-5%" },
+      mobile: { top: "70%", left: "-15%" },
       tablet: { top: "59%", left: "-8%" },
       desktop: { top: "58%", left: "-11%" },
     },
@@ -51,7 +51,7 @@ const images: ImageConfig[] = [
       desktop: { width: 170, height: 170 },
     },
     position: {
-      mobile: { top: "64%", left: "38%" },
+      mobile: { top: "74%", left: "25%" },
       tablet: { top: "63%", left: "36%" },
       desktop: { top: "62%", left: "34%" },
     },
@@ -66,7 +66,7 @@ const images: ImageConfig[] = [
       desktop: { width: 500, height: 500 },
     },
     position: {
-      mobile: { top: "-10%", left: "-8%" },
+      mobile: { top: "5%", left: "-18%" },
       tablet: { top: "-15%", left: "-12%" },
       desktop: { top: "-19%", left: "-14%" },
     },
@@ -81,7 +81,7 @@ const images: ImageConfig[] = [
       desktop: { width: 420, height: 420 },
     },
     position: {
-      mobile: { top: "28%", left: "2%" },
+      mobile: { top: "38%", left: "-8%" },
       tablet: { top: "26%", left: "0%" },
       desktop: { top: "25%", left: "-1%" },
     },
@@ -96,7 +96,7 @@ const images: ImageConfig[] = [
       desktop: { width: 140, height: 140 },
     },
     position: {
-      mobile: { top: "61%", left: "22%" },
+      mobile: { top: "71%", left: "10%" },
       tablet: { top: "60%", left: "20%" },
       desktop: { top: "59%", left: "19%" },
     },
@@ -111,7 +111,7 @@ const images: ImageConfig[] = [
       desktop: { width: 530, height: 530 },
     },
     position: {
-      mobile: { top: "18%", left: "48%" },
+      mobile: { top: "28%", left: "35%" },
       tablet: { top: "16%", left: "45%" },
       desktop: { top: "15%", left: "43%" },
     },
@@ -126,7 +126,7 @@ const images: ImageConfig[] = [
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "30%", left: "60%" },
+      mobile: { top: "40%", left: "57%" },
       tablet: { top: "28%", left: "58%" },
       desktop: { top: "27%", left: "56%" },
     },
@@ -141,7 +141,7 @@ const images: ImageConfig[] = [
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "3%", left: "36%" },
+      mobile: { top: "13%", left: "23%" },
       tablet: { top: "1%", left: "34%" },
       desktop: { top: "-1%", left: "32%" },
     },
@@ -156,7 +156,7 @@ const images: ImageConfig[] = [
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "-15%", left: "34%" },
+      mobile: { top: "-5%", left: "21%" },
       tablet: { top: "-17%", left: "32%" },
       desktop: { top: "-19%", left: "30%" },
     },
@@ -171,7 +171,7 @@ const images: ImageConfig[] = [
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "52%", left: "41%" },
+      mobile: { top: "62%", left: "28%" },
       tablet: { top: "51%", left: "39%" },
       desktop: { top: "50%", left: "38%" },
     },
@@ -186,7 +186,7 @@ const images: ImageConfig[] = [
       desktop: { width: 240, height: 240 },
     },
     position: {
-      mobile: { top: "9%", left: "56%" },
+      mobile: { top: "19%", left: "53%" },
       tablet: { top: "7%", left: "54%" },
       desktop: { top: "6%", left: "53%" },
     },
@@ -201,7 +201,7 @@ const images: ImageConfig[] = [
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "21%", left: "66%" },
+      mobile: { top: "31%", left: "63%" },
       tablet: { top: "19%", left: "64%" },
       desktop: { top: "18%", left: "62%" },
     },
@@ -216,7 +216,7 @@ const images: ImageConfig[] = [
       desktop: { width: 360, height: 360 },
     },
     position: {
-      mobile: { top: "-23%", left: "57%" },
+      mobile: { top: "-8%", left: "54%" },
       tablet: { top: "-26%", left: "55%" },
       desktop: { top: "-28%", left: "54%" },
     },
@@ -332,7 +332,7 @@ export default function OccasionStyling() {
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
+        <div className="flex flex-col-reverse lg:flex-row gap-8 md:gap-10 lg:gap-4">
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
             onMouseEnter={() =>
@@ -380,7 +380,7 @@ export default function OccasionStyling() {
           </motion.div>
 
           <motion.div
-            className="w-full lg:w-2/3 relative aspect-video"
+            className="w-full lg:w-2/3 relative aspect-video min-h-[400px] sm:min-h-[450px] md:min-h-[500px]"
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsImageHovered(true)
             }
@@ -408,7 +408,7 @@ export default function OccasionStyling() {
               overflow: "visible",
               padding:
                 breakpoint === "mobile"
-                  ? "40px"
+                  ? "20px"
                   : breakpoint === "tablet"
                   ? "60px"
                   : "80px",
