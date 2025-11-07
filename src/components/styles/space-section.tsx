@@ -330,7 +330,7 @@ const imagePositions = [
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "makeover-projects",
-    zIndex: 3,
+    zIndex: 5,
   },
   {
     src: "/assets/images/space/main/image85.png",
