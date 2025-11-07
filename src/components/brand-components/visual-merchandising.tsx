@@ -177,21 +177,17 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-
   const springConfig = { damping: 20, stiffness: 300, mass: 0.5 };
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current || breakpoint === "mobile") return;
-
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-
     const deltaX = (e.clientX - centerX) * 0.15;
     const deltaY = (e.clientY - centerY) * 0.15;
-
     x.set(deltaX);
     y.set(deltaY);
   };
@@ -204,20 +200,20 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
   const position = img.position[breakpoint];
   const dimensions = img.dimensions[breakpoint];
 
-  const baseStyle = {
-    top: position.top,
-    left: position.left,
-    transform: "translate(-50%, -50%)",
-    width: `${dimensions.width}px`,
-    height: `${dimensions.height}px`,
-    zIndex: img.zIndex ?? index,
-  };
-
   return (
     <motion.div
       ref={ref}
       className="absolute cursor-pointer will-change-transform"
-      style={{ ...baseStyle, x: springX, y: springY }}
+      style={{
+        top: position.top,
+        left: position.left,
+        transform: "translate(-50%, -50%)",
+        width: `${dimensions.width}px`,
+        height: `${dimensions.height}px`,
+        zIndex: img.zIndex ?? index,
+        x: springX,
+        y: springY,
+      }}
       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
       transition={{
@@ -242,25 +238,51 @@ export default function VisualMerchandising() {
   const [isTextHovered, setIsTextHovered] = useState(false);
   const [isImageHovered, setIsImageHovered] = useState(false);
   const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
+  const [containerScale, setContainerScale] = useState(1);
 
   useEffect(() => {
     const updateBreakpoint = () => {
-      if (window.innerWidth < 768) {
+      const width = window.innerWidth;
+      if (width < 768) {
         setBreakpoint("mobile");
-      } else if (window.innerWidth < 1024) {
+        setContainerScale(0.7);
+      } else if (width < 1024) {
         setBreakpoint("tablet");
+        setContainerScale(0.75);
       } else {
         setBreakpoint("desktop");
+        setContainerScale(1);
       }
     };
-
+    
     updateBreakpoint();
     window.addEventListener("resize", updateBreakpoint);
     return () => window.removeEventListener("resize", updateBreakpoint);
   }, []);
 
+  // Force recalculation when switching between desktop/mobile in dev tools
+  useEffect(() => {
+    const handleResize = () => {
+      // Trigger a re-render by forcing state update
+      const width = window.innerWidth;
+      if (width < 768) {
+        setBreakpoint("mobile");
+        setContainerScale(0.7);
+      } else if (width < 1024) {
+        setBreakpoint("tablet");
+        setContainerScale(0.75);
+      } else {
+        setBreakpoint("desktop");
+        setContainerScale(1);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className="w-screen overflow-hidden">
+    <div className="w-screen overflow-x-hidden">
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex justify-between items-center gap-3">
           <Heading text="VISUAL MERCHANDISING" />
@@ -270,6 +292,7 @@ export default function VisualMerchandising() {
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
         <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
+          {/* Text Section */}
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
             onMouseEnter={() =>
@@ -297,72 +320,66 @@ export default function VisualMerchandising() {
               I help you make sure it&apos;s saying the right thing.
               <br />
               <br />
-              From window displays and shelf styling to layout flow and
-              product presentation; I style your space so people want to
-              walk in and stay.
+              From window displays and shelf styling to layout flow and product presentation; I style your space so people want to walk in and stay.
               <br />
               <br />
-              Whether you&apos;re a boutique, concept store, or brand doing a
-              pop-up, I help translate your identity into a physical
-              experience that feels good and looks right.
+              Whether you&apos;re a boutique, concept store, or brand doing a pop-up, I help translate your identity into a physical experience that feels good and looks right.
               <br />
               <br />
-              We&apos;ll start by understanding your brand and what you want
-              people to feel when they walk in. Then I plan, source, and
-              style your space: ensuring everything from color flow to
-              product placement tells a story.
+              We&apos;ll start by understanding your brand and what you want people to feel when they walk in. Then I plan, source, and style your space: ensuring everything from color flow to product placement tells a story.
               <br />
               <br />
-              Why it works: Because good styling doesn&apos;t just look
-              pretty; it sells, connects, and makes people remember your
-              brand.
+              Why it works: Because good styling doesn&apos;t just look pretty; it sells, connects, and makes people remember your brand.
             </p>
           </motion.div>
 
-          <motion.div
-            className="w-full lg:w-2/3 relative aspect-video"
-            onMouseEnter={() =>
-              breakpoint !== "mobile" && setIsImageHovered(true)
-            }
-            onMouseLeave={() =>
-              breakpoint !== "mobile" && setIsImageHovered(false)
-            }
-            animate={{
-              scale:
-                breakpoint === "mobile"
-                  ? 1
-                  : isTextHovered
-                  ? 0.92
-                  : isImageHovered
-                  ? 1.08
-                  : 1,
-              filter:
-                breakpoint === "mobile"
-                  ? "blur(0px)"
-                  : isTextHovered
-                  ? "blur(2px)"
-                  : "blur(0px)",
-            }}
-            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-            style={{
-              overflow: "visible",
-              padding:
-                breakpoint === "mobile"
-                  ? "40px"
-                  : breakpoint === "tablet"
-                  ? "60px"
-                  : "80px",
-            }}
-          >
-            {images.map((img, idx) => (
-              <ImageItem
-                key={idx}
-                img={img}
-                index={idx}
-                breakpoint={breakpoint}
-              />
-            ))}
-          </motion.div>
+          {/* Image Composition Section */}
+          <div className="w-full lg:w-2/3 relative">
+            <motion.div
+              onMouseEnter={() =>
+                breakpoint !== "mobile" && setIsImageHovered(true)
+              }
+              onMouseLeave={() =>
+                breakpoint !== "mobile" && setIsImageHovered(false)
+              }
+              animate={{
+                scale:
+                  breakpoint === "mobile"
+                    ? 1
+                    : isTextHovered
+                    ? 0.92
+                    : isImageHovered
+                    ? 1.08
+                    : 1,
+                filter:
+                  breakpoint === "mobile"
+                    ? "blur(0px)"
+                    : isTextHovered
+                    ? "blur(2px)"
+                    : "blur(0px)",
+              }}
+              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+            >
+              <div className="relative w-full" style={{ aspectRatio: "16/9", overflow: "visible" }}>
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    transform: `scale(${containerScale})`,
+                    transformOrigin: "top left",
+                  }}
+                >
+                  {images.map((img, idx) => (
+                    <ImageItem
+                      key={idx}
+                      img={img}
+                      index={idx}
+                      breakpoint={breakpoint}
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </div>
