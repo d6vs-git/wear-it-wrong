@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
-import { prisma } from "@/lib/prisma";
+import { db } from "@/lib/db";
+import { users, bookings } from "@/db/schema";
+import { eq, desc } from "drizzle-orm";
 import { sendEmail } from "@/utils/email";
 
 // Service type display names for emails
@@ -40,9 +42,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Get user from database
-    const user = await prisma.user.findUnique({
-      where: { email: session.user.email },
-    });
+    const [user] = await db.select().from(users).where(eq(users.email, session.user.email));
 
     if (!user) {
       return NextResponse.json(
@@ -52,16 +52,11 @@ export async function POST(req: NextRequest) {
     }
 
     // Create booking
-    const booking = await prisma.booking.create({
-      data: {
-        userId: user.id,
-        sessionType,
-        status: "pending",
-      },
-      include: {
-        user: true,
-      },
-    });
+    const [booking] = await db.insert(bookings).values({
+      userId: user.id,
+      sessionType,
+      status: "pending",
+    }).returning();
 
     // Get service display name
     const serviceName = SERVICE_NAMES[sessionType] || sessionType;
@@ -156,16 +151,7 @@ export async function GET() {
       );
     }
 
-    const user = await prisma.user.findUnique({
-      where: { email: session.user.email },
-      include: {
-        bookings: {
-          orderBy: {
-            createdAt: "desc",
-          },
-        },
-      },
-    });
+    const [user] = await db.select().from(users).where(eq(users.email, session.user.email));
 
     if (!user) {
       return NextResponse.json(
@@ -174,9 +160,15 @@ export async function GET() {
       );
     }
 
+    // Get user's bookings
+    const userBookings = await db.select()
+      .from(bookings)
+      .where(eq(bookings.userId, user.id))
+      .orderBy(desc(bookings.createdAt));
+
     return NextResponse.json({
       success: true,
-      bookings: user.bookings,
+      bookings: userBookings,
     });
   } catch (error) {
     console.error("Error fetching bookings:", error);

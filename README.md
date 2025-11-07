@@ -43,8 +43,8 @@ yarn install
 ### Database Setup
 
 ```bash
-npx prisma generate
-npx prisma db push
+npm run db:generate
+npm run db:push
 ```
 
 ### Running the Development Server

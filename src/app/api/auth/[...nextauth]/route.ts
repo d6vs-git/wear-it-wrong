@@ -1,19 +1,14 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { prisma } from "@/lib/prisma";
+import { db } from "@/lib/db";
+import { users } from "@/db/schema";
+import { eq } from "drizzle-orm";
 
 const handler = NextAuth({
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code",
-        },
-      },
     }),
   ],
   debug: process.env.NODE_ENV === "development",
@@ -22,16 +17,14 @@ const handler = NextAuth({
       console.log("Sign-in attempt:", { user, account, profile, email });
       if (account?.provider === "google") {
         try {
-          const existingUser = await prisma.user.findUnique({
-            where: { email: user.email! },
+          const existingUser = await db.query.users.findFirst({
+            where: eq(users.email, user.email!),
           });
 
           if (!existingUser) {
-            await prisma.user.create({
-              data: {
-                email: user.email!,
-                username: user.name!,
-              },
+            await db.insert(users).values({
+              email: user.email!,
+              username: user.name!,
             });
           }
           return true;
