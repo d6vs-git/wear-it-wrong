@@ -1,8 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prisma } from "@/lib/prisma";
 
 const handler = NextAuth({
   providers: [
@@ -13,15 +11,15 @@ const handler = NextAuth({
         params: {
           prompt: "consent",
           access_type: "offline",
-          response_type: "code"
-        }
-      }
+          response_type: "code",
+        },
+      },
     }),
   ],
-  debug: process.env.NODE_ENV === 'development',
+  debug: process.env.NODE_ENV === "development",
   callbacks: {
     async signIn({ user, account, profile, email }) {
-      console.log('Sign-in attempt:', { user, account, profile, email });
+      console.log("Sign-in attempt:", { user, account, profile, email });
       if (account?.provider === "google") {
         try {
           const existingUser = await prisma.user.findUnique({
