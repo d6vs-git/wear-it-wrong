@@ -162,21 +162,7 @@ const images: ImageConfig[] = [
     },
     zIndex: 5,
   },
-  {
-    src: "/assets/images/space/brand-spaces/2.png",
-    alt: "chair-right",
-    dimensions: {
-      mobile: { width: 140, height: 140 },
-      tablet: { width: 190, height: 190 },
-      desktop: { width: 240, height: 240 },
-    },
-    position: {
-      mobile: { top: "74%", left: "86%" },
-      tablet: { top: "73%", left: "88%" },
-      desktop: { top: "72%", left: "89%" },
-    },
-    zIndex: 5,
-  },
+
   {
     src: "/assets/images/space/brand-spaces/1.png",
     alt: "chair-left",
@@ -188,7 +174,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "62%", left: "-3%" },
       tablet: { top: "61%", left: "-5%" },
-      desktop: { top: "60%", left: "-6%" },
+      desktop: { top: "60%", left: "-2%" },
     },
     zIndex: 5,
   },
@@ -276,7 +262,7 @@ const images: ImageConfig[] = [
       desktop: { width: 160, height: 160 },
     },
     position: {
-      mobile: { top: "81%", left: "41%" },
+      mobile: { top: "96%", left: "35%" },
       tablet: { top: "80%", left: "39%" },
       desktop: { top: "79%", left: "38%" },
     },
@@ -291,7 +277,7 @@ const images: ImageConfig[] = [
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "71%", left: "44%" },
+      mobile: { top: "83%", left: "40%" },
       tablet: { top: "70%", left: "42%" },
       desktop: { top: "69%", left: "41%" },
     },
@@ -404,9 +390,9 @@ export default function BrandSpaces() {
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
+        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4 mt-8 sm:mt-10">
           <motion.div
-            className="w-full lg:w-1/3 shrink-0"
+            className="w-full lg:w-1/3 shrink-0 mt-8 lg:mt-0"
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsTextHovered(true)
             }
@@ -418,10 +404,10 @@ export default function BrandSpaces() {
                 breakpoint === "mobile"
                   ? 1
                   : isImageHovered
-                  ? 0.92
-                  : isTextHovered
-                  ? 1.08
-                  : 1,
+                    ? 0.92
+                    : isTextHovered
+                      ? 1.08
+                      : 1,
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
@@ -433,14 +419,12 @@ export default function BrandSpaces() {
               I help brands design and style their physical spaces; whether
               it&apos;s a store, studio, or pop-up, so it looks good, feels
               cohesive, and makes sense for how people actually move through it.
-              <br />
-              <br />
+              
               We start by understanding your identity and what you want the
               space to communicate. From there, I help plan the layout,
               materials, color story, and decor details that bring that feeling
               to life.
-              <br />
-              <br />
+             
               It&apos;s not just about making things pretty but about creating a
               space that feels intentional, on-brand, and easy to maintain.
               <br />
@@ -452,7 +436,8 @@ export default function BrandSpaces() {
           </motion.div>
 
           <motion.div
-            className="w-full lg:w-2/3 relative aspect-video"
+            className={`w-full lg:w-2/3 relative ${breakpoint === "mobile" ? "aspect-4/3" : "aspect-video"
+              } overflow-hidden`}
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsImageHovered(true)
             }
@@ -464,16 +449,16 @@ export default function BrandSpaces() {
                 breakpoint === "mobile"
                   ? 1
                   : isTextHovered
-                  ? 0.92
-                  : isImageHovered
-                  ? 1.08
-                  : 1,
+                    ? 0.92
+                    : isImageHovered
+                      ? 1.08
+                      : 1,
               filter:
                 breakpoint === "mobile"
                   ? "blur(0px)"
                   : isTextHovered
-                  ? "blur(2px)"
-                  : "blur(0px)",
+                    ? "blur(2px)"
+                    : "blur(0px)",
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
             style={{
@@ -482,8 +467,8 @@ export default function BrandSpaces() {
                 breakpoint === "mobile"
                   ? "40px"
                   : breakpoint === "tablet"
-                  ? "60px"
-                  : "80px",
+                    ? "60px"
+                    : "80px",
             }}
           >
             {images.map((img, idx) => (
