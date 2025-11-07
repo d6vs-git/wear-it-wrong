@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import AuthProvider from "@/components/auth/AuthProvider";
 import { Toaster } from "react-hot-toast";
-import ConditionalNavbar from "@/components/ConditionalNavbar";
+import ConditionalNavbar from "@/components/conditional-navbar";
 
 export const metadata: Metadata = {
   title: "Wear It Wrong",

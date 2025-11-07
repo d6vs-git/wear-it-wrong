@@ -356,24 +356,20 @@ export default function OccasionStyling() {
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               Tell me about your occasion; the event, the mood you&apos;re going for,
               and any ideas you already have.
-              <br />
-              <br />
+             
               I&apos;ll take a look at your wardrobe, see what pieces you want to
               wear, and figure out how to make them feel fresh, elevated, and
               just you.
-              <br />
-              <br />
+            
               I put together a full look: outfit, accessories, even hair and
               makeup suggestions (so you don&apos;t have to worry about a single
               detail). You&apos;ll get a clear presentation with options, links,
               and brand suggestions that fit your style and budget.
-              <br />
-              <br />
+           
               If you want, I can also shop or join you for fittings to make sure
               everything comes together perfectly — this can be added as an
               hourly service.
-              <br />
-              <br />
+            
               It&apos;s styling that actually works for you, your wardrobe, and
               your life.
             </p>

@@ -341,17 +341,15 @@ export default function WardrobeDetox() {
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               We go through your wardrobe together: what you wear often, what
               just sits there, and what you actually love.
-              <br />
-              <br />
+              
               I&apos;ll ask a few questions, get you to try some pieces, and
               understand your style in real life and not just on paper.
-              <br />
-              <br />
+             <br />
+             <br />
               We&apos;ll build new outfit combinations, organize your space so
               it&apos;s easy to use, and note what&apos;s missing to make it work
               better.
-              <br />
-              <br />
+            
               After the session, you&apos;ll receive a personalized presentation
               with:
               <br />
@@ -361,8 +359,7 @@ export default function WardrobeDetox() {
               - links to the new items,
               <br />
               - a mini guide on how to mix and match everything.
-              <br />
-              <br />
+             
               It&apos;s a practical, no-drama reset for your wardrobe so you
               know exactly what you own and how to wear it.
             </p>

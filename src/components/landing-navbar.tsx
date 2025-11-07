@@ -153,13 +153,7 @@ export default function LandingNavbar() {
                 )}
                 <span className="text-sm font-medium">{name}</span>
               </div>
-              <Link
-                href="/bookings"
-                className="block px-4 py-2 rounded-lg hover:bg-muted transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                My Meetings
-              </Link>
+
               <button
                 onClick={() => {
                   signOut();

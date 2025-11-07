@@ -1,4 +1,3 @@
-import SearchBar from "@/components/ui/search-bar";
 import StyleSection from "@/components/styles/style-section";
 
 export default function FoldersPage() {
