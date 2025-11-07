@@ -335,7 +335,7 @@ export default function ConceptDevelopment() {
   }, []);
 
   return (
-    <div className="w-screen overflow-hidden">
+    <div className="w-screen overflow-hidden pt-16 md:pt-20">
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <Heading text="CONCEPT DEVELOPMENT" />

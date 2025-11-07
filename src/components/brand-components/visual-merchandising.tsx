@@ -283,7 +283,7 @@ export default function VisualMerchandising() {
   }, []);
 
   return (
-    <div className="w-screen overflow-x-hidden">
+    <div className="w-screen overflow-x-hidden pt-16 md:pt-20">
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         {/* Desktop/Tablet: Side by side layout */}
         <div className="hidden sm:flex justify-between items-center gap-3">

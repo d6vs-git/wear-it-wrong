@@ -4,9 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 import Hero from "../components/home/hero";
 import About from "../components/home/about";
-import Navbar from "@/components/landing-navbar";
+import LandingNavbar from "@/components/landing-navbar";
 import Banner from "@/components/home/banner";
 import UnifiedServicesSection from "@/components/styles/brand-overview";
+
 
 export default function Home() {
   const { status } = useSession();
@@ -40,9 +41,10 @@ export default function Home() {
   return (
     <main className="bg-background text-foreground overflow-x-hidden">
       {showBanner && <Banner onClose={handleCloseBanner} />}
-      <Navbar />
+      <LandingNavbar />
       
       <div className="snap-y snap-mandatory">
+        
         <Hero />
         <About />
         <UnifiedServicesSection onBadgeClick={handleBadgeClick} />
