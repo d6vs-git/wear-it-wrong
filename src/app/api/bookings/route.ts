@@ -82,11 +82,18 @@ Best regards,
 Wear It Wrong Booking System
     `.trim();
 
-    await sendEmail(
-      process.env.SENDER_EMAIL!,
-      adminEmailSubject,
-      adminEmailText
-    );
+    try {
+      console.log("📧 Sending admin email to:", process.env.SENDER_EMAIL);
+      await sendEmail(
+        process.env.SENDER_EMAIL!,
+        adminEmailSubject,
+        adminEmailText
+      );
+      console.log("✅ Admin email sent successfully");
+    } catch (emailError) {
+      console.error("❌ Error sending admin email:", emailError);
+      // Continue even if admin email fails
+    }
 
     // Send confirmation email to customer
     const customerEmailSubject = `Booking Confirmation - ${serviceName}`;
@@ -111,11 +118,20 @@ Best regards,
 Wear It Wrong Team
     `.trim();
 
-    await sendEmail(
-      user.email,
-      customerEmailSubject,
-      customerEmailText
-    );
+    try {
+      console.log("📧 Sending customer email to:", user.email);
+      await sendEmail(
+        user.email,
+        customerEmailSubject,
+        customerEmailText
+      );
+      console.log("✅ Customer email sent successfully");
+    } catch (emailError) {
+      console.error("❌ Error sending customer email:", emailError);
+      // Continue even if customer email fails
+    }
+
+    console.log("🎉 Booking process completed successfully");
 
     return NextResponse.json(
       {
