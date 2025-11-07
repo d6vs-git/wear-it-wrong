@@ -32,13 +32,13 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting1.png",
     alt: "painting-top-1",
     dimensions: {
-      mobile: { width: 95, height: 95 },
-      tablet: { width: 127, height: 127 },
+      mobile: { width: 55, height: 55 },
+      tablet: { width: 87, height: 87 },
       desktop: { width: 155, height: 155 },
     },
     position: {
-      mobile: { top: "12%", left: "10%" },
-      tablet: { top: "10%", left: "9%" },
+      mobile: { top: "5%", left: "-3%" }, // was 0%
+      tablet: { top: "5%", left: "4%" }, // was 4%
       desktop: { top: "9%", left: "8%" },
     },
     zIndex: 3,
@@ -47,13 +47,13 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting5.png",
     alt: "painting-top-2",
     dimensions: {
-      mobile: { width: 110, height: 110 },
-      tablet: { width: 147, height: 147 },
+      mobile: { width: 90, height: 90 },
+      tablet: { width: 127, height: 127 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "10%", left: "26%" },
-      tablet: { top: "8%", left: "25%" },
+      mobile: { top: "2%", left: "12%" }, // was 17%
+      tablet: { top: "3%", left: "15%" }, // was 20%
       desktop: { top: "7%", left: "24%" },
     },
     zIndex: 3,
@@ -62,13 +62,13 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting3.png",
     alt: "painting-top-3",
     dimensions: {
-      mobile: { width: 100, height: 100 },
-      tablet: { width: 133, height: 133 },
+      mobile: { width: 80, height: 80 },
+      tablet: { width: 113, height: 113 },
       desktop: { width: 165, height: 165 },
     },
     position: {
-      mobile: { top: "11%", left: "43%" },
-      tablet: { top: "9%", left: "42%" },
+      mobile: { top: "6%", left: "33%" }, // was 38%
+      tablet: { top: "4%", left: "32%" }, // was 37%
       desktop: { top: "8%", left: "41%" },
     },
     zIndex: 3,
@@ -77,13 +77,13 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting4.png",
     alt: "painting-top-4",
     dimensions: {
-      mobile: { width: 115, height: 115 },
-      tablet: { width: 153, height: 153 },
+      mobile: { width: 95, height: 95 },
+      tablet: { width: 133, height: 133 },
       desktop: { width: 190, height: 190 },
     },
     position: {
-      mobile: { top: "9%", left: "61%" },
-      tablet: { top: "7%", left: "60%" },
+      mobile: { top: "4%", left: "51%" }, // was 56%
+      tablet: { top: "2%", left: "50%" }, // was 55%
       desktop: { top: "6%", left: "59%" },
     },
     zIndex: 3,
@@ -92,13 +92,13 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting3.png",
     alt: "painting-top-5",
     dimensions: {
-      mobile: { width: 95, height: 95 },
-      tablet: { width: 127, height: 127 },
+      mobile: { width: 75, height: 75 },
+      tablet: { width: 107, height: 107 },
       desktop: { width: 155, height: 155 },
     },
     position: {
-      mobile: { top: "12%", left: "78%" },
-      tablet: { top: "10%", left: "77%" },
+      mobile: { top: "7%", left: "68%" }, // was 73%
+      tablet: { top: "5%", left: "67%" }, // was 72%
       desktop: { top: "9%", left: "76%" },
     },
     zIndex: 3,
@@ -107,33 +107,34 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting5.png",
     alt: "painting-top-6",
     dimensions: {
-      mobile: { width: 105, height: 105 },
-      tablet: { width: 140, height: 140 },
+      mobile: { width: 85, height: 85 },
+      tablet: { width: 120, height: 120 },
       desktop: { width: 170, height: 170 },
     },
     position: {
-      mobile: { top: "10%", left: "93%" },
-      tablet: { top: "8%", left: "92%" },
+      mobile: { top: "5%", left: "83%" }, // was 88%
+      tablet: { top: "3%", left: "82%" }, // was 87%
       desktop: { top: "7%", left: "91%" },
     },
     zIndex: 3,
   },
-
   // Middle Row - Perfume (far left, small)
+
+  // Middle Row - 5 Paintings
   {
     src: "/assets/images/space/space-edit/perfume.png",
     alt: "perfume",
     dimensions: {
-      mobile: { width: 50, height: 50 },
-      tablet: { width: 67, height: 67 },
-      desktop: { width: 80, height: 80 },
+      mobile: { width: 30, height: 30 },
+      tablet: { width: 40, height: 40 },
+      desktop: { width: 50, height: 50 },
     },
     position: {
-      mobile: { top: "31%", left: "10%" },
-      tablet: { top: "29%", left: "9%" },
-      desktop: { top: "28%", left: "8%" },
+      mobile: { top: "75%", left: "80%" },
+      tablet: { top: "60%", left: "75%" },
+      desktop: { top: "65%", left: "85%" },
     },
-    zIndex: 3,
+    zIndex: 8,
   },
 
   // Middle Row - 5 Paintings
@@ -141,13 +142,13 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting4.png",
     alt: "painting-middle-2",
     dimensions: {
-      mobile: { width: 95, height: 95 },
-      tablet: { width: 127, height: 127 },
+      mobile: { width: 75, height: 75 },
+      tablet: { width: 107, height: 107 },
       desktop: { width: 155, height: 155 },
     },
     position: {
-      mobile: { top: "30%", left: "26%" },
-      tablet: { top: "28%", left: "25%" },
+      mobile: { top: "25%", left: "16%" }, // was 21%
+      tablet: { top: "23%", left: "15%" }, // was 20%
       desktop: { top: "27%", left: "24%" },
     },
     zIndex: 3,
@@ -156,13 +157,13 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting1.png",
     alt: "painting-middle-3",
     dimensions: {
-      mobile: { width: 100, height: 100 },
-      tablet: { width: 133, height: 133 },
+      mobile: { width: 80, height: 80 },
+      tablet: { width: 113, height: 113 },
       desktop: { width: 165, height: 165 },
     },
     position: {
-      mobile: { top: "29%", left: "43%" },
-      tablet: { top: "27%", left: "42%" },
+      mobile: { top: "24%", left: "33%" }, // was 38%
+      tablet: { top: "22%", left: "32%" }, // was 37%
       desktop: { top: "26%", left: "41%" },
     },
     zIndex: 3,
@@ -171,13 +172,13 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting3.png",
     alt: "painting-middle-4",
     dimensions: {
-      mobile: { width: 105, height: 105 },
-      tablet: { width: 140, height: 140 },
+      mobile: { width: 85, height: 85 },
+      tablet: { width: 120, height: 120 },
       desktop: { width: 170, height: 170 },
     },
     position: {
-      mobile: { top: "28%", left: "61%" },
-      tablet: { top: "26%", left: "60%" },
+      mobile: { top: "23%", left: "51%" }, // was 56%
+      tablet: { top: "21%", left: "50%" }, // was 55%
       desktop: { top: "25%", left: "59%" },
     },
     zIndex: 3,
@@ -186,13 +187,13 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting6.png",
     alt: "painting-middle-5",
     dimensions: {
-      mobile: { width: 100, height: 100 },
-      tablet: { width: 133, height: 133 },
+      mobile: { width: 80, height: 80 },
+      tablet: { width: 113, height: 113 },
       desktop: { width: 165, height: 165 },
     },
     position: {
-      mobile: { top: "29%", left: "78%" },
-      tablet: { top: "27%", left: "77%" },
+      mobile: { top: "24%", left: "68%" }, // was 73%
+      tablet: { top: "22%", left: "67%" }, // was 72%
       desktop: { top: "26%", left: "76%" },
     },
     zIndex: 3,
@@ -201,31 +202,30 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting4.png",
     alt: "painting-middle-6",
     dimensions: {
-      mobile: { width: 95, height: 95 },
-      tablet: { width: 127, height: 127 },
+      mobile: { width: 75, height: 75 },
+      tablet: { width: 107, height: 107 },
       desktop: { width: 155, height: 155 },
     },
     position: {
-      mobile: { top: "30%", left: "93%" },
-      tablet: { top: "28%", left: "92%" },
+      mobile: { top: "25%", left: "83%" }, // was 88%
+      tablet: { top: "23%", left: "82%" }, // was 87%
       desktop: { top: "27%", left: "91%" },
     },
     zIndex: 3,
   },
-
   // Lamp (standing, left side, below perfume)
   {
     src: "/assets/images/space/space-edit/lamp.png",
     alt: "standing-lamp",
     dimensions: {
-      mobile: { width: 55, height: 55 },
-      tablet: { width: 73, height: 73 },
-      desktop: { width: 90, height: 90 },
+      mobile: { width: 120, height: 150 },
+      tablet: { width: 200, height: 250 },
+      desktop: { width: 300, height: 500 },
     },
     position: {
-      mobile: { top: "50%", left: "12%" },
-      tablet: { top: "48%", left: "11%" },
-      desktop: { top: "47%", left: "10%" },
+      mobile: { top: "30%", left: "-12%" },
+      tablet: { top: "30%", left: "15%" },
+      desktop: { top: "12%", left: "10%" },
     },
     zIndex: 4,
   },
@@ -235,14 +235,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/sofa.png",
     alt: "sofa",
     dimensions: {
-      mobile: { width: 320, height: 187 },
-      tablet: { width: 427, height: 249 },
+      mobile: { width: 200, height: 200 },
+      tablet: { width: 300, height: 300 },
       desktop: { width: 530, height: 309 },
     },
     position: {
-      mobile: { top: "66%", left: "50%" },
-      tablet: { top: "64%", left: "49%" },
-      desktop: { top: "63%", left: "48%" },
+      mobile: { top: "45%", left: "10%" },
+      tablet: { top: "45%", left: "30%" },
+      desktop: { top: "55%", left: "25%" },
     },
     zIndex: 5,
   },
@@ -252,48 +252,48 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/table.png",
     alt: "side-table",
     dimensions: {
-      mobile: { width: 100, height: 100 },
-      tablet: { width: 133, height: 133 },
+      mobile: { width: 80, height: 60 },
+      tablet: { width: 120, height: 120 },
       desktop: { width: 165, height: 165 },
     },
     position: {
-      mobile: { top: "68%", left: "80%" },
-      tablet: { top: "66%", left: "79%" },
-      desktop: { top: "65%", left: "78%" },
+      mobile: { top: "90%", left: "70%" },
+      tablet: { top: "66%", left: "68%" },
+      desktop: { top: "72%", left: "78%" },
     },
     zIndex: 4,
   },
 
-  // Small Cactus on table
+  // Small Cactus on table✅
   {
     src: "/assets/images/space/space-edit/cactus.png",
     alt: "small-cactus",
     dimensions: {
       mobile: { width: 50, height: 50 },
-      tablet: { width: 67, height: 67 },
+      tablet: { width: 60, height: 60 },
       desktop: { width: 80, height: 80 },
     },
     position: {
-      mobile: { top: "62%", left: "81%" },
-      tablet: { top: "60%", left: "80%" },
-      desktop: { top: "59%", left: "79%" },
+      mobile: { top: "62%", left: "71%" },
+      tablet: { top: "55%", left: "70%" },
+      desktop: { top: "60%", left: "79%" },
     },
     zIndex: 6,
   },
 
-  // Large Flowerpot with plant (far right)
+  // Large Flowerpot with plant (far right) ✅
   {
     src: "/assets/images/space/space-edit/flowerpot.png",
     alt: "large-flowerpot",
     dimensions: {
-      mobile: { width: 110, height: 110 },
-      tablet: { width: 147, height: 147 },
-      desktop: { width: 180, height: 180 },
+      mobile: { width: 80, height: 90 },
+      tablet: { width: 180, height: 180 },
+      desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "58%", left: "94%" },
-      tablet: { top: "56%", left: "93%" },
-      desktop: { top: "55%", left: "92%" },
+      mobile: { top: "70%", left: "80%" },
+      tablet: { top: "50%", left: "75%" },
+      desktop: { top: "40%", left: "80%" },
     },
     zIndex: 6,
   },
@@ -426,9 +426,9 @@ export default function SpaceEdit() {
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
-              Sometimes your space just needs a few small shifts to feel
-              right again — not a full change, just the things that were
-              slightly off or no longer working for you.
+              Sometimes your space just needs a few small shifts to feel right
+              again — not a full change, just the things that were slightly off
+              or no longer working for you.
               <br />
               <br />
               This one&apos;s for when you don&apos;t need a big overhaul, but
@@ -442,13 +442,12 @@ export default function SpaceEdit() {
               <br />
               Then I&apos;ll give you clear, specific suggestions for small
               updates that can make a bigger difference: lighting, layout
-              tweaks, color, rearranging furniture, or adding a few key
-              pieces.
+              tweaks, color, rearranging furniture, or adding a few key pieces.
               <br />
               <br />
-              It&apos;s practical, intentional, and built around what you already
-              have and how you actually use the space. No overthinking, no
-              unnecessary things.
+              It&apos;s practical, intentional, and built around what you
+              already have and how you actually use the space. No overthinking,
+              no unnecessary things.
             </p>
           </motion.div>
 
