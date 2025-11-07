@@ -30,12 +30,12 @@ const imagePositions = [
     src: "/assets/images/people/main/wardrobe-detox.png",
     alt: "jacket on hanger",
     dimensions: {
-      mobile: { width: 180, height: 180 },
+      mobile: { width: 120, height: 180 },
       tablet: { width: 200, height: 200 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "6%", left: "30%" },
+      mobile: { top: "6%", left: "56%" },
       tablet: { top: "15%", left: "20%" },
       desktop: { top: "22%", left: "20%" },
     },
@@ -52,7 +52,7 @@ const imagePositions = [
       desktop: { width: 70, height: 70 },
     },
     position: {
-      mobile: { top: "6%", left: "8%" },
+      mobile: { top: "7%", left: "17%" },
       tablet: { top: "15%", left: "8%" },
       desktop: { top: "22%", left: "8%" },
     },
@@ -69,7 +69,7 @@ const imagePositions = [
       desktop: { width: 160, height: 180 },
     },
     position: {
-      mobile: { top: "87%", left: "15%" },
+      mobile: { top: "16%", left: "24%" },
       tablet: { top: "65%", left: "4%" },
       desktop: { top: "75%", left: "4%" },
     },
@@ -86,7 +86,7 @@ const imagePositions = [
       desktop: { width: 260, height: 260 },
     },
     position: {
-      mobile: { top: "46%", left: "18%" },
+      mobile: { top: "33%", left: "10%" },
       tablet: { top: "58%", left: "18%" },
       desktop: { top: "68%", left: "18%" },
     },
@@ -98,12 +98,12 @@ const imagePositions = [
     src: "/assets/images/people/main/image44.png",
     alt: "paper-2",
     dimensions: {
-      mobile: { width: 115, height: 140 },
+      mobile: { width: 180, height: 140 },
       tablet: { width: 180, height: 220 },
       desktop: { width: 160, height: 200 },
     },
     position: {
-      mobile: { top: "49%", left: "20%" },
+      mobile: { top: "32%", left: "10%" },
       tablet: { top: "64%", left: "22%" },
       desktop: { top: "74%", left: "22%" },
     },
@@ -115,12 +115,12 @@ const imagePositions = [
     src: "/assets/images/people/main/image41.jpg",
     alt: "web-view",
     dimensions: {
-      mobile: { width: 160, height: 160 },
+      mobile: { width: 250, height: 160 },
       tablet: { width: 260, height: 260 },
       desktop: { width: 230, height: 230 },
     },
     position: {
-      mobile: { top: "48%", left: "55%" },
+      mobile: { top: "73%", left: "15%" },
       tablet: { top: "59%", left: "40%" },
       desktop: { top: "69%", left: "40%" },
     },
@@ -132,12 +132,12 @@ const imagePositions = [
     src: "/assets/images/people/main/image55.png",
     alt: "blocks",
     dimensions: {
-      mobile: { width: 75, height: 150 },
+      mobile: { width: 150, height: 150 },
       tablet: { width: 110, height: 220 },
       desktop: { width: 100, height: 200 },
     },
     position: {
-      mobile: { top: "56%", left: "47%" },
+      mobile: { top: "34%", left: "42%" },
       tablet: { top: "70%", left: "33%" },
       desktop: { top: "80%", left: "33%" },
     },
@@ -149,29 +149,29 @@ const imagePositions = [
     src: "/assets/images/people/main/image53.png",
     alt: "bags",
     dimensions: {
-      mobile: { width: 170, height: 170 },
+      mobile: { width: 220, height: 170 },
       tablet: { width: 300, height: 300 },
       desktop: { width: 260, height: 260 },
     },
     position: {
-      mobile: { top: "2%", left: "65%" },
+      mobile: { top: "15%", left: "55%" },
       tablet: { top: "-3%", left: "37%" },
       desktop: { top: "10%", left: "37%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "wardrobe-detox",
-    zIndex: 3,
+    zIndex: 9,
   },
   {
     src: "/assets/images/people/main/personal-shopper1.png",
     alt: "2-ppl-walk",
     dimensions: {
-      mobile: { width: 160, height: 185 },
+      mobile: { width: 180, height: 185 },
       tablet: { width: 260, height: 300 },
       desktop: { width: 230, height: 260 },
     },
     position: {
-      mobile: { top: "21%", left: "15%" },
+      mobile: { top: "95%", left: "10%" },
       tablet: { top: "51%", left: "54%" },
       desktop: { top: "60%", left: "54%" },
     },
@@ -183,12 +183,12 @@ const imagePositions = [
     src: "/assets/images/people/main/image21.png",
     alt: "girl-with bag",
     dimensions: {
-      mobile: { width: 130, height: 185 },
+      mobile: { width: 120, height: 185 },
       tablet: { width: 180, height: 300 },
       desktop: { width: 160, height: 260 },
     },
     position: {
-      mobile: { top: "19%", left: "65%" },
+      mobile: { top: "60%", left: "9%" },
       tablet: { top: "36%", left: "66%" },
       desktop: { top: "42%", left: "66%" },
     },
@@ -200,12 +200,12 @@ const imagePositions = [
     src: "/assets/images/people/main/personal-shopper2.png",
     alt: "girl-with dog",
     dimensions: {
-      mobile: { width: 135, height: 180 },
+      mobile: { width: 165, height: 180 },
       tablet: { width: 220, height: 300 },
       desktop: { width: 190, height: 260 },
     },
     position: {
-      mobile: { top: "67%", left: "20%" },
+      mobile: { top: "70%", left: "41%" },
       tablet: { top: "48%", left: "79%" },
       desktop: { top: "56%", left: "79%" },
     },
@@ -222,7 +222,7 @@ const imagePositions = [
       desktop: { width: 370, height: 260 },
     },
     position: {
-      mobile: { top: "65%", left: "63%" },
+      mobile: { top: "43%", left: "56%" },
       tablet: { top: "6%", left: "72%" },
       desktop: { top: "18%", left: "72%" },
     },
@@ -234,18 +234,18 @@ const imagePositions = [
     src: "/assets/images/people/main/image72.jpg",
     alt: "photo-frame",
     dimensions: {
-      mobile: { width: 75, height: 75 },
+      mobile: { width: 60, height: 75 },
       tablet: { width: 110, height: 110 },
       desktop: { width: 95, height: 95 },
     },
     position: {
-      mobile: { top: "26%", left: "48%" },
+      mobile: { top: "100%", left: "61%" },
       tablet: { top: "32%", left: "52%" },
       desktop: { top: "38%", left: "52%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: -30 },
     category: "occasion-styling",
-    zIndex: 5,
+    zIndex: 11,
   },
 ];
 
@@ -273,7 +273,7 @@ const badgePositions = [
       desktop: { width: 300, height: 60 },
     },
     position: {
-      mobile: { top: "30%", left: "38%" },
+      mobile: { top: "97%", left: "47%" },
       tablet: { top: "47%", left: "37%" },
       desktop: { top: "51%", left: "37%" },
     },
@@ -288,7 +288,7 @@ const badgePositions = [
       desktop: { width: 210, height: 60 },
     },
     position: {
-      mobile: { top: "56%", left: "28%" },
+      mobile: { top: "51%", left: "30%" },
       tablet: { top: "74%", left: "43%" },
       desktop: { top: "82%", left: "43%" },
     },
@@ -303,7 +303,7 @@ const badgePositions = [
       desktop: { width: 310, height: 60 },
     },
     position: {
-      mobile: { top: "77%", left: "38%" },
+      mobile: { top: "67%", left: "24%" },
       tablet: { top: "59%", left: "55%" },
       desktop: { top: "66%", left: "55%" },
     },
@@ -318,7 +318,7 @@ const badgePositions = [
       desktop: { width: 350, height: 60 },
     },
     position: {
-      mobile: { top: "93%", left: "35%" },
+      mobile: { top: "109%", left: "50%" },
       tablet: { top: "75%", left: "8%" },
       desktop: { top: "84%", left: "8%" },
     },
