@@ -36,7 +36,7 @@ const images: ImageConfig[] = [
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "6%", left: "73%" },
+      mobile: { top: "-12%", left: "57%" },
       tablet: { top: "4%", left: "71%" },
       desktop: { top: "3%", left: "70%" },
     },
@@ -51,7 +51,7 @@ const images: ImageConfig[] = [
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "59%", left: "2%" },
+      mobile: { top: "59%", left: "-3%" },
       tablet: { top: "58%", left: "0%" },
       desktop: { top: "57%", left: "-1%" },
     },
@@ -66,7 +66,7 @@ const images: ImageConfig[] = [
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "66%", left: "10%" },
+      mobile: { top: "69%", left: "10%" },
       tablet: { top: "65%", left: "8%" },
       desktop: { top: "64%", left: "7%" },
     },
@@ -81,7 +81,7 @@ const images: ImageConfig[] = [
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "66%", left: "10%" },
+      mobile: { top: "69%", left: "10%" },
       tablet: { top: "65%", left: "8%" },
       desktop: { top: "64%", left: "7%" },
     },
@@ -97,7 +97,7 @@ const images: ImageConfig[] = [
     },
     position: {
       mobile: { top: "67%", left: "29%" },
-      tablet: { top: "66%", left: "27%" },
+      tablet: { top: "66%", left: "25%" },
       desktop: { top: "65%", left: "26%" },
     },
     zIndex: 5,
@@ -136,12 +136,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/8.png",
     alt: "slippers",
     dimensions: {
-      mobile: { width: 95, height: 95 },
+      mobile: { width: 87, height: 95 },
       tablet: { width: 127, height: 127 },
       desktop: { width: 160, height: 160 },
     },
     position: {
-      mobile: { top: "85%", left: "5%" },
+      mobile: { top: "90%", left: "-6%" },
       tablet: { top: "84%", left: "3%" },
       desktop: { top: "83%", left: "2%" },
     },
@@ -181,12 +181,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/11.png",
     alt: "sofa",
     dimensions: {
-      mobile: { width: 150, height: 150 },
+      mobile: { width: 100, height: 150 },
       tablet: { width: 200, height: 200 },
       desktop: { width: 250, height: 250 },
     },
     position: {
-      mobile: { top: "65%", left: "83%" },
+      mobile: { top: "75%", left: "80%" },
       tablet: { top: "64%", left: "81%" },
       desktop: { top: "63%", left: "80%" },
     },
@@ -216,7 +216,7 @@ const images: ImageConfig[] = [
       desktop: { width: 80, height: 80 },
     },
     position: {
-      mobile: { top: "75%", left: "91%" },
+      mobile: { top: "88%", left: "89%" },
       tablet: { top: "74%", left: "89%" },
       desktop: { top: "73%", left: "88%" },
     },
@@ -331,12 +331,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/21.png",
     alt: "disco ball",
     dimensions: {
-      mobile: { width: 65, height: 65 },
+      mobile: { width: 60, height: 65 },
       tablet: { width: 87, height: 87 },
       desktop: { width: 110, height: 110 },
     },
     position: {
-      mobile: { top: "16%", left: "90%" },
+      mobile: { top: "-8%", left: "86%" },
       tablet: { top: "14%", left: "92%" },
       desktop: { top: "13%", left: "93%" },
     },
@@ -346,14 +346,14 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/22.png",
     alt: "car",
     dimensions: {
-      mobile: { width: 65, height: 65 },
+      mobile: { width: 60, height: 65 },
       tablet: { width: 87, height: 87 },
-      desktop: { width: 110, height: 110 },
+      desktop: { width: 100, height: 110 },
     },
     position: {
-      mobile: { top: "32%", left: "85%" },
+      mobile: { top: "34%", left: "87%" },
       tablet: { top: "30%", left: "83%" },
-      desktop: { top: "29%", left: "82%" },
+      desktop: { top: "26%", left: "83%" },
     },
     zIndex: 5,
   },
@@ -396,7 +396,7 @@ const images: ImageConfig[] = [
       desktop: { width: 300, height: 200 },
     },
     position: {
-      mobile: { top: "67%", left: "35%" },
+      mobile: { top: "67%", left: "33%" },
       tablet: { top: "66%", left: "33%" },
       desktop: { top: "65%", left: "32%" },
     },
@@ -509,7 +509,7 @@ export default function MakeoverProject() {
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
+       <div className="flex flex-col-reverse lg:flex-row gap-16 sm:gap-20 lg:gap-4 mt-8 sm:mt-10">
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
             onMouseEnter={() =>
@@ -523,36 +523,28 @@ export default function MakeoverProject() {
                 breakpoint === "mobile"
                   ? 1
                   : isImageHovered
-                  ? 0.92
-                  : isTextHovered
-                  ? 1.08
-                  : 1,
+                    ? 0.92
+                    : isTextHovered
+                      ? 1.08
+                      : 1,
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               If you&apos;re setting up a new space or ready to give your current
               one a proper refresh, this is for you.
-              <br />
-              <br />
               We start by understanding your space, what it needs to feel
               like, and how you want to live or work in it.
-              <br />
-              <br />
               From layout and color direction to furniture, decor, and
               finishing touches, I help you put everything together so it
               feels cohesive and considered.
-              <br />
-              <br />
+            </p>
+            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               The process is collaborative: you share your ideas, I guide
               you with moodboards, references, and sourcing support.
-              <br />
-              <br />
               We work through each area step by step — choosing what to
               keep, what to add, and what to let go of until the space feels
               just right.
-              <br />
-              <br />
               Whether it&apos;s a home, studio, or store, the goal stays the
               same: to create a space that feels warm, functional, and true
               to you.
@@ -572,16 +564,16 @@ export default function MakeoverProject() {
                 breakpoint === "mobile"
                   ? 1
                   : isTextHovered
-                  ? 0.92
-                  : isImageHovered
-                  ? 1.08
-                  : 1,
+                    ? 0.92
+                    : isImageHovered
+                      ? 1.08
+                      : 1,
               filter:
                 breakpoint === "mobile"
                   ? "blur(0px)"
                   : isTextHovered
-                  ? "blur(2px)"
-                  : "blur(0px)",
+                    ? "blur(2px)"
+                    : "blur(0px)",
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
             style={{
@@ -590,8 +582,8 @@ export default function MakeoverProject() {
                 breakpoint === "mobile"
                   ? "40px"
                   : breakpoint === "tablet"
-                  ? "60px"
-                  : "80px",
+                    ? "60px"
+                    : "80px",
             }}
           >
             {images.map((img, idx) => (
