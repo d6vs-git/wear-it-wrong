@@ -37,9 +37,9 @@ const images: ImageConfig[] = [
       desktop: { width: 155, height: 155 },
     },
     position: {
-      mobile: { top: "5%", left: "-3%" }, // was 0%
+      mobile: { top: "5%", left: "1%" },
       tablet: { top: "5%", left: "4%" }, // was 4%
-      desktop: { top: "9%", left: "8%" },
+      desktop: { top: "9%", left: "12%" },
     },
     zIndex: 3,
   },
@@ -79,12 +79,12 @@ const images: ImageConfig[] = [
     dimensions: {
       mobile: { width: 95, height: 95 },
       tablet: { width: 133, height: 133 },
-      desktop: { width: 190, height: 190 },
+      desktop: { width: 190, height: 195 },
     },
     position: {
-      mobile: { top: "4%", left: "51%" }, // was 56%
+      mobile: { top: "6%", left: "50%" }, // was 56%
       tablet: { top: "2%", left: "50%" }, // was 55%
-      desktop: { top: "6%", left: "59%" },
+      desktop: { top: "6%", left: "57%" },
     },
     zIndex: 3,
   },
@@ -130,7 +130,7 @@ const images: ImageConfig[] = [
       desktop: { width: 50, height: 50 },
     },
     position: {
-      mobile: { top: "75%", left: "80%" },
+      mobile: { top: "68%", left: "75%" },
       tablet: { top: "60%", left: "75%" },
       desktop: { top: "65%", left: "85%" },
     },
@@ -139,17 +139,32 @@ const images: ImageConfig[] = [
 
   // Middle Row - 5 Paintings
   {
-    src: "/assets/images/space/space-edit/painting4.png",
-    alt: "painting-middle-2",
+    src: "/assets/images/space/space-edit/painting2.png",
+    alt: "painting-middle-1",
     dimensions: {
       mobile: { width: 75, height: 75 },
       tablet: { width: 107, height: 107 },
       desktop: { width: 155, height: 155 },
     },
     position: {
+      mobile: { top: "25%", left: "1%" },
+      tablet: { top: "23%", left: "15%" },
+      desktop: { top: "27%", left: "11%" },
+    },
+    zIndex: 3,
+  },
+  {
+    src: "/assets/images/space/space-edit/painting4.png",
+    alt: "painting-middle-2",
+    dimensions: {
+      mobile: { width: 75, height: 75 },
+      tablet: { width: 107, height: 107 },
+      desktop: { width: 160, height: 165 },
+    },
+    position: {
       mobile: { top: "25%", left: "16%" }, // was 21%
       tablet: { top: "23%", left: "15%" }, // was 20%
-      desktop: { top: "27%", left: "24%" },
+      desktop: { top: "27%", left: "25%" },
     },
     zIndex: 3,
   },
@@ -220,12 +235,12 @@ const images: ImageConfig[] = [
     dimensions: {
       mobile: { width: 120, height: 150 },
       tablet: { width: 200, height: 250 },
-      desktop: { width: 300, height: 500 },
+      desktop: { width: 300, height: 400 },
     },
     position: {
-      mobile: { top: "30%", left: "-12%" },
+      mobile: { top: "40%", left: "6%" },
       tablet: { top: "30%", left: "15%" },
-      desktop: { top: "12%", left: "10%" },
+      desktop: { top: "20%", left: "10%" },
     },
     zIndex: 4,
   },
@@ -240,7 +255,7 @@ const images: ImageConfig[] = [
       desktop: { width: 530, height: 309 },
     },
     position: {
-      mobile: { top: "45%", left: "10%" },
+      mobile: { top: "45%", left: "20%" },
       tablet: { top: "45%", left: "30%" },
       desktop: { top: "55%", left: "25%" },
     },
@@ -257,7 +272,7 @@ const images: ImageConfig[] = [
       desktop: { width: 165, height: 165 },
     },
     position: {
-      mobile: { top: "90%", left: "70%" },
+      mobile: { top: "80%", left: "65%" },
       tablet: { top: "66%", left: "68%" },
       desktop: { top: "72%", left: "78%" },
     },
@@ -274,7 +289,7 @@ const images: ImageConfig[] = [
       desktop: { width: 80, height: 80 },
     },
     position: {
-      mobile: { top: "62%", left: "71%" },
+      mobile: { top: "60%", left: "66%" },
       tablet: { top: "55%", left: "70%" },
       desktop: { top: "60%", left: "79%" },
     },
@@ -286,12 +301,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/flowerpot.png",
     alt: "large-flowerpot",
     dimensions: {
-      mobile: { width: 80, height: 90 },
+      mobile: { width: 80, height: 125 },
       tablet: { width: 180, height: 180 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "70%", left: "80%" },
+      mobile: { top: "50%", left: "78%" },
       tablet: { top: "50%", left: "75%" },
       desktop: { top: "40%", left: "80%" },
     },
