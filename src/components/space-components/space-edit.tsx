@@ -428,23 +428,14 @@ export default function SpaceEdit() {
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               Sometimes your space just needs a few small shifts to feel right
               again — not a full change, just the things that were slightly off
-              or no longer working for you.
-              <br />
-              <br />
-              This one&apos;s for when you don&apos;t need a big overhaul, but
-              could use a second eye, a clearer direction, or someone to help
-              you figure out what&apos;s missing.
-              <br />
-              <br />
-              We&apos;ll walk through your space together — physically or
-              through photos — and talk about what feels stuck or incomplete.
-              <br />
-              <br />
+              or no longer working for you. This one&apos;s for when you
+              don&apos;t need a big overhaul, but could use a second eye, a
+              clearer direction, or someone to help you figure out what&apos;s
+              missing. We&apos;ll walk through your space together — physically
+              or through photos — and talk about what feels stuck or incomplete.
               Then I&apos;ll give you clear, specific suggestions for small
               updates that can make a bigger difference: lighting, layout
               tweaks, color, rearranging furniture, or adding a few key pieces.
-              <br />
-              <br />
               It&apos;s practical, intentional, and built around what you
               already have and how you actually use the space. No overthinking,
               no unnecessary things.

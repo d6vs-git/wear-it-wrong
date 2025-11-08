@@ -340,26 +340,17 @@ export default function WardrobeDetox() {
           >
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               We go through your wardrobe together: what you wear often, what
-              just sits there, and what you actually love.
-              
-              I&apos;ll ask a few questions, get you to try some pieces, and
-              understand your style in real life and not just on paper.
-             <br />
-             <br />
+              just sits there, and what you actually love. I&apos;ll ask a few
+              questions, get you to try some pieces, and understand your style
+              in real life and not just on paper.
+              <br></br>
               We&apos;ll build new outfit combinations, organize your space so
-              it&apos;s easy to use, and note what&apos;s missing to make it work
-              better.
-            
-              After the session, you&apos;ll receive a personalized presentation
-              with:
+              it&apos;s easy to use, and note what&apos;s missing to make it
+              work better. After the session, you&apos;ll receive a personalized
+              presentation with: <br></br>- full outfit ideas styled using your
+              pieces and a few suggested additions, <br></br>- links to the new
+              items, <br />- a mini guide on how to mix and match everything.
               <br />
-              - full outfit ideas styled using your pieces and a few suggested
-              additions,
-              <br />
-              - links to the new items,
-              <br />
-              - a mini guide on how to mix and match everything.
-             
               It&apos;s a practical, no-drama reset for your wardrobe so you
               know exactly what you own and how to wear it.
             </p>

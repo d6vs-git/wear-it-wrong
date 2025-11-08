@@ -82,7 +82,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-     mobile: { top: "10%", left: "18%" },
+      mobile: { top: "10%", left: "18%" },
       tablet: { top: "15%", left: "18%" },
       desktop: { top: "15%", left: "18%" },
     },
@@ -97,7 +97,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "10%", left: "33%" }, 
+      mobile: { top: "10%", left: "33%" },
       tablet: { top: "15%", left: "33%" },
       desktop: { top: "15%", left: "33%" },
     },
@@ -112,7 +112,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile:{ top: "10%", left: "33%" },
+      mobile: { top: "10%", left: "33%" },
       tablet: { top: "15%", left: "33%" },
       desktop: { top: "15%", left: "33%" },
     },
@@ -236,7 +236,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "3%" },
       tablet: { top: "35%", left: "10.5%" },
-          desktop: { top: "55%", left: "3%" },
+      desktop: { top: "55%", left: "3%" },
     },
     zIndex: 5,
   },
@@ -251,7 +251,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "18%" },
       tablet: { top: "35%", left: "25.5%" },
-        desktop: { top: "55%", left: "18%" },
+      desktop: { top: "55%", left: "18%" },
     },
     zIndex: 2,
   },
@@ -266,7 +266,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "18%" },
       tablet: { top: "35%", left: "25.5%" },
-         desktop: { top: "55%", left: "18%" },
+      desktop: { top: "55%", left: "18%" },
     },
     zIndex: 5,
   },
@@ -281,7 +281,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "33%" },
       tablet: { top: "35%", left: "40.5%" },
-          desktop: { top: "55%", left: "33%" },
+      desktop: { top: "55%", left: "33%" },
     },
     zIndex: 2,
   },
@@ -296,7 +296,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "33%" },
       tablet: { top: "35%", left: "40.5%" },
-    desktop: { top: "55%", left: "33%" },
+      desktop: { top: "55%", left: "33%" },
     },
     zIndex: 5,
   },
@@ -311,7 +311,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "48%" },
       tablet: { top: "35%", left: "55.5%" },
-          desktop: { top: "55%", left: "48%" },
+      desktop: { top: "55%", left: "48%" },
     },
     zIndex: 2,
   },
@@ -326,7 +326,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "48%" },
       tablet: { top: "35%", left: "55.5%" },
-          desktop: { top: "55%", left: "48%" },
+      desktop: { top: "55%", left: "48%" },
     },
     zIndex: 5,
   },
@@ -341,7 +341,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "63%" },
       tablet: { top: "35%", left: "70.5%" },
-         desktop: { top: "55%", left: "63%" },
+      desktop: { top: "55%", left: "63%" },
     },
     zIndex: 2,
   },
@@ -356,7 +356,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "63%" },
       tablet: { top: "35%", left: "70.5%" },
-          desktop: { top: "55%", left: "63%" },
+      desktop: { top: "55%", left: "63%" },
     },
     zIndex: 5,
   },
@@ -371,7 +371,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "78%" },
       tablet: { top: "35%", left: "85.5%" },
-         desktop: { top: "55%", left: "78%" },
+      desktop: { top: "55%", left: "78%" },
     },
     zIndex: 2,
   },
@@ -386,7 +386,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "55%", left: "78%" },
       tablet: { top: "35%", left: "85.5%" },
-        desktop: { top: "55%", left: "78%" },
+      desktop: { top: "55%", left: "78%" },
     },
     zIndex: 5,
   },
@@ -527,29 +527,20 @@ export default function BrandShoots() {
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               Your shoot should feel like your brand and not a random Pinterest
               board.
-              <br />
-              <br />
-              I help you build the entire visual direction: from concept and
-              styling to how it all comes together on set.
-             
-              We start with your brand story, what you&apos;re launching, and
-              the mood you want to create.
-             
-              Then I put together a concept deck covering mood, palette, styling
-              cues, and references.
-             
-              Once the direction&apos;s locked, I handle the styling: sourcing
-              looks, creating the set mood, and making sure every shot feels
-              cohesive and intentional.
-           
-              Whether it&apos;s for a catalog, campaign, or editorial shoot, I
-              work closely with your photographer and team to bring the concept
-              to life.
-              <br />
-              <br />
-              Why it works? Because your photos aren&apos;t just pictures; they
-              are your brand&apos;s first impression. And when that&apos;s done
-              right, people get it instantly.
+              <br></br>I help you build the entire visual direction: from
+              concept and styling to how it all comes together on set. We start
+              with your brand story, what you&apos;re launching, and the mood
+              you want to create. Then I put together a concept deck covering
+              mood, palette, styling cues, and references. Once the
+              direction&apos;s locked, I handle the styling: sourcing looks,
+              creating the set mood, and making sure every shot feels cohesive
+              and intentional. Whether it&apos;s for a catalog, campaign, or
+              editorial shoot, I work closely with your photographer and team to
+              bring the concept to life.
+              <br></br>
+              <br></br>Why it works? Because your photos aren&apos;t just
+              pictures; they are your brand&apos;s first impression. And when
+              that&apos;s done right, people get it instantly.
             </p>
           </motion.div>
 

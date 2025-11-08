@@ -509,7 +509,7 @@ export default function MakeoverProject() {
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-       <div className="flex flex-col-reverse lg:flex-row gap-16 sm:gap-20 lg:gap-4 mt-8 sm:mt-10">
+        <div className="flex flex-col-reverse lg:flex-row gap-16 sm:gap-20 lg:gap-4 mt-8 sm:mt-10">
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
             onMouseEnter={() =>
@@ -523,31 +523,27 @@ export default function MakeoverProject() {
                 breakpoint === "mobile"
                   ? 1
                   : isImageHovered
-                    ? 0.92
-                    : isTextHovered
-                      ? 1.08
-                      : 1,
+                  ? 0.92
+                  : isTextHovered
+                  ? 1.08
+                  : 1,
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
-              If you&apos;re setting up a new space or ready to give your current
-              one a proper refresh, this is for you.
-              We start by understanding your space, what it needs to feel
-              like, and how you want to live or work in it.
-              From layout and color direction to furniture, decor, and
-              finishing touches, I help you put everything together so it
-              feels cohesive and considered.
-            </p>
-            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
-              The process is collaborative: you share your ideas, I guide
-              you with moodboards, references, and sourcing support.
-              We work through each area step by step — choosing what to
-              keep, what to add, and what to let go of until the space feels
-              just right.
-              Whether it&apos;s a home, studio, or store, the goal stays the
-              same: to create a space that feels warm, functional, and true
-              to you.
+              If you&apos;re setting up a new space or ready to give your
+              current one a proper refresh, this is for you. We start by
+              understanding your space, what it needs to feel like, and how you
+              want to live or work in it. From layout and color direction to
+              furniture, decor, and finishing touches, I help you put everything
+              together so it feels cohesive and considered.
+              <br></br>
+              The process is collaborative: you share your ideas, I guide you
+              with moodboards, references, and sourcing support. We work through
+              each area step by step — choosing what to keep, what to add, and
+              what to let go of until the space feels just right. Whether
+              it&apos;s a home, studio, or store, the goal stays the same: to
+              create a space that feels warm, functional, and true to you.
             </p>
           </motion.div>
 
@@ -564,16 +560,16 @@ export default function MakeoverProject() {
                 breakpoint === "mobile"
                   ? 1
                   : isTextHovered
-                    ? 0.92
-                    : isImageHovered
-                      ? 1.08
-                      : 1,
+                  ? 0.92
+                  : isImageHovered
+                  ? 1.08
+                  : 1,
               filter:
                 breakpoint === "mobile"
                   ? "blur(0px)"
                   : isTextHovered
-                    ? "blur(2px)"
-                    : "blur(0px)",
+                  ? "blur(2px)"
+                  : "blur(0px)",
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
             style={{
@@ -582,8 +578,8 @@ export default function MakeoverProject() {
                 breakpoint === "mobile"
                   ? "40px"
                   : breakpoint === "tablet"
-                    ? "60px"
-                    : "80px",
+                  ? "60px"
+                  : "80px",
             }}
           >
             {images.map((img, idx) => (

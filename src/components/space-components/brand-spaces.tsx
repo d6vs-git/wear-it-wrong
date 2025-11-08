@@ -404,40 +404,36 @@ export default function BrandSpaces() {
                 breakpoint === "mobile"
                   ? 1
                   : isImageHovered
-                    ? 0.92
-                    : isTextHovered
-                      ? 1.08
-                      : 1,
+                  ? 0.92
+                  : isTextHovered
+                  ? 1.08
+                  : 1,
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               Your space is often the first time someone experiences your brand,
               so it should tell your story without saying a word.
-              <br />
-              <br />
-              I help brands design and style their physical spaces; whether
-              it&apos;s a store, studio, or pop-up, so it looks good, feels
-              cohesive, and makes sense for how people actually move through it.
-              
-              We start by understanding your identity and what you want the
-              space to communicate. From there, I help plan the layout,
+              <br></br> I help brands design and style their physical spaces;
+              whether it&apos;s a store, studio, or pop-up, so it looks good,
+              feels cohesive, and makes sense for how people actually move
+              through it. We start by understanding your identity and what you
+              want the space to communicate. From there, I help plan the layout,
               materials, color story, and decor details that bring that feeling
-              to life.
-             
-              It&apos;s not just about making things pretty but about creating a
-              space that feels intentional, on-brand, and easy to maintain.
-              <br />
-              <br />
-              Whether you&apos;re setting up from scratch or reworking an
-              existing space, the goal is simple: to make your space feel like
-              your brand — lived-in, real, and instantly recognizable.
+              to life. It&apos;s not just about making things pretty but about
+              creating a space that feels intentional, on-brand, and easy to
+              maintain.
+              <br></br>Whether you&apos;re setting up from scratch or reworking
+              an existing space, the goal is simple: to make your space feel
+              like your brand.
+              <br></br>lived-in, real, and instantly recognizable.
             </p>
           </motion.div>
 
           <motion.div
-            className={`w-full lg:w-2/3 relative ${breakpoint === "mobile" ? "aspect-4/3" : "aspect-video"
-              } overflow-hidden`}
+            className={`w-full lg:w-2/3 relative ${
+              breakpoint === "mobile" ? "aspect-4/3" : "aspect-video"
+            } overflow-hidden`}
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsImageHovered(true)
             }
@@ -449,16 +445,16 @@ export default function BrandSpaces() {
                 breakpoint === "mobile"
                   ? 1
                   : isTextHovered
-                    ? 0.92
-                    : isImageHovered
-                      ? 1.08
-                      : 1,
+                  ? 0.92
+                  : isImageHovered
+                  ? 1.08
+                  : 1,
               filter:
                 breakpoint === "mobile"
                   ? "blur(0px)"
                   : isTextHovered
-                    ? "blur(2px)"
-                    : "blur(0px)",
+                  ? "blur(2px)"
+                  : "blur(0px)",
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
             style={{
@@ -467,8 +463,8 @@ export default function BrandSpaces() {
                 breakpoint === "mobile"
                   ? "40px"
                   : breakpoint === "tablet"
-                    ? "60px"
-                    : "80px",
+                  ? "60px"
+                  : "80px",
             }}
           >
             {images.map((img, idx) => (

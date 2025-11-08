@@ -310,19 +310,14 @@ export default function StyleDrop() {
           >
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               You fill out a quick form or send me a moodboard to show your
-              vibe.
-              We talk through what you already have and what you&apos;re
+              vibe. We talk through what you already have and what you&apos;re
               looking for; maybe you&apos;re updating your basics, building work
-              looks, or want help finding everyday pieces that feel more you.
-              I then curate a digital style pack just for you, complete with
+              looks, or want help finding everyday pieces that feel more you. I
+              then curate a digital style pack just for you, complete with
               outfit ideas, styling notes, and shopping links to everything you
-              need.
-              Your Style Drop arrives straight in your inbox, ready to shop or
-              save for later.
-              <br />
-              <br />
-              It&apos;s personal styling made easy; no appointments, no stress,
-              just your style delivered.
+              need. Your Style Drop arrives straight in your inbox, ready to
+              shop or save for later. It&apos;s personal styling made easy; no
+              appointments, no stress, just your style delivered.
             </p>
           </motion.div>
 

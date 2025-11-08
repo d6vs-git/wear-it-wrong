@@ -327,7 +327,11 @@ export default function OccasionStyling() {
           <BookNowButton sessionType="occasion-styling" />
         </div>
         <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 sm:mt-6">
-          ₹3,500 <span className="text-base sm:text-lg md:text-xl lg:text-2xl"> per look </span>
+          ₹3,500{" "}
+          <span className="text-base sm:text-lg md:text-xl lg:text-2xl">
+            {" "}
+            per look{" "}
+          </span>
         </div>
       </div>
 
@@ -354,24 +358,18 @@ export default function OccasionStyling() {
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
-              Tell me about your occasion; the event, the mood you&apos;re going for,
-              and any ideas you already have.
-             
-              I&apos;ll take a look at your wardrobe, see what pieces you want to
-              wear, and figure out how to make them feel fresh, elevated, and
-              just you.
-            
-              I put together a full look: outfit, accessories, even hair and
-              makeup suggestions (so you don&apos;t have to worry about a single
-              detail). You&apos;ll get a clear presentation with options, links,
-              and brand suggestions that fit your style and budget.
-           
-              If you want, I can also shop or join you for fittings to make sure
-              everything comes together perfectly — this can be added as an
-              hourly service.
-            
-              It&apos;s styling that actually works for you, your wardrobe, and
-              your life.
+              Tell me about your occasion; the event, the mood you&apos;re going
+              for, and any ideas you already have. I&apos;ll take a look at your
+              wardrobe, see what pieces you want to wear, and figure out how to
+              make them feel fresh, elevated, and just you.
+              <br /> I put together a full look: outfit, accessories, even hair
+              and makeup suggestions (so you don&apos;t have to worry about a
+              single detail). You&apos;ll get a clear presentation with options,
+              links, and brand suggestions that fit your style and budget.
+              <br></br>If you want, I can also shop or join you for fittings to
+              make sure everything comes together perfectly, this can be added
+              as an hourly service. It&apos;s styling that actually works for
+              you, your wardrobe, and your life.
             </p>
           </motion.div>
 

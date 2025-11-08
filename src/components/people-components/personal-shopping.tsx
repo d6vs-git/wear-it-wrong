@@ -452,10 +452,21 @@ export default function PersonalShopping() {
         <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
-            onMouseEnter={() => breakpoint !== "mobile" && setIsTextHovered(true)}
-            onMouseLeave={() => breakpoint !== "mobile" && setIsTextHovered(false)}
+            onMouseEnter={() =>
+              breakpoint !== "mobile" && setIsTextHovered(true)
+            }
+            onMouseLeave={() =>
+              breakpoint !== "mobile" && setIsTextHovered(false)
+            }
             animate={{
-              scale: breakpoint === "mobile" ? 1 : isImageHovered ? 0.92 : isTextHovered ? 1.08 : 1,
+              scale:
+                breakpoint === "mobile"
+                  ? 1
+                  : isImageHovered
+                  ? 0.92
+                  : isTextHovered
+                  ? 1.08
+                  : 1,
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
@@ -464,39 +475,55 @@ export default function PersonalShopping() {
               style, routine, and what you&apos;re shopping for. Based on that,
               I create a moodboard and we meet to go through it; talk about what
               you like, where you usually shop, and which direction to take.
-              <br />
-              <br />
+              <br></br>
               Then comes the fun part, a two-hour shopping session (in-person or
               online). I plan the stores, brands, and pieces beforehand, so
               everything we look at already makes sense for you. During the
               session, I help you pick what works best: fits, colours, price
               points, all of it.
-              <br />
-              <br />
-              After we shop, you&apos;ll receive a personalized presentation
-              with your moodboard, the pieces we bought, outfit ideas for
-              different occasions, and links to anything else I think would
-              complete your wardrobe.
-              <br />
-              <br />
-              It&apos;s an effortless, guided shopping experience. you still
-              choose, but I make it all come together beautifully.
+              <br></br>After we shop, you&apos;ll receive a personalized
+              presentation with your moodboard, the pieces we bought, outfit
+              ideas for different occasions, and links to anything else I think
+              would complete your wardrobe.
+              <br></br>It&apos;s an effortless, guided shopping experience. you
+              still choose, but I make it all come together beautifully.
             </p>
           </motion.div>
 
           <motion.div
             ref={imageAreaRef}
             className="w-full lg:w-2/3 relative aspect-video"
-            onMouseEnter={() => breakpoint !== "mobile" && setIsImageHovered(true)}
-            onMouseLeave={() => breakpoint !== "mobile" && setIsImageHovered(false)}
+            onMouseEnter={() =>
+              breakpoint !== "mobile" && setIsImageHovered(true)
+            }
+            onMouseLeave={() =>
+              breakpoint !== "mobile" && setIsImageHovered(false)
+            }
             animate={{
-              scale: breakpoint === "mobile" ? 1 : isTextHovered ? 0.92 : isImageHovered ? 1.08 : 1,
-              filter: breakpoint === "mobile" ? "blur(0px)" : isTextHovered ? "blur(2px)" : "blur(0px)",
+              scale:
+                breakpoint === "mobile"
+                  ? 1
+                  : isTextHovered
+                  ? 0.92
+                  : isImageHovered
+                  ? 1.08
+                  : 1,
+              filter:
+                breakpoint === "mobile"
+                  ? "blur(0px)"
+                  : isTextHovered
+                  ? "blur(2px)"
+                  : "blur(0px)",
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-            style={{ 
+            style={{
               overflow: "visible",
-              padding: breakpoint === "mobile" ? "20px" : breakpoint === "tablet" ? "40px" : "60px"
+              padding:
+                breakpoint === "mobile"
+                  ? "20px"
+                  : breakpoint === "tablet"
+                  ? "40px"
+                  : "60px",
             }}
           >
             {images.map((img, idx) => (

@@ -369,19 +369,15 @@ export default function ConceptDevelopment() {
           >
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               Each brand has its own unique vision that defines its identity,
-              and I help bring that vision to life.
-              
-              Whether you&apos;re embarking on a new project, establishing a
-              pop-up, or redefining your brand&apos;s visual narrative, I
-              transform your identity into a concrete expression.
-              
-              We delve into your vision, explore what your brand represents,
-              what it should avoid, and the emotions it should evoke.
-              
-              From this foundation, I develop a comprehensive concept deck that
-              encompasses mood, tone, styling direction, and visual language,
-              serving as your roadmap for photo shoots, campaigns, or store
-              layouts — whatever you&apos;re creating.
+              and I help bring that vision to life. Whether you&apos;re
+              embarking on a new project, establishing a pop-up, or redefining
+              your brand&apos;s visual narrative, I transform your identity into
+              a concrete expression. We delve into your vision, explore what
+              your brand represents, what it should avoid, and the emotions it
+              should evoke. From this foundation, I develop a comprehensive
+              concept deck that encompasses mood, tone, styling direction, and
+              visual language, serving as your roadmap for photo shoots,
+              campaigns, or store layouts -- whatever you&apos;re creating.
               <br />
               <br />
               The reason it succeeds: when your visuals and energy match, your

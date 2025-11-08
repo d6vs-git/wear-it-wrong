@@ -326,20 +326,17 @@ export default function VisualMerchandising() {
             <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               How your store looks says everything before anything else. I help
               you make sure it&apos;s saying the right thing.
-              <br />
-              <br />
-              From window displays and shelf styling to layout flow and product
-              presentation; I style your space so people want to walk in and
-              stay. Whether you&apos;re a boutique, concept store, or brand
+              <br /> From window displays and shelf styling to layout flow and
+              product presentation; I style your space so people want to walk in
+              and stay. Whether you&apos;re a boutique, concept store, or brand
               doing a pop-up, I help translate your identity into a physical
               experience that feels good and looks right. We&apos;ll start by
               understanding your brand and what you want people to feel when
               they walk in. Then I plan, source, and style your space: ensuring
               everything from color flow to product placement tells a story.
               <br />
-              <br />
-              Why it works: Because good styling doesn&apos;t just look pretty;
-              it sells, connects, and makes people remember your brand.
+              <br /> Why it works: Because good styling doesn&apos;t just look
+              pretty; it sells, connects, and makes people remember your brand.
             </p>
           </motion.div>
 

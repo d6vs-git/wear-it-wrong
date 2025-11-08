@@ -331,8 +331,10 @@ function SectionImageItem({
   hoveredCategory: string | null;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">("desktop");
-  
+  const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">(
+    "desktop"
+  );
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useMotionValue(0);
@@ -346,7 +348,7 @@ function SectionImageItem({
   // Update breakpoint based on window width
   useEffect(() => {
     if (typeof window === "undefined") return;
-    
+
     const updateBreakpoint = () => {
       if (window.innerWidth < 640) setBreakpoint("mobile");
       else if (window.innerWidth < 1024) setBreakpoint("tablet");
@@ -359,7 +361,8 @@ function SectionImageItem({
   }, []);
 
   const isHovered = hoveredCategory === img.category;
-  const isOtherHovered = hoveredCategory !== null && hoveredCategory !== img.category;
+  const isOtherHovered =
+    hoveredCategory !== null && hoveredCategory !== img.category;
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -385,7 +388,7 @@ function SectionImageItem({
   };
 
   return (
-          <motion.div
+    <motion.div
       ref={ref}
       className="absolute cursor-pointer"
       style={{
@@ -417,18 +420,18 @@ function SectionImageItem({
       }}
       viewport={{ once: true }}
       transition={{
-        scale: { 
+        scale: {
           type: "spring",
           stiffness: 300,
           damping: 25,
           mass: 0.8,
         },
-        filter: { 
+        filter: {
           type: "tween",
           duration: 0.35,
           ease: [0.22, 1, 0.36, 1],
         },
-        opacity: { 
+        opacity: {
           type: "tween",
           duration: 0.3,
           ease: "easeOut",
@@ -457,15 +460,17 @@ function BadgeItem({
   onHoverEnd,
   onClick,
 }: {
-  badge: typeof badgePositions[0];
+  badge: (typeof badgePositions)[0];
   hoveredCategory: string | null;
   onHoverStart: () => void;
   onHoverEnd: () => void;
   onClick: () => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">("desktop");
-  
+  const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">(
+    "desktop"
+  );
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateZ = useMotionValue(0);
@@ -477,7 +482,7 @@ function BadgeItem({
   // Update breakpoint based on window width
   useEffect(() => {
     if (typeof window === "undefined") return;
-    
+
     const updateBreakpoint = () => {
       if (window.innerWidth < 640) setBreakpoint("mobile");
       else if (window.innerWidth < 1024) setBreakpoint("tablet");
@@ -490,7 +495,8 @@ function BadgeItem({
   }, []);
 
   const isBadgeHovered = hoveredCategory === badge.category;
-  const isOtherBadgeHovered = hoveredCategory !== null && hoveredCategory !== badge.category;
+  const isOtherBadgeHovered =
+    hoveredCategory !== null && hoveredCategory !== badge.category;
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -559,8 +565,8 @@ function BadgeItem({
         },
       }}
     >
-      <Badge 
-        text={badge.text} 
+      <Badge
+        text={badge.text}
         isHovered={isBadgeHovered}
         dimensions={badge.dimensions[breakpoint]}
       />
@@ -572,9 +578,9 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   const serviceMap: Record<string, string> = {
-    "merchandising": "visual-merchandising",
-    "concept": "concept-development",
-    "brandShoot": "brand-shoots",
+    merchandising: "visual-merchandising",
+    concept: "concept-development",
+    brandShoot: "brand-shoots",
   };
 
   return (
@@ -583,7 +589,7 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ 
+      transition={{
         duration: 0.8,
         ease: [0.22, 1, 0.36, 1],
       }}
