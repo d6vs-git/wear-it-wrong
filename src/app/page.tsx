@@ -7,7 +7,8 @@ import About from "../components/home/about";
 import LandingNavbar from "@/components/landing-navbar";
 import Banner from "@/components/home/banner";
 import UnifiedServicesSection from "@/components/styles/brand-overview";
-
+import Footer from "@/components/footer";
+import Testimonials from "@/components/home/testimonials";
 
 export default function Home() {
   const { status } = useSession();
@@ -48,6 +49,9 @@ export default function Home() {
         <Hero />
         <About />
         <UnifiedServicesSection onBadgeClick={handleBadgeClick} />
+        <Testimonials />
+        <Footer/>
+
       </div>
     </main>
   );
