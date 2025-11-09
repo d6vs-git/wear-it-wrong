@@ -51,6 +51,8 @@
 
 :root {
   --background: #fdfef3;
+  /* Beige secondary background (footer band) */
+  --background-secondary: #F0E3D0;
   --foreground: #1c1c1c;
   --card: #ffffff;
   --card-foreground: #1c1c1c;
@@ -116,6 +118,8 @@
 
 .dark {
   --background: #1c1c1c;
+  /* Keep same beige for secondary in dark mode so footer stays brand-consistent */
+  --background-secondary: #F0E3D0;
   --foreground: #fdfef3;
   --card: #121212;
   --card-foreground: #fdfef3;
@@ -264,3 +268,6 @@
 .animate-blink {
   animation: blink 1.8s infinite;
 }
+
+/* Explicit utility in case Tailwind palette didn't generate it */
+.bg-background-secondary { background-color: var(--background-secondary); }

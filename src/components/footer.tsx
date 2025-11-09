@@ -63,18 +63,18 @@ const imagePositions = [
     src: "/assets/images/testimonial/image235.jpg",
     alt: "potrait girl smoking ",
     dimensions: {
-      mobile: { width: 120, height: 180 },
+      mobile: { width: 110, height: 165 }, // reduced for mobile fit
       tablet: { width: 200, height: 200 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "126%", left: "37%" },
+      mobile: { top: "70%", left: "50%" }, // was 126% / 37% (overlapped band)
       tablet: { top: "120%", left: "37%" },
       desktop: { top: "120%", left: "44%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "wardrobe-detox",
-    zIndex: 4,
+    zIndex: 20, // above beige band
     // Crop slight edges to remove black border
     crop: { top: 3, right: 3, bottom: 3, left: 3 },
   },
@@ -263,7 +263,7 @@ export default function Footer() {
       </div>
 
       {/* Lower beige band (match figma ~189px) */}
-      <div className="w-full h-[189px] bg-background-secondary border-t border-border flex items-center justify-between px-6 md:px-10">
+      <div className="w-full h-[189px] bg-background-secondary border-t border-border flex items-center justify-between px-6 md:px-10 relative z-10">
         <motion.div
           initial={{ y: 12, opacity: 0, rotate: -2 }}
           whileInView={{ y: 0, opacity: 1, rotate: 0 }}
