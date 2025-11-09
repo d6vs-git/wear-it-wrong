@@ -8,9 +8,9 @@ export default function FoldersPage() {
       <TimedAudio
         src="/assets/sounds/page1/Ebb%20Tide.mp3"
         start={0}
-        end={15}
-        fadeDuration={5}
+        volume={0.6}
         fixed
+        loop
       />
       <div className="container mx-auto px-4 py-6">
         {/* Style Folders Section */}

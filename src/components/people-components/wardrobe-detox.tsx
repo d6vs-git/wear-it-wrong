@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
+import TimedAudio from "@/components/audio/TimedAudio";
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -217,76 +218,27 @@ type ImageItemProps = {
   breakpoint: Breakpoint;
 };
 
-const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const springConfig = { damping: 20, stiffness: 300, mass: 0.5 };
-  const springX = useSpring(x, springConfig);
-  const springY = useSpring(y, springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current || breakpoint === "mobile") return;
-
-    const rect = ref.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    const deltaX = (e.clientX - centerX) * 0.15;
-    const deltaY = (e.clientY - centerY) * 0.15;
-
-    x.set(deltaX);
-    y.set(deltaY);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  const position = img.position[breakpoint];
-  const dimensions = img.dimensions[breakpoint];
-
-  const baseStyle = {
-    top: position.top,
-    left: position.left,
-    transform: "translate(-50%, -50%)",
-    width: `${dimensions.width}px`,
-    height: `${dimensions.height}px`,
-    zIndex: img.zIndex ?? index,
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      className="absolute cursor-pointer will-change-transform"
-      style={{ ...baseStyle, x: springX, y: springY }}
-      whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
-      whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
-      transition={{
-        scale: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
-      }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      <Image
-        src={img.src}
-        alt={img.alt}
-        width={dimensions.width}
-        height={dimensions.height}
-        className="object-contain w-full h-full pointer-events-none"
-        priority={index < 2}
-      />
-    </motion.div>
-  );
-};
-
 export default function WardrobeDetox() {
   const [isTextHovered, setIsTextHovered] = useState(false);
   const [isImageHovered, setIsImageHovered] = useState(false);
   const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
+  const clockTickRef = useRef<HTMLAudioElement | null>(null);
+  const [muted, setMuted] = useState(true);
+
+  // listen to global mute changes from TimedAudio
+  useEffect(() => {
+    const handler = (e: any) => {
+      if (e?.detail && typeof e.detail.muted === 'boolean') {
+        setMuted(e.detail.muted);
+        if (e.detail.muted && clockTickRef.current) {
+          clockTickRef.current.pause();
+          clockTickRef.current.currentTime = 0;
+        }
+      }
+    };
+    window.addEventListener('wiw-audio-mute-change', handler as any);
+    return () => window.removeEventListener('wiw-audio-mute-change', handler as any);
+  }, []);
 
   useEffect(() => {
     const updateBreakpoint = () => {
@@ -304,8 +256,100 @@ export default function WardrobeDetox() {
     return () => window.removeEventListener("resize", updateBreakpoint);
   }, []);
 
+  function ImageItem({ img, index, breakpoint }: ImageItemProps) {
+    const ref = useRef<HTMLDivElement>(null);
+
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const springConfig = { damping: 20, stiffness: 300, mass: 0.5 };
+    const springX = useSpring(x, springConfig);
+    const springY = useSpring(y, springConfig);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!ref.current || breakpoint === "mobile") return;
+
+      const rect = ref.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      const deltaX = (e.clientX - centerX) * 0.15;
+      const deltaY = (e.clientY - centerY) * 0.15;
+
+      x.set(deltaX);
+      y.set(deltaY);
+    };
+
+    const handleMouseLeave = () => {
+      x.set(0);
+      y.set(0);
+    };
+
+    const position = img.position[breakpoint];
+    const dimensions = img.dimensions[breakpoint];
+
+    const baseStyle = {
+      top: position.top,
+      left: position.left,
+      transform: "translate(-50%, -50%)",
+      width: `${dimensions.width}px`,
+      height: `${dimensions.height}px`,
+      zIndex: img.zIndex ?? index,
+    };
+
+    const isClock = img.alt.toLowerCase().includes('clock');
+    const handleEnter = () => {
+      if (isClock && clockTickRef.current && !muted) {
+        const a = clockTickRef.current;
+        a.currentTime = 0;
+        a.volume = 0.5;
+        a.play().catch(()=>{});
+      }
+    };
+    const handleLeave = () => {
+      if (isClock && clockTickRef.current) {
+        const a = clockTickRef.current;
+        a.pause();
+        a.currentTime = 0;
+      }
+      handleMouseLeave();
+    };
+    return (
+      <motion.div
+        ref={ref}
+        className="absolute cursor-pointer will-change-transform"
+        style={{ ...baseStyle, x: springX, y: springY }}
+        whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
+        whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
+        transition={{
+          scale: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
+        }}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+      >
+        <Image
+          src={img.src}
+          alt={img.alt}
+          width={dimensions.width}
+          height={dimensions.height}
+          className="object-contain w-full h-full pointer-events-none"
+          priority={index < 2}
+        />
+      </motion.div>
+    );
+  }
+
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
+      <TimedAudio
+        src="/assets/sounds/page6/HALFWAYTHRU- CHELSEA JORDAN.mp3"
+        start={0}
+        volume={0.35}
+        fixed
+        loop
+      />
+      <audio ref={clockTickRef} src="/assets/sounds/page6/clock ticking sound effect.mp3" preload="auto" playsInline loop />
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex justify-between items-center gap-3">
           <Heading text="WARDROBE DETOX" />

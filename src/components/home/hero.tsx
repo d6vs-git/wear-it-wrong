@@ -20,7 +20,7 @@ export default function Hero() {
 
   return (
     <section className="h-screen w-full flex items-center justify-center px-4 sm:px-6 md:px-8 bg-background text-foreground overflow-hidden relative">
-      <TimedAudio src="/assets/sounds/page1/Ebb%20Tide.mp3" start={0} end={15} fadeDuration={5} className="top-20 sm:top-24 md:top-28 right-4 md:right-6" />
+      <TimedAudio src="/assets/sounds/page1/Ebb%20Tide.mp3" start={0} volume={0.6} fixed loop />
       <div className="text-center w-full max-w-6xl mx-auto">
         <motion.button
           type="button"

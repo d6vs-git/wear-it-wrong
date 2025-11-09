@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, MouseEvent, useEffect } from "react";
 import Badge from "../badge";
+import TimedAudio from "@/components/audio/TimedAudio";
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -321,25 +322,35 @@ type SectionImage = {
   zIndex?: number;
 };
 
+type SectionImageItemProps = {
+  img: SectionImage;
+  index: number;
+  hoveredCategory: string | null;
+  cameraClick: () => void;
+  chairsFadeIn: () => void;
+  chairsFadeOut: () => void;
+  peopleFadeIn: () => void;
+  peopleFadeOut: () => void;
+};
+
 function SectionImageItem({
   img,
   index,
   hoveredCategory,
-}: {
-  img: SectionImage;
-  index: number;
-  hoveredCategory: string | null;
-}) {
+  cameraClick,
+  chairsFadeIn,
+  chairsFadeOut,
+  peopleFadeIn,
+  peopleFadeOut,
+}: SectionImageItemProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">(
     "desktop"
   );
-
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
-
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
   const springRotateX = useSpring(rotateX, springConfig);
@@ -385,6 +396,16 @@ function SectionImageItem({
     y.set(0);
     rotateX.set(0);
     rotateY.set(0);
+    const alt = img.alt.toLowerCase();
+    if (alt.includes("chair")) chairsFadeOut();
+    if (alt.includes("lady") || alt.includes("women") || alt.includes("group") || alt.includes("people")) peopleFadeOut();
+  };
+
+  const handleEnter = () => {
+    const alt = img.alt.toLowerCase();
+    if (alt.includes("camera")) cameraClick();
+    else if (alt.includes("chair")) chairsFadeIn();
+    else if (alt.includes("lady") || alt.includes("women") || alt.includes("group") || alt.includes("people")) peopleFadeIn();
   };
 
   return (
@@ -439,6 +460,7 @@ function SectionImageItem({
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleEnter}
     >
       <Image
         src={img.src}
@@ -470,11 +492,9 @@ function BadgeItem({
   const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">(
     "desktop"
   );
-
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateZ = useMotionValue(0);
-
   const springX = useSpring(x, { ...springConfig, stiffness: 200 });
   const springY = useSpring(y, { ...springConfig, stiffness: 200 });
   const springRotateZ = useSpring(rotateZ, { ...springConfig, stiffness: 250 });
@@ -583,24 +603,107 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
     brandShoot: "brand-shoots",
   };
 
+  // Hover audio refs and mute sync
+  const cameraRef = useRef<HTMLAudioElement | null>(null);
+  const chairsRef = useRef<HTMLAudioElement | null>(null);
+  const peopleRef = useRef<HTMLAudioElement | null>(null);
+  const [muted, setMuted] = useState(true);
+  const lastCameraTimeRef = useRef<number>(0);
+
+  useEffect(() => {
+    const handler = (e: any) => {
+      if (e?.detail && typeof e.detail.muted === "boolean") {
+        setMuted(e.detail.muted);
+        if (e.detail.muted) {
+          [cameraRef.current, chairsRef.current, peopleRef.current].forEach((a) => {
+            if (a) {
+              a.pause();
+              a.currentTime = 0;
+            }
+          });
+        }
+      }
+    };
+    window.addEventListener("wiw-audio-mute-change", handler as any);
+    return () => window.removeEventListener("wiw-audio-mute-change", handler as any);
+  }, []);
+
+  const cameraClick = () => {
+    if (muted || !cameraRef.current) return;
+    const now = Date.now();
+    if (now - lastCameraTimeRef.current < 800) return;
+    lastCameraTimeRef.current = now;
+    const a = cameraRef.current;
+    a.currentTime = 0;
+    a.volume = 0.55;
+    a.play().catch(() => {});
+  };
+
+  function fadeInLoop(ref: React.RefObject<HTMLAudioElement | null>, target = 0.45) {
+    if (muted || !ref.current) return;
+    const a = ref.current;
+    a.loop = true;
+    a.currentTime = 0;
+    a.volume = 0;
+    a.play().catch(() => {});
+    const step = 0.05;
+    const interval = setInterval(() => {
+      if (!a || a.paused || muted) {
+        clearInterval(interval);
+        return;
+      }
+      a.volume = Math.min(a.volume + step, target);
+      if (a.volume >= target) clearInterval(interval);
+    }, 60);
+  }
+  function fadeOutStop(ref: React.RefObject<HTMLAudioElement | null>) {
+    if (!ref.current) return;
+    const a = ref.current;
+    const step = 0.06;
+    const interval = setInterval(() => {
+      if (!a) {
+        clearInterval(interval);
+        return;
+      }
+      a.volume = Math.max(a.volume - step, 0);
+      if (a.volume <= 0) {
+        a.pause();
+        a.currentTime = 0;
+        clearInterval(interval);
+      }
+    }, 60);
+  }
+
+  const chairsFadeIn = () => fadeInLoop(chairsRef, 0.45);
+  const chairsFadeOut = () => fadeOutStop(chairsRef);
+  const peopleFadeIn = () => fadeInLoop(peopleRef, 0.5);
+  const peopleFadeOut = () => fadeOutStop(peopleRef);
+
   return (
     <motion.section
       className="relative w-full lg:h-screen flex items-center justify-center bg-landing overflow-y-auto lg:overflow-hidden min-h-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
-      }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
+      <TimedAudio src="/assets/sounds/page8/Weekend_privlages.mp3" start={0} volume={0.2} fixed loop />
+      <audio ref={cameraRef} src="/assets/sounds/page9/camera_click.mp3" preload="auto" playsInline />
+      <audio ref={chairsRef} src="/assets/sounds/page9/chiar_noise_people_walking.mp3" preload="auto" playsInline />
+      <audio ref={peopleRef} src="/assets/sounds/page9/people_walking.mp3" preload="auto" playsInline />
+
       {/* Images */}
       {imagePositions.map((img, index) => (
         <SectionImageItem
           key={index}
-          img={img}
+          img={img as any}
           index={index}
           hoveredCategory={hoveredCategory}
+          cameraClick={cameraClick}
+          chairsFadeIn={chairsFadeIn}
+          chairsFadeOut={chairsFadeOut}
+          peopleFadeIn={peopleFadeIn}
+          peopleFadeOut={peopleFadeOut}
         />
       ))}
 

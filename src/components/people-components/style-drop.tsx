@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
+import TimedAudio from "@/components/audio/TimedAudio";
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -276,6 +277,13 @@ export default function StyleDrop() {
 
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
+      <TimedAudio
+        src="/assets/sounds/page8/Weekend_privlages.mp3"
+        start={0}
+        volume={0.38}
+        fixed
+        loop
+      />
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex justify-between items-center gap-3">
           <Heading text="STYLE DROP" />

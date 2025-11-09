@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
+import TimedAudio from "@/components/audio/TimedAudio";
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -230,40 +231,32 @@ type ImageItemProps = {
   img: ImageConfig;
   index: number;
   breakpoint: Breakpoint;
+  clothesAudioRef: React.RefObject<HTMLAudioElement | null>;
+  muted: boolean;
 };
 
-const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
+const ImageItem = ({ img, index, breakpoint, clothesAudioRef, muted }: ImageItemProps) => {
   const ref = useRef<HTMLDivElement>(null);
-
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-
   const springConfig = { damping: 20, stiffness: 300, mass: 0.5 };
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current || breakpoint === "mobile") return;
-
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-
     const deltaX = (e.clientX - centerX) * 0.15;
     const deltaY = (e.clientY - centerY) * 0.15;
-
     x.set(deltaX);
     y.set(deltaY);
   };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
+  const handleMouseLeaveBase = () => { x.set(0); y.set(0); };
 
   const position = img.position[breakpoint];
   const dimensions = img.dimensions[breakpoint];
-
   const baseStyle = {
     top: position.top,
     left: position.left,
@@ -273,6 +266,24 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
     zIndex: img.zIndex ?? index,
   };
 
+  const isCloth = /dress|standing dress roller/i.test(img.alt);
+  const handleEnter = () => {
+    if (isCloth && clothesAudioRef.current && !muted) {
+      const a = clothesAudioRef.current;
+      a.currentTime = 0;
+      a.volume = 0.55;
+      a.play().catch(()=>{});
+    }
+  };
+  const handleLeave = () => {
+    if (isCloth && clothesAudioRef.current) {
+      const a = clothesAudioRef.current;
+      a.pause();
+      a.currentTime = 0;
+    }
+    handleMouseLeaveBase();
+  };
+
   return (
     <motion.div
       ref={ref}
@@ -280,11 +291,10 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
       style={{ ...baseStyle, x: springX, y: springY }}
       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
-      transition={{
-        scale: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
-      }}
+      transition={{ scale: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] } }}
       onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
     >
       <Image
         src={img.src}
@@ -302,18 +312,29 @@ export default function OccasionStyling() {
   const [isTextHovered, setIsTextHovered] = useState(false);
   const [isImageHovered, setIsImageHovered] = useState(false);
   const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
+  const clothesAudioRef = useRef<HTMLAudioElement | null>(null);
+  const [muted, setMuted] = useState(true);
+
+  useEffect(() => {
+    const handler = (e: any) => {
+      if (e?.detail && typeof e.detail.muted === 'boolean') {
+        setMuted(e.detail.muted);
+        if (e.detail.muted && clothesAudioRef.current) {
+          clothesAudioRef.current.pause();
+          clothesAudioRef.current.currentTime = 0;
+        }
+      }
+    };
+    window.addEventListener('wiw-audio-mute-change', handler as any);
+    return () => window.removeEventListener('wiw-audio-mute-change', handler as any);
+  }, []);
 
   useEffect(() => {
     const updateBreakpoint = () => {
-      if (window.innerWidth < 768) {
-        setBreakpoint("mobile");
-      } else if (window.innerWidth < 1024) {
-        setBreakpoint("tablet");
-      } else {
-        setBreakpoint("desktop");
-      }
+      if (window.innerWidth < 768) setBreakpoint("mobile");
+      else if (window.innerWidth < 1024) setBreakpoint("tablet");
+      else setBreakpoint("desktop");
     };
-
     updateBreakpoint();
     window.addEventListener("resize", updateBreakpoint);
     return () => window.removeEventListener("resize", updateBreakpoint);
@@ -321,6 +342,20 @@ export default function OccasionStyling() {
 
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
+      <TimedAudio
+        src="/assets/sounds/page7/heera-Petra_cat-Recording_co._Music.mp3"
+        start={0}
+        volume={0.38}
+        fixed
+        loop
+      />
+      <audio
+        ref={clothesAudioRef}
+        src="/assets/sounds/page7/clothes moving slow sound.mp3"
+        preload="auto"
+        playsInline
+        loop
+      />
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex justify-between items-center gap-3">
           <Heading text="OCCASION STYLING" />
@@ -375,37 +410,16 @@ export default function OccasionStyling() {
 
           <motion.div
             className="w-full lg:w-2/3 relative aspect-video min-h-[400px] sm:min-h-[450px] md:min-h-[500px]"
-            onMouseEnter={() =>
-              breakpoint !== "mobile" && setIsImageHovered(true)
-            }
-            onMouseLeave={() =>
-              breakpoint !== "mobile" && setIsImageHovered(false)
-            }
+            onMouseEnter={() => breakpoint !== "mobile" && setIsImageHovered(true)}
+            onMouseLeave={() => breakpoint !== "mobile" && setIsImageHovered(false)}
             animate={{
-              scale:
-                breakpoint === "mobile"
-                  ? 1
-                  : isTextHovered
-                  ? 0.92
-                  : isImageHovered
-                  ? 1.08
-                  : 1,
-              filter:
-                breakpoint === "mobile"
-                  ? "blur(0px)"
-                  : isTextHovered
-                  ? "blur(2px)"
-                  : "blur(0px)",
+              scale: breakpoint === "mobile" ? 1 : isTextHovered ? 0.92 : isImageHovered ? 1.08 : 1,
+              filter: breakpoint === "mobile" ? "blur(0px)" : isTextHovered ? "blur(2px)" : "blur(0px)",
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
             style={{
               overflow: "visible",
-              padding:
-                breakpoint === "mobile"
-                  ? "20px"
-                  : breakpoint === "tablet"
-                  ? "60px"
-                  : "80px",
+              padding: breakpoint === "mobile" ? "20px" : breakpoint === "tablet" ? "60px" : "80px",
             }}
           >
             {images.map((img, idx) => (
@@ -414,6 +428,8 @@ export default function OccasionStyling() {
                 img={img}
                 index={idx}
                 breakpoint={breakpoint}
+                clothesAudioRef={clothesAudioRef}
+                muted={muted}
               />
             ))}
           </motion.div>

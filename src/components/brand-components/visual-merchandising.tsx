@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
+import TimedAudio from "@/components/audio/TimedAudio";
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -171,9 +172,11 @@ type ImageItemProps = {
   img: ImageConfig;
   index: number;
   breakpoint: Breakpoint;
+  treesAudioRef: React.RefObject<HTMLAudioElement | null>;
+  muted: boolean;
 };
 
-const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
+const ImageItem = ({ img, index, breakpoint, treesAudioRef, muted }: ImageItemProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);
@@ -196,6 +199,20 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
+    // stop trees sfx if leaving a tree image
+    if (img.alt.toLowerCase().includes("tree") && treesAudioRef.current) {
+      treesAudioRef.current.pause();
+      treesAudioRef.current.currentTime = 0;
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (img.alt.toLowerCase().includes("tree") && treesAudioRef.current && !muted) {
+      const a = treesAudioRef.current;
+      a.currentTime = 0;
+      a.volume = 0.5;
+      a.play().catch(() => {});
+    }
   };
 
   const position = img.position[breakpoint];
@@ -222,6 +239,7 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleMouseEnter}
     >
       <Image
         src={img.src}
@@ -240,6 +258,8 @@ export default function VisualMerchandising() {
   const [isImageHovered, setIsImageHovered] = useState(false);
   const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
   const [containerScale, setContainerScale] = useState(1);
+  const treesAudioRef = useRef<HTMLAudioElement | null>(null);
+  const [muted, setMuted] = useState(true);
 
   useEffect(() => {
     const updateBreakpoint = () => {
@@ -259,6 +279,21 @@ export default function VisualMerchandising() {
     updateBreakpoint();
     window.addEventListener("resize", updateBreakpoint);
     return () => window.removeEventListener("resize", updateBreakpoint);
+  }, []);
+
+  // sync with global mute from TimedAudio
+  useEffect(() => {
+    const handler = (e: any) => {
+      if (e?.detail && typeof e.detail.muted === "boolean") {
+        setMuted(e.detail.muted);
+        if (e.detail.muted && treesAudioRef.current) {
+          treesAudioRef.current.pause();
+          treesAudioRef.current.currentTime = 0;
+        }
+      }
+    };
+    window.addEventListener("wiw-audio-mute-change", handler as any);
+    return () => window.removeEventListener("wiw-audio-mute-change", handler as any);
   }, []);
 
   // Force recalculation when switching between desktop/mobile in dev tools
@@ -284,6 +319,21 @@ export default function VisualMerchandising() {
 
   return (
     <div className="w-screen overflow-x-hidden pt-16 md:pt-20">
+      <TimedAudio
+        src="/assets/sounds/page10/Shawn_Mendes-Youth.mp3"
+        start={0}
+        volume={0.34}
+        fixed
+        loop
+      />
+      <audio
+        ref={treesAudioRef}
+        src="/assets/sounds/page10/TREES MOVIN.mp3"
+        preload="auto"
+        playsInline
+        loop
+      />
+
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         {/* Desktop/Tablet: Side by side layout */}
         <div className="hidden sm:flex justify-between items-center gap-3">
@@ -384,6 +434,8 @@ export default function VisualMerchandising() {
                       img={img}
                       index={idx}
                       breakpoint={breakpoint}
+                      treesAudioRef={treesAudioRef}
+                      muted={muted}
                     />
                   ))}
                 </div>

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
-import { Volume2, VolumeX } from "lucide-react";
+import TimedAudio from "@/components/audio/TimedAudio";
 
 type Breakpoint = "mobile" | "tablet" | "desktop";
 
@@ -261,6 +261,7 @@ type ImageItemProps = {
   onFlowerHover: () => void;
   areaWidth: number;
   breakpoint: Breakpoint;
+  onWalkHover?: (hovering: boolean) => void; // keep
 };
 
 const ImageItem = ({
@@ -270,6 +271,7 @@ const ImageItem = ({
   onFlowerHover,
   areaWidth,
   breakpoint,
+  onWalkHover,
 }: ImageItemProps) => {
   const [isMoving, setIsMoving] = useState(false);
   const [key, setKey] = useState(0);
@@ -359,10 +361,17 @@ const ImageItem = ({
             ? { duration: img.moveDuration || 5, ease: "linear" }
             : { opacity: { duration: 0.25 } }
         }
-        onMouseEnter={() => !isMoving && setIsMoving(true)}
+        onMouseEnter={() => {
+          if (!isMoving) setIsMoving(true);
+          if (onWalkHover) onWalkHover(true);
+        }}
+        onMouseLeave={() => {
+          if (onWalkHover) onWalkHover(false);
+        }}
         onAnimationComplete={() => {
           if (isMoving) {
             setIsMoving(false);
+            if (onWalkHover) onWalkHover(false); // stop noise after walk completes
             setKey((k) => k + 1);
           }
         }}
@@ -412,12 +421,12 @@ export default function PersonalShopping() {
   const imageAreaRef = useRef<HTMLDivElement>(null);
   const [areaWidth, setAreaWidth] = useState(0);
 
-  // Local background audio: Romance + background noise (page5)
-  const romanceRef = useRef<HTMLAudioElement | null>(null);
+  // Hover noise element and state
   const noiseRef = useRef<HTMLAudioElement | null>(null);
+  const [walkHovering, setWalkHovering] = useState(false);
   const [muted, setMuted] = useState(true);
 
-  // Small fade helper
+  // Fade helper for noise only
   const fadeTo = (audio: HTMLAudioElement, target: number, seconds: number) => {
     const clamp = (v: number) => Math.max(0, Math.min(1, v));
     const from = clamp(audio.volume);
@@ -436,59 +445,33 @@ export default function PersonalShopping() {
     requestAnimationFrame(step);
   };
 
+  // Listen to global mute toggle from TimedAudio
   useEffect(() => {
-    const r = romanceRef.current;
+    const handler = (e: any) => {
+      if (e?.detail && typeof e.detail.muted === 'boolean') setMuted(e.detail.muted);
+    };
+    window.addEventListener('wiw-audio-mute-change', handler as any);
+    return () => window.removeEventListener('wiw-audio-mute-change', handler as any);
+  }, []);
+
+  // Control hover-triggered background noise
+  useEffect(() => {
     const n = noiseRef.current;
-    if (!r || !n) return;
-
-    // Prepare
-    r.loop = true;
+    if (!n) return;
     n.loop = true;
-    r.muted = true;
-    n.muted = true;
-
-    // Base target volumes
-    const ROMANCE_VOL = 0.22;
     const NOISE_VOL = 0.12;
+    if (!walkHovering || muted) {
+      fadeTo(n, 0, 0.25);
+      const id = setTimeout(() => { if (n.volume === 0) n.pause(); }, 280);
+      return () => clearTimeout(id);
+    } else {
+      n.muted = false;
+      if (n.paused) n.play().catch(() => {});
+      fadeTo(n, NOISE_VOL, 0.4);
+    }
+  }, [walkHovering, muted]);
 
-    // Start silent so we can fade on unmute
-    r.volume = 0;
-    n.volume = 0;
-
-    // Attempt autoplay (muted)
-    r.play().catch(() => {});
-    n.play().catch(() => {});
-
-    // When user unmutes, fade in to targets
-    const applyVolumes = () => {
-      if (muted) {
-        // Fade out then keep muted
-        fadeTo(r, 0, 0.2);
-        fadeTo(n, 0, 0.2);
-        const tid = setTimeout(() => {
-          r.muted = true;
-          n.muted = true;
-        }, 220);
-        return () => clearTimeout(tid);
-      } else {
-        r.muted = false;
-        n.muted = false;
-        // Ensure playing
-        if (r.paused) r.play().catch(() => {});
-        if (n.paused) n.play().catch(() => {});
-        // Fade up
-        fadeTo(r, ROMANCE_VOL, 0.5);
-        fadeTo(n, NOISE_VOL, 0.5);
-      }
-    };
-
-    const cleanup = applyVolumes();
-    return () => {
-      if (typeof cleanup === "function") cleanup();
-    };
-  }, [muted]);
-
-  const toggleMute = () => setMuted((m) => !m);
+  const handleWalkHover = (hovering: boolean) => setWalkHovering(hovering);
 
   useEffect(() => {
     const updateBreakpoint = () => {
@@ -517,19 +500,16 @@ export default function PersonalShopping() {
 
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
-      {/* Single tiny speaker toggle for this section */}
-      <button
-        onClick={toggleMute}
-        className="fixed right-4 top-20 sm:top-24 md:top-28 z-50 h-9 w-9 rounded-full bg-foreground/80 text-background flex items-center justify-center shadow ring-1 ring-foreground/20 hover:bg-foreground transition"
-        aria-label={muted ? "Enable audio" : "Mute audio"}
-        title={muted ? "Sound On" : "Sound Off"}
-      >
-        {muted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-        <span className="sr-only">{muted ? "Enable audio" : "Mute audio"}</span>
-      </button>
+      {/* Global toggle for this section using TimedAudio (loops Romance) */}
+      <TimedAudio
+        src="/assets/sounds/page5/Hiroshi_Suzuki_Romance.mp3"
+        start={0}
+        volume={0.22}
+        fixed
+        loop
+      />
 
-      {/* Hidden audio elements */}
-      <audio ref={romanceRef} src="/assets/sounds/page5/Hiroshi_Suzuki_Romance.mp3" preload="auto" playsInline />
+      {/* Hidden hover noise element */}
       <audio ref={noiseRef} src="/assets/sounds/page5/background_noise.mp3" preload="auto" playsInline />
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
@@ -626,9 +606,10 @@ export default function PersonalShopping() {
                 img={img}
                 index={idx}
                 isFlowersHovered={isFlowersHovered}
-                onFlowerHover={() => setIsFlowersHovered((prev) => !prev)}
+                onFlowerHover={() => setIsFlowersHovered(prev => !prev)}
                 areaWidth={areaWidth}
                 breakpoint={breakpoint}
+                onWalkHover={img.type === 'walk' ? handleWalkHover : undefined}
               />
             ))}
           </motion.div>

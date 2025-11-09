@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Volume2, VolumeX } from "lucide-react";
+import Image from "next/image";
 import clsx from "clsx";
 
 interface TimedAudioProps {
@@ -14,6 +14,7 @@ interface TimedAudioProps {
   autoPlay?: boolean;       // attempt autoplay muted (default true)
   fixed?: boolean;          // position fixed instead of absolute
   loopSegment?: boolean;    // loop between start & end
+  loop?: boolean;           // HTML audio loop for full track
 }
 
 export default function TimedAudio({
@@ -26,6 +27,7 @@ export default function TimedAudio({
   autoPlay = true,
   fixed = false,
   loopSegment = false,
+  loop = false,
 }: TimedAudioProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const rafId = useRef<number | null>(null);
@@ -56,6 +58,7 @@ export default function TimedAudio({
     const audio = audioRef.current;
     if (!audio) return;
     audio.currentTime = start;
+    audio.loop = !!loop && !loopSegment; // loop whole file only if not using segment loop
     audio.muted = muted;
     // For smoother intro when looping a short segment, start silent and fade in
     if (loopSegment && fadeDuration > 0) {
@@ -74,7 +77,17 @@ export default function TimedAudio({
         })
         .catch(() => {});
     }
-  }, []); // run once
+    const onPlay = () => setPlaying(true);
+    const onPause = () => setPlaying(false);
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+    audio.addEventListener("ended", onPause);
+    return () => {
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("ended", onPause);
+    };
+  }, [loop, loopSegment, start, fadeDuration, volume, autoPlay]);
 
   // RAF-based seamless loop for short segments
   useEffect(() => {
@@ -139,6 +152,10 @@ export default function TimedAudio({
 
   // Stop audio on unmount (safety)
   useEffect(() => {
+    // announce initial state
+    if (typeof window !== 'undefined') {
+      try { window.dispatchEvent(new CustomEvent('wiw-audio-mute-change', { detail: { muted } })); } catch {}
+    }
     return () => {
       const audio = audioRef.current;
       if (audio) {
@@ -154,17 +171,25 @@ export default function TimedAudio({
   const toggleMute = () => {
     const audio = audioRef.current;
     if (!audio) return;
-    if (muted) {
+    const next = !muted;
+    if (next === false) {
+      // unmuting
       audio.muted = false;
       if (audio.paused) audio.play().then(() => setPlaying(true)).catch(() => {});
       setMuted(false);
     } else {
+      // muting
       audio.muted = true;
       setMuted(true);
+    }
+    // notify listeners
+    if (typeof window !== 'undefined') {
+      try { window.dispatchEvent(new CustomEvent('wiw-audio-mute-change', { detail: { muted: next } })); } catch {}
     }
   };
 
   const basePosition = fixed ? "fixed right-4 top-20 sm:top-24 md:top-28" : "absolute right-4 top-4";
+  const spinClass = !muted && playing ? "animate-[spin_4s_linear_infinite]" : "";
 
   return (
     <>
@@ -173,14 +198,26 @@ export default function TimedAudio({
         onClick={toggleMute}
         className={clsx(
           basePosition,
-          "z-50 h-11 w-11 rounded-full bg-foreground/80 text-background flex items-center justify-center shadow-lg ring-1 ring-foreground/20 hover:bg-foreground transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+          "z-50 h-12 w-12 rounded-full bg-foreground/80 text-background flex items-center justify-center shadow-lg ring-1 ring-foreground/20 hover:bg-foreground transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary",
           className
         )}
         aria-label={muted ? "Enable audio" : "Mute audio"}
         title={muted ? "Sound On" : "Sound Off"}
       >
-        {muted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
-        <span className="sr-only">{muted ? "Enable audio" : "Mute audio"}</span>
+        <div
+          className={clsx("h-8 w-8 overflow-hidden rounded-full", spinClass)}
+          style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%)" }}
+        >
+          <Image
+            src="/assets/images/people/main/image47.png"
+            alt="Audio toggle"
+            width={32}
+            height={32}
+            className="h-full w-full object-cover select-none pointer-events-none"
+            draggable={false}
+            priority={false}
+          />
+        </div>
       </button>
     </>
   );
