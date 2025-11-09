@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 
 type Breakpoint = "mobile" | "tablet" | "desktop";
 
@@ -411,6 +412,84 @@ export default function PersonalShopping() {
   const imageAreaRef = useRef<HTMLDivElement>(null);
   const [areaWidth, setAreaWidth] = useState(0);
 
+  // Local background audio: Romance + background noise (page5)
+  const romanceRef = useRef<HTMLAudioElement | null>(null);
+  const noiseRef = useRef<HTMLAudioElement | null>(null);
+  const [muted, setMuted] = useState(true);
+
+  // Small fade helper
+  const fadeTo = (audio: HTMLAudioElement, target: number, seconds: number) => {
+    const clamp = (v: number) => Math.max(0, Math.min(1, v));
+    const from = clamp(audio.volume);
+    const to = clamp(target);
+    if (from === to || seconds <= 0) {
+      audio.volume = to;
+      return;
+    }
+    const start = performance.now();
+    const dur = seconds * 1000;
+    function step(now: number) {
+      const t = Math.min(1, (now - start) / dur);
+      audio.volume = clamp(from + (to - from) * t);
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  };
+
+  useEffect(() => {
+    const r = romanceRef.current;
+    const n = noiseRef.current;
+    if (!r || !n) return;
+
+    // Prepare
+    r.loop = true;
+    n.loop = true;
+    r.muted = true;
+    n.muted = true;
+
+    // Base target volumes
+    const ROMANCE_VOL = 0.22;
+    const NOISE_VOL = 0.12;
+
+    // Start silent so we can fade on unmute
+    r.volume = 0;
+    n.volume = 0;
+
+    // Attempt autoplay (muted)
+    r.play().catch(() => {});
+    n.play().catch(() => {});
+
+    // When user unmutes, fade in to targets
+    const applyVolumes = () => {
+      if (muted) {
+        // Fade out then keep muted
+        fadeTo(r, 0, 0.2);
+        fadeTo(n, 0, 0.2);
+        const tid = setTimeout(() => {
+          r.muted = true;
+          n.muted = true;
+        }, 220);
+        return () => clearTimeout(tid);
+      } else {
+        r.muted = false;
+        n.muted = false;
+        // Ensure playing
+        if (r.paused) r.play().catch(() => {});
+        if (n.paused) n.play().catch(() => {});
+        // Fade up
+        fadeTo(r, ROMANCE_VOL, 0.5);
+        fadeTo(n, NOISE_VOL, 0.5);
+      }
+    };
+
+    const cleanup = applyVolumes();
+    return () => {
+      if (typeof cleanup === "function") cleanup();
+    };
+  }, [muted]);
+
+  const toggleMute = () => setMuted((m) => !m);
+
   useEffect(() => {
     const updateBreakpoint = () => {
       if (window.innerWidth < 768) {
@@ -438,6 +517,21 @@ export default function PersonalShopping() {
 
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
+      {/* Single tiny speaker toggle for this section */}
+      <button
+        onClick={toggleMute}
+        className="fixed right-4 top-20 sm:top-24 md:top-28 z-50 h-9 w-9 rounded-full bg-foreground/80 text-background flex items-center justify-center shadow ring-1 ring-foreground/20 hover:bg-foreground transition"
+        aria-label={muted ? "Enable audio" : "Mute audio"}
+        title={muted ? "Sound On" : "Sound Off"}
+      >
+        {muted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+        <span className="sr-only">{muted ? "Enable audio" : "Mute audio"}</span>
+      </button>
+
+      {/* Hidden audio elements */}
+      <audio ref={romanceRef} src="/assets/sounds/page5/Hiroshi_Suzuki_Romance.mp3" preload="auto" playsInline />
+      <audio ref={noiseRef} src="/assets/sounds/page5/background_noise.mp3" preload="auto" playsInline />
+
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex justify-between items-center gap-3">
           <Heading text="PERSONAL SHOPPING" />

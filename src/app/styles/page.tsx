@@ -1,18 +1,18 @@
 import StyleSection from "@/components/styles/style-section";
+import TimedAudio from "@/components/audio/TimedAudio";
 
 export default function FoldersPage() {
   return (
-    <div className="min-h-screen pt-16 md:pt-20">
+    <div className="min-h-screen pt-16 md:pt-20 relative">
+      {/* Page audio: same track as hero, with short snippet */}
+      <TimedAudio
+        src="/assets/sounds/page1/Ebb%20Tide.mp3"
+        start={0}
+        end={15}
+        fadeDuration={5}
+        fixed
+      />
       <div className="container mx-auto px-4 py-6">
-        {/* Search Section */}
-        {/* <div className="max-w-3xl mx-auto mb-8">
-          <SearchBar
-            variant="page"
-            className="w-full"
-            placeholder="Search styles..."
-          />
-        </div> */}
-
         {/* Style Folders Section */}
         <StyleSection />
       </div>

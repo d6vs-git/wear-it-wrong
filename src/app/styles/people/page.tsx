@@ -7,6 +7,7 @@ import PersonalShopping from "@/components/people-components/personal-shopping";
 import OccasionStyling from "@/components/people-components/occasion-styling";
 import StyleDrop from "@/components/people-components/style-drop";
 import WardrobeDetox from "@/components/people-components/wardrobe-detox";
+import TimedAudio from "@/components/audio/TimedAudio";
 
 function PeopleContent() {
   const searchParams = useSearchParams();
@@ -17,7 +18,6 @@ function PeopleContent() {
     router.push(`/styles/people?service=${service}`, { scroll: false });
   };
 
-  // Render the selected service component
   const renderServiceComponent = () => {
     switch (activeService) {
       case "personal-shopping":
@@ -41,9 +41,20 @@ function PeopleContent() {
     }
   };
 
-
   return (
     <>
+      {/* Background audio only on the main collage (no active service) */}
+      {!activeService && (
+        <TimedAudio
+          src="/assets/sounds/page4/People Talking - Sound Effect.mp3"
+          start={0}
+          end={4}
+          fadeDuration={0.5}
+          volume={0.18}
+          loopSegment
+          fixed
+        />
+      )}
       {renderServiceComponent()}
     </>
   );

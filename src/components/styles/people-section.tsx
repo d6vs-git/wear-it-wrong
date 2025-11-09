@@ -353,10 +353,16 @@ function SectionImageItem({
   img,
   index,
   hoveredCategory,
+  onDogHover,
+  onCdHover,
+  onPaperHover,
 }: {
   img: SectionImage;
   index: number;
   hoveredCategory: string | null;
+  onDogHover?: (hovering: boolean) => void;
+  onCdHover?: (hovering: boolean) => void;
+  onPaperHover?: (hovering: boolean) => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">("desktop");
@@ -410,6 +416,9 @@ function SectionImageItem({
     y.set(0);
     rotateX.set(0);
     rotateY.set(0);
+    if (onDogHover) onDogHover(false);
+    if (onCdHover) onCdHover(false);
+    if (onPaperHover) onPaperHover(false);
   };
 
   return (
@@ -464,6 +473,11 @@ function SectionImageItem({
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => {
+        if (onDogHover) onDogHover(true);
+        if (onCdHover) onCdHover(true);
+        if (onPaperHover) onPaperHover(true);
+      }}
     >
       <Image
         src={img.src}
@@ -596,15 +610,125 @@ function BadgeItem({
   );
 }
 
+// Smooth fade helper (clamps volume)
+function fadeAudio(audio: HTMLAudioElement, target: number, duration: number) {
+  const clamp = (v: number) => Math.max(0, Math.min(1, v));
+  const start = clamp(audio.volume);
+  const end = clamp(target);
+  const diff = end - start;
+  if (diff === 0) return;
+  const startTime = performance.now();
+  function step(now: number) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / (duration * 1000), 1);
+    audio.volume = clamp(start + diff * progress);
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
 export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
-
   const serviceMap: Record<string, string> = {
     "wardrobe-detox": "wardrobe-detox",
     "package-offers": "package-offers",
     "occasion-styling": "occasion-styling",
     "style-drop": "style-drop",
     "personal-shopper": "personal-shopping",
+  };
+
+  const ambientRef = useRef<HTMLAudioElement | null>(null); // used for rustling on hover only
+  const segmentRef = useRef<HTMLAudioElement | null>(null); // red rum
+  const barkRef = useRef<HTMLAudioElement | null>(null);
+  const barkTimeoutRef = useRef<number | null>(null);
+  const cdHoveringRef = useRef(false);
+
+  // Remove previous auto-play of ambient; rustling should only play on hover
+
+  // Handle CD hover controlled segment playback with clamped volume
+  useEffect(() => {
+    const seg = segmentRef.current;
+    if (!seg) return;
+    const BASE_VOL = 0.35;
+    const onTime = () => {
+      if (!cdHoveringRef.current) return;
+      if (seg.currentTime >= 45) {
+        seg.currentTime = 40;
+        seg.volume = BASE_VOL;
+        seg.play().catch(()=>{});
+      } else if (seg.currentTime >= 44.6) {
+        const remaining = Math.max(0, 45 - seg.currentTime);
+        const proportion = Math.max(0, Math.min(1, remaining / 0.4));
+        const vol = Math.max(0, Math.min(1, BASE_VOL * proportion));
+        seg.volume = vol;
+      } else if (seg.currentTime < 40) {
+        seg.currentTime = 40;
+      }
+    };
+    seg.addEventListener("timeupdate", onTime);
+    return () => seg.removeEventListener("timeupdate", onTime);
+  }, []);
+
+  const handleDogHover = (hovering: boolean) => {
+    const bark = barkRef.current;
+    if (!bark) return;
+    if (hovering) {
+      if (barkTimeoutRef.current) {
+        clearTimeout(barkTimeoutRef.current);
+        barkTimeoutRef.current = null;
+      }
+      bark.currentTime = 0;
+      bark.volume = 0.6;
+      bark.play().catch(()=>{});
+      barkTimeoutRef.current = window.setTimeout(() => {
+        bark.pause();
+        bark.currentTime = 0;
+        barkTimeoutRef.current = null;
+      }, 5000);
+    } else {
+      if (barkTimeoutRef.current) {
+        clearTimeout(barkTimeoutRef.current);
+        barkTimeoutRef.current = null;
+      }
+      bark.pause();
+      bark.currentTime = 0;
+    }
+  };
+
+  const handleCdHover = (hovering: boolean) => {
+    const seg = segmentRef.current;
+    if (!seg) return;
+    const BASE_VOL = 0.35;
+    cdHoveringRef.current = hovering;
+    if (hovering) {
+      seg.currentTime = 40;
+      seg.volume = 0; // start silent
+      seg.play().catch(()=>{});
+      fadeAudio(seg, BASE_VOL, 0.7);
+    } else {
+      fadeAudio(seg, 0, 0.5);
+      setTimeout(() => {
+        if (!cdHoveringRef.current) {
+          seg.pause();
+          seg.currentTime = 40;
+          seg.volume = BASE_VOL;
+        }
+      }, 500);
+    }
+  };
+
+  const handlePaperHover = (hovering: boolean) => {
+    const rustle = ambientRef.current;
+    if (!rustle) return;
+    if (hovering) {
+      rustle.currentTime = 0;
+      rustle.volume = 0.2;
+      rustle.loop = false;
+      rustle.play().catch(()=>{});
+    } else {
+      rustle.pause();
+      rustle.currentTime = 0;
+    }
   };
 
   return (
@@ -621,6 +745,11 @@ export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
         ease: [0.22, 1, 0.36, 1],
       }}
     >
+      {/* Hidden audio elements */}
+      <audio ref={ambientRef} src="/assets/sounds/page4/Rustling_paper.mp3" preload="auto" playsInline />
+      <audio ref={segmentRef} src="/assets/sounds/page4/21_savage_redrum.mp3" preload="auto" playsInline />
+      <audio ref={barkRef} src="/assets/sounds/page4/puppy_barking.mp3" preload="auto" playsInline />
+
       {/* Images */}
       {imagePositions.map((img, index) => (
         <SectionImageItem
@@ -628,6 +757,9 @@ export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
           img={img}
           index={index}
           hoveredCategory={hoveredCategory}
+          onDogHover={img.src.includes("personal-shopper2.png") ? handleDogHover : undefined}
+          onCdHover={img.src.includes("image47.png") ? handleCdHover : undefined}
+          onPaperHover={img.src.includes("image42.png") || img.src.includes("image44.png") ? handlePaperHover : undefined}
         />
       ))}
 
