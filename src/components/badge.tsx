@@ -23,15 +23,15 @@ export default function Badge({
       style={
         dimensions
           ? {
-              width: dimensions.width,
-              height: dimensions.height,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              paddingLeft: `${paddingX}px`,
-              paddingRight: `${paddingX}px`,
-              paddingTop: `${paddingY}px`,
-              paddingBottom: `${paddingY}px`,
+              // width: dimensions.width,
+              // height: dimensions.height,
+              // display: "flex",
+              // alignItems: "center",
+              // justifyContent: "center",
+              // paddingLeft: `${paddingX}px`,
+              // paddingRight: `${paddingX}px`,
+              // paddingTop: `${paddingY}px`,
+              // paddingBottom: `${paddingY}px`,
             }
           : undefined
       }
