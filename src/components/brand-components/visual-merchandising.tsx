@@ -5,14 +5,14 @@ import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
-import TimedAudio from "@/components/audio/TimedAudio";
+import TimedAudio from "@/components/audio/timed-audio";
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
   tablet: { top: string; left: string };
   desktop: { top: string; left: string };
 };
-
+ 
 type ResponsiveDimensions = {
   mobile: { width: number; height: number };
   tablet: { width: number; height: number };

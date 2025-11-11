@@ -1,5 +1,5 @@
 import StyleSection from "@/components/styles/style-section";
-import TimedAudio from "@/components/audio/TimedAudio";
+import TimedAudio from "@/components/audio/timed-audio";
 
 export default function FoldersPage() {
   return (

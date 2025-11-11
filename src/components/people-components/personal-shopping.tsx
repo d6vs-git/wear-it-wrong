@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
-import TimedAudio from "@/components/audio/TimedAudio";
+import TimedAudio from "@/components/audio/timed-audio";
 
 type Breakpoint = "mobile" | "tablet" | "desktop";
 

@@ -4,7 +4,6 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, MouseEvent, useEffect } from "react";
 import Badge from "../badge";
-import TimedAudio from "@/components/audio/TimedAudio";
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -87,7 +86,7 @@ const imagePositions = [
       desktop: { width: 50, height: 50 },
     },
     position: {
-      mobile: { top: "70.5%", left: "42%" },
+      mobile: { top: "70.5%", left: "37%" },
       tablet: { top: "24.5%", left: "49%" },
       desktop: { top: "36.5%", left: "48%" },
     },
@@ -99,12 +98,12 @@ const imagePositions = [
     src: "/assets/images/brand/main/image70.png",
     alt: "V symbol",
     dimensions: {
-      mobile: { width: 25, height: 25 },
+      mobile: { width: 35, height: 25 },
       tablet: { width: 37, height: 37 },
       desktop: { width: 50, height: 50 },
     },
     position: {
-      mobile: { top: "36%", left: "38%" },
+      mobile: { top: "70.5%", left: "60%" },
       tablet: { top: "35%", left: "37%" },
       desktop: { top: "34%", left: "36%" },
     },
@@ -163,6 +162,11 @@ const imagePositions = [
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "concept",
     zIndex: 5,
+    // Added pendulum swing for my-girl (hover)
+    swing: true,
+    swingAmplitude: 9,
+    swingDuration: 1.5,
+    transformOrigin: "50% 100%", // pivot at bottom center so feet stay fixed
   },
   {
     src: "/assets/images/space/main/makeover1.png",
@@ -195,6 +199,9 @@ const imagePositions = [
       desktop: { top: "67%", left: "12%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
+    type: "walk",
+    moveDuration: 6,
+    walkTargetFraction: 0.5, // walk only to halfway across container
     category: "concept",
     zIndex: 10,
   },
@@ -242,13 +249,19 @@ const imagePositions = [
       desktop: { width: 230, height: 230 },
     },
     position: {
-      mobile: { top: "92%", left: "32%" },
+      mobile: { top: "92%", left: "10%" },
       tablet: { top: "25%", left: "77%" },
-      desktop: { top: "19%", left: "76%" },
+      desktop: { top: "19%", left: "65%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: -110 },
     category: "brandShoot",
     zIndex: 5,
+    // Pendulum swing (on hover)
+    swing: true,
+    swingAmplitude: 10,
+    swingDuration: 1.4,
+    // Pivot near top-right so body swings below the tip
+    transformOrigin: "85% 8%",
   },
 ];
 
@@ -320,6 +333,15 @@ type SectionImage = {
   animation?: { x: number; y: number; opacity: number; rotate: number };
   category: string;
   zIndex?: number;
+  type?: "walk";
+  moveDuration?: number;
+  // Optional fraction (0..1) of container width to walk to (center=0.5)
+  walkTargetFraction?: number;
+  // Optional pendulum swing settings
+  swing?: boolean;
+  swingAmplitude?: number; // degrees around base rotate
+  swingDuration?: number; // seconds for half-cycle
+  transformOrigin?: string; // CSS transform-origin to pivot around tip
 };
 
 type SectionImageItemProps = {
@@ -331,6 +353,7 @@ type SectionImageItemProps = {
   chairsFadeOut: () => void;
   peopleFadeIn: () => void;
   peopleFadeOut: () => void;
+  areaWidth: number; // added
 };
 
 function SectionImageItem({
@@ -342,6 +365,7 @@ function SectionImageItem({
   chairsFadeOut,
   peopleFadeIn,
   peopleFadeOut,
+  areaWidth,
 }: SectionImageItemProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">(
@@ -355,6 +379,9 @@ function SectionImageItem({
   const springY = useSpring(y, springConfig);
   const springRotateX = useSpring(rotateX, springConfig);
   const springRotateY = useSpring(rotateY, springConfig);
+  const [isWalking, setIsWalking] = useState(false);
+  // New: hover-driven effects
+  const [isSwinging, setIsSwinging] = useState(false); // camera & my-girl pendulum on hover
 
   // Update breakpoint based on window width
   useEffect(() => {
@@ -376,8 +403,7 @@ function SectionImageItem({
     hoveredCategory !== null && hoveredCategory !== img.category;
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-
+    if (!ref.current || isWalking) return; // disable wiggle while walking
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -392,21 +418,60 @@ function SectionImageItem({
   };
 
   const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-    rotateX.set(0);
-    rotateY.set(0);
+    if (!isWalking) {
+      x.set(0);
+      y.set(0);
+      rotateX.set(0);
+      rotateY.set(0);
+    }
     const alt = img.alt.toLowerCase();
+    if (alt.includes("camera") || alt.includes("my-girl")) setIsSwinging(false);
     if (alt.includes("chair")) chairsFadeOut();
-    if (alt.includes("lady") || alt.includes("women") || alt.includes("group") || alt.includes("people")) peopleFadeOut();
+    if (
+      alt.includes("lady") ||
+      alt.includes("women") ||
+      alt.includes("group") ||
+      alt.includes("people")
+    )
+      peopleFadeOut();
   };
 
   const handleEnter = () => {
     const alt = img.alt.toLowerCase();
-    if (alt.includes("camera")) cameraClick();
-    else if (alt.includes("chair")) chairsFadeIn();
-    else if (alt.includes("lady") || alt.includes("women") || alt.includes("group") || alt.includes("people")) peopleFadeIn();
+    if (alt.includes("camera") || alt.includes("my-girl")) {
+      if (alt.includes("camera")) cameraClick();
+      setIsSwinging(true);
+    } else if (alt.includes("chair")) chairsFadeIn();
+    else if (
+      alt.includes("lady") ||
+      alt.includes("women") ||
+      alt.includes("group") ||
+      alt.includes("people")
+    )
+      peopleFadeIn();
+
+    // Trigger walk for designated images via explicit type
+    if (img.type === "walk" && !isWalking && areaWidth > 0) {
+      setIsWalking(true);
+    }
   };
+
+  // compute walking target distance (to the chosen fraction of width)
+  let walkTargetX = 0;
+  if (isWalking) {
+    const leftPercent = parseFloat(img.position[breakpoint].left) / 100; // starting left % (center-based)
+    const startLeftPx = areaWidth * leftPercent; // element center X in px
+    const fraction = img.walkTargetFraction ?? 0.9; // default closer to right if not specified
+    const targetCenterX = areaWidth * fraction;
+    walkTargetX = targetCenterX - startLeftPx; // displacement needed
+  }
+
+  // Hover pendulum for camera or my-girl (or any image with swing=true)
+  const baseRotate = img.animation?.rotate ?? 0;
+  const shouldSwing = !!img.swing && isSwinging;
+  const swingAmp = img.swingAmplitude ?? 8;
+  const swingTime = img.swingDuration ?? 1.8;
+  const animateRotate = shouldSwing ? [baseRotate - swingAmp, baseRotate + swingAmp] : baseRotate;
 
   return (
     <motion.div
@@ -416,51 +481,73 @@ function SectionImageItem({
         top: img.position[breakpoint].top,
         left: img.position[breakpoint].left,
         transform: "translate(-50%, -50%)",
-        x: springX,
-        y: springY,
-        rotateX: springRotateX,
-        rotateY: springRotateY,
         zIndex: img.zIndex ?? 20,
+        transformOrigin: img.transformOrigin ?? "50% 50%",
+        // Bind motion values only when not walking and not shaking
+        ...(!isWalking
+          ? { x: springX, y: springY, rotateX: springRotateX, rotateY: springRotateY }
+          : {}),
       }}
       initial={{
         x: img.animation?.x ?? 0,
         y: img.animation?.y ?? 0,
         opacity: img.animation?.opacity ?? 1,
-        rotate: img.animation?.rotate ?? 0,
+        rotate: baseRotate,
       }}
       whileInView={{
-        x: 0,
+        // Let animate control rotate/x for pendulum and shake
         y: 0,
         opacity: 1,
-        rotate: img.animation?.rotate ?? 0,
       }}
       animate={{
         scale: isHovered ? 1.25 : isOtherHovered ? 0.88 : 1,
         filter: isOtherHovered ? "blur(6px)" : "blur(0px)",
         opacity: isOtherHovered ? 0.45 : 1,
+        x: isWalking ? walkTargetX : 0,
+        rotate: animateRotate,
       }}
-      viewport={{ once: true }}
       transition={{
         scale: {
-          type: "spring",
           stiffness: 300,
           damping: 25,
           mass: 0.8,
+          type: "spring",
         },
         filter: {
-          type: "tween",
           duration: 0.35,
           ease: [0.22, 1, 0.36, 1],
+          type: "tween",
         },
         opacity: {
-          type: "tween",
           duration: 0.3,
           ease: "easeOut",
+          type: "tween",
         },
+        rotate: shouldSwing
+          ? { duration: swingTime, repeat: Infinity, repeatType: "mirror", ease: [0.42, 0, 0.58, 1] }
+          : { duration: 0.3 },
+        x: isWalking
+          ? { duration: img.moveDuration ?? 6, ease: [0, 0, 1, 1] }
+          : { stiffness: 200, damping: 30 },
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleEnter}
+      onTouchStart={() => {
+        const alt = img.alt.toLowerCase();
+        if (img.type === "walk" && !isWalking && areaWidth > 0) setIsWalking(true);
+        if (alt.includes("camera") || alt.includes("my-girl")) setIsSwinging(true);
+      }}
+      onAnimationComplete={() => {
+        if (isWalking) {
+          setIsWalking(false);
+          // Reset motion values for future wiggle interactions
+          x.set(0);
+          y.set(0);
+          rotateX.set(0);
+          rotateY.set(0);
+        }
+      }}
     >
       <Image
         src={img.src}
@@ -596,7 +683,6 @@ function BadgeItem({
 
 export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
-
   const serviceMap: Record<string, string> = {
     merchandising: "visual-merchandising",
     concept: "concept-development",
@@ -609,6 +695,18 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
   const peopleRef = useRef<HTMLAudioElement | null>(null);
   const [muted, setMuted] = useState(true);
   const lastCameraTimeRef = useRef<number>(0);
+  // measure container width for walking distance
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [areaWidth, setAreaWidth] = useState(0);
+
+  useEffect(() => {
+    const measure = () => {
+      if (containerRef.current) setAreaWidth(containerRef.current.offsetWidth);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
 
   useEffect(() => {
     const handler = (e: any) => {
@@ -681,13 +779,14 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
 
   return (
     <motion.section
+      ref={containerRef}
       className="relative w-full lg:h-screen flex items-center justify-center bg-landing overflow-y-auto lg:overflow-hidden min-h-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
-      <TimedAudio src="/assets/sounds/page8/Weekend_privlages.mp3" start={0} volume={0.2} fixed loop />
+      
       <audio ref={cameraRef} src="/assets/sounds/page9/camera_click.mp3" preload="auto" playsInline />
       <audio ref={chairsRef} src="/assets/sounds/page9/chiar_noise_people_walking.mp3" preload="auto" playsInline />
       <audio ref={peopleRef} src="/assets/sounds/page9/people_walking.mp3" preload="auto" playsInline />
@@ -704,6 +803,7 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
           chairsFadeOut={chairsFadeOut}
           peopleFadeIn={peopleFadeIn}
           peopleFadeOut={peopleFadeOut}
+          areaWidth={areaWidth}
         />
       ))}
 

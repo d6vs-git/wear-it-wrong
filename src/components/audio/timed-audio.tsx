@@ -15,6 +15,7 @@ interface TimedAudioProps {
   fixed?: boolean;          // position fixed instead of absolute
   loopSegment?: boolean;    // loop between start & end
   loop?: boolean;           // HTML audio loop for full track
+  iconSrc?: string;         // new: custom icon path (full CD)
 }
 
 export default function TimedAudio({
@@ -28,6 +29,7 @@ export default function TimedAudio({
   fixed = false,
   loopSegment = false,
   loop = true, // default: full track loops infinitely
+  iconSrc = "/assets/images/people/main/image47.png", // default full CD style logo
 }: TimedAudioProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const rafId = useRef<number | null>(null);
@@ -189,7 +191,7 @@ export default function TimedAudio({
     }
   };
 
-  const basePosition = fixed ? "fixed right-4 top-4" : "absolute right-4 top-4";
+  const basePosition = fixed ? "fixed right-4 top-16 md:top-20" : "absolute right-4 top-16 md:top-20";
   const spinClass = !muted && playing ? "animate-[spin_12s_linear_infinite]" : ""; // slower spin
 
   return (
@@ -199,21 +201,21 @@ export default function TimedAudio({
         onClick={toggleMute}
         className={clsx(
           basePosition,
-          "z-50 h-14 w-14 rounded-full bg-foreground/80 text-background flex items-center justify-center shadow-lg ring-1 ring-foreground/30 hover:bg-foreground transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+          "z-50 h-16 w-16 rounded-full bg-background/70 backdrop-blur-sm text-foreground flex items-center justify-center shadow-lg ring-1 ring-foreground/30 hover:bg-background/90 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary",
           className
         )}
         aria-label={muted ? "Enable audio" : "Mute audio"}
         title={muted ? "Sound On" : "Sound Off"}
       >
         <div
-          className={clsx("h-11 w-11 rounded-full overflow-hidden border-2 border-background/40", spinClass)}
+          className={clsx("h-14 w-14 rounded-full overflow-hidden border-2 border-foreground/20", spinClass)}
         >
           <Image
-            src="/assets/images/people/main/image47.png"
+            src={iconSrc}
             alt="Audio toggle"
-            width={44}
-            height={44}
-            className="h-full w-full object-cover select-none pointer-events-none"
+            width={56}
+            height={56}
+            className="h-full w-full object-contain select-none pointer-events-none"
             draggable={false}
             priority={false}
           />

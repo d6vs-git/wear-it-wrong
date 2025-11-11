@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import TimedAudio from "@/components/audio/TimedAudio";
+import TimedAudio from "@/components/audio/timed-audio";
 
 export default function Hero() {
   const router = useRouter();

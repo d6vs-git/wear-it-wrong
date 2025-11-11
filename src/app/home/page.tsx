@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import TimedAudio from "@/components/audio/timed-audio";
 
 
 
@@ -44,7 +45,7 @@ export default function HeroSection() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-     
+      <TimedAudio src="/assets/sounds/page1/Ebb%20Tide.mp3" start={0} volume={0.5} fixed loop />
       {/* Hero Content */}
       <div className="flex-1 flex flex-col justify-center items-center px-4">
         {/* Logo with hover effect */}
