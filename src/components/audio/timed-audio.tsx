@@ -33,7 +33,16 @@ export default function TimedAudio({
 }: TimedAudioProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const rafId = useRef<number | null>(null);
-  const [muted, setMuted] = useState(false); // default ON (unmuted)
+  const STORAGE_KEY = "wiw-audio-muted";
+  const [muted, setMuted] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false; // default sound ON
+    try {
+      const saved = window.localStorage.getItem(STORAGE_KEY);
+      return saved === 'true';
+    } catch {
+      return false;
+    }
+  });
   const [playing, setPlaying] = useState(false);
 
   // Helpers
@@ -61,7 +70,7 @@ export default function TimedAudio({
     if (!audio) return;
     audio.currentTime = start;
     audio.loop = !!loop && !loopSegment;
-    audio.muted = muted; // now false by default
+    audio.muted = muted;
     if (loopSegment && fadeDuration > 0) {
       audio.volume = 0;
     } else {
@@ -77,7 +86,7 @@ export default function TimedAudio({
           }
         })
         .catch(() => {
-          // Autoplay may fail if unmuted; optionally mark muted state if desired
+          // Autoplay may fail if unmuted; try again on first user gesture
         });
     }
     const onPlay = () => setPlaying(true);
@@ -85,10 +94,23 @@ export default function TimedAudio({
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
     audio.addEventListener("ended", onPause);
+
+    // Try resume on first user interaction if user preference is unmuted
+    const tryResume = () => {
+      const a = audioRef.current;
+      if (!a) return;
+      if (!muted && a.paused) {
+        a.play().catch(() => {});
+      }
+      window.removeEventListener('pointerdown', tryResume);
+    };
+    window.addEventListener('pointerdown', tryResume, { once: true });
+
     return () => {
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
       audio.removeEventListener("ended", onPause);
+      window.removeEventListener('pointerdown', tryResume);
     };
   }, [loop, loopSegment, start, fadeDuration, volume, autoPlay, muted]);
 
@@ -153,9 +175,9 @@ export default function TimedAudio({
     return () => audio.removeEventListener("timeupdate", handleTime);
   }, [loopSegment, end, fadeDuration, start, volume]);
 
-  // Stop audio on unmount (safety)
+  // Stop audio on unmount (safety) and announce state on mount
   useEffect(() => {
-    // announce initial state
+    // announce current mute state
     if (typeof window !== 'undefined') {
       try { window.dispatchEvent(new CustomEvent('wiw-audio-mute-change', { detail: { muted } })); } catch {}
     }
@@ -180,10 +202,12 @@ export default function TimedAudio({
       audio.muted = false;
       if (audio.paused) audio.play().then(() => setPlaying(true)).catch(() => {});
       setMuted(false);
+      try { window.localStorage.setItem(STORAGE_KEY, 'false'); } catch {}
     } else {
       // muting
       audio.muted = true;
       setMuted(true);
+      try { window.localStorage.setItem(STORAGE_KEY, 'true'); } catch {}
     }
     // notify listeners
     if (typeof window !== 'undefined') {

@@ -357,11 +357,12 @@ export default function WardrobeDetox() {
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
       <TimedAudio
-        src="/assets/sounds/page6/HALFWAYTHRU- CHELSEA JORDAN.mp3"
+        src="/assets/sounds/page6/HALFWAYTHRU- CHELSEA JORDAN.mp3" // page6 audio
         start={0}
         volume={0.35}
         fixed
         loop
+        className="z-[70]"
       />
       <audio ref={clockTickRef} src="/assets/sounds/page6/clock ticking sound effect.mp3" preload="auto" playsInline loop />
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">

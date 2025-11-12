@@ -44,17 +44,7 @@ function PeopleContent() {
   return (
     <>
       {/* Background audio only on the main collage (no active service) */}
-      {!activeService && (
-        <TimedAudio
-          src="/assets/sounds/page4/People Talking - Sound Effect.mp3"
-          start={0}
-          end={4}
-          fadeDuration={0.5}
-          volume={0.18}
-          loopSegment
-          fixed
-        />
-      )}
+     
       {renderServiceComponent()}
     </>
   );

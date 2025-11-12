@@ -354,11 +354,12 @@ export default function OccasionStyling() {
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
       <TimedAudio
-        src="/assets/sounds/page7/heera-Petra_cat-Recording_co._Music.mp3"
+        src="/assets/sounds/page7/heera-Petra_cat-Recording_co._Music.mp3" // page7 audio
         start={0}
         volume={0.38}
         fixed
         loop
+        className="z-[70]"
       />
       <audio
         ref={clothesAudioRef}

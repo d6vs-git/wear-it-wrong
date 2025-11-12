@@ -6,6 +6,49 @@ import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
 import TimedAudio from "@/components/audio/timed-audio";
+import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
+
+// Unified audio config (page4)
+// Extended: include background and util segments in one array
+type AudioSegment = {
+  id: string;
+  type: "background" | "utils";
+  src: string;
+  start?: number;
+  end?: number;
+  volume?: number;
+  loopSegment?: boolean;
+  fadeDuration?: number;
+};
+
+const audioSegments: AudioSegment[] = [
+  {
+    id: "bg-romance",
+    type: "background",
+    src: "/assets/sounds/page5/Hiroshi_Suzuki_Romance.mp3",
+    start: 0,
+    volume: 0.22,
+    loopSegment: false,
+  },
+  {
+    id: "bg-shopping",
+    type: "utils",
+    src: "/assets/sounds/page5/background_noise.mp3",
+    start: 0,
+    volume: 0.22,
+    loopSegment: false,
+  },
+];
+
+const utilSegments = audioSegments.filter(s => s.type === 'utils').map(s => ({
+  id: s.id,
+  src: s.src,
+  start: s.start,
+  end: s.end,
+  volume: s.volume,
+  loopSegment: s.loopSegment,
+  fadeDuration: s.fadeDuration,
+}));
 
 type Breakpoint = "mobile" | "tablet" | "desktop";
 
@@ -262,6 +305,7 @@ type ImageItemProps = {
   areaWidth: number;
   breakpoint: Breakpoint;
   onWalkHover?: (hovering: boolean) => void; // keep
+  utilSegmentId?: string; // optional id of util segment to trigger on hover
 };
 
 const ImageItem = ({
@@ -272,6 +316,7 @@ const ImageItem = ({
   areaWidth,
   breakpoint,
   onWalkHover,
+  utilSegmentId,
 }: ImageItemProps) => {
   const [isMoving, setIsMoving] = useState(false);
   const [key, setKey] = useState(0);
@@ -421,57 +466,7 @@ export default function PersonalShopping() {
   const imageAreaRef = useRef<HTMLDivElement>(null);
   const [areaWidth, setAreaWidth] = useState(0);
 
-  // Hover noise element and state
-  const noiseRef = useRef<HTMLAudioElement | null>(null);
-  const [walkHovering, setWalkHovering] = useState(false);
-  const [muted, setMuted] = useState(true);
-
-  // Fade helper for noise only
-  const fadeTo = (audio: HTMLAudioElement, target: number, seconds: number) => {
-    const clamp = (v: number) => Math.max(0, Math.min(1, v));
-    const from = clamp(audio.volume);
-    const to = clamp(target);
-    if (from === to || seconds <= 0) {
-      audio.volume = to;
-      return;
-    }
-    const start = performance.now();
-    const dur = seconds * 1000;
-    function step(now: number) {
-      const t = Math.min(1, (now - start) / dur);
-      audio.volume = clamp(from + (to - from) * t);
-      if (t < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  };
-
-  // Listen to global mute toggle from TimedAudio
-  useEffect(() => {
-    const handler = (e: any) => {
-      if (e?.detail && typeof e.detail.muted === 'boolean') setMuted(e.detail.muted);
-    };
-    window.addEventListener('wiw-audio-mute-change', handler as any);
-    return () => window.removeEventListener('wiw-audio-mute-change', handler as any);
-  }, []);
-
-  // Control hover-triggered background noise
-  useEffect(() => {
-    const n = noiseRef.current;
-    if (!n) return;
-    n.loop = true;
-    const NOISE_VOL = 0.12;
-    if (!walkHovering || muted) {
-      fadeTo(n, 0, 0.25);
-      const id = setTimeout(() => { if (n.volume === 0) n.pause(); }, 280);
-      return () => clearTimeout(id);
-    } else {
-      n.muted = false;
-      if (n.paused) n.play().catch(() => {});
-      fadeTo(n, NOISE_VOL, 0.4);
-    }
-  }, [walkHovering, muted]);
-
-  const handleWalkHover = (hovering: boolean) => setWalkHovering(hovering);
+  const { noiseRef, startUtil, stopUtil, startHoverNoise, stopHoverNoise } = useHoverUtilsAudio(utilSegments, "/assets/sounds/page5/background_noise.mp3");
 
   useEffect(() => {
     const updateBreakpoint = () => {
@@ -498,18 +493,31 @@ export default function PersonalShopping() {
     return () => window.removeEventListener("resize", measure);
   }, []);
 
+  // Provide image to util audio mapping and also which images trigger background noise
+  const imageUtilMap: Record<string, string> = {
+    'Clothing Rack': 'bg-shopping', // treat as util id for hover noise only
+  };
+
+  // Walk hover stub (no extra audio logic now)
+  const handleWalkHover = (_hovering: boolean) => {};
+
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
-      {/* Global toggle for this section using TimedAudio (loops Romance) */}
-      <TimedAudio
-        src="/assets/sounds/page5/Hiroshi_Suzuki_Romance.mp3"
-        start={0}
-        volume={0.22}
-        fixed
-        loop
-      />
-
-      {/* Hidden hover noise element */}
+      {/* Background segments rendered via TimedAudio with higher z to ensure visible CD */}
+      {audioSegments.filter(s => s.type === 'background').map(seg => (
+        <TimedAudio
+          key={seg.id}
+          src={seg.src} // page5 audio
+          start={seg.start}
+          end={seg.end}
+          volume={seg.volume}
+          loopSegment={seg.loopSegment}
+          fadeDuration={seg.fadeDuration}
+          fixed
+          loop
+          className="z-[70]"
+        />
+      ))}
       <audio ref={noiseRef} src="/assets/sounds/page5/background_noise.mp3" preload="auto" playsInline />
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
@@ -601,16 +609,39 @@ export default function PersonalShopping() {
             }}
           >
             {images.map((img, idx) => (
-              <ImageItem
+              <div
                 key={idx}
-                img={img}
-                index={idx}
-                isFlowersHovered={isFlowersHovered}
-                onFlowerHover={() => setIsFlowersHovered(prev => !prev)}
-                areaWidth={areaWidth}
-                breakpoint={breakpoint}
-                onWalkHover={img.type === 'walk' ? handleWalkHover : undefined}
-              />
+                onMouseEnter={() => {
+                  if (breakpoint !== 'mobile') {
+                    const utilId = imageUtilMap[img.alt];
+                    if (utilId === 'bg-shopping') {
+                      startHoverNoise(); // start only noise
+                    } else if (utilId) {
+                      startUtil(utilId); // start util audio
+                    }
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (breakpoint !== 'mobile') {
+                    const utilId = imageUtilMap[img.alt];
+                    if (utilId === 'bg-shopping') {
+                      stopHoverNoise();
+                    } else if (utilId) {
+                      stopUtil(utilId);
+                    }
+                  }
+                }}
+              >
+                <ImageItem
+                  img={img}
+                  index={idx}
+                  isFlowersHovered={isFlowersHovered}
+                  onFlowerHover={() => setIsFlowersHovered(prev => !prev)}
+                  areaWidth={areaWidth}
+                  breakpoint={breakpoint}
+                  onWalkHover={img.type === 'walk' ? handleWalkHover : undefined}
+                />
+              </div>
             ))}
           </motion.div>
         </div>
