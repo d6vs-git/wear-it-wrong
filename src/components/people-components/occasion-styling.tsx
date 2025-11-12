@@ -25,6 +25,8 @@ type ImageConfig = {
   dimensions: ResponsiveDimensions;
   position: ResponsivePosition;
   zIndex?: number;
+  className?: string;
+  transformOrigin?: string;
 };
 
 const images: ImageConfig[] = [
@@ -147,6 +149,9 @@ const images: ImageConfig[] = [
       desktop: { top: "-1%", left: "32%" },
     },
     zIndex: 8,
+    className: "animate-always-slow",
+    transformOrigin: "50% 0%",
+    
   },
   {
     src: "/assets/images/people/occasion-styling/hanging-lamp.png",
@@ -177,6 +182,8 @@ const images: ImageConfig[] = [
       desktop: { top: "50%", left: "38%" },
     },
     zIndex: 13,
+    className: "animate-always-slow",
+    transformOrigin: "50% 50%",
   },
   {
     src: "/assets/images/people/occasion-styling/dress1.png",
@@ -206,7 +213,9 @@ const images: ImageConfig[] = [
       tablet: { top: "19%", left: "64%" },
       desktop: { top: "18%", left: "62%" },
     },
-    zIndex: 6,
+    zIndex: 7,
+        className: "animate-always-slow",
+    transformOrigin: "50% 0%",
   },
   {
     src: "/assets/images/people/occasion-styling/rod.png",
@@ -287,8 +296,10 @@ const ImageItem = ({ img, index, breakpoint, clothesAudioRef, muted }: ImageItem
   return (
     <motion.div
       ref={ref}
-      className="absolute cursor-pointer will-change-transform"
-      style={{ ...baseStyle, x: springX, y: springY }}
+      className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
+      style={{ ...baseStyle, x: springX, y: springY,
+        transformOrigin: img.transformOrigin ?? "50% 50%",
+       }}
       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
       transition={{ scale: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] } }}

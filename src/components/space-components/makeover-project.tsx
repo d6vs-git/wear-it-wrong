@@ -24,6 +24,8 @@ type ImageConfig = {
   dimensions: ResponsiveDimensions;
   position: ResponsivePosition;
   zIndex?: number;
+  className?: string;
+  transformOrigin?: string;
 };
 
 const images: ImageConfig[] = [
@@ -161,6 +163,8 @@ const images: ImageConfig[] = [
       desktop: { top: "74%", left: "4%" },
     },
     zIndex: 5,
+    className: "animate-always-slow",
+    transformOrigin: "50% 0%",
   },
   {
     src: "/assets/images/space/makeover/10.png",
@@ -266,6 +270,8 @@ const images: ImageConfig[] = [
       desktop: { top: "55%", left: "46%" },
     },
     zIndex: 19,
+    className: "animate-always-slow",
+    transformOrigin: "50% 50%",
   },
   {
     src: "/assets/images/space/makeover/17.png",
@@ -456,8 +462,8 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
   return (
     <motion.div
       ref={ref}
-      className="absolute cursor-pointer will-change-transform"
-      style={{ ...baseStyle, x: springX, y: springY }}
+      className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
+      style={{ ...baseStyle, x: springX, y: springY, transformOrigin: img.transformOrigin }}
       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
       transition={{

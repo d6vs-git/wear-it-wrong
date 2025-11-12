@@ -25,6 +25,8 @@ type ImageConfig = {
   dimensions: ResponsiveDimensions;
   position: ResponsivePosition;
   zIndex?: number;
+  className?: string;
+  transformOrigin?: string;
 };
 
 const images: ImageConfig[] = [
@@ -102,6 +104,8 @@ const images: ImageConfig[] = [
       desktop: { top: "-2%", left: "63%" },
     },
     zIndex: 6,
+    className: "animate-always-slow",
+    transformOrigin: "50% 50%",
   },
   {
     src: "/assets/images/people/style-drop/6.png",
@@ -232,8 +236,10 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
   return (
     <motion.div
       ref={ref}
-      className="absolute cursor-pointer will-change-transform"
-      style={{ ...baseStyle, x: springX, y: springY }}
+      className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
+      style={{ ...baseStyle, x: springX, y: springY,
+        transformOrigin: img.transformOrigin ?? "50% 50%",
+       }}
       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
       transition={{

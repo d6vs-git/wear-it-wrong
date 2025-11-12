@@ -63,7 +63,7 @@ const CONFIG = {
       left: "7%",
       width: 80,
       height: 175,
-      z: 50,
+      z: 30,
       cat: "space-edit",
     },
     {

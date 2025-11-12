@@ -24,6 +24,8 @@ type ImageConfig = {
   dimensions: ResponsiveDimensions;
   position: ResponsivePosition;
   zIndex?: number;
+  className?: string;           // NEW: Animation class
+  transformOrigin?: string;
 };
 
 const images: ImageConfig[] = [
@@ -128,9 +130,10 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "72%", left: "6%" },
       tablet: { top: "72%", left: "8%" },
-      desktop: { top: "68%", left: "1%" },
+      desktop: { top: "64%", left: "1%" },
     },
     zIndex: 1,
+    className: "animate-always", 
   },
   {
     src: "/assets/images/brand/concept-development/11.png",
@@ -291,7 +294,7 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
   return (
     <motion.div
       ref={ref}
-      className="absolute cursor-pointer will-change-transform"
+      className={`absolute cursor-pointer will-change-transform ${img.className || ""}`} 
       style={{ ...baseStyle, x: springX, y: springY }}
       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}

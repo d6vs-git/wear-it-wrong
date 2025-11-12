@@ -271,3 +271,286 @@
 
 /* Explicit utility in case Tailwind palette didn't generate it */
 .bg-background-secondary { background-color: var(--background-secondary); }
+
+/* ============================================
+   PENDULUM KEYFRAMES
+   ============================================ */
+
+@keyframes pendulum-subtle {
+  0% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  100% { transform: rotate(-5deg); }
+}
+
+@keyframes pendulum-normal {
+  0% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+  100% { transform: rotate(-10deg); }
+}
+
+@keyframes pendulum-wide {
+  0% { transform: rotate(-15deg); }
+  50% { transform: rotate(15deg); }
+  100% { transform: rotate(-15deg); }
+}
+
+@keyframes pendulum-extreme {
+  0% { transform: rotate(-25deg); }
+  50% { transform: rotate(25deg); }
+  100% { transform: rotate(-25deg); }
+}
+
+/* ============================================
+   HOVER-TRIGGERED ANIMATIONS
+   (Use these when you want animation on hover)
+   ============================================ */
+
+/* Only animate on hover */
+.animate-on-hover-subtle {
+  animation: none; /* Default: no animation */
+}
+
+.animate-on-hover-subtle:hover {
+  animation: pendulum-subtle 2s ease-in-out infinite;
+}
+
+.animate-on-hover {
+  animation: none;
+}
+
+.animate-on-hover:hover {
+  animation: pendulum-normal 3s ease-in-out infinite;
+}
+
+.animate-on-hover-wide {
+  animation: none;
+}
+
+.animate-on-hover-wide:hover {
+  animation: pendulum-wide 2.8s ease-in-out infinite;
+}
+
+.animate-on-hover-extreme {
+  animation: none;
+}
+
+.animate-on-hover-extreme:hover {
+  animation: pendulum-extreme 4s ease-in-out infinite;
+}
+
+/* Hover variants with speeds */
+.animate-on-hover-fast {
+  animation: none;
+}
+
+.animate-on-hover-fast:hover {
+  animation: pendulum-normal 1.4s ease-in-out infinite;
+}
+
+.animate-on-hover-slow {
+  animation: none;
+}
+
+.animate-on-hover-slow:hover {
+  animation: pendulum-normal 4s ease-in-out infinite;
+}
+
+.animate-on-hover-wide-fast {
+  animation: none;
+}
+
+.animate-on-hover-wide-fast:hover {
+  animation: pendulum-wide 1.4s ease-in-out infinite;
+}
+
+.animate-on-hover-wide-slow {
+  animation: none;
+}
+
+.animate-on-hover-wide-slow:hover {
+  animation: pendulum-wide 4s ease-in-out infinite;
+}
+
+/* ============================================
+   ALWAYS-ON ANIMATIONS
+   (Use these when you want animation on page load)
+   ============================================ */
+
+/* Always animating */
+.animate-always-subtle {
+  animation: pendulum-subtle 2s ease-in-out infinite;
+}
+
+.animate-always {
+  animation: pendulum-normal 3s ease-in-out infinite;
+}
+
+.animate-always-wide {
+  animation: pendulum-wide 2.8s ease-in-out infinite;
+}
+
+.animate-always-extreme {
+  animation: pendulum-extreme 4s ease-in-out infinite;
+}
+
+/* Always-on variants with speeds */
+.animate-always-fast {
+  animation: pendulum-normal 1.4s ease-in-out infinite;
+}
+
+.animate-always-slow {
+  animation: pendulum-normal 4s ease-in-out infinite;
+}
+
+.animate-always-wide-fast {
+  animation: pendulum-wide 1.4s ease-in-out infinite;
+}
+
+.animate-always-wide-slow {
+  animation: pendulum-wide 4s ease-in-out infinite;
+}
+
+/* ============================================
+   ALWAYS-ON WITH DELAYS (Staggered)
+   ============================================ */
+
+.animate-always-delay-1 {
+  animation: pendulum-normal 3s ease-in-out infinite 0s;
+}
+
+.animate-always-delay-2 {
+  animation: pendulum-normal 3s ease-in-out infinite 0.3s;
+}
+
+.animate-always-delay-3 {
+  animation: pendulum-normal 3s ease-in-out infinite 0.6s;
+}
+
+.animate-always-delay-4 {
+  animation: pendulum-normal 3s ease-in-out infinite 0.9s;
+}
+
+.animate-always-delay-5 {
+  animation: pendulum-normal 3s ease-in-out infinite 1.2s;
+}
+
+/* ============================================
+   HYBRID: ALWAYS-ON + ENHANCED ON HOVER
+   (Animates by default, speeds up on hover)
+   ============================================ */
+
+.animate-always-speed-up-on-hover {
+  animation: pendulum-normal 4s ease-in-out infinite;
+  transition: animation-duration 0.3s ease;
+}
+
+.animate-always-speed-up-on-hover:hover {
+  animation-duration: 1.4s;
+}
+
+/* Wide version */
+.animate-always-wide-speed-up-on-hover {
+  animation: pendulum-wide 4s ease-in-out infinite;
+  transition: animation-duration 0.3s ease;
+}
+
+.animate-always-wide-speed-up-on-hover:hover {
+  animation-duration: 1.4s;
+}
+
+/* ============================================
+   HYBRID: ALWAYS-ON + PAUSE ON HOVER
+   (Animates by default, pauses on hover)
+   ============================================ */
+
+.animate-always-pause-on-hover:hover {
+  animation-play-state: paused;
+}
+
+/* ============================================
+   COMBINATIONS: For Data-Driven Components
+   ============================================ */
+
+/* Subtle + Hover */
+.animate-subtle-hover {
+  animation: none;
+}
+
+.animate-subtle-hover:hover {
+  animation: pendulum-subtle 2s ease-in-out infinite;
+}
+
+/* Subtle + Always */
+.animate-subtle-always {
+  animation: pendulum-subtle 2s ease-in-out infinite;
+}
+
+/* Wide + Hover */
+.animate-wide-hover {
+  animation: none;
+}
+
+.animate-wide-hover:hover {
+  animation: pendulum-wide 2.8s ease-in-out infinite;
+}
+
+/* Wide + Always */
+.animate-wide-always {
+  animation: pendulum-wide 2.8s ease-in-out infinite;
+}
+
+/* Extreme + Hover */
+.animate-extreme-hover {
+  animation: none;
+}
+
+.animate-extreme-hover:hover {
+  animation: pendulum-extreme 4s ease-in-out infinite;
+}
+
+/* Extreme + Always */
+.animate-extreme-always {
+  animation: pendulum-extreme 4s ease-in-out infinite;
+}
+
+/* ============================================
+   UTILITY: Linear Easing
+   ============================================ */
+
+@keyframes pendulum-linear {
+  0% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+  100% { transform: rotate(-10deg); }
+}
+
+.animate-on-hover-linear {
+  animation: none;
+}
+
+.animate-on-hover-linear:hover {
+  animation: pendulum-linear 3s linear infinite;
+}
+
+.animate-always-linear {
+  animation: pendulum-linear 3s linear infinite;
+}
+
+/* ============================================
+   UTILITY: Bounce Easing
+   ============================================ */
+
+.animate-on-hover-bounce {
+  animation: none;
+}
+
+.animate-on-hover-bounce:hover {
+  animation: pendulum-normal 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+}
+
+.animate-always-bounce {
+  animation: pendulum-normal 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+}
+
+/* ============================================
+   END PENDULUM ANIMATIONS
+   ============================================ */

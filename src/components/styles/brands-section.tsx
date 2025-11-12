@@ -93,6 +93,7 @@ const imagePositions = [
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "merchandising",
     zIndex: 6,
+    className:"animate-always", 
   },
   {
     src: "/assets/images/brand/main/image70.png",
@@ -110,6 +111,7 @@ const imagePositions = [
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "merchandising",
     zIndex: 6,
+    className:"animate-always", 
   },
   //concept-development image
   {
@@ -162,11 +164,13 @@ const imagePositions = [
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "concept",
     zIndex: 5,
+    className:"animate-always", 
+    
     // Added pendulum swing for my-girl (hover)
-    swing: true,
-    swingAmplitude: 9,
-    swingDuration: 1.5,
-    transformOrigin: "50% 100%", // pivot at bottom center so feet stay fixed
+    // swing: true,
+    // swingAmplitude: 9,
+    // swingDuration: 1.5,
+   transformOrigin: "50% 8%", // pivot at bottom center so feet stay fixed
   },
   {
     src: "/assets/images/space/main/makeover1.png",
@@ -257,9 +261,9 @@ const imagePositions = [
     category: "brandShoot",
     zIndex: 5,
     // Pendulum swing (on hover)
-    swing: true,
-    swingAmplitude: 10,
-    swingDuration: 1.4,
+    // swing: true,
+    // swingAmplitude: 10,
+    // swingDuration: 1.4,
     // Pivot near top-right so body swings below the tip
     transformOrigin: "85% 8%",
   },
@@ -335,6 +339,7 @@ type SectionImage = {
   zIndex?: number;
   type?: "walk";
   moveDuration?: number;
+    className?: string; 
   // Optional fraction (0..1) of container width to walk to (center=0.5)
   walkTargetFraction?: number;
   // Optional pendulum swing settings
@@ -476,7 +481,7 @@ function SectionImageItem({
   return (
     <motion.div
       ref={ref}
-      className="absolute cursor-pointer"
+      className={`absolute cursor-pointer ${img.className || ""}`}
       style={{
         top: img.position[breakpoint].top,
         left: img.position[breakpoint].left,

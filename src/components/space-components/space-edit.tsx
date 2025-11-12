@@ -24,6 +24,8 @@ type ImageConfig = {
   dimensions: ResponsiveDimensions;
   position: ResponsivePosition;
   zIndex?: number;
+  className?: string;
+  transformOrigin?: string;
 };
 
 const images: ImageConfig[] = [
@@ -135,6 +137,8 @@ const images: ImageConfig[] = [
       desktop: { top: "65%", left: "85%" },
     },
     zIndex: 8,
+        className: "animate-always-wide-slow",
+    transformOrigin: "50% 50%",
   },
 
   // Middle Row - 5 Paintings
@@ -366,8 +370,10 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
   return (
     <motion.div
       ref={ref}
-      className="absolute cursor-pointer will-change-transform"
-      style={{ ...baseStyle, x: springX, y: springY }}
+      className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
+      style={{ ...baseStyle, x: springX, y: springY,
+        transformOrigin: img.transformOrigin ?? "50% 50%",
+       }}
       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
       transition={{

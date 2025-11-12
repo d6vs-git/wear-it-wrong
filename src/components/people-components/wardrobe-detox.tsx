@@ -25,6 +25,9 @@ type ImageConfig = {
   dimensions: ResponsiveDimensions;
   position: ResponsivePosition;
   zIndex?: number;
+  className?: string;
+  transformOrigin?: string;
+   fixedTop?: boolean;
 };
 
 const images: ImageConfig[] = [
@@ -42,6 +45,7 @@ const images: ImageConfig[] = [
       desktop: { top: "42%", left: "32%" },
     },
     zIndex: 5,
+    
   },
   {
     src: "/assets/images/people/wardrobe-detox/2.png",
@@ -72,6 +76,9 @@ const images: ImageConfig[] = [
       desktop: { top: "-17%", left: "18%" },
     },
     zIndex: 6,
+    className: "animate-always-slow",
+    transformOrigin: "50% 0%",
+    fixedTop: true,
   },
   {
     src: "/assets/images/people/wardrobe-detox/4.png",
@@ -195,7 +202,7 @@ const images: ImageConfig[] = [
   },
   {
     src: "/assets/images/people/wardrobe-detox/12.png",
-    alt: "dress4",
+    alt: "high heels",
     dimensions: {
       mobile: { width: 85, height: 85 },
       tablet: { width: 127, height: 127 },
@@ -207,6 +214,9 @@ const images: ImageConfig[] = [
       desktop: { top: "73%", left: "43%" },
     },
     zIndex: 6,
+    className: "animate-always-slow",
+   transformOrigin: "50% 50%"  
+    
   },
 ];
 
@@ -277,7 +287,9 @@ export default function WardrobeDetox() {
       const deltaY = (e.clientY - centerY) * 0.15;
 
       x.set(deltaX);
-      y.set(deltaY);
+       if (!img.fixedTop) {
+    y.set(deltaY);
+  }
     };
 
     const handleMouseLeave = () => {
@@ -317,8 +329,10 @@ export default function WardrobeDetox() {
     return (
       <motion.div
         ref={ref}
-        className="absolute cursor-pointer will-change-transform"
-        style={{ ...baseStyle, x: springX, y: springY }}
+        className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
+        style={{ ...baseStyle, x: springX, y: springY,
+          transformOrigin: img.transformOrigin ?? "50% 50%",
+         }}
         whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
         whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
         transition={{

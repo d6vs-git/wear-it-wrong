@@ -12,7 +12,7 @@ type ResponsivePosition = {
   tablet: { top: string; left: string };
   desktop: { top: string; left: string };
 };
- 
+
 type ResponsiveDimensions = {
   mobile: { width: number; height: number };
   tablet: { width: number; height: number };
@@ -25,6 +25,8 @@ type ImageConfig = {
   dimensions: ResponsiveDimensions;
   position: ResponsivePosition;
   zIndex?: number;
+    className?: string;           // NEW: Animation class
+  transformOrigin?: string;     // NEW: Pivot point for animation
 };
 
 const images: ImageConfig[] = [
@@ -103,6 +105,7 @@ const images: ImageConfig[] = [
       desktop: { top: "85%", left: "1%" },
     },
     zIndex: 4,
+    className: "animate-always-subtle",
   },
   {
     src: "/assets/images/brand/visual-merch/5.png",
@@ -118,6 +121,7 @@ const images: ImageConfig[] = [
       desktop: { top: "85%", left: "87%" },
     },
     zIndex: 10,
+    className: "animate-always-subtle",
   },
   {
     src: "/assets/images/brand/visual-merch/6.png",
@@ -133,6 +137,8 @@ const images: ImageConfig[] = [
       desktop: { top: "6%", left: "88%" },
     },
     zIndex: 1,
+     className: "animate-always-slow",     // ✅ NEW
+  transformOrigin: "50% 50%",            // ✅ NEW (hangs from top)
   },
   {
     src: "/assets/images/brand/visual-merch/6.png",
@@ -148,6 +154,8 @@ const images: ImageConfig[] = [
       desktop: { top: "64%", left: "-1%" },
     },
     zIndex: 3,
+    className:"animate-always-slow",
+    transformOrigin: "50% 100%",
   },
   {
     src: "/assets/images/brand/visual-merch/7.png",
@@ -176,7 +184,13 @@ type ImageItemProps = {
   muted: boolean;
 };
 
-const ImageItem = ({ img, index, breakpoint, treesAudioRef, muted }: ImageItemProps) => {
+const ImageItem = ({
+  img,
+  index,
+  breakpoint,
+  treesAudioRef,
+  muted,
+}: ImageItemProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);
@@ -207,7 +221,11 @@ const ImageItem = ({ img, index, breakpoint, treesAudioRef, muted }: ImageItemPr
   };
 
   const handleMouseEnter = () => {
-    if (img.alt.toLowerCase().includes("tree") && treesAudioRef.current && !muted) {
+    if (
+      img.alt.toLowerCase().includes("tree") &&
+      treesAudioRef.current &&
+      !muted
+    ) {
       const a = treesAudioRef.current;
       a.currentTime = 0;
       a.volume = 0.5;
@@ -221,7 +239,7 @@ const ImageItem = ({ img, index, breakpoint, treesAudioRef, muted }: ImageItemPr
   return (
     <motion.div
       ref={ref}
-      className="absolute cursor-pointer will-change-transform"
+      className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
       style={{
         top: position.top,
         left: position.left,
@@ -231,6 +249,7 @@ const ImageItem = ({ img, index, breakpoint, treesAudioRef, muted }: ImageItemPr
         zIndex: img.zIndex ?? index,
         x: springX,
         y: springY,
+          transformOrigin: img.transformOrigin ?? "50% 50%"
       }}
       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
@@ -293,7 +312,8 @@ export default function VisualMerchandising() {
       }
     };
     window.addEventListener("wiw-audio-mute-change", handler as any);
-    return () => window.removeEventListener("wiw-audio-mute-change", handler as any);
+    return () =>
+      window.removeEventListener("wiw-audio-mute-change", handler as any);
   }, []);
 
   // Force recalculation when switching between desktop/mobile in dev tools
