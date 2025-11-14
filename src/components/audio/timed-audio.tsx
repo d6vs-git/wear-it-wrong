@@ -5,17 +5,17 @@ import Image from "next/image";
 import clsx from "clsx";
 
 interface TimedAudioProps {
-  src: string;              // audio file path
-  start?: number;           // start time in seconds (default 0)
-  end?: number;             // end time in seconds (required when loopSegment is true)
-  fadeDuration?: number;    // seconds to fade in/out around loop (default 0 = no fade)
-  volume?: number;          // base volume (0-1) (default 0.6)
-  className?: string;       // positioning classes for the toggle button
-  autoPlay?: boolean;       // attempt autoplay muted (default true)
-  fixed?: boolean;          // position fixed instead of absolute
-  loopSegment?: boolean;    // loop between start & end
-  loop?: boolean;           // HTML audio loop for full track
-  iconSrc?: string;         // new: custom icon path (full CD)
+  src: string;
+  start?: number;
+  end?: number;
+  fadeDuration?: number;
+  volume?: number;
+  className?: string;
+  autoPlay?: boolean;
+  fixed?: boolean;
+  loopSegment?: boolean;
+  loop?: boolean;
+  iconSrc?: string;
 }
 
 export default function TimedAudio({
@@ -28,25 +28,30 @@ export default function TimedAudio({
   autoPlay = true,
   fixed = false,
   loopSegment = false,
-  loop = true, // default: full track loops infinitely
-  iconSrc = "/assets/images/people/main/image47.png", // default full CD style logo
+  loop = true,
+  iconSrc = "/assets/images/people/main/image47.png",
 }: TimedAudioProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const rafId = useRef<number | null>(null);
   const STORAGE_KEY = "wiw-audio-muted";
+
   const [muted, setMuted] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return false; // default sound ON
+    if (typeof window === "undefined") return false;
     try {
       const saved = window.localStorage.getItem(STORAGE_KEY);
-      return saved === 'true';
+      return saved === "true";
     } catch {
       return false;
     }
   });
+
   const [playing, setPlaying] = useState(false);
 
-  // Helpers
   const clamp = (v: number) => Math.max(0, Math.min(1, v));
+
+  // -----------------------------
+  // Fade handling
+  // -----------------------------
   const fadeTo = (audio: HTMLAudioElement, target: number, seconds: number) => {
     const from = clamp(audio.volume);
     const to = clamp(target);
@@ -64,18 +69,20 @@ export default function TimedAudio({
     requestAnimationFrame(step);
   };
 
-  // Initialize audio
+  // -----------------------------
+  // Init
+  // -----------------------------
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+
     audio.currentTime = start;
     audio.loop = !!loop && !loopSegment;
     audio.muted = muted;
-    if (loopSegment && fadeDuration > 0) {
-      audio.volume = 0;
-    } else {
-      audio.volume = clamp(volume);
-    }
+
+    audio.volume =
+      loopSegment && fadeDuration > 0 ? 0 : clamp(volume);
+
     if (autoPlay) {
       audio
         .play()
@@ -85,55 +92,55 @@ export default function TimedAudio({
             fadeTo(audio, clamp(volume), Math.min(fadeDuration, 0.6));
           }
         })
-        .catch(() => {
-          // Autoplay may fail if unmuted; try again on first user gesture
-        });
+        .catch(() => {});
     }
+
     const onPlay = () => setPlaying(true);
     const onPause = () => setPlaying(false);
+
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
-    audio.addEventListener("ended", onPause);
 
-    // Try resume on first user interaction if user preference is unmuted
     const tryResume = () => {
-      const a = audioRef.current;
-      if (!a) return;
-      if (!muted && a.paused) {
-        a.play().catch(() => {});
+      if (!audio) return;
+      if (!muted && audio.paused) {
+        audio.play().catch(() => {});
       }
-      window.removeEventListener('pointerdown', tryResume);
+      window.removeEventListener("pointerdown", tryResume);
     };
-    window.addEventListener('pointerdown', tryResume, { once: true });
+    window.addEventListener("pointerdown", tryResume, { once: true });
 
     return () => {
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
-      audio.removeEventListener("ended", onPause);
-      window.removeEventListener('pointerdown', tryResume);
+      window.removeEventListener("pointerdown", tryResume);
     };
   }, [loop, loopSegment, start, fadeDuration, volume, autoPlay, muted]);
 
-  // RAF-based seamless loop for short segments
+  // -----------------------------
+  // Seamless loop segment
+  // -----------------------------
   useEffect(() => {
     if (!loopSegment || end === undefined) return;
+
     const audio = audioRef.current;
     if (!audio) return;
 
-    const EPS = 0.02; // ~20ms threshold for loop jump
+    const EPS = 0.02;
+
     const tick = () => {
       const a = audioRef.current;
       if (!a) return;
+
       if (!a.paused) {
-        // Fade out near the loop end
-        if (fadeDuration > 0 && a.currentTime >= end - fadeDuration && a.currentTime < end) {
+        if (fadeDuration > 0 && a.currentTime >= end - fadeDuration) {
           const remaining = Math.max(0, end - a.currentTime);
-          const nextVol = clamp(volume * (remaining / fadeDuration));
-          a.volume = nextVol;
+          a.volume = clamp(volume * (remaining / fadeDuration));
         }
-        // Seamless jump
+
         if (a.currentTime >= end - EPS) {
           a.currentTime = start;
+
           if (fadeDuration > 0) {
             a.volume = 0;
             fadeTo(a, clamp(volume), Math.min(fadeDuration, 0.6));
@@ -142,6 +149,7 @@ export default function TimedAudio({
           }
         }
       }
+
       rafId.current = requestAnimationFrame(tick);
     };
 
@@ -151,88 +159,116 @@ export default function TimedAudio({
     };
   }, [loopSegment, end, start, fadeDuration, volume]);
 
-  // Fallback non-looping end handling
+  // -----------------------------
+  // Basic loop fallback
+  // -----------------------------
   useEffect(() => {
-    if (loopSegment) return; // handled by RAF
+    if (loopSegment) return;
     const audio = audioRef.current;
     if (!audio) return;
+
     const handleTime = () => {
       if (end !== undefined) {
-        if (fadeDuration > 0 && audio.currentTime >= end - fadeDuration && audio.currentTime < end) {
+        if (fadeDuration > 0 && audio.currentTime >= end - fadeDuration) {
           const remaining = Math.max(0, end - audio.currentTime);
-          const nextVol = clamp(volume * (remaining / fadeDuration));
-          audio.volume = nextVol;
+          audio.volume = clamp(volume * (remaining / fadeDuration));
         }
+
         if (audio.currentTime >= end) {
           audio.pause();
-          audio.currentTime = start; // reset for potential replay
+          audio.currentTime = start;
           audio.volume = clamp(volume);
           setPlaying(false);
         }
       }
     };
+
     audio.addEventListener("timeupdate", handleTime);
     return () => audio.removeEventListener("timeupdate", handleTime);
   }, [loopSegment, end, fadeDuration, start, volume]);
 
-  // Stop audio on unmount (safety) and announce state on mount
+  // -----------------------------
+  // Cleanup + announce
+  // -----------------------------
   useEffect(() => {
-    // announce current mute state
-    if (typeof window !== 'undefined') {
-      try { window.dispatchEvent(new CustomEvent('wiw-audio-mute-change', { detail: { muted } })); } catch {}
-    }
+    try {
+      window.dispatchEvent(
+        new CustomEvent("wiw-audio-mute-change", { detail: { muted } })
+      );
+    } catch {}
+
     return () => {
       const audio = audioRef.current;
       if (audio) {
-        try {
-          audio.pause();
-          audio.currentTime = 0;
-        } catch {}
+        audio.pause();
+        audio.currentTime = 0;
       }
       if (rafId.current) cancelAnimationFrame(rafId.current);
     };
   }, []);
 
+  // -----------------------------
+  // Toggle Mute
+  // -----------------------------
   const toggleMute = () => {
     const audio = audioRef.current;
     if (!audio) return;
+
     const next = !muted;
-    if (next === false) {
-      // unmuting
+
+    if (!next) {
       audio.muted = false;
-      if (audio.paused) audio.play().then(() => setPlaying(true)).catch(() => {});
+      if (audio.paused)
+        audio.play().then(() => setPlaying(true)).catch(() => {});
       setMuted(false);
-      try { window.localStorage.setItem(STORAGE_KEY, 'false'); } catch {}
+      window.localStorage.setItem(STORAGE_KEY, "false");
     } else {
-      // muting
       audio.muted = true;
       setMuted(true);
-      try { window.localStorage.setItem(STORAGE_KEY, 'true'); } catch {}
+      window.localStorage.setItem(STORAGE_KEY, "true");
     }
-    // notify listeners
-    if (typeof window !== 'undefined') {
-      try { window.dispatchEvent(new CustomEvent('wiw-audio-mute-change', { detail: { muted: next } })); } catch {}
-    }
+
+    window.dispatchEvent(
+      new CustomEvent("wiw-audio-mute-change", { detail: { muted: next } })
+    );
   };
 
-  const basePosition = fixed ? "fixed right-4 top-16 md:top-20" : "absolute right-4 top-16 md:top-20";
-  const spinClass = !muted && playing ? "animate-[spin_12s_linear_infinite]" : ""; // slower spin
+  // -----------------------------
+  // Positioning
+  // -----------------------------
+  const basePosition = fixed
+    ? clsx(
+        "fixed right-4 top-10",        // mobile
+        "md:right-4 md:top-20"         // desktop
+      )
+    : clsx(
+        "absolute right-4 top-10",     // mobile
+        "md:right-4 md:top-20"         // desktop
+      );
+
+  const spinClass =
+    !muted && playing ? "animate-[spin_12s_linear_infinite]" : "";
 
   return (
     <>
       <audio ref={audioRef} src={src} playsInline preload="auto" />
+
       <button
         onClick={toggleMute}
         className={clsx(
           basePosition,
-          "z-50 h-16 w-16 rounded-full bg-background/70 backdrop-blur-sm text-foreground flex items-center justify-center shadow-lg ring-1 ring-foreground/30 hover:bg-background/90 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary",
-          className
+          "z-50 rounded-full bg-background/70 backdrop-blur-sm text-foreground flex items-center justify-center shadow-lg ring-1 ring-foreground/30 hover:bg-background/90 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+          className,
+          "h-10 w-10 md:h-16 md:w-16" // ← mobile 40px, desktop 64px
         )}
         aria-label={muted ? "Enable audio" : "Mute audio"}
         title={muted ? "Sound On" : "Sound Off"}
       >
         <div
-          className={clsx("h-14 w-14 rounded-full overflow-hidden border-2 border-foreground/20", spinClass)}
+          className={clsx(
+            "h-10 w-10 md:h-14 md:w-14 rounded-full overflow-hidden border-2 border-foreground/20",
+            spinClass
+          )}
         >
           <Image
             src={iconSrc}
@@ -241,7 +277,6 @@ export default function TimedAudio({
             height={56}
             className="h-full w-full object-contain select-none pointer-events-none"
             draggable={false}
-            priority={false}
           />
         </div>
       </button>
