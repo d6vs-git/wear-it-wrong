@@ -51,7 +51,7 @@ export const BookNowButton = ({
     setIsLoading(true);
 
     // Updated Calendly with month param
-    router.push("https://calendly.com/dhawangouri/30min?month=2025-11");
+    router.push("/book");
     return;
 
     // ---------------------------------------------

@@ -334,77 +334,6 @@
 }
 
 /* ============================================
-   HOVER-TRIGGERED ANIMATIONS
-   (Use these when you want animation on hover)
-   ============================================ */
-
-/* Only animate on hover */
-.animate-on-hover-subtle {
-  animation: none; /* Default: no animation */
-}
-
-.animate-on-hover-subtle:hover {
-  animation: pendulum-subtle 2s ease-in-out infinite;
-}
-
-.animate-on-hover {
-  animation: none;
-}
-
-.animate-on-hover:hover {
-  animation: pendulum-normal 3s ease-in-out infinite;
-}
-
-.animate-on-hover-wide {
-  animation: none;
-}
-
-.animate-on-hover-wide:hover {
-  animation: pendulum-wide 2.8s ease-in-out infinite;
-}
-
-.animate-on-hover-extreme {
-  animation: none;
-}
-
-.animate-on-hover-extreme:hover {
-  animation: pendulum-extreme 4s ease-in-out infinite;
-}
-
-/* Hover variants with speeds */
-.animate-on-hover-fast {
-  animation: none;
-}
-
-.animate-on-hover-fast:hover {
-  animation: pendulum-normal 1.4s ease-in-out infinite;
-}
-
-.animate-on-hover-slow {
-  animation: none;
-}
-
-.animate-on-hover-slow:hover {
-  animation: pendulum-normal 4s ease-in-out infinite;
-}
-
-.animate-on-hover-wide-fast {
-  animation: none;
-}
-
-.animate-on-hover-wide-fast:hover {
-  animation: pendulum-wide 1.4s ease-in-out infinite;
-}
-
-.animate-on-hover-wide-slow {
-  animation: none;
-}
-
-.animate-on-hover-wide-slow:hover {
-  animation: pendulum-wide 4s ease-in-out infinite;
-}
-
-/* ============================================
    ALWAYS-ON ANIMATIONS
    (Use these when you want animation on page load)
    ============================================ */
@@ -546,33 +475,7 @@
   animation: pendulum-extreme 4s ease-in-out infinite;
 }
 
-/* ============================================
-   UTILITY: Linear Easing
-   ============================================ */
 
-@keyframes pendulum-linear {
-  0% {
-    transform: rotate(-10deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
-  100% {
-    transform: rotate(-10deg);
-  }
-}
-
-.animate-on-hover-linear {
-  animation: none;
-}
-
-.animate-on-hover-linear:hover {  
-  animation: pendulum-linear 3s linear infinite;
-}
-
-.animate-always-linear {
-  animation: pendulum-linear 3s linear infinite;
-}
 
 /* ============================================
    UTILITY: Bounce Easing
@@ -592,6 +495,301 @@
 
 /* ============================================
    END PENDULUM ANIMATIONS
+   ============================================ */
+   /* ============================================
+   POP-UP & POP-DOWN ANIMATIONS (ALWAYS-ON)
+   ============================================ */
+
+/* ============================================
+   POP-UP KEYFRAMES (Scale + Translate)
+   ============================================ */
+
+/* Subtle pop-up (small scale) */
+@keyframes popup-subtle {
+  0% {
+    transform: scale(0.7) translateY(20px);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05) translateY(-5px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Normal pop-up (medium scale) */
+@keyframes popup-normal {
+  0% {
+    transform: scale(0.5) translateY(30px);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) translateY(-10px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Bounce pop-up (energetic) */
+@keyframes popup-bounce {
+  0% {
+    transform: scale(0.3) translateY(40px);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.15) translateY(-15px);
+  }
+  75% {
+    transform: scale(0.95) translateY(5px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Elastic pop-up (spring effect) */
+@keyframes popup-elastic {
+  0% {
+    transform: scale(0.6) translateY(25px);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1.08) translateY(-12px);
+  }
+  70% {
+    transform: scale(0.98) translateY(3px);
+  }
+  85% {
+    transform: scale(1.02) translateY(-2px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   POP-DOWN KEYFRAMES (Scale + Translate Down)
+   ============================================ */
+
+/* Subtle pop-down */
+@keyframes popdown-subtle {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05) translateY(-5px);
+  }
+  100% {
+    transform: scale(0.7) translateY(20px);
+    opacity: 0;
+  }
+}
+
+/* Normal pop-down */
+@keyframes popdown-normal {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1) translateY(-10px);
+  }
+  100% {
+    transform: scale(0.5) translateY(30px);
+    opacity: 0;
+  }
+}
+
+/* Bounce pop-down */
+@keyframes popdown-bounce {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(0.95) translateY(5px);
+  }
+  50% {
+    transform: scale(1.15) translateY(-15px);
+  }
+  100% {
+    transform: scale(0.3) translateY(40px);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   ALWAYS-ON POP-UP ANIMATIONS
+   ============================================ */
+
+/* Always pop-up - Subtle */
+.animate-popup-always-subtle {
+  animation: popup-subtle 0.6s ease-out forwards;
+}
+
+/* Always pop-up - Normal */
+.animate-popup-always {
+  animation: popup-normal 0.8s ease-out forwards;
+}
+
+/* Always pop-up - Bounce */
+.animate-popup-always-bounce {
+  animation: popup-bounce 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Always pop-up - Elastic */
+.animate-popup-always-elastic {
+  animation: popup-elastic 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* ============================================
+   ALWAYS-ON POP-DOWN ANIMATIONS
+   ============================================ */
+
+/* Always pop-down - Subtle */
+.animate-popdown-always-subtle {
+  animation: popdown-subtle 0.6s ease-in forwards;
+}
+
+/* Always pop-down - Normal */
+.animate-popdown-always {
+  animation: popdown-normal 0.8s ease-in forwards;
+}
+
+/* Always pop-down - Bounce */
+.animate-popdown-always-bounce {
+  animation: popdown-bounce 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ============================================
+   ALWAYS-ON WITH DELAYS (Staggered Pop)
+   ============================================ */
+
+.animate-popup-always-delay-1 {
+  animation: popup-normal 0.8s ease-out forwards 0s;
+}
+
+.animate-popup-always-delay-2 {
+  animation: popup-normal 0.8s ease-out forwards 0.2s;
+}
+
+.animate-popup-always-delay-3 {
+  animation: popup-normal 0.8s ease-out forwards 0.4s;
+}
+
+.animate-popup-always-delay-4 {
+  animation: popup-normal 0.8s ease-out forwards 0.6s;
+}
+
+.animate-popup-always-delay-5 {
+  animation: popup-normal 0.8s ease-out forwards 0.8s;
+}
+
+/* Popdown delays */
+.animate-popdown-always-delay-1 {
+  animation: popdown-normal 0.8s ease-in forwards 0s;
+}
+
+.animate-popdown-always-delay-2 {
+  animation: popdown-normal 0.8s ease-in forwards 0.2s;
+}
+
+.animate-popdown-always-delay-3 {
+  animation: popdown-normal 0.8s ease-in forwards 0.4s;
+}
+
+.animate-popdown-always-delay-4 {
+  animation: popdown-normal 0.8s ease-in forwards 0.6s;
+}
+
+.animate-popdown-always-delay-5 {
+  animation: popdown-normal 0.8s ease-in forwards 0.8s;
+}
+
+/* ============================================
+   LOOPING POP ANIMATIONS
+   ============================================ */
+
+/* Looping pop-up */
+@keyframes popup-loop {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08) translateY(-10px);
+    opacity: 0.9;
+  }
+}
+
+.animate-popup-loop-slow {
+  animation: popup-loop 2s ease-in-out infinite;
+}
+
+.animate-popup-loop {
+  animation: popup-loop 1.5s ease-in-out infinite;
+}
+
+.animate-popup-loop-fast {
+  animation: popup-loop 1s ease-in-out infinite;
+}
+
+/* Looping pop-down */
+@keyframes popdown-loop {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.95) translateY(10px);
+    opacity: 0.9;
+  }
+}
+
+.animate-popdown-loop-slow {
+  animation: popdown-loop 2s ease-in-out infinite;
+}
+
+.animate-popdown-loop {
+  animation: popdown-loop 1.5s ease-in-out infinite;
+}
+
+.animate-popdown-loop-fast {
+  animation: popdown-loop 1s ease-in-out infinite;
+}
+
+/* ============================================
+   SOFT POP (Gentle animation)
+   ============================================ */
+
+@keyframes popup-soft {
+  0% {
+    transform: scale(0.9) translateY(10px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-popup-soft {
+  animation: popup-soft 0.4s ease-out forwards;
+}
+
+.animate-popup-soft-loop {
+  animation: popup-soft 1.5s ease-in-out infinite;
+}
+
+/* ============================================
+   END POP-UP & POP-DOWN ANIMATIONS
    ============================================ */
 /* ============================================
    360 ROTATION KEYFRAMES
