@@ -200,7 +200,7 @@ export default function LandingNavbar() {
 
   const navLinks = [
     { label: "About Us", href: "/about" },
-    { label: "All Services", href: "/services" },
+    { label: "All Services", href: "/unified-services" },
     { label: "Testimonials", href: "/testimonials" },
   ];
 

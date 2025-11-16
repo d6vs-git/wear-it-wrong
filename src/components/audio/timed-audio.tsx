@@ -248,11 +248,11 @@ export default function TimedAudio({
   // -----------------------------
   const basePosition = fixed
     ? clsx(
-        "fixed right-4 top-10",        // mobile
+        "fixed right-4 bottom-4",        // mobile
         "md:right-4 md:top-20"         // desktop
       )
     : clsx(
-        "absolute right-4 top-10",     // mobile
+        "absolute right-4 bottom-4",     // mobile
         "md:right-4 md:top-20"         // desktop
       );
 

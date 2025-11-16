@@ -47,10 +47,10 @@ export default function Home() {
       <div className="snap-y snap-mandatory">
         
         <Hero />
-        <About />
-        <UnifiedServicesSection onBadgeClick={handleBadgeClick} />
-        <Testimonials />
-        <Footer/>
+        {/* <About /> */}
+        {/* <UnifiedServicesSection onBadgeClick={handleBadgeClick} /> */}
+        {/* <Testimonials /> */}
+        {/* <Footer/> */}
 
       </div>
     </main>
