@@ -69,6 +69,7 @@ const images: ImageConfig[] = [
       desktop: { top: "9%", left: "12%" },
     },
     zIndex: 3,
+   className: "animate-popdown-loop-slow"
   },
   {
     src: "/assets/images/space/space-edit/painting5.png",
@@ -129,6 +130,7 @@ const images: ImageConfig[] = [
       desktop: { top: "9%", left: "76%" },
     },
     zIndex: 3,
+    className: "animate-popdown-loop-slow"
   },
   {
     src: "/assets/images/space/space-edit/painting5.png",
@@ -204,6 +206,7 @@ const images: ImageConfig[] = [
       mobile: { width: 80, height: 80 },
       tablet: { width: 113, height: 113 },
       desktop: { width: 165, height: 165 },
+      
     },
     position: {
       mobile: { top: "24%", left: "33%" }, // was 38%
@@ -211,6 +214,7 @@ const images: ImageConfig[] = [
       desktop: { top: "26%", left: "41%" },
     },
     zIndex: 3,
+    className: "animate-popdown-loop-slow" 
   },
   {
     src: "/assets/images/space/space-edit/painting3.png",
@@ -256,6 +260,7 @@ const images: ImageConfig[] = [
       desktop: { top: "27%", left: "91%" },
     },
     zIndex: 3,
+    className: "animate-popdown-loop-slow"
   },
   // Lamp (standing, left side, below perfume)
   {

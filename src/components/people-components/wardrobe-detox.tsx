@@ -139,6 +139,7 @@ const images: ImageConfig[] = [
       desktop: { top: "-4%", left: "79%" },
     },
     zIndex: 7,
+    className:"animate-rotate-360-slow"
   },
   {
     src: "/assets/images/people/wardrobe-detox/8.png",
@@ -172,7 +173,7 @@ const images: ImageConfig[] = [
   },
   {
     src: "/assets/images/people/wardrobe-detox/10.png",
-    alt: "Shoes",
+    alt: "poster",
     dimensions: {
       mobile: { width: 60, height: 60 },
       tablet: { width: 95, height: 95 },
@@ -184,6 +185,7 @@ const images: ImageConfig[] = [
       desktop: { top: "18%", left: "72%" },
     },
     zIndex: 1,
+    className: "animate-popup-loop"  
   },
   {
     src: "/assets/images/people/wardrobe-detox/11.png",

@@ -52,7 +52,7 @@
 :root {
   --background: #fdfef3;
   /* Beige secondary background (footer band) */
-  --background-secondary: #F0E3D0;
+  --background-secondary: #f0e3d0;
   --foreground: #1c1c1c;
   --card: #ffffff;
   --card-foreground: #1c1c1c;
@@ -119,7 +119,7 @@
 .dark {
   --background: #1c1c1c;
   /* Keep same beige for secondary in dark mode so footer stays brand-consistent */
-  --background-secondary: #F0E3D0;
+  --background-secondary: #f0e3d0;
   --foreground: #fdfef3;
   --card: #121212;
   --card-foreground: #fdfef3;
@@ -262,42 +262,75 @@
   }
 }
 @keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0; }
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
 }
 .animate-blink {
   animation: blink 1.8s infinite;
 }
 
 /* Explicit utility in case Tailwind palette didn't generate it */
-.bg-background-secondary { background-color: var(--background-secondary); }
+.bg-background-secondary {
+  background-color: var(--background-secondary);
+}
 
 /* ============================================
    PENDULUM KEYFRAMES
    ============================================ */
 
 @keyframes pendulum-subtle {
-  0% { transform: rotate(-5deg); }
-  50% { transform: rotate(5deg); }
-  100% { transform: rotate(-5deg); }
+  0% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
 }
 
 @keyframes pendulum-normal {
-  0% { transform: rotate(-10deg); }
-  50% { transform: rotate(10deg); }
-  100% { transform: rotate(-10deg); }
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
 }
 
 @keyframes pendulum-wide {
-  0% { transform: rotate(-15deg); }
-  50% { transform: rotate(15deg); }
-  100% { transform: rotate(-15deg); }
+  0% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(-15deg);
+  }
 }
 
 @keyframes pendulum-extreme {
-  0% { transform: rotate(-25deg); }
-  50% { transform: rotate(25deg); }
-  100% { transform: rotate(-25deg); }
+  0% {
+    transform: rotate(-25deg);
+  }
+  50% {
+    transform: rotate(25deg);
+  }
+  100% {
+    transform: rotate(-25deg);
+  }
 }
 
 /* ============================================
@@ -518,16 +551,22 @@
    ============================================ */
 
 @keyframes pendulum-linear {
-  0% { transform: rotate(-10deg); }
-  50% { transform: rotate(10deg); }
-  100% { transform: rotate(-10deg); }
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
 }
 
 .animate-on-hover-linear {
   animation: none;
 }
 
-.animate-on-hover-linear:hover {
+.animate-on-hover-linear:hover {  
   animation: pendulum-linear 3s linear infinite;
 }
 
@@ -553,4 +592,46 @@
 
 /* ============================================
    END PENDULUM ANIMATIONS
+   ============================================ */
+/* ============================================
+   360 ROTATION KEYFRAMES
+   ============================================ */
+
+@keyframes rotate-360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Always-on rotation animations */
+.animate-rotate-360-slow {
+  animation: rotate-360 4s linear infinite;
+}
+
+.animate-rotate-360 {
+  animation: rotate-360 2s linear infinite;
+}
+
+.animate-rotate-360-fast {
+  animation: rotate-360 1s linear infinite;
+}
+
+/* One-time rotation (non-looping) */
+.animate-rotate-360-once-slow {
+  animation: rotate-360 4s linear forwards;
+}
+
+.animate-rotate-360-once {
+  animation: rotate-360 2s linear forwards;
+}
+
+.animate-rotate-360-once-fast {
+  animation: rotate-360 1s linear forwards;
+}
+
+/* ============================================
+   END ROTATION ANIMATIONS
    ============================================ */

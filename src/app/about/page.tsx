@@ -67,7 +67,7 @@ export default function About() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="font-badtyp text-[#a4463a] text-center 
+          className="font-badtyp text-[#010101] text-center 
              text-[1.75rem] xs:text-[2.25rem] sm:text-[3rem] 
              md:text-[4rem] lg:text-[5rem] xl:text-[6rem]
              leading-[0.95] tracking-tight mb-10 sm:mb-14 md:mb-16 lg:mb-20 whitespace-nowrap"
@@ -91,7 +91,7 @@ export default function About() {
           transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
           className="font-atbserif"
         >
-          <div className="space-y-6 sm:space-y-7 md:space-y-8 text-[#8b4535] leading-[1.8] sm:leading-[1.85] md:leading-[1.9] text-base sm:text-lg md:text-xl lg:text-[1.35rem] relative">
+          <div className="space-y-6 sm:space-y-7 md:space-y-8 text-[#9e1515] leading-[1.8] sm:leading-[1.85] md:leading-[1.9] text-base sm:text-lg md:text-xl lg:text-[1.35rem] relative">
             <p className="font-medium">
               Wear It Wrong is a creative styling studio that helps people,
               brands, and spaces find their expression and look good doing it.
@@ -147,7 +147,7 @@ export default function About() {
 
             <p className="font-normal">
               The idea is simple: style isn&apos;t about perfection or trends.
-              It&apos;s about creating things that feel right; for who you are,
+              It &apos; s about creating things that feel right; for who you are,
               what you do, and how you live.
             </p>
 

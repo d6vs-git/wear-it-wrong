@@ -49,6 +49,8 @@ type ImageConfig = {
   dimensions: ResponsiveDimensions;
   position: ResponsivePosition;
   zIndex?: number;
+  className?: string;
+  transitionOrigin?: string;
 };
 
 const images: ImageConfig[] = [
@@ -82,6 +84,7 @@ const images: ImageConfig[] = [
       desktop: { top: "15%", left: "3%" },
     },
     zIndex: 5,
+    className: "animate-popup-loop" 
   },
   {
     src: "/assets/images/brand/brandshoots/bg.png",
@@ -172,6 +175,7 @@ const images: ImageConfig[] = [
       desktop: { top: "15%", left: "48%" },
     },
     zIndex: 5,
+    className: "animate-popup-loop" 
   },
   {
     src: "/assets/images/brand/brandshoots/bg.png",
@@ -324,6 +328,7 @@ const images: ImageConfig[] = [
       desktop: { top: "55%", left: "33%" },
     },
     zIndex: 5,
+    className: "animate-popup-loop" 
   },
   {
     src: "/assets/images/brand/brandshoots/bg.png",
@@ -414,6 +419,7 @@ const images: ImageConfig[] = [
       desktop: { top: "55%", left: "78%" },
     },
     zIndex: 5,
+    className: "animate-popup-loop" 
   },
 ];
 
@@ -469,7 +475,7 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
   return (
     <motion.div
       ref={ref}
-      className="absolute cursor-pointer will-change-transform"
+      className={`absolute cursor-pointer will-change-transform ${img.className || ""}`} 
       style={{ ...baseStyle, x: springX, y: springY }}
       whileHover={{
         scale: breakpoint === "mobile" ? 1 : 1.15, // increased pop
