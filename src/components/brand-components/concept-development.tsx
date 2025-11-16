@@ -5,6 +5,31 @@ import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
+import TimedAudio from "@/components/audio/timed-audio";
+import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
+
+// Audio config for page7
+type AudioSegment = {
+  id: string;
+  type: "background" | "utils";
+  src: string;
+  start?: number;
+  end?: number;
+  volume?: number;
+  loopSegment?: boolean;
+  fadeDuration?: number;
+};
+
+const audioSegments: AudioSegment[] = [
+  {
+    id: "bg-occasion",
+    type: "background",
+    src: "/assets/sounds/page11/ANGEL- KID_CUDI.mp3",
+    start: 0,
+    volume: 0.38,
+    loopSegment: false,
+  },];
+
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -339,6 +364,9 @@ export default function ConceptDevelopment() {
 
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
+         {audioSegments.filter(s=>s.type==="background").map(segment => (
+                    <TimedAudio key={segment.id} src={segment.src} start={segment.start} volume={segment.volume} fixed loop className="z-[70]" />
+                  ))}
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <Heading text="CONCEPT DEVELOPMENT" />

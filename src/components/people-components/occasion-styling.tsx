@@ -6,6 +6,48 @@ import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
 import TimedAudio from "@/components/audio/timed-audio";
+import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
+
+// Audio config for page7
+type AudioSegment = {
+  id: string;
+  type: "background" | "utils";
+  src: string;
+  start?: number;
+  end?: number;
+  volume?: number;
+  loopSegment?: boolean;
+  fadeDuration?: number;
+};
+
+const audioSegments: AudioSegment[] = [
+  {
+    id: "bg-occasion",
+    type: "background",
+    src: "/assets/sounds/page7/Heera-Peter_Cat_Recording_Co._ Music.mp3",
+    start: 0,
+    volume: 0.38,
+    loopSegment: false,
+  },
+  {
+    id: "util-clothes", // fixed unique id
+    type: "utils",
+    src: "/assets/sounds/page7/CLOTHES MOVING SLOW SOUND.mp3",
+    start: 0,
+    volume: 0.55,
+    loopSegment: false,
+  },
+];
+// util segments for hook
+const utilSegments = audioSegments.filter(s => s.type === "utils").map(s => ({
+  id: s.id,
+  src: s.src,
+  start: s.start,
+  end: s.end,
+  volume: s.volume,
+  loopSegment: s.loopSegment,
+  fadeDuration: s.fadeDuration,
+}));
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -27,6 +69,7 @@ type ImageConfig = {
   zIndex?: number;
   className?: string;
   transformOrigin?: string;
+  utilId?: string; // added explicit util sound id mapping
 };
 
 const images: ImageConfig[] = [
@@ -74,6 +117,7 @@ const images: ImageConfig[] = [
       desktop: { top: "-19%", left: "-14%" },
     },
     zIndex: 6,
+    utilId: "util-clothes",
   },
   {
     src: "/assets/images/people/occasion-styling/carpet2.png",
@@ -134,6 +178,7 @@ const images: ImageConfig[] = [
       desktop: { top: "27%", left: "56%" },
     },
     zIndex: 9,
+    utilId: "util-clothes",
   },
   {
     src: "/assets/images/people/occasion-styling/dress3.png",
@@ -151,7 +196,7 @@ const images: ImageConfig[] = [
     zIndex: 8,
     className: "animate-always-slow",
     transformOrigin: "50% 0%",
-    
+    utilId: "util-clothes",
   },
   {
     src: "/assets/images/people/occasion-styling/hanging-lamp.png",
@@ -199,6 +244,7 @@ const images: ImageConfig[] = [
       desktop: { top: "6%", left: "53%" },
     },
     zIndex: 9,
+    utilId: "util-clothes",
   },
   {
     src: "/assets/images/people/occasion-styling/dress4.png",
@@ -214,7 +260,7 @@ const images: ImageConfig[] = [
       desktop: { top: "18%", left: "62%" },
     },
     zIndex: 7,
-        className: "animate-always-slow",
+    className: "animate-always-slow",
     transformOrigin: "50% 0%",
   },
   {
@@ -240,11 +286,12 @@ type ImageItemProps = {
   img: ImageConfig;
   index: number;
   breakpoint: Breakpoint;
-  clothesAudioRef: React.RefObject<HTMLAudioElement | null>;
-  muted: boolean;
+  utilId?: string;
+  startUtil?: (id: string) => void;
+  stopUtil?: (id: string) => void;
 };
 
-const ImageItem = ({ img, index, breakpoint, clothesAudioRef, muted }: ImageItemProps) => {
+const ImageItem = ({ img, index, breakpoint, utilId, startUtil, stopUtil }: ImageItemProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -262,7 +309,7 @@ const ImageItem = ({ img, index, breakpoint, clothesAudioRef, muted }: ImageItem
     x.set(deltaX);
     y.set(deltaY);
   };
-  const handleMouseLeaveBase = () => { x.set(0); y.set(0); };
+  const resetMotion = () => { x.set(0); y.set(0); };
 
   const position = img.position[breakpoint];
   const dimensions = img.dimensions[breakpoint];
@@ -273,33 +320,16 @@ const ImageItem = ({ img, index, breakpoint, clothesAudioRef, muted }: ImageItem
     width: `${dimensions.width}px`,
     height: `${dimensions.height}px`,
     zIndex: img.zIndex ?? index,
-  };
+  } as const;
 
-  const isCloth = /dress|standing dress roller/i.test(img.alt);
-  const handleEnter = () => {
-    if (isCloth && clothesAudioRef.current && !muted) {
-      const a = clothesAudioRef.current;
-      a.currentTime = 0;
-      a.volume = 0.55;
-      a.play().catch(()=>{});
-    }
-  };
-  const handleLeave = () => {
-    if (isCloth && clothesAudioRef.current) {
-      const a = clothesAudioRef.current;
-      a.pause();
-      a.currentTime = 0;
-    }
-    handleMouseLeaveBase();
-  };
+  const handleEnter = () => { if (utilId && startUtil) startUtil(utilId); };
+  const handleLeave = () => { if (utilId && stopUtil) stopUtil(utilId); resetMotion(); };
 
   return (
     <motion.div
       ref={ref}
       className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
-      style={{ ...baseStyle, x: springX, y: springY,
-        transformOrigin: img.transformOrigin ?? "50% 50%",
-       }}
+      style={{ ...baseStyle, x: springX, y: springY, transformOrigin: img.transformOrigin ?? "50% 50%" }}
       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
       transition={{ scale: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] } }}
@@ -320,25 +350,11 @@ const ImageItem = ({ img, index, breakpoint, clothesAudioRef, muted }: ImageItem
 };
 
 export default function OccasionStyling() {
+  // init util audio (dress hover)
+  const { startUtil, stopUtil } = useHoverUtilsAudio(utilSegments, ""); // no separate noise
   const [isTextHovered, setIsTextHovered] = useState(false);
   const [isImageHovered, setIsImageHovered] = useState(false);
   const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
-  const clothesAudioRef = useRef<HTMLAudioElement | null>(null);
-  const [muted, setMuted] = useState(true);
-
-  useEffect(() => {
-    const handler = (e: any) => {
-      if (e?.detail && typeof e.detail.muted === 'boolean') {
-        setMuted(e.detail.muted);
-        if (e.detail.muted && clothesAudioRef.current) {
-          clothesAudioRef.current.pause();
-          clothesAudioRef.current.currentTime = 0;
-        }
-      }
-    };
-    window.addEventListener('wiw-audio-mute-change', handler as any);
-    return () => window.removeEventListener('wiw-audio-mute-change', handler as any);
-  }, []);
 
   useEffect(() => {
     const updateBreakpoint = () => {
@@ -353,32 +369,17 @@ export default function OccasionStyling() {
 
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
-      <TimedAudio
-        src="/assets/sounds/page7/heera-Petra_cat-Recording_co._Music.mp3" // page7 audio
-        start={0}
-        volume={0.38}
-        fixed
-        loop
-        className="z-[70]"
-      />
-      <audio
-        ref={clothesAudioRef}
-        src="/assets/sounds/page7/clothes moving slow sound.mp3"
-        preload="auto"
-        playsInline
-        loop
-      />
+      {audioSegments.filter(s=>s.type==="background").map(segment => (
+        <TimedAudio key={segment.id} src={segment.src} start={segment.start} volume={segment.volume} fixed loop className="z-[70]" />
+      ))}
+
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex justify-between items-center gap-3">
           <Heading text="OCCASION STYLING" />
           <BookNowButton sessionType="occasion-styling" />
         </div>
         <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4 sm:mt-6">
-          ₹3,500{" "}
-          <span className="text-base sm:text-lg md:text-xl lg:text-2xl">
-            {" "}
-            per look{" "}
-          </span>
+          ₹3,500 <span className="text-base sm:text-lg md:text-xl lg:text-2xl"> per look </span>
         </div>
       </div>
 
@@ -386,21 +387,10 @@ export default function OccasionStyling() {
         <div className="flex flex-col-reverse lg:flex-row gap-8 md:gap-10 lg:gap-4">
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
-            onMouseEnter={() =>
-              breakpoint !== "mobile" && setIsTextHovered(true)
-            }
-            onMouseLeave={() =>
-              breakpoint !== "mobile" && setIsTextHovered(false)
-            }
+            onMouseEnter={() => breakpoint !== "mobile" && setIsTextHovered(true)}
+            onMouseLeave={() => breakpoint !== "mobile" && setIsTextHovered(false)}
             animate={{
-              scale:
-                breakpoint === "mobile"
-                  ? 1
-                  : isImageHovered
-                  ? 0.92
-                  : isTextHovered
-                  ? 1.08
-                  : 1,
+              scale: breakpoint === "mobile" ? 1 : isImageHovered ? 0.92 : isTextHovered ? 1.08 : 1,
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
@@ -413,10 +403,10 @@ export default function OccasionStyling() {
               and makeup suggestions (so you don&apos;t have to worry about a
               single detail). You&apos;ll get a clear presentation with options,
               links, and brand suggestions that fit your style and budget.
-              <br></br>If you want, I can also shop or join you for fittings to
+              <br />If you want, I can also shop or join you for fittings to
               make sure everything comes together perfectly, this can be added
-              as an hourly service. It&apos;s styling that actually works for
-              you, your wardrobe, and your life.
+              as an hourly service. It&apos;s styling that actually works for you,
+              your wardrobe, and your life.
             </p>
           </motion.div>
 
@@ -440,8 +430,9 @@ export default function OccasionStyling() {
                 img={img}
                 index={idx}
                 breakpoint={breakpoint}
-                clothesAudioRef={clothesAudioRef}
-                muted={muted}
+                utilId={img.utilId} // use explicit utilId
+                startUtil={startUtil}
+                stopUtil={stopUtil}
               />
             ))}
           </motion.div>

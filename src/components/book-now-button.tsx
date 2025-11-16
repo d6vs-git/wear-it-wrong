@@ -50,8 +50,8 @@ export const BookNowButton = ({
 
     setIsLoading(true);
 
-    // ✅ Ideal redirect (Next.js standard — used in top companies)
-    router.push("https://calendly.com/dhawangouri/30min");
+    // Updated Calendly with month param
+    router.push("https://calendly.com/dhawangouri/30min?month=2025-11");
     return;
 
     // ---------------------------------------------

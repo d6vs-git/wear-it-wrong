@@ -50,7 +50,7 @@ const imagePositions: SectionImage[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/testimonial/image254.png",
+    src: "/assets/images/testimonial/1_stcomment.png",
     alt: "quote box 1",
     dimensions: {
       mobile: { width: 230, height: 230 },

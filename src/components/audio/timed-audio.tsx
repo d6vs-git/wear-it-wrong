@@ -35,19 +35,29 @@ export default function TimedAudio({
   const rafId = useRef<number | null>(null);
   const STORAGE_KEY = "wiw-audio-muted";
 
-  const [muted, setMuted] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    try {
-      const saved = window.localStorage.getItem(STORAGE_KEY);
-      return saved === "true";
-    } catch {
-      return false;
-    }
-  });
-
+  // Deterministic initial value for SSR/CSR to avoid hydration mismatch
+  const [muted, setMuted] = useState<boolean>(false);
   const [playing, setPlaying] = useState(false);
 
   const clamp = (v: number) => Math.max(0, Math.min(1, v));
+
+  // After mount, sync muted from localStorage and apply to audio
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(STORAGE_KEY);
+      const storedMuted = saved === "true";
+      setMuted(storedMuted);
+      if (audioRef.current) {
+        audioRef.current.muted = storedMuted;
+      }
+      // announce current state so other hooks sync
+      window.dispatchEvent(
+        new CustomEvent("wiw-audio-mute-change", { detail: { muted: storedMuted } })
+      );
+    } catch {}
+    // run once after mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // -----------------------------
   // Fade handling

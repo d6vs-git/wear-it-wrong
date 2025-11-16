@@ -6,7 +6,7 @@ import SpaceSection from "@/components/styles/space-section";
 import SpaceEdit from "@/components/space-components/space-edit";
 import BrandSpaces from "@/components/space-components/brand-spaces";
 import MakeoverProject from "@/components/space-components/makeover-project";
-import TimedAudio from "@/components/audio/timed-audio";
+
 
 function SpacesContent() {
   const searchParams = useSearchParams();
@@ -34,14 +34,7 @@ function SpacesContent() {
   return (
     <>
       {/* Global background audio for Spaces (always on) */}
-      <TimedAudio
-        src="/assets/sounds/page1/Ebb%20Tide.mp3"
-        start={0}
-        volume={0.3}
-        fixed
-        loop
-      
-      />
+    
       {renderServiceComponent()}
     </>
   );

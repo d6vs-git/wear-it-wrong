@@ -4,6 +4,15 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, MouseEvent, useEffect } from "react";
 import Badge from "../badge";
+import TimedAudio from "@/components/audio/timed-audio";
+import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
+
+// Page 9 util audio config (ids used by images via utilId)
+const page9Utils = [
+  { id: "util-camera", src: "/assets/sounds/page9/camera_click.mp3", start: 0, volume: 0.55 },
+  { id: "util-chairs", src: "/assets/sounds/page9/chiar_noise_people_walking.mp3", start: 0, volume: 0.45, loopSegment: true, end: 4.5, fadeDuration: 0.6 },
+  { id: "util-people", src: "/assets/sounds/page9/people_walking.mp3", start: 0, volume: 0.5, loopSegment: true, end: 5.2, fadeDuration: 0.6 },
+] as const;
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -24,8 +33,8 @@ const springConfig = {
   mass: 0.5,
 };
 
+// Add utilId to images for hover sounds
 const imagePositions = [
-  //Merchandising images
   {
     src: "/assets/images/brand/concept-development/2.png",
     alt: "cafe -> mon bar a couture",
@@ -76,6 +85,7 @@ const imagePositions = [
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "merchandising",
     zIndex: 3,
+    utilId: "util-chairs",
   },
   {
     src: "/assets/images/brand/main/image69.png",
@@ -93,7 +103,7 @@ const imagePositions = [
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "merchandising",
     zIndex: 6,
-    className:"animate-always", 
+    className: "animate-always",
   },
   {
     src: "/assets/images/brand/main/image70.png",
@@ -111,7 +121,7 @@ const imagePositions = [
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "merchandising",
     zIndex: 6,
-    className:"animate-always", 
+    className: "animate-always",
   },
   //concept-development image
   {
@@ -164,13 +174,9 @@ const imagePositions = [
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "concept",
     zIndex: 5,
-    className:"animate-always", 
-    
-    // Added pendulum swing for my-girl (hover)
-    // swing: true,
-    // swingAmplitude: 9,
-    // swingDuration: 1.5,
-   transformOrigin: "50% 8%", // pivot at bottom center so feet stay fixed
+    className: "animate-always",
+    transformOrigin: "50% 8%",
+    utilId: "util-people",
   },
   {
     src: "/assets/images/space/main/makeover1.png",
@@ -203,11 +209,12 @@ const imagePositions = [
       desktop: { top: "67%", left: "12%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
-    type: "walk",
-    moveDuration: 6,
-    walkTargetFraction: 0.5, // walk only to halfway across container
     category: "concept",
     zIndex: 10,
+    type: "walk",
+    moveDuration: 6,
+    walkTargetFraction: 0.5,
+    utilId: "util-people",
   },
   // //brand-shoot images
   {
@@ -260,12 +267,8 @@ const imagePositions = [
     animation: { x: -30, y: 0, opacity: 0, rotate: -110 },
     category: "brandShoot",
     zIndex: 5,
-    // Pendulum swing (on hover)
-    // swing: true,
-    // swingAmplitude: 10,
-    // swingDuration: 1.4,
-    // Pivot near top-right so body swings below the tip
     transformOrigin: "85% 8%",
+    utilId: "util-camera",
   },
 ];
 
@@ -339,7 +342,7 @@ type SectionImage = {
   zIndex?: number;
   type?: "walk";
   moveDuration?: number;
-    className?: string; 
+  className?: string;
   // Optional fraction (0..1) of container width to walk to (center=0.5)
   walkTargetFraction?: number;
   // Optional pendulum swing settings
@@ -347,30 +350,25 @@ type SectionImage = {
   swingAmplitude?: number; // degrees around base rotate
   swingDuration?: number; // seconds for half-cycle
   transformOrigin?: string; // CSS transform-origin to pivot around tip
+  utilId?: string; // Added utilId for hover audio
 };
 
 type SectionImageItemProps = {
   img: SectionImage;
   index: number;
   hoveredCategory: string | null;
-  cameraClick: () => void;
-  chairsFadeIn: () => void;
-  chairsFadeOut: () => void;
-  peopleFadeIn: () => void;
-  peopleFadeOut: () => void;
   areaWidth: number; // added
+  startUtil: (id: string) => void;
+  stopUtil: (id: string) => void;
 };
 
 function SectionImageItem({
   img,
   index,
   hoveredCategory,
-  cameraClick,
-  chairsFadeIn,
-  chairsFadeOut,
-  peopleFadeIn,
-  peopleFadeOut,
   areaWidth,
+  startUtil,
+  stopUtil,
 }: SectionImageItemProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">(
@@ -385,8 +383,6 @@ function SectionImageItem({
   const springRotateX = useSpring(rotateX, springConfig);
   const springRotateY = useSpring(rotateY, springConfig);
   const [isWalking, setIsWalking] = useState(false);
-  // New: hover-driven effects
-  const [isSwinging, setIsSwinging] = useState(false); // camera & my-girl pendulum on hover
 
   // Update breakpoint based on window width
   useEffect(() => {
@@ -429,35 +425,19 @@ function SectionImageItem({
       rotateX.set(0);
       rotateY.set(0);
     }
-    const alt = img.alt.toLowerCase();
-    if (alt.includes("camera") || alt.includes("my-girl")) setIsSwinging(false);
-    if (alt.includes("chair")) chairsFadeOut();
-    if (
-      alt.includes("lady") ||
-      alt.includes("women") ||
-      alt.includes("group") ||
-      alt.includes("people")
-    )
-      peopleFadeOut();
+    if (img.utilId) {
+      console.debug('[brands] stopUtil via mouseleave', img.utilId);
+      stopUtil(img.utilId);
+    }
   };
 
   const handleEnter = () => {
-    const alt = img.alt.toLowerCase();
-    if (alt.includes("camera") || alt.includes("my-girl")) {
-      if (alt.includes("camera")) cameraClick();
-      setIsSwinging(true);
-    } else if (alt.includes("chair")) chairsFadeIn();
-    else if (
-      alt.includes("lady") ||
-      alt.includes("women") ||
-      alt.includes("group") ||
-      alt.includes("people")
-    )
-      peopleFadeIn();
-
-    // Trigger walk for designated images via explicit type
     if (img.type === "walk" && !isWalking && areaWidth > 0) {
       setIsWalking(true);
+    }
+    if (img.utilId) {
+      console.debug('[brands] startUtil via mouseenter', img.utilId);
+      startUtil(img.utilId);
     }
   };
 
@@ -470,13 +450,6 @@ function SectionImageItem({
     const targetCenterX = areaWidth * fraction;
     walkTargetX = targetCenterX - startLeftPx; // displacement needed
   }
-
-  // Hover pendulum for camera or my-girl (or any image with swing=true)
-  const baseRotate = img.animation?.rotate ?? 0;
-  const shouldSwing = !!img.swing && isSwinging;
-  const swingAmp = img.swingAmplitude ?? 8;
-  const swingTime = img.swingDuration ?? 1.8;
-  const animateRotate = shouldSwing ? [baseRotate - swingAmp, baseRotate + swingAmp] : baseRotate;
 
   return (
     <motion.div
@@ -497,7 +470,7 @@ function SectionImageItem({
         x: img.animation?.x ?? 0,
         y: img.animation?.y ?? 0,
         opacity: img.animation?.opacity ?? 1,
-        rotate: baseRotate,
+        rotate: img.animation?.rotate ?? 0,
       }}
       whileInView={{
         // Let animate control rotate/x for pendulum and shake
@@ -509,7 +482,6 @@ function SectionImageItem({
         filter: isOtherHovered ? "blur(6px)" : "blur(0px)",
         opacity: isOtherHovered ? 0.45 : 1,
         x: isWalking ? walkTargetX : 0,
-        rotate: animateRotate,
       }}
       transition={{
         scale: {
@@ -528,9 +500,6 @@ function SectionImageItem({
           ease: "easeOut",
           type: "tween",
         },
-        rotate: shouldSwing
-          ? { duration: swingTime, repeat: Infinity, repeatType: "mirror", ease: [0.42, 0, 0.58, 1] }
-          : { duration: 0.3 },
         x: isWalking
           ? { duration: img.moveDuration ?? 6, ease: [0, 0, 1, 1] }
           : { stiffness: 200, damping: 30 },
@@ -538,11 +507,10 @@ function SectionImageItem({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleEnter}
-      onTouchStart={() => {
-        const alt = img.alt.toLowerCase();
-        if (img.type === "walk" && !isWalking && areaWidth > 0) setIsWalking(true);
-        if (alt.includes("camera") || alt.includes("my-girl")) setIsSwinging(true);
-      }}
+      onPointerEnter={() => { if (img.utilId){ console.debug('[brands] startUtil via pointerenter', img.utilId); startUtil(img.utilId);} if (img.type === 'walk' && !isWalking && areaWidth > 0) setIsWalking(true); }}
+      onPointerLeave={() => { if (img.utilId){ console.debug('[brands] stopUtil via pointerleave', img.utilId); stopUtil(img.utilId);} if (!isWalking){ x.set(0); y.set(0); rotateX.set(0); rotateY.set(0);} }}
+      onTouchStart={() => { if (img.type === "walk" && !isWalking && areaWidth > 0) setIsWalking(true); if (img.utilId){ console.debug('[brands] startUtil via touchstart', img.utilId); startUtil(img.utilId); } }}
+      onTouchEnd={() => { if (img.utilId){ console.debug('[brands] stopUtil via touchend', img.utilId); stopUtil(img.utilId); } }}
       onAnimationComplete={() => {
         if (isWalking) {
           setIsWalking(false);
@@ -559,7 +527,7 @@ function SectionImageItem({
         alt={img.alt}
         width={img.dimensions[breakpoint].width}
         height={img.dimensions[breakpoint].height}
-        className="object-contain pointer-events-none"
+        className="object-contain pointer-events-none h-auto"
         priority={index < 2}
         draggable={false}
       />
@@ -694,16 +662,16 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
     brandShoot: "brand-shoots",
   };
 
-  // Hover audio refs and mute sync
-  const cameraRef = useRef<HTMLAudioElement | null>(null);
-  const chairsRef = useRef<HTMLAudioElement | null>(null);
-  const peopleRef = useRef<HTMLAudioElement | null>(null);
-  const [muted, setMuted] = useState(true);
-  const lastCameraTimeRef = useRef<number>(0);
-  // measure container width for walking distance
+  // util audio setup (use top-level page9Utils config)
+  const { startUtil, stopUtil } = useHoverUtilsAudio(page9Utils as any, "");
+  // Log preload state once
+  useEffect(() => {
+    console.debug('[brands] util audio ids ready:', page9Utils.map(u => u.id));
+  }, []);
+
+  // measure container width
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [areaWidth, setAreaWidth] = useState(0);
-
   useEffect(() => {
     const measure = () => {
       if (containerRef.current) setAreaWidth(containerRef.current.offsetWidth);
@@ -712,75 +680,6 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, []);
-
-  useEffect(() => {
-    const handler = (e: any) => {
-      if (e?.detail && typeof e.detail.muted === "boolean") {
-        setMuted(e.detail.muted);
-        if (e.detail.muted) {
-          [cameraRef.current, chairsRef.current, peopleRef.current].forEach((a) => {
-            if (a) {
-              a.pause();
-              a.currentTime = 0;
-            }
-          });
-        }
-      }
-    };
-    window.addEventListener("wiw-audio-mute-change", handler as any);
-    return () => window.removeEventListener("wiw-audio-mute-change", handler as any);
-  }, []);
-
-  const cameraClick = () => {
-    if (muted || !cameraRef.current) return;
-    const now = Date.now();
-    if (now - lastCameraTimeRef.current < 800) return;
-    lastCameraTimeRef.current = now;
-    const a = cameraRef.current;
-    a.currentTime = 0;
-    a.volume = 0.55;
-    a.play().catch(() => {});
-  };
-
-  function fadeInLoop(ref: React.RefObject<HTMLAudioElement | null>, target = 0.45) {
-    if (muted || !ref.current) return;
-    const a = ref.current;
-    a.loop = true;
-    a.currentTime = 0;
-    a.volume = 0;
-    a.play().catch(() => {});
-    const step = 0.05;
-    const interval = setInterval(() => {
-      if (!a || a.paused || muted) {
-        clearInterval(interval);
-        return;
-      }
-      a.volume = Math.min(a.volume + step, target);
-      if (a.volume >= target) clearInterval(interval);
-    }, 60);
-  }
-  function fadeOutStop(ref: React.RefObject<HTMLAudioElement | null>) {
-    if (!ref.current) return;
-    const a = ref.current;
-    const step = 0.06;
-    const interval = setInterval(() => {
-      if (!a) {
-        clearInterval(interval);
-        return;
-      }
-      a.volume = Math.max(a.volume - step, 0);
-      if (a.volume <= 0) {
-        a.pause();
-        a.currentTime = 0;
-        clearInterval(interval);
-      }
-    }, 60);
-  }
-
-  const chairsFadeIn = () => fadeInLoop(chairsRef, 0.45);
-  const chairsFadeOut = () => fadeOutStop(chairsRef);
-  const peopleFadeIn = () => fadeInLoop(peopleRef, 0.5);
-  const peopleFadeOut = () => fadeOutStop(peopleRef);
 
   return (
     <motion.section
@@ -791,24 +690,27 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
-      
-      <audio ref={cameraRef} src="/assets/sounds/page9/camera_click.mp3" preload="auto" playsInline />
-      <audio ref={chairsRef} src="/assets/sounds/page9/chiar_noise_people_walking.mp3" preload="auto" playsInline />
-      <audio ref={peopleRef} src="/assets/sounds/page9/people_walking.mp3" preload="auto" playsInline />
+      {/* Global audio toggle icon (no background track) */}
+      <TimedAudio
+        src="/assets/sounds/page9/people_walking.mp3"
+        start={0}
+        volume={0.0}
+        autoPlay={false}
+        fixed
+        loop={false}
+        className="z-[70]"
+      />
 
       {/* Images */}
-      {imagePositions.map((img, index) => (
+      {imagePositions.map((img: any, index: number) => (
         <SectionImageItem
           key={index}
-          img={img as any}
+          img={img}
           index={index}
           hoveredCategory={hoveredCategory}
-          cameraClick={cameraClick}
-          chairsFadeIn={chairsFadeIn}
-          chairsFadeOut={chairsFadeOut}
-          peopleFadeIn={peopleFadeIn}
-          peopleFadeOut={peopleFadeOut}
           areaWidth={areaWidth}
+          startUtil={startUtil}
+          stopUtil={stopUtil}
         />
       ))}
 

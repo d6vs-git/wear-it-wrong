@@ -6,7 +6,6 @@ import BrandSection from "@/components/styles/brands-section";
 import VisualMerchandising from "@/components/brand-components/visual-merchandising";
 import ConceptDevelopment from "@/components/brand-components/concept-development";
 import BrandShoots from "@/components/brand-components/brand-shoots";
-import TimedAudio from "@/components/audio/timed-audio";
 
 function BrandsContent() {
   const searchParams = useSearchParams();
@@ -33,15 +32,7 @@ function BrandsContent() {
 
   return (
     <>
-      {/* Global background audio for Brands (always on) */}
-      <TimedAudio
-        src="/assets/sounds/page8/Weekend_privlages.mp3"
-        start={0}
-        volume={0.25}
-        fixed
-        loop
-      
-      />
+      {/* Removed global background audio for Brands to avoid hydration issues and per requirements (no background song here) */}
       {renderServiceComponent()}
     </>
   );

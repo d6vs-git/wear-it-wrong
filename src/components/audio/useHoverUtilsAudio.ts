@@ -9,7 +9,7 @@ export type UtilAudioSegment = {
   end?: number;
   volume?: number;
   loopSegment?: boolean;
-  fadeDuration?: number;
+  fadeDuration?: number; // used for end fade and mouseleave fade
 };
 
 export function useHoverUtilsAudio(segments: UtilAudioSegment[], noiseSrc: string) {
@@ -17,8 +17,27 @@ export function useHoverUtilsAudio(segments: UtilAudioSegment[], noiseSrc: strin
   const [utilHovering, setUtilHovering] = useState<boolean>(false);
   const utilAudioRefs = useRef<Record<string, HTMLAudioElement>>({});
   const utilLoopRaf = useRef<Record<string, number>>({});
+  const hoverActive = useRef<Record<string, boolean>>({});
   const noiseRef = useRef<HTMLAudioElement | null>(null);
   const hoverCountRef = useRef<number>(0);
+  const interactedRef = useRef<boolean>(false);
+
+  // On mount, sync initial muted with TimedAudio's storage and set interaction listeners
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem('wiw-audio-muted');
+      if (saved === 'true' || saved === 'false') setMuted(saved === 'true');
+    } catch {}
+    const enable = () => { interactedRef.current = true; };
+    window.addEventListener('pointerdown', enable, { once: true });
+    window.addEventListener('keydown', enable, { once: true });
+    window.addEventListener('touchstart', enable, { once: true });
+    return () => {
+      window.removeEventListener('pointerdown', enable as any);
+      window.removeEventListener('keydown', enable as any);
+      window.removeEventListener('touchstart', enable as any);
+    };
+  }, []);
 
   // helper fade
   const fadeTo = (audio: HTMLAudioElement, target: number, seconds: number) => {
@@ -48,13 +67,15 @@ export function useHoverUtilsAudio(segments: UtilAudioSegment[], noiseSrc: strin
         a.loop = false;
         a.volume = seg.volume ?? 0.5;
         a.muted = muted;
+        a.addEventListener('error', () => {
+          console.error('[util-audio] failed to load', seg.id, seg.src);
+        });
         utilAudioRefs.current[seg.id] = a;
       }
     });
     return () => {
       Object.values(utilLoopRaf.current).forEach(id => cancelAnimationFrame(id));
     };
-    // segments stable per page
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -78,7 +99,7 @@ export function useHoverUtilsAudio(segments: UtilAudioSegment[], noiseSrc: strin
     if (muted) setUtilHovering(false);
   }, [muted]);
 
-  // control noise based on util hovering
+  // control noise based on util hovering (if you pass a noiseRef externally)
   useEffect(() => {
     const n = noiseRef.current;
     if (!n) return;
@@ -95,35 +116,88 @@ export function useHoverUtilsAudio(segments: UtilAudioSegment[], noiseSrc: strin
     }
   }, [utilHovering, muted]);
 
+  const ensureTick = (id: string, seg: UtilAudioSegment, audio: HTMLAudioElement) => {
+    if (!seg.loopSegment || seg.end === undefined) return;
+    const { start = 0, end, fadeDuration = 0.4, volume = 0.5 } = seg;
+    const clamp = (v: number) => Math.max(0, Math.min(1, v));
+
+    const tick = () => {
+      // stop ticking if hover ended
+      if (!hoverActive.current[id]) return;
+      if (audio.paused) {
+        utilLoopRaf.current[id] = requestAnimationFrame(tick);
+        return;
+      }
+      const t = audio.currentTime;
+      // guard lower bound
+      if (t < start) audio.currentTime = start;
+
+      // end-fade (similar to people-section CD logic)
+      if (fadeDuration > 0 && t >= end - fadeDuration && t < end) {
+        const remaining = Math.max(0, end - t);
+        audio.volume = clamp(volume * (remaining / fadeDuration));
+      }
+      // wrap
+      if (t >= end - 0.02) {
+        audio.currentTime = start;
+        audio.volume = volume; // restore base after wrap
+        // keep playing seamlessly
+        audio.play().catch(() => {});
+      }
+      utilLoopRaf.current[id] = requestAnimationFrame(tick);
+    };
+    if (utilLoopRaf.current[id]) cancelAnimationFrame(utilLoopRaf.current[id]);
+    utilLoopRaf.current[id] = requestAnimationFrame(tick);
+  };
+
   const startUtil = (id: string) => {
     const seg = segments.find(s => s.id === id);
     if (!seg) return;
     const audio = utilAudioRefs.current[id];
-    if (!audio || muted) return;
-    if (utilLoopRaf.current[id]) cancelAnimationFrame(utilLoopRaf.current[id]);
-    audio.currentTime = seg.start ?? 0;
-    audio.volume = seg.volume ?? 0.5;
-    audio.muted = false;
-    audio.play().catch(() => {});
-
-    if (seg.loopSegment && seg.end !== undefined) {
-      const { start = 0, end, fadeDuration = 0, volume = 0.5 } = seg;
-      const clamp = (v: number) => Math.max(0, Math.min(1, v));
-      const tick = () => {
-        if (audio.paused) return;
-        const t = audio.currentTime;
-        if (fadeDuration > 0 && t >= end - fadeDuration && t < end) {
-          const remaining = end - t;
-          audio.volume = clamp(volume * (remaining / fadeDuration));
-        }
-        if (t >= end - 0.02) {
-          audio.currentTime = start;
-          audio.volume = volume;
-        }
-        utilLoopRaf.current[id] = requestAnimationFrame(tick);
-      };
-      utilLoopRaf.current[id] = requestAnimationFrame(tick);
+    if (!audio || muted) {
+      if (!audio) console.debug('[util-audio] no audio element for id', id);
+      if (muted) console.debug('[util-audio] muted, skip start for', id);
+      return;
     }
+
+    // Treat hover as interaction
+    if (!interactedRef.current) interactedRef.current = true;
+
+    hoverActive.current[id] = true;
+    if (utilLoopRaf.current[id]) cancelAnimationFrame(utilLoopRaf.current[id]);
+
+    const baseVol = seg.volume ?? 0.5;
+    const startAt = seg.start ?? 0;
+
+    audio.currentTime = startAt;
+    audio.muted = false;
+
+    if (seg.loopSegment) {
+      // Start silent, fade in like people-section CD
+      audio.volume = 0;
+      audio.play().then(() => {
+        fadeTo(audio, baseVol, Math.max(seg.fadeDuration ?? 0.6, 0.4));
+      }).catch(err => {
+        console.debug('[util-audio] play blocked, will wait and retry', id, err?.name);
+        const retry = () => audio.play().then(()=>fadeTo(audio, baseVol, Math.max(seg.fadeDuration ?? 0.6, 0.4))).catch(e => console.debug('[util-audio] retry failed', id, e?.name));
+        window.addEventListener('pointerdown', retry, { once: true });
+        window.addEventListener('touchstart', retry, { once: true });
+        window.addEventListener('keydown', retry, { once: true });
+      });
+      ensureTick(id, seg, audio);
+    } else {
+      // One-shot behavior (paper/bark style)
+      audio.volume = baseVol;
+      audio.currentTime = startAt;
+      audio.play().catch(err => {
+        console.debug('[util-audio] play blocked for one-shot', id, err?.name);
+        const retry = () => audio.play().catch(e => console.debug('[util-audio] retry failed one-shot', id, e?.name));
+        window.addEventListener('pointerdown', retry, { once: true });
+        window.addEventListener('touchstart', retry, { once: true });
+        window.addEventListener('keydown', retry, { once: true });
+      });
+    }
+
     setUtilHovering(true);
   };
 
@@ -132,10 +206,27 @@ export function useHoverUtilsAudio(segments: UtilAudioSegment[], noiseSrc: strin
     if (!seg) return;
     const audio = utilAudioRefs.current[id];
     if (!audio) return;
+    hoverActive.current[id] = false;
+
     if (utilLoopRaf.current[id]) cancelAnimationFrame(utilLoopRaf.current[id]);
-    try { audio.pause(); } catch {}
-    audio.currentTime = seg.start ?? 0;
-    audio.volume = seg.volume ?? 0.5;
+
+    const baseVol = seg.volume ?? 0.5;
+    const startAt = seg.start ?? 0;
+
+    if (seg.loopSegment) {
+      // Fade out then pause/reset, matching people-section CD behavior
+      const outDur = Math.max(seg.fadeDuration ?? 0.5, 0.3);
+      fadeTo(audio, 0, outDur);
+      window.setTimeout(() => {
+        try { audio.pause(); } catch {}
+        audio.currentTime = startAt;
+        audio.volume = baseVol;
+      }, outDur * 1000 + 20);
+    } else {
+      try { audio.pause(); } catch {}
+      audio.currentTime = startAt;
+      audio.volume = baseVol;
+    }
 
     // if no audios playing, mark hovering false
     const anyPlaying = Object.values(utilAudioRefs.current).some(a => !a.paused);
