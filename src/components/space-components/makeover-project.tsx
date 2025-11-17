@@ -249,6 +249,7 @@ const images: ImageConfig[] = [
       tablet: { top: "74%", left: "89%" },
       desktop: { top: "73%", left: "88%" },
     },
+    className: "animate-always-slow",
     zIndex: 5,
   },
   {
@@ -339,8 +340,9 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "10%", left: "2%" },
       tablet: { top: "8%", left: "0%" },
-      desktop: { top: "7%", left: "-1%" },
+      desktop: { top: "-4%", left: "-1%" },
     },
+    className: "animate-light-flicker-slow",
     zIndex: 5,
   },
   {
@@ -371,6 +373,7 @@ const images: ImageConfig[] = [
       tablet: { top: "14%", left: "92%" },
       desktop: { top: "13%", left: "93%" },
     },
+    className: "animate-light-flicker-slow",
     zIndex: 1,
   },
   {

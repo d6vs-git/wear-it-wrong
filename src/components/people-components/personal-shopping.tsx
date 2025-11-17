@@ -70,6 +70,7 @@ type ImageConfig = {
   dimensions: ResponsiveDimensions;
   position: ResponsivePosition;
   zIndex?: number;
+  className?: string;
   type: "flower" | "carpet" | "hover" | "walk";
   moveDuration?: number;
   hoverScale?: number;
@@ -92,6 +93,7 @@ const images: ImageConfig[] = [
       tablet: { top: "-8%", left: "0%" },
       desktop: { top: "-10%", left: "0%" },
     },
+    className: "animate-light-flicker-slow",
     type: "flower",
     zIndex: 0,
   },
@@ -108,6 +110,7 @@ const images: ImageConfig[] = [
       tablet: { top: "-8%", left: "32%" },
       desktop: { top: "-10%", left: "32%" },
     },
+    className: "animate-light-flicker-slow",
     type: "flower",
     zIndex: 0,
   },
@@ -124,6 +127,7 @@ const images: ImageConfig[] = [
       tablet: { top: "-8%", left: "66%" },
       desktop: { top: "-10%", left: "66%" },
     },
+    className: "animate-light-flicker-slow",
     type: "flower",
     zIndex: 0,
   },
@@ -193,6 +197,7 @@ const images: ImageConfig[] = [
       desktop: { top: "5%", left: "18%" },
     },
     type: "hover",
+   
     zIndex: 5,
     hoverScale: 1.08,
     hoverY: -10,
@@ -212,6 +217,7 @@ const images: ImageConfig[] = [
       desktop: { top: "5%", left: "55%" },
     },
     type: "hover",
+    
     zIndex: 5,
     hoverScale: 1.08,
     hoverY: -10,
@@ -271,6 +277,7 @@ const images: ImageConfig[] = [
       desktop: { top: "50%", left: "75%" },
     },
     type: "hover",
+    className: "animate-always-slow",
     zIndex: 9,
     hoverScale: 1.15,
     hoverY: -12,
@@ -290,6 +297,7 @@ const images: ImageConfig[] = [
       desktop: { top: "72%", left: "75%" },
     },
     type: "hover",
+    className: "animate-always-slow",
     zIndex: 9,
     hoverScale: 1.2,
     hoverY: -8,
@@ -318,7 +326,6 @@ const ImageItem = ({
   onWalkHover,
   utilSegmentId,
 }: ImageItemProps) => {
-  const [isMoving, setIsMoving] = useState(false);
   const [key, setKey] = useState(0);
 
   const position = img.position[breakpoint];
@@ -351,14 +358,19 @@ const ImageItem = ({
         onMouseEnter={onFlowerHover}
         onMouseLeave={onFlowerHover}
       >
-        <Image
-          src={img.src}
-          alt={img.alt}
-          width={dimensions.width}
-          height={dimensions.height}
-          className="object-contain w-full h-full"
-          priority={index < 2}
-        />
+        <div
+          className={img.className || ""}
+          style={{ width: "100%", height: "100%" }}
+        >
+          <Image
+            src={img.src}
+            alt={img.alt}
+            width={dimensions.width}
+            height={dimensions.height}
+            className="object-contain w-full h-full"
+            priority={index < 2}
+          />
+        </div>
       </motion.div>
     );
   }
@@ -399,26 +411,21 @@ const ImageItem = ({
         key={key}
         className="absolute cursor-pointer"
         style={baseStyle}
-        initial={{ x: 0, opacity: 0 }}
-        animate={isMoving ? { x: targetX, opacity: 1 } : { x: 0, opacity: 1 }}
-        transition={
-          isMoving
-            ? { duration: img.moveDuration || 5, ease: "linear" }
-            : { opacity: { duration: 0.25 } }
-        }
+        initial={{ x: 0, opacity: 1 }}
+        animate={{ x: targetX, opacity: 1 }}
+        transition={{
+          duration: img.moveDuration || 5,
+          ease: "linear",
+        }}
+        onAnimationComplete={() => {
+          // Reset position and restart
+          setKey((k) => k + 1);
+        }}
         onMouseEnter={() => {
-          if (!isMoving) setIsMoving(true);
           if (onWalkHover) onWalkHover(true);
         }}
         onMouseLeave={() => {
           if (onWalkHover) onWalkHover(false);
-        }}
-        onAnimationComplete={() => {
-          if (isMoving) {
-            setIsMoving(false);
-            if (onWalkHover) onWalkHover(false); // stop noise after walk completes
-            setKey((k) => k + 1);
-          }
         }}
       >
         <Image
@@ -446,14 +453,19 @@ const ImageItem = ({
       }}
       transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
     >
-      <Image
-        src={img.src}
-        alt={img.alt}
-        width={dimensions.width}
-        height={dimensions.height}
-        className="object-contain w-full h-full"
-        priority={index < 2}
-      />
+      <div
+        className={img.className || ""}
+        style={{ width: "100%", height: "100%" }}
+      >
+        <Image
+          src={img.src}
+          alt={img.alt}
+          width={dimensions.width}
+          height={dimensions.height}
+          className="object-contain w-full h-full"
+          priority={index < 2}
+        />
+      </div>
     </motion.div>
   );
 };

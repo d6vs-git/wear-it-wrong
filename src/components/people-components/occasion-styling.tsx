@@ -118,6 +118,8 @@ const images: ImageConfig[] = [
     },
     zIndex: 6,
     utilId: "util-clothes",
+    className: "animate-carpet-shuttle",
+    transformOrigin: "50% 90%",
   },
   {
     src: "/assets/images/people/occasion-styling/carpet2.png",
@@ -212,6 +214,7 @@ const images: ImageConfig[] = [
       desktop: { top: "-19%", left: "30%" },
     },
     zIndex: 10,
+    className: "animate-light-flicker-slow",
   },
   {
     src: "/assets/images/people/occasion-styling/shoes.png",
@@ -328,8 +331,8 @@ const ImageItem = ({ img, index, breakpoint, utilId, startUtil, stopUtil }: Imag
   return (
     <motion.div
       ref={ref}
-      className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
-      style={{ ...baseStyle, x: springX, y: springY, transformOrigin: img.transformOrigin ?? "50% 50%" }}
+      className={"absolute cursor-pointer will-change-transform"}
+      style={{ ...baseStyle, x: springX, y: springY }}
       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
       transition={{ scale: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] } }}
@@ -337,14 +340,19 @@ const ImageItem = ({ img, index, breakpoint, utilId, startUtil, stopUtil }: Imag
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
     >
-      <Image
-        src={img.src}
-        alt={img.alt}
-        width={dimensions.width}
-        height={dimensions.height}
-        className="object-contain w-full h-full pointer-events-none"
-        priority={index < 2}
-      />
+      <div
+        className={img.className || ""}
+        style={{ width: "100%", height: "100%", transformOrigin: img.transformOrigin ?? "50% 50%" }}
+      >
+        <Image
+          src={img.src}
+          alt={img.alt}
+          width={dimensions.width}
+          height={dimensions.height}
+          className="object-contain w-full h-full pointer-events-none"
+          priority={index < 2}
+        />
+      </div>
     </motion.div>
   );
 };

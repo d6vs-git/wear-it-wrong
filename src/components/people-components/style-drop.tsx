@@ -155,6 +155,7 @@ const images: ImageConfig[] = [
       tablet: { top: "4%", left: "74%" },
       desktop: { top: "3%", left: "72%" },
     },
+    className: "animate-carpet-shuttle",
     zIndex: 1,
   },
   {
@@ -185,6 +186,7 @@ const images: ImageConfig[] = [
       tablet: { top: "23%", left: "26%" },
       desktop: { top: "22%", left: "25%" },
     },
+    className: "animate-light-flicker-slow",
     zIndex: 10,
   },
   {
@@ -271,10 +273,8 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
   return (
     <motion.div
       ref={ref}
-      className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
-      style={{ ...baseStyle, x: springX, y: springY,
-        transformOrigin: img.transformOrigin ?? "50% 50%",
-       }}
+      className="absolute cursor-pointer will-change-transform"
+      style={{ ...baseStyle, x: springX, y: springY }}
       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
       transition={{
@@ -283,14 +283,23 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <Image
-        src={img.src}
-        alt={img.alt}
-        width={dimensions.width}
-        height={dimensions.height}
-        className="object-contain w-full h-full pointer-events-none"
-        priority={index < 2}
-      />
+      <div
+        className={img.className || ""}
+        style={{ 
+          width: "100%", 
+          height: "100%",
+          transformOrigin: img.transformOrigin ?? "50% 50%",
+        }}
+      >
+        <Image
+          src={img.src}
+          alt={img.alt}
+          width={dimensions.width}
+          height={dimensions.height}
+          className="object-contain w-full h-full pointer-events-none"
+          priority={index < 2}
+        />
+      </div>
     </motion.div>
   );
 };

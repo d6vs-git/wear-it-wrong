@@ -496,7 +496,7 @@
 /* ============================================
    END PENDULUM ANIMATIONS
    ============================================ */
-   /* ============================================
+/* ============================================
    POP-UP & POP-DOWN ANIMATIONS (ALWAYS-ON)
    ============================================ */
 
@@ -833,3 +833,80 @@
 /* ============================================
    END ROTATION ANIMATIONS
    ============================================ */
+
+/* ============================================
+   CARPET SHUTTLE (forward/back within area)
+   ============================================ */
+@keyframes carpet-shuttle {
+  0% {
+    transform: translateX(-18px);
+  }
+  50% {
+    transform: translateX(18px);
+  }
+  100% {
+    transform: translateX(-18px);
+  }
+}
+
+/* Default speed */
+.animate-carpet-shuttle {
+  animation: carpet-shuttle 3.2s ease-in-out infinite;
+}
+
+/* Variants */
+.animate-carpet-shuttle-slow {
+  animation: carpet-shuttle 4.8s ease-in-out infinite;
+}
+
+.animate-carpet-shuttle-fast {
+  animation: carpet-shuttle 2.6s ease-in-out infinite;
+}
+
+/* ============================================
+   LIGHT FLICKER (on/off effect)
+   ============================================ */
+@keyframes light-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  20%, 24%, 55% {
+    opacity: 0.4;
+    filter: brightness(0.4);
+  }
+  22% {
+    opacity: 0.6;
+    filter: brightness(0.6);
+  }
+}
+
+/* Default flicker */
+.animate-light-flicker {
+  animation: light-flicker 4s ease-in-out infinite;
+}
+
+/* Variants */
+.animate-light-flicker-slow {
+  animation: light-flicker 6s ease-in-out infinite;
+}
+
+.animate-light-flicker-fast {
+  animation: light-flicker 2.5s ease-in-out infinite;
+}
+
+/* Subtle flicker */
+@keyframes light-flicker-subtle {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.85;
+    filter: brightness(0.85);
+  }
+}
+
+.animate-light-flicker-subtle {
+  animation: light-flicker-subtle 3s ease-in-out infinite;
+}

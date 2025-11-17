@@ -477,14 +477,13 @@ function SectionImageItem({
 
   const isHovered = hoveredCategory === img.category;
   const isOtherHovered = hoveredCategory !== null && hoveredCategory !== img.category;
-  const [isCarMoving, setIsCarMoving] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   // Special handling for car and favourite-person
   const isCar = img.alt === "car";
   const isFavouritePerson = img.alt === "favourite-person";
 
-  // Handle mount animation for car
+  // Handle mount animation for car - start continuous movement
   useEffect(() => {
     if (isCar) {
       setTimeout(() => setMounted(true), 100);
@@ -514,7 +513,7 @@ function SectionImageItem({
     rotateY.set(0);
   };
 
-  // For car, use continuous looping animation while hovered
+  // For car, use continuous looping animation
   if (isCar) {
     return (
       <motion.div
@@ -531,13 +530,13 @@ function SectionImageItem({
           x: -30,
         }}
         animate={{
-          x: isCarMoving && mounted ? [0, -700, 0] : 0,
+          x: mounted ? [0, -400, 0] : 0,
           scale: isHovered ? 1.25 : isOtherHovered ? 0.88 : 1,
           filter: isOtherHovered ? "blur(6px)" : "blur(0px)",
           opacity: mounted ? (isOtherHovered ? 0.45 : 1) : 1,
         }}
         transition={{
-          x: isCarMoving && mounted ? { 
+          x: mounted ? { 
             duration: 5, 
             ease: "linear",
             repeat: Infinity,
@@ -560,8 +559,6 @@ function SectionImageItem({
             ease: "easeOut",
           },
         }}
-        onMouseEnter={() => setIsCarMoving(true)}
-        onMouseLeave={() => setIsCarMoving(false)}
       >
         <Image
           src={img.src}

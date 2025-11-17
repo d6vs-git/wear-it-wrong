@@ -474,7 +474,7 @@ import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
 import TimedAudio from "@/components/audio/timed-audio";
 import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
-
+import Footer from "../footer";
 // Audio config for page7
 type AudioSegment = {
   id: string;

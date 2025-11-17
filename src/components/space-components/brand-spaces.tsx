@@ -45,6 +45,7 @@ type ResponsiveDimensions = {
 type ImageConfig = {
   src: string;
   alt: string;
+  className?: string;
   dimensions: ResponsiveDimensions;
   position: ResponsivePosition;
   zIndex?: number;
@@ -109,6 +110,7 @@ const images: ImageConfig[] = [
       tablet: { top: "13%", left: "22%" },
       desktop: { top: "12%", left: "21%" },
     },
+    className: "animate-light-flicker-slow",
     zIndex: 5,
   },
   {
@@ -154,6 +156,7 @@ const images: ImageConfig[] = [
       tablet: { top: "52%", left: "89%" },
       desktop: { top: "51%", left: "90%" },
     },
+    className: "animate-light-flicker-slow",
     zIndex: 5,
   },
   {
@@ -184,6 +187,7 @@ const images: ImageConfig[] = [
       tablet: { top: "73%", left: "74%" },
       desktop: { top: "72%", left: "75%" },
     },
+    className: "animate-light-flicker-slow",
     zIndex: 5,
   },
 
@@ -245,6 +249,7 @@ const images: ImageConfig[] = [
       tablet: { top: "63%", left: "12%" },
       desktop: { top: "62%", left: "11%" },
     },
+    className: "animate-light-flicker-slow",
     zIndex: 5,
   },
   {
@@ -275,6 +280,7 @@ const images: ImageConfig[] = [
       tablet: { top: "48%", left: "46%" },
       desktop: { top: "47%", left: "45%" },
     },
+    className : "animate-light-flicker-slow",
     zIndex: 5,
   },
   {
@@ -305,6 +311,7 @@ const images: ImageConfig[] = [
       tablet: { top: "70%", left: "42%" },
       desktop: { top: "69%", left: "41%" },
     },
+    className: "animate-light-flicker-slow",
     zIndex: 11,
   },
 ];
@@ -371,14 +378,23 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <Image
-        src={img.src}
-        alt={img.alt}
-        width={dimensions.width}
-        height={dimensions.height}
-        className="object-contain w-full h-full pointer-events-none"
-        priority={index < 2}
-      />
+      <div
+        className={img.className || ""}
+        style={{
+          width: "100%",
+          height: "100%",
+          transformOrigin: "50% 50%",
+        }}
+      >
+        <Image
+          src={img.src}
+          alt={img.alt}
+          width={dimensions.width}
+          height={dimensions.height}
+          className="object-contain w-full h-full pointer-events-none"
+          priority={index < 2}
+        />
+      </div>
     </motion.div>
   );
 };
