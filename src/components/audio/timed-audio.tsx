@@ -33,31 +33,12 @@ export default function TimedAudio({
 }: TimedAudioProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const rafId = useRef<number | null>(null);
-  const STORAGE_KEY = "wiw-audio-muted";
 
-  // Deterministic initial value for SSR/CSR to avoid hydration mismatch
+  // ALWAYS start unmuted (Option A)
   const [muted, setMuted] = useState<boolean>(false);
   const [playing, setPlaying] = useState(false);
 
   const clamp = (v: number) => Math.max(0, Math.min(1, v));
-
-  // After mount, sync muted from localStorage and apply to audio
-  useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem(STORAGE_KEY);
-      const storedMuted = saved === "true";
-      setMuted(storedMuted);
-      if (audioRef.current) {
-        audioRef.current.muted = storedMuted;
-      }
-      // announce current state so other hooks sync
-      window.dispatchEvent(
-        new CustomEvent("wiw-audio-mute-change", { detail: { muted: storedMuted } })
-      );
-    } catch {}
-    // run once after mount
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   // -----------------------------
   // Fade handling
@@ -71,25 +52,29 @@ export default function TimedAudio({
     }
     const startTime = performance.now();
     const durationMs = seconds * 1000;
+
     function step(now: number) {
       const t = Math.min(1, (now - startTime) / durationMs);
       audio.volume = clamp(from + (to - from) * t);
       if (t < 1) requestAnimationFrame(step);
     }
+
     requestAnimationFrame(step);
   };
 
   // -----------------------------
-  // Init
+  // Init + ALWAYS PLAY ON REFRESH
   // -----------------------------
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
+    // ALWAYS unmuted on mount
+    audio.muted = false;
+    setMuted(false);
+
     audio.currentTime = start;
     audio.loop = !!loop && !loopSegment;
-    audio.muted = muted;
-
     audio.volume =
       loopSegment && fadeDuration > 0 ? 0 : clamp(volume);
 
@@ -111,11 +96,11 @@ export default function TimedAudio({
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
 
+    // Resume after first user interaction if browser blocks autoplay
     const tryResume = () => {
       if (!audio) return;
-      if (!muted && audio.paused) {
-        audio.play().catch(() => {});
-      }
+      if (!audio.paused) return;
+      audio.play().catch(() => {});
       window.removeEventListener("pointerdown", tryResume);
     };
     window.addEventListener("pointerdown", tryResume, { once: true });
@@ -125,14 +110,13 @@ export default function TimedAudio({
       audio.removeEventListener("pause", onPause);
       window.removeEventListener("pointerdown", tryResume);
     };
-  }, [loop, loopSegment, start, fadeDuration, volume, autoPlay, muted]);
+  }, [loop, loopSegment, start, fadeDuration, volume, autoPlay]);
 
   // -----------------------------
   // Seamless loop segment
   // -----------------------------
   useEffect(() => {
     if (!loopSegment || end === undefined) return;
-
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -170,7 +154,7 @@ export default function TimedAudio({
   }, [loopSegment, end, start, fadeDuration, volume]);
 
   // -----------------------------
-  // Basic loop fallback
+  // Segment end fallback
   // -----------------------------
   useEffect(() => {
     if (loopSegment) return;
@@ -198,15 +182,9 @@ export default function TimedAudio({
   }, [loopSegment, end, fadeDuration, start, volume]);
 
   // -----------------------------
-  // Cleanup + announce
+  // Cleanup
   // -----------------------------
   useEffect(() => {
-    try {
-      window.dispatchEvent(
-        new CustomEvent("wiw-audio-mute-change", { detail: { muted } })
-      );
-    } catch {}
-
     return () => {
       const audio = audioRef.current;
       if (audio) {
@@ -218,43 +196,28 @@ export default function TimedAudio({
   }, []);
 
   // -----------------------------
-  // Toggle Mute
+  // Toggle mute (NO STORAGE)
   // -----------------------------
   const toggleMute = () => {
     const audio = audioRef.current;
     if (!audio) return;
 
     const next = !muted;
+    setMuted(next);
+    audio.muted = next;
 
-    if (!next) {
-      audio.muted = false;
-      if (audio.paused)
-        audio.play().then(() => setPlaying(true)).catch(() => {});
-      setMuted(false);
-      window.localStorage.setItem(STORAGE_KEY, "false");
-    } else {
-      audio.muted = true;
-      setMuted(true);
-      window.localStorage.setItem(STORAGE_KEY, "true");
+    // If unmuting and paused → play again
+    if (!next && audio.paused) {
+      audio.play().then(() => setPlaying(true)).catch(() => {});
     }
-
-    window.dispatchEvent(
-      new CustomEvent("wiw-audio-mute-change", { detail: { muted: next } })
-    );
   };
 
   // -----------------------------
   // Positioning
   // -----------------------------
   const basePosition = fixed
-    ? clsx(
-        "fixed right-4 bottom-4",        // mobile
-        "md:right-4 md:top-20"         // desktop
-      )
-    : clsx(
-        "absolute right-4 bottom-4",     // mobile
-        "md:right-4 md:top-20"         // desktop
-      );
+    ? clsx("fixed right-4 bottom-4", "md:right-4 md:top-20")
+    : clsx("absolute right-4 bottom-4", "md:right-4 md:top-20");
 
   const spinClass =
     !muted && playing ? "animate-[spin_12s_linear_infinite]" : "";
@@ -267,12 +230,11 @@ export default function TimedAudio({
         onClick={toggleMute}
         className={clsx(
           basePosition,
-          "z-50 rounded-full bg-background/70 backdrop-blur-sm text-foreground flex items-center justify-center shadow-lg ring-1 ring-foreground/30 hover:bg-background/90 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+          "z-50 rounded-full bg-background/70 backdrop-blur-sm text-foreground flex items-center justify-center shadow-lg ring-1 ring-foreground/30 hover:bg-background/90 transition",
           className,
-          "h-10 w-10 md:h-16 md:w-16" // ← mobile 40px, desktop 64px
+          "h-10 w-10 md:h-16 md:w-16"
         )}
         aria-label={muted ? "Enable audio" : "Mute audio"}
-        title={muted ? "Sound On" : "Sound Off"}
       >
         <div
           className={clsx(
@@ -285,7 +247,7 @@ export default function TimedAudio({
             alt="Audio toggle"
             width={56}
             height={56}
-            className="h-full w-full object-contain select-none pointer-events-none"
+            className="h-full w-full object-contain pointer-events-none select-none"
             draggable={false}
           />
         </div>
