@@ -21,6 +21,8 @@ export function useHoverUtilsAudio(segments: UtilAudioSegment[], noiseSrc: strin
   const noiseRef = useRef<HTMLAudioElement | null>(null);
   const hoverCountRef = useRef<number>(0);
   const interactedRef = useRef<boolean>(false);
+  // Cache for ad-hoc one-shot audios by src (not part of segments)
+  const oneshotAudioRefs = useRef<Record<string, HTMLAudioElement>>({});
 
   // On mount, sync initial muted with TimedAudio's storage and set interaction listeners
   useEffect(() => {
@@ -243,5 +245,91 @@ export function useHoverUtilsAudio(segments: UtilAudioSegment[], noiseSrc: strin
     if (hoverCountRef.current === 0) setUtilHovering(false);
   };
 
-  return { noiseRef, noiseSrc, startUtil, stopUtil, startHoverNoise, stopHoverNoise, muted } as const;
+  // --- One-shot (by direct src) helpers ---
+  const ensureOneShotAudio = (src: string, volume: number = 0.5) => {
+    let a = oneshotAudioRefs.current[src];
+    if (!a) {
+      a = new Audio(src);
+      a.preload = 'auto';
+      a.loop = false;
+      a.muted = muted;
+      a.volume = volume;
+      a.addEventListener('error', () => {
+        console.error('[oneshot-audio] failed to load', src);
+      });
+      oneshotAudioRefs.current[src] = a;
+    }
+    a.volume = volume;
+    return a;
+  };
+
+  const startOneShotBySrc = (src: string, volume: number = 0.5) => {
+    const a = ensureOneShotAudio(src, volume);
+    a.currentTime = 0;
+    a.muted = muted;
+    if (!muted) a.play().catch(() => {});
+  };
+
+  const stopOneShotBySrc = (src: string) => {
+    const a = oneshotAudioRefs.current[src];
+    if (!a) return;
+    try { a.pause(); } catch {}
+    a.currentTime = 0;
+  };
+
+  // --- Simple, reusable hover handlers API ---
+  type HoverHandlerArgs = {
+    id?: string; // util segment id
+    src?: string; // direct audio path (one-shot)
+    volume?: number; // override
+    disabledOnMobile?: boolean;
+    treatAsNoise?: boolean; // use noise start/stop
+  };
+
+  const isMobile = () => (typeof window !== 'undefined' ? window.innerWidth < 768 : false);
+
+  const getHoverHandlers = (args: HoverHandlerArgs) => {
+    return {
+      onMouseEnter: () => {
+        if (args.disabledOnMobile && isMobile()) return;
+        if (args.treatAsNoise) {
+          startHoverNoise();
+          return;
+        }
+        if (args.id) {
+          startUtil(args.id);
+          return;
+        }
+        if (args.src) {
+          startOneShotBySrc(args.src, args.volume ?? 0.5);
+        }
+      },
+      onMouseLeave: () => {
+        if (args.disabledOnMobile && isMobile()) return;
+        if (args.treatAsNoise) {
+          stopHoverNoise();
+          return;
+        }
+        if (args.id) {
+          stopUtil(args.id);
+          return;
+        }
+        if (args.src) {
+          stopOneShotBySrc(args.src);
+        }
+      },
+    } as const;
+  };
+
+  // --- existing returns + new helpers ---
+  return {
+    noiseRef,
+    noiseSrc,
+    startUtil,
+    stopUtil,
+    startHoverNoise,
+    stopHoverNoise,
+    muted,
+    getHoverHandlers, // << spread these into any element
+  } as const;
 }

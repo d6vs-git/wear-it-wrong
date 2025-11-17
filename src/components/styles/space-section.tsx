@@ -4,6 +4,8 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, useEffect, MouseEvent } from "react";
 import Badge from "@/components/badge";
+import TimedAudio from "../audio/timed-audio";
+import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -24,7 +26,13 @@ const springConfig = {
   mass: 0.5,
 };
 
-const imagePositions = [
+// Page 13 util audio config for Space section
+const page13Utils = [
+  { id: "util-car", src: "/assets/sounds/page13/CAR_SOUND.mp3", start: 3, volume: 0.5 }, // start shifted to 3s
+  { id: "util-plant", src: "/assets/sounds/page13/plant_moving_on_very_low_voice.mp3", start: 0, volume: 0.25 },
+] as const;
+
+const imagePositions: SectionImage[] = [
   //space-edit
   // {
   //   src: "/assets/images/people/main/space-edit2.png",
@@ -145,6 +153,7 @@ const imagePositions = [
     category: "brand-space",
     zIndex: 3,
   },
+
   {
     src: "/assets/images/space/main/image88.png",
     alt: "pot plant",
@@ -161,6 +170,7 @@ const imagePositions = [
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "brand-space",
     zIndex: 4,
+    utilId: "util-plant",
   },
   {
     src: "/assets/images/space/main/image87.png",
@@ -212,6 +222,7 @@ const imagePositions = [
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "brand-space",
     zIndex: 6,
+    utilId: "util-car",
   },
   {
     src: "/assets/images/space/makeover/8.png",
@@ -366,7 +377,7 @@ const imagePositions = [
     category: "makeover-projects",
     zIndex: 4,
   },
-];
+] as const;
 
 const badgePositions: Badge[] = [
   {
@@ -436,6 +447,9 @@ type SectionImage = {
   animation?: { x: number; y: number; opacity: number; rotate: number };
   category: string;
   zIndex?: number;
+  utilId?: string; // hover audio id
+  className?: string; // allow animation classes like brands-section
+  transformOrigin?: string; // pivot point for rotations
 };
 
 function SectionImageItem({
@@ -768,6 +782,9 @@ export default function SpaceSection({ onBadgeClick }: SpaceSectionProps) {
     "makeover-projects": "makeover-projects",
   };
 
+  // setup hover audio for space (page13)
+  const { getHoverHandlers } = useHoverUtilsAudio(page13Utils as any, "");
+
   return (
     <motion.section
       className="relative w-full h-screen md:h-screen flex items-center justify-center bg-landing overflow-hidden md:overflow-hidden overflow-y-auto"
@@ -782,14 +799,28 @@ export default function SpaceSection({ onBadgeClick }: SpaceSectionProps) {
         ease: [0.22, 1, 0.36, 1],
       }}
     >
+      {/* Global audio toggle icon (silent placeholder) */}
+      <TimedAudio
+        src="/assets/sounds/page13/plant_moving_on_very_low_voice.mp3"
+        start={0}
+        volume={0}
+        autoPlay={false}
+        fixed
+        loop={false}
+        className="z-[70]"
+      />
       {/* Images */}
-      {imagePositions.map((img, index) => (
-        <SectionImageItem
+      {imagePositions.map((img: SectionImage, index: number) => (
+        <div
           key={index}
-          img={img}
-          index={index}
-          hoveredCategory={hoveredCategory}
-        />
+          {...(img.utilId ? getHoverHandlers({ id: img.utilId, disabledOnMobile: true }) : {})}
+        >
+          <SectionImageItem
+            img={img}
+            index={index}
+            hoveredCategory={hoveredCategory}
+          />
+        </div>
       ))}
 
       {/* Badges */}

@@ -358,8 +358,6 @@ type SectionImageItemProps = {
   index: number;
   hoveredCategory: string | null;
   areaWidth: number; // added
-  startUtil: (id: string) => void;
-  stopUtil: (id: string) => void;
 };
 
 function SectionImageItem({
@@ -367,8 +365,6 @@ function SectionImageItem({
   index,
   hoveredCategory,
   areaWidth,
-  startUtil,
-  stopUtil,
 }: SectionImageItemProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">(
@@ -425,19 +421,11 @@ function SectionImageItem({
       rotateX.set(0);
       rotateY.set(0);
     }
-    if (img.utilId) {
-      console.debug('[brands] stopUtil via mouseleave', img.utilId);
-      stopUtil(img.utilId);
-    }
   };
 
   const handleEnter = () => {
     if (img.type === "walk" && !isWalking && areaWidth > 0) {
       setIsWalking(true);
-    }
-    if (img.utilId) {
-      console.debug('[brands] startUtil via mouseenter', img.utilId);
-      startUtil(img.utilId);
     }
   };
 
@@ -507,10 +495,6 @@ function SectionImageItem({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleEnter}
-      onPointerEnter={() => { if (img.utilId){ console.debug('[brands] startUtil via pointerenter', img.utilId); startUtil(img.utilId);} if (img.type === 'walk' && !isWalking && areaWidth > 0) setIsWalking(true); }}
-      onPointerLeave={() => { if (img.utilId){ console.debug('[brands] stopUtil via pointerleave', img.utilId); stopUtil(img.utilId);} if (!isWalking){ x.set(0); y.set(0); rotateX.set(0); rotateY.set(0);} }}
-      onTouchStart={() => { if (img.type === "walk" && !isWalking && areaWidth > 0) setIsWalking(true); if (img.utilId){ console.debug('[brands] startUtil via touchstart', img.utilId); startUtil(img.utilId); } }}
-      onTouchEnd={() => { if (img.utilId){ console.debug('[brands] stopUtil via touchend', img.utilId); stopUtil(img.utilId); } }}
       onAnimationComplete={() => {
         if (isWalking) {
           setIsWalking(false);
@@ -663,7 +647,7 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
   };
 
   // util audio setup (use top-level page9Utils config)
-  const { startUtil, stopUtil } = useHoverUtilsAudio(page9Utils as any, "");
+  const { getHoverHandlers } = useHoverUtilsAudio(page9Utils as any, "");
   // Log preload state once
   useEffect(() => {
     console.debug('[brands] util audio ids ready:', page9Utils.map(u => u.id));
@@ -703,15 +687,17 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
 
       {/* Images */}
       {imagePositions.map((img: any, index: number) => (
-        <SectionImageItem
+        <div
           key={index}
-          img={img}
-          index={index}
-          hoveredCategory={hoveredCategory}
-          areaWidth={areaWidth}
-          startUtil={startUtil}
-          stopUtil={stopUtil}
-        />
+          {...(img.utilId ? getHoverHandlers({ id: img.utilId, disabledOnMobile: true }) : {})}
+        >
+          <SectionImageItem
+            img={img}
+            index={index}
+            hoveredCategory={hoveredCategory}
+            areaWidth={areaWidth}
+          />
+        </div>
       ))}
 
       {/* Badges */}

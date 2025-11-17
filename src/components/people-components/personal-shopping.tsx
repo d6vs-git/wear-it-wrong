@@ -30,25 +30,7 @@ const audioSegments: AudioSegment[] = [
     volume: 0.22,
     loopSegment: false,
   },
-  {
-    id: "bg-shopping",
-    type: "utils",
-    src: "/assets/sounds/page5/background_noise.mp3",
-    start: 0,
-    volume: 0.22,
-    loopSegment: false,
-  },
 ];
-
-const utilSegments = audioSegments.filter(s => s.type === 'utils').map(s => ({
-  id: s.id,
-  src: s.src,
-  start: s.start,
-  end: s.end,
-  volume: s.volume,
-  loopSegment: s.loopSegment,
-  fadeDuration: s.fadeDuration,
-}));
 
 type Breakpoint = "mobile" | "tablet" | "desktop";
 
@@ -76,6 +58,8 @@ type ImageConfig = {
   hoverScale?: number;
   hoverY?: number;
   hoverRotate?: number;
+  hoverAudio?: string; // path to audio file to play on hover
+  hoverAudioVolume?: number; // volume for hover audio (0-1)
 };
 
 const images: ImageConfig[] = [
@@ -197,7 +181,8 @@ const images: ImageConfig[] = [
       desktop: { top: "5%", left: "18%" },
     },
     type: "hover",
-   
+    hoverAudio: "/assets/sounds/page5/background_noise.mp3",
+    hoverAudioVolume: 0.22,
     zIndex: 5,
     hoverScale: 1.08,
     hoverY: -10,
@@ -217,7 +202,8 @@ const images: ImageConfig[] = [
       desktop: { top: "5%", left: "55%" },
     },
     type: "hover",
-    
+    hoverAudio: "/assets/sounds/page5/background_noise.mp3",
+    hoverAudioVolume: 0.22,
     zIndex: 5,
     hoverScale: 1.08,
     hoverY: -10,
@@ -327,6 +313,7 @@ const ImageItem = ({
   utilSegmentId,
 }: ImageItemProps) => {
   const [key, setKey] = useState(0);
+  const hoverAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const position = img.position[breakpoint];
   const dimensions = img.dimensions[breakpoint];
@@ -338,6 +325,22 @@ const ImageItem = ({
     width: `${dimensions.width}px`,
     height: `${dimensions.height}px`,
     zIndex: img.zIndex ?? index,
+  };
+
+  // Hover audio handlers
+  const handleAudioMouseEnter = () => {
+    if (img.hoverAudio && hoverAudioRef.current && breakpoint !== "mobile") {
+      hoverAudioRef.current.volume = img.hoverAudioVolume ?? 0.3;
+      hoverAudioRef.current.currentTime = 0;
+      hoverAudioRef.current.play().catch(() => {});
+    }
+  };
+
+  const handleAudioMouseLeave = () => {
+    if (img.hoverAudio && hoverAudioRef.current) {
+      hoverAudioRef.current.pause();
+      hoverAudioRef.current.currentTime = 0;
+    }
   };
 
   // Flower animation
@@ -442,31 +445,38 @@ const ImageItem = ({
 
   // Hover animation
   return (
-    <motion.div
-      className="absolute cursor-pointer"
-      style={baseStyle}
-      initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
-      whileHover={{
-        scale: img.hoverScale || 1.08,
-        y: img.hoverY || -10,
-        rotate: img.hoverRotate || 0,
-      }}
-      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-    >
-      <div
-        className={img.className || ""}
-        style={{ width: "100%", height: "100%" }}
+    <>
+      {img.hoverAudio && (
+        <audio ref={hoverAudioRef} src={img.hoverAudio} preload="auto" playsInline />
+      )}
+      <motion.div
+        className="absolute cursor-pointer"
+        style={baseStyle}
+        initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
+        whileHover={{
+          scale: img.hoverScale || 1.08,
+          y: img.hoverY || -10,
+          rotate: img.hoverRotate || 0,
+        }}
+        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+        onMouseEnter={handleAudioMouseEnter}
+        onMouseLeave={handleAudioMouseLeave}
       >
-        <Image
-          src={img.src}
-          alt={img.alt}
-          width={dimensions.width}
-          height={dimensions.height}
-          className="object-contain w-full h-full"
-          priority={index < 2}
-        />
-      </div>
-    </motion.div>
+        <div
+          className={img.className || ""}
+          style={{ width: "100%", height: "100%" }}
+        >
+          <Image
+            src={img.src}
+            alt={img.alt}
+            width={dimensions.width}
+            height={dimensions.height}
+            className="object-contain w-full h-full"
+            priority={index < 2}
+          />
+        </div>
+      </motion.div>
+    </>
   );
 };
 
@@ -477,8 +487,7 @@ export default function PersonalShopping() {
   const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
   const imageAreaRef = useRef<HTMLDivElement>(null);
   const [areaWidth, setAreaWidth] = useState(0);
-
-  const { noiseRef, startUtil, stopUtil, startHoverNoise, stopHoverNoise } = useHoverUtilsAudio(utilSegments, "/assets/sounds/page5/background_noise.mp3");
+  const { getHoverHandlers } = useHoverUtilsAudio([], "/assets/sounds/page5/background_noise.mp3");
 
   useEffect(() => {
     const updateBreakpoint = () => {
@@ -505,11 +514,6 @@ export default function PersonalShopping() {
     return () => window.removeEventListener("resize", measure);
   }, []);
 
-  // Provide image to util audio mapping and also which images trigger background noise
-  const imageUtilMap: Record<string, string> = {
-    'Clothing Rack': 'bg-shopping', // treat as util id for hover noise only
-  };
-
   // Walk hover stub (no extra audio logic now)
   const handleWalkHover = (_hovering: boolean) => {};
 
@@ -530,7 +534,6 @@ export default function PersonalShopping() {
           className="z-[70]"
         />
       ))}
-      <audio ref={noiseRef} src="/assets/sounds/page5/background_noise.mp3" preload="auto" playsInline />
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex justify-between items-center gap-3">
@@ -623,26 +626,9 @@ export default function PersonalShopping() {
             {images.map((img, idx) => (
               <div
                 key={idx}
-                onMouseEnter={() => {
-                  if (breakpoint !== 'mobile') {
-                    const utilId = imageUtilMap[img.alt];
-                    if (utilId === 'bg-shopping') {
-                      startHoverNoise(); // start only noise
-                    } else if (utilId) {
-                      startUtil(utilId); // start util audio
-                    }
-                  }
-                }}
-                onMouseLeave={() => {
-                  if (breakpoint !== 'mobile') {
-                    const utilId = imageUtilMap[img.alt];
-                    if (utilId === 'bg-shopping') {
-                      stopHoverNoise();
-                    } else if (utilId) {
-                      stopUtil(utilId);
-                    }
-                  }
-                }}
+                {...(img.alt === 'Clothing Rack' || img.alt === 'clothing rack with clothes'
+                  ? getHoverHandlers({ src: "/assets/sounds/page5/background_noise.mp3", volume: 0.22, disabledOnMobile: true })
+                  : {})}
               >
                 <ImageItem
                   img={img}
