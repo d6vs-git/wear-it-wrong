@@ -3,12 +3,14 @@ import "./globals.css";
 import AuthProvider from "@/components/auth/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import ConditionalNavbar from "@/components/conditional-navbar";
+import FooterClient from "./Footer-client";
 
 export const metadata: Metadata = {
   title: "Wear It Wrong",
   description:
     "Wear It Wrong is a creative styling studio that helps people, brands, and spaces find their expression and look good doing it.",
 };
+import dynamic from "next/dynamic";
 
 export default function RootLayout({
   children,
@@ -24,6 +26,8 @@ export default function RootLayout({
             <main className="flex-1 overflow-y-auto">
               {children}
             </main>
+            
+
           </div>
           <Toaster
             position="top-center"
@@ -62,7 +66,9 @@ export default function RootLayout({
             }}
           />
         </AuthProvider>
+        <FooterClient />
       </body>
+      
     </html>
   );
 }

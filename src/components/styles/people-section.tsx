@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, MouseEvent, useEffect } from "react";
 import Badge from "@/components/badge";
+import Footer from "../footer";
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -774,6 +775,8 @@ export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
           onClick={() => onBadgeClick(serviceMap[badge.category])}
         />
       ))}
+      
     </motion.section>
+
   );
 }

@@ -7,7 +7,7 @@ import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
 import TimedAudio from "@/components/audio/timed-audio";
 import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
-
+import Footer from "../footer";
 // Unified audio config (page4)
 // Extended: include background and util segments in one array
 type AudioSegment = {
@@ -644,6 +644,7 @@ export default function PersonalShopping() {
           </motion.div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

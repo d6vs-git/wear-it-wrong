@@ -1,11 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import TimedAudio from "@/components/audio/timed-audio";
+import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
 
 // Audio config for page7
 type AudioSegment = {
@@ -275,7 +276,6 @@ const images: ImageConfig[] = [
       tablet: { top: "30%", left: "15%" },
       desktop: { top: "20%", left: "10%" },
     },
-    className: "animate-light-flicker-slow",
     zIndex: 4,
   },
 
@@ -357,6 +357,34 @@ type ImageItemProps = {
 };
 
 const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const springConfig = { damping: 20, stiffness: 300, mass: 0.5 };
+  const springX = useSpring(x, springConfig);
+  const springY = useSpring(y, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current || breakpoint === "mobile") return;
+
+    const rect = ref.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const deltaX = (e.clientX - centerX) * 0.15;
+    const deltaY = (e.clientY - centerY) * 0.15;
+
+    x.set(deltaX);
+    y.set(deltaY);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   const position = img.position[breakpoint];
   const dimensions = img.dimensions[breakpoint];
 
@@ -370,28 +398,29 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
   };
 
   return (
-    <div
-      className="absolute"
-      style={baseStyle}
+    <motion.div
+      ref={ref}
+      className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
+      style={{ ...baseStyle, x: springX, y: springY,
+        transformOrigin: img.transformOrigin ?? "50% 50%",
+       }}
+      whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
+      whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
+      transition={{
+        scale: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
-      <div
-        className={img.className || ""}
-        style={{ 
-          width: "100%", 
-          height: "100%",
-          transformOrigin: img.transformOrigin ?? "50% 50%",
-        }}
-      >
-        <Image
-          src={img.src}
-          alt={img.alt}
-          width={dimensions.width}
-          height={dimensions.height}
-          className="object-contain w-full h-full pointer-events-none"
-          priority={index < 2}
-        />
-      </div>
-    </div>
+      <Image
+        src={img.src}
+        alt={img.alt}
+        width={dimensions.width}
+        height={dimensions.height}
+        className="object-contain w-full h-full pointer-events-none"
+        priority={index < 2}
+      />
+    </motion.div>
   );
 };
 

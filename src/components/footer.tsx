@@ -4,49 +4,110 @@ import Image from "next/image";
 
 export default function Footer() {
   const router = useRouter();
+  const image_path = "/assets/logo/logo-silver.png";
 
   return (
-    <footer className="w-full bg-[#EEDCC7] border-t border-black mt-12">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-6">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-          
-          {/* Logo + Social */}
-          <div className="flex flex-col gap-3">
-            <div className="border border-black p-4 flex items-center justify-center h-20">
-              <span className="text-lg font-bold">logo</span>
-            </div>
-            <div className="border border-black p-3 flex items-center justify-center gap-3">
-              <div className="w-5 h-5 bg-black rounded-full" />
-              <div className="w-5 h-5 bg-black rounded-full" />
-            </div>
+    <footer className="w-full  border-t border-black mt-16">
+      <div className="max-w-[1200px] mx-auto px-6 py-14">
+
+        {/* FLEXIBLE, ALIGNED GRID */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-12 items-start">
+
+          {/* LOGO + SOCIAL */}
+          <div className="flex flex-col items-start gap-6">
+            <Image
+              src={image_path}
+              alt="logo"
+              width={120}
+              height={80}
+              className="object-contain"
+            />
           </div>
 
-          {/* About */}
-          <div className="border border-black p-4 flex flex-col gap-1.5 text-sm">
-            <button onClick={() => router.push("/about")} className="text-left hover:underline">about</button>
-            <button onClick={() => router.push("/services")} className="text-left hover:underline">all services</button>
-            <button onClick={() => router.push("/testimonials")} className="text-left hover:underline">testimonials</button>
-            <button onClick={() => router.push("/privacy")} className="text-left hover:underline">privacy policy</button>
-            <button onClick={() => router.push("/terms")} className="text-left hover:underline">terms & conditions</button>
-          </div>
+          {/* ABOUT */}
+          <nav className="flex flex-col gap-2 text-sm">
+            <h6 className="text-sm font-semibold uppercase tracking-wide text-black/80">
+              About
+            </h6>
 
-          {/* Brands */}
-          <div className="border border-black p-4 flex flex-col gap-1.5 text-sm">
-            <button onClick={() => router.push("/brands")} className="text-left hover:underline">brands</button>
-            <button onClick={() => router.push("/brands/concept-dev")} className="text-left hover:underline">– concept dev</button>
-            <button onClick={() => router.push("/brands/vis-merch")} className="text-left hover:underline">– vis merch</button>
-            <button onClick={() => router.push("/brands/shoots")} className="text-left hover:underline">– brand shoots</button>
-          </div>
+            {[
+              ["About", "/about"],
+              ["All Services", "/services"],
+              ["Testimonials", "/testimonials"],
+              ["Privacy Policy", "/privacy"],
+              ["Terms & Conditions", "/terms"],
+            ].map(([label, link]) => (
+              <button
+                key={label}
+                onClick={() => router.push(link)}
+                className="text-black/70 hover:text-black hover:underline underline-offset-4 text-left transition"
+              >
+                {label}
+              </button>
+            ))}
+          </nav>
 
-          {/* People */}
-          <div className="border border-black p-4 flex items-center justify-center text-sm">
-            <button onClick={() => router.push("/people")} className="hover:underline">people</button>
-          </div>
+            {/* BRANDS */}
+          <nav className="flex flex-col gap-2 text-sm">
+            <h6 className="text-sm font-semibold uppercase tracking-wide text-black/80">
+              BRANDS
+            </h6>
 
-          {/* Spaces */}
-          <div className="border border-black p-4 flex items-center justify-center text-sm">
-            <button onClick={() => router.push("/spaces")} className="hover:underline">spaces</button>
-          </div>
+            {[
+              ["brand-shoots", "/about"],
+              ["concept-development", "/services"],
+              ["visual-merchandising", "/testimonials"],
+            ].map(([label, link]) => (
+              <button
+                key={label}
+                onClick={() => router.push(link)}
+                className="text-black/70 hover:text-black hover:underline underline-offset-4 text-left transition"
+              >
+                {label}
+              </button>
+            ))}
+          </nav>
+          {/* PEOPLE */}
+          <nav className="flex flex-col gap-2 text-sm">
+            <h6 className="text-sm font-semibold uppercase tracking-wide text-black/80">
+              PEOPLE
+            </h6>
+
+            {[
+              ["occasion-styling", "/about"],
+              ["personal-shopping", "/services"],
+              ["style-drop", "/testimonials"],
+              ["wardrobe-detox", "/testimonials"],
+            ].map(([label, link]) => (
+              <button
+                key={label}
+                onClick={() => router.push(link)}
+                className="text-black/70 hover:text-black hover:underline underline-offset-4 text-left transition"
+              >
+                {label}
+              </button>
+            ))}
+          </nav>
+          {/* SPACES */}
+            <nav className="flex flex-col gap-2 text-sm">
+            <h6 className="text-sm font-semibold uppercase tracking-wide text-black/80">
+              SPACES           </h6>
+
+            {[
+              ["space-edit", "/about"],
+              ["Brand-spaces", "/services"],
+              ["Makeover-proejects", "/testimonials"],
+             
+            ].map(([label, link]) => (
+              <button
+                key={label}
+                onClick={() => router.push(link)}
+                className="text-black/70 hover:text-black hover:underline underline-offset-4 text-left transition"
+              >
+                {label}
+              </button>
+            ))}
+          </nav>
 
         </div>
       </div>
