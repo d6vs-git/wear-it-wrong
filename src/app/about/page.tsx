@@ -146,13 +146,13 @@ export default function About() {
             </p>
 
             <p className="font-normal">
-              The idea is simple: style isn&apos;t about perfection or trends.
-              It &apos; s about creating things that feel right; for who you are,
+              The idea is simple: style isn’t about perfection or trends.
+              It ’s about creating things that feel right; for who you are,
               what you do, and how you live.
             </p>
 
             <p className="font-normal">
-              Whether it&apos;s your clothes, your store, or your home, the goal
+              Whether it’s your clothes, your store, or your home, the goal
               is always the same: to make it feel intentional, effortless, and
               unmistakably you.
             </p>
