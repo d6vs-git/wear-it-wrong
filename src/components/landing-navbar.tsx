@@ -699,8 +699,7 @@ export default function LandingNavbar() {
                     px-10  py-4 rounded-lg 
                     font-semibold text-lg shadow-lg 
                     hover:bg-primary/90 hover:bg-primary/90 
-                    transition-all duration-200 font-badtyp
-                     
+                    transition-all duration-200 font-badtyp 
                   "
                   whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.96 }}

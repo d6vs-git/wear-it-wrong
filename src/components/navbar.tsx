@@ -264,7 +264,7 @@ export default function Navbar() {
                   md:hidden
                   mt-6 w-3/4 text-center 
                   bg-primary text-primary-foreground 
-                  px-10 py-4 rounded-full 
+                  px-10 py-4 rounded-lg 
                   font-semibold text-lg shadow-lg 
                   hover:bg-primary/90 hover:shadow-xl 
                   transition-all duration-300 font-badtyp
