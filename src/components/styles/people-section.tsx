@@ -33,7 +33,7 @@ const imagePositions = [
     dimensions: {
       mobile: { width: 120, height: 180 },
       tablet: { width: 200, height: 200 },
-      desktop: { width: 180, height: 180 },
+      desktop: { width: 220, height: 220 },
     },
     position: {
       mobile: { top: "6%", left: "56%" },
@@ -50,7 +50,7 @@ const imagePositions = [
     dimensions: {
       mobile: { width: 65, height: 65 },
       tablet: { width: 80, height: 80 },
-      desktop: { width: 70, height: 70 },
+      desktop: { width: 110, height: 110 },
     },
     position: {
       mobile: { top: "7%", left: "17%" },
@@ -67,7 +67,7 @@ const imagePositions = [
     dimensions: {
       mobile: { width: 140, height: 155 },
       tablet: { width: 180, height: 200 },
-      desktop: { width: 160, height: 180 },
+      desktop: { width: 170, height: 180 },
     },
     position: {
       mobile: { top: "16%", left: "24%" },
@@ -78,13 +78,30 @@ const imagePositions = [
     category: "package-offers",
     zIndex: 4,
   },
+    {
+  src: "/assets/images/people/main/image47.png", // your extra image path
+  alt: "extra music player cd",
+  dimensions: {
+    mobile: { width: 140, height: 150 },
+    tablet: { width: 0, height: 0 }, // hide on tablet
+    desktop: { width: 0, height: 0 }, // hide on desktop
+  },
+  position: {
+    mobile: { top: "100%", left: "60%" }, 
+    tablet: { top: "-9999px", left: "-9999px" }, // move off-screen
+    desktop: { top: "-9999px", left: "-9999px" }, // move off-screen
+  },
+  animation: { x: 0, y: 0, opacity: 0, rotate: 0 },
+  category: "package-offers",
+  zIndex: 4,
+},
   {
     src: "/assets/images/people/main/image42.png",
     alt: "paper",
     dimensions: {
       mobile: { width: 185, height: 185 },
       tablet: { width: 300, height: 300 },
-      desktop: { width: 260, height: 260 },
+      desktop: { width: 280, height: 280 },
     },
     position: {
       mobile: { top: "33%", left: "10%" },
@@ -101,7 +118,7 @@ const imagePositions = [
     dimensions: {
       mobile: { width: 180, height: 140 },
       tablet: { width: 180, height: 220 },
-      desktop: { width: 160, height: 200 },
+      desktop: { width: 180, height: 200 },
     },
     position: {
       mobile: { top: "32%", left: "10%" },
@@ -118,10 +135,10 @@ const imagePositions = [
     dimensions: {
       mobile: { width: 250, height: 160 },
       tablet: { width: 260, height: 260 },
-      desktop: { width: 230, height: 230 },
+      desktop: { width: 240, height: 240 },
     },
     position: {
-      mobile: { top: "73%", left: "15%" },
+      mobile: { top: "73%", left: "15%" },  
       tablet: { top: "59%", left: "40%" },
       desktop: { top: "69%", left: "40%" },
     },
@@ -135,7 +152,7 @@ const imagePositions = [
     dimensions: {
       mobile: { width: 150, height: 150 },
       tablet: { width: 110, height: 220 },
-      desktop: { width: 100, height: 200 },
+      desktop: { width: 140, height: 240 },
     },
     position: {
       mobile: { top: "34%", left: "42%" },
@@ -152,7 +169,7 @@ const imagePositions = [
     dimensions: {
       mobile: { width: 220, height: 170 },
       tablet: { width: 300, height: 300 },
-      desktop: { width: 260, height: 260 },
+      desktop: { width: 300, height: 300 },
     },
     position: {
       mobile: { top: "15%", left: "55%" },
@@ -169,7 +186,7 @@ const imagePositions = [
     dimensions: {
       mobile: { width: 180, height: 185 },
       tablet: { width: 260, height: 300 },
-      desktop: { width: 230, height: 260 },
+      desktop: { width: 250, height: 280 },
     },
     position: {
       mobile: { top: "95%", left: "10%" },
@@ -186,7 +203,7 @@ const imagePositions = [
     dimensions: {
       mobile: { width: 120, height: 185 },
       tablet: { width: 180, height: 300 },
-      desktop: { width: 160, height: 260 },
+      desktop: { width: 180, height: 280 },
     },
     position: {
       mobile: { top: "60%", left: "9%" },
@@ -203,7 +220,7 @@ const imagePositions = [
     dimensions: {
       mobile: { width: 165, height: 180 },
       tablet: { width: 220, height: 300 },
-      desktop: { width: 190, height: 260 },
+      desktop: { width: 230, height: 300 },
     },
     position: {
       mobile: { top: "70%", left: "41%" },
@@ -220,7 +237,7 @@ const imagePositions = [
     dimensions: {
       mobile: { width: 260, height: 180 },
       tablet: { width: 430, height: 300 },
-      desktop: { width: 370, height: 260 },
+      desktop: { width: 410, height: 300 },
     },
     position: {
       mobile: { top: "43%", left: "56%" },
@@ -237,7 +254,7 @@ const imagePositions = [
     dimensions: {
       mobile: { width: 60, height: 75 },
       tablet: { width: 110, height: 110 },
-      desktop: { width: 95, height: 95 },
+      desktop: { width: 120, height: 120 },
     },
     position: {
       mobile: { top: "100%", left: "61%" },
@@ -248,6 +265,8 @@ const imagePositions = [
     category: "occasion-styling",
     zIndex: 11,
   },
+
+
 ];
 
 const badgePositions = [
@@ -306,7 +325,7 @@ const badgePositions = [
     position: {
       mobile: { top: "67%", left: "24%" },
       tablet: { top: "59%", left: "55%" },
-      desktop: { top: "66%", left: "55%" },
+      desktop: { top: "66%", left: "75%" },
     },
     category: "personal-shopper",
     zIndex: 10,
@@ -326,6 +345,7 @@ const badgePositions = [
     category: "package-offers",
     zIndex: 10,
   },
+  
 ];
 
 interface PeopleSectionProps {

@@ -34,23 +34,23 @@ const page13Utils = [
 
 const imagePositions: SectionImage[] = [
   //space-edit
-  // {
-  //   src: "/assets/images/people/main/space-edit2.png",
-  //   alt: "heyy-text",
-  //   dimensions: {
-  //     mobile: { width: 100, height: 113 },
-  //     tablet: { width: 120, height: 136 },
-  //     desktop: { width: 150, height: 170 },
-  //   },
-  //   position: {
-  //     mobile: { top: "8%", left: "30%" },
-  //     tablet: { top: "7%", left: "25%" },
-  //     desktop: { top: "5%", left: "18%" },
-  //   },
-  //   animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
-  //   category: "space-edit",
-  //   zIndex: 5,
-  // },
+  {
+    src: "/assets/images/people/main/space-edit2.png",
+    alt: "heyy-text",
+    dimensions: {
+      mobile: { width: 0, height: 0 },
+      tablet: { width:0, height:0 },
+      desktop: { width: 150, height: 170 },
+    },
+    position: {
+      mobile: { top: "8%", left: "30%" },
+      tablet: { top: "7%", left: "25%" },
+      desktop: { top: "10%", left: "18%" },
+    },
+    animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
+    category: "space-edit",
+    zIndex: 5,
+  },
   {
     src: "/assets/images/people/main/space-edit1.png",
     alt: "Hanger",
@@ -62,7 +62,7 @@ const imagePositions: SectionImage[] = [
     position: {
       mobile: { top: "12%", left: "10%" },
       tablet: { top: "11%", left: "8%" },
-      desktop: { top: "10%", left: "4%" },
+      desktop: { top: "15%", left: "4%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "space-edit",
@@ -85,23 +85,23 @@ const imagePositions: SectionImage[] = [
     category: "space-edit",
     zIndex: 10,
   },
-  // {
-  //   src: "/assets/images/people/main/image78.png",
-  //   alt: "favourite-person",
-  //   dimensions: {
-  //     mobile: { width: 73, height: 113 },
-  //     tablet: { width: 88, height: 136 },
-  //     desktop: { width: 110, height: 170 },
-  //   },
-  //   position: {
-  //     mobile: { top: "12%", left: "54%" },
-  //     tablet: { top: "5%", left: "10%" },
-  //     desktop: { top: "4%", left: "6%" },
-  //   },
-  //   animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
-  //   category: "space-edit",
-  //   zIndex: 6,
-  // },
+  {
+    src: "/assets/images/people/main/image78.png",
+    alt: "favourite-person",
+    dimensions: {
+      mobile: { width: 0, height: 0 },
+      tablet: { width: 0, height: 0 },
+      desktop: { width: 100, height: 120 },
+    },
+    position: {
+      mobile: { top: "12%", left: "54%" },
+      tablet: { top: "5%", left: "10%" },
+      desktop: { top: "12%", left: "8%" },
+    },
+    animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
+    category: "space-edit",
+    zIndex: 6,
+  },
   {
     src: "/assets/images/space/main/image54.jpg",
     alt: "portrait frame",
@@ -134,7 +134,7 @@ const imagePositions: SectionImage[] = [
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 20 },
     category: "brand-space",
-    zIndex: 5,
+    zIndex: 1,
   },
   {
     src: "/assets/images/space/main/image77.png",
@@ -195,7 +195,7 @@ const imagePositions: SectionImage[] = [
     dimensions: {
       mobile: { width: 130, height: 113 },
       tablet: { width: 80, height: 136 },
-      desktop: { width: 100, height: 170 },
+      desktop: { width: 180, height: 170 },
     },
     position: {
       mobile: { top: "40%", left: "0%" },
@@ -230,12 +230,12 @@ const imagePositions: SectionImage[] = [
     dimensions: {
       mobile: { width: 140, height: 133 },
       tablet: { width: 192, height: 160 },
-      desktop: { width: 100, height: 200 },
+      desktop: { width: 200, height: 200 },
     },
     position: {
       mobile: { top: "42%", left: "33%" },
       tablet: { top: "23%", left: "62%" },
-      desktop: { top: "20%", left: "50%" },
+      desktop: { top: "80%", left: "15%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "brand-space",
@@ -247,12 +247,12 @@ const imagePositions: SectionImage[] = [
     dimensions: {
       mobile: { width: 120, height: 133 },
       tablet: { width: 176, height: 160 },
-      desktop: { width: 220, height: 200 },
+      desktop: { width: 170, height: 180 },
     },
     position: {
       mobile: { top: "64%", left: "34%" },
       tablet: { top: "8%", left: "82%" },
-      desktop: { top: "6%", left: "75%" },
+      desktop: { top: "14%", left: "76%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "makeover-projects",
@@ -264,16 +264,16 @@ const imagePositions: SectionImage[] = [
     dimensions: {
       mobile: { width: 85, height: 133 },
       tablet: { width: 112, height: 160 },
-      desktop: { width: 140, height: 200 },
+      desktop: { width: 100, height: 160 },
     },
     position: {
       mobile: { top: "73%", left: "23%" },
       tablet: { top: "31%", left: "76%" },
-      desktop: { top: "28%", left: "68%" },
+      desktop: { top: "34%", left: "72%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "makeover-projects",
-    zIndex: 6,
+    zIndex: 1,
   },
   {
     src: "/assets/images/space/main/image81.png",
@@ -281,16 +281,16 @@ const imagePositions: SectionImage[] = [
     dimensions: {
       mobile: { width: 85, height: 133 },
       tablet: { width: 112, height: 160 },
-      desktop: { width: 140, height: 200 },
+      desktop: { width: 100, height: 160 },
     },
     position: {
       mobile: { top: "73%", left: "56%" },
       tablet: { top: "31%", left: "92%" },
-      desktop: { top: "28%", left: "89%" },
+      desktop: { top: "34%", left: "85.5%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "makeover-projects",
-    zIndex: 6,
+    zIndex: 1,
   },
   {
     src: "/assets/images/space/main/image80.png",

@@ -9,9 +9,30 @@ import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
 
 // Page 9 util audio config (ids used by images via utilId)
 const page9Utils = [
-  { id: "util-camera", src: "/assets/sounds/page9/camera_click.mp3", start: 0, volume: 0.55 },
-  { id: "util-chairs", src: "/assets/sounds/page9/chiar_noise_people_walking.mp3", start: 0, volume: 0.45, loopSegment: true, end: 4.5, fadeDuration: 0.6 },
-  { id: "util-people", src: "/assets/sounds/page9/people_walking.mp3", start: 0, volume: 0.5, loopSegment: true, end: 5.2, fadeDuration: 0.6 },
+  {
+    id: "util-camera",
+    src: "/assets/sounds/page9/camera_click.mp3",
+    start: 0,
+    volume: 0.55,
+  },
+  {
+    id: "util-chairs",
+    src: "/assets/sounds/page9/chiar_noise_people_walking.mp3",
+    start: 0,
+    volume: 0.45,
+    loopSegment: true,
+    end: 4.5,
+    fadeDuration: 0.6,
+  },
+  {
+    id: "util-people",
+    src: "/assets/sounds/page9/people_walking.mp3",
+    start: 0,
+    volume: 0.5,
+    loopSegment: true,
+    end: 5.2,
+    fadeDuration: 0.6,
+  },
 ] as const;
 
 type ResponsivePosition = {
@@ -96,7 +117,7 @@ const imagePositions = [
       desktop: { width: 50, height: 50 },
     },
     position: {
-      mobile: { top: "70.5%", left: "37%" },
+      mobile: { top: "70.5%", left: "60%" },
       tablet: { top: "24.5%", left: "49%" },
       desktop: { top: "36.5%", left: "48%" },
     },
@@ -114,7 +135,7 @@ const imagePositions = [
       desktop: { width: 50, height: 50 },
     },
     position: {
-      mobile: { top: "70.5%", left: "60%" },
+      mobile: { top: "70.5%", left: "37.5%" },
       tablet: { top: "35%", left: "37%" },
       desktop: { top: "34%", left: "36%" },
     },
@@ -451,7 +472,12 @@ function SectionImageItem({
         transformOrigin: img.transformOrigin ?? "50% 50%",
         // Bind motion values only when not walking and not shaking
         ...(!isWalking
-          ? { x: springX, y: springY, rotateX: springRotateX, rotateY: springRotateY }
+          ? {
+              x: springX,
+              y: springY,
+              rotateX: springRotateX,
+              rotateY: springRotateY,
+            }
           : {}),
       }}
       initial={{
@@ -650,7 +676,10 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
   const { getHoverHandlers } = useHoverUtilsAudio(page9Utils as any, "");
   // Log preload state once
   useEffect(() => {
-    console.debug('[brands] util audio ids ready:', page9Utils.map(u => u.id));
+    console.debug(
+      "[brands] util audio ids ready:",
+      page9Utils.map((u) => u.id)
+    );
   }, []);
 
   // measure container width
@@ -689,7 +718,9 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
       {imagePositions.map((img: any, index: number) => (
         <div
           key={index}
-          {...(img.utilId ? getHoverHandlers({ id: img.utilId, disabledOnMobile: true }) : {})}
+          {...(img.utilId
+            ? getHoverHandlers({ id: img.utilId, disabledOnMobile: true })
+            : {})}
         >
           <SectionImageItem
             img={img}

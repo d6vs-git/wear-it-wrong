@@ -30,7 +30,6 @@
 //     loopSegment: false,
 //   },];
 
-
 // type ResponsivePosition = {
 //   mobile: { top: string; left: string };
 //   tablet: { top: string; left: string };
@@ -158,7 +157,7 @@
 //       desktop: { top: "64%", left: "1%" },
 //     },
 //     zIndex: 1,
-//     className: "animate-always", 
+//     className: "animate-always",
 //   },
 //   {
 //     src: "/assets/images/brand/concept-development/11.png",
@@ -319,7 +318,7 @@
 //   return (
 //     <motion.div
 //       ref={ref}
-//       className={`absolute cursor-pointer will-change-transform ${img.className || ""}`} 
+//       className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
 //       style={{ ...baseStyle, x: springX, y: springY }}
 //       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
 //       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
@@ -620,7 +619,7 @@ const images: ImageConfig[] = [
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "72%", left: "6%" },
+      mobile: { top: "68%", left: "6%" },
       tablet: { top: "72%", left: "8%" },
       desktop: { top: "64%", left: "1%" },
     },
@@ -773,21 +772,44 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
   };
 
   // Walking markers
-  const isWalkLeft = img.className?.includes("walk") || img.alt.toLowerCase().includes("girl-walking");
-  const isWalkRight = img.className?.includes("walk-right") || img.alt.toLowerCase().includes("girl-with-dog");
+  const isWalkLeft =
+    img.className?.includes("walk") ||
+    img.alt.toLowerCase().includes("girl-walking");
+  const isWalkRight =
+    img.className?.includes("walk-right") ||
+    img.alt.toLowerCase().includes("girl-with-dog");
   if (isWalkLeft) {
     const position = img.position[breakpoint];
     const dimensions = img.dimensions[breakpoint];
     return (
       <motion.div
         ref={ref}
-        className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
-        style={{ top: position.top, left: position.left, transform: "translate(-50%, -50%)", width: `${dimensions.width}px`, height: `${dimensions.height}px`, zIndex: img.zIndex ?? index }}
+        className={`absolute cursor-pointer will-change-transform ${
+          img.className || ""
+        }`}
+        style={{
+          top: position.top,
+          left: position.left,
+          transform: "translate(-50%, -50%)",
+          width: `${dimensions.width}px`,
+          height: `${dimensions.height}px`,
+          zIndex: img.zIndex ?? index,
+        }}
         animate={{ x: [0, -300, 0] }}
-        transition={{ x: { duration: 12, ease: "linear", repeat: Infinity }, scale: { duration: 0.3 } }}
+        transition={{
+          x: { duration: 12, ease: "linear", repeat: Infinity },
+          scale: { duration: 0.3 },
+        }}
         whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       >
-        <Image src={img.src} alt={img.alt} width={dimensions.width} height={dimensions.height} className="object-contain w-full h-full pointer-events-none" priority={index < 2} />
+        <Image
+          src={img.src}
+          alt={img.alt}
+          width={dimensions.width}
+          height={dimensions.height}
+          className="object-contain w-full h-full pointer-events-none"
+          priority={index < 2}
+        />
       </motion.div>
     );
   }
@@ -797,13 +819,32 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
     return (
       <motion.div
         ref={ref}
-        className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
-        style={{ top: position.top, left: position.left, transform: "translate(-50%, -50%)", width: `${dimensions.width}px`, height: `${dimensions.height}px`, zIndex: img.zIndex ?? index }}
+        className={`absolute cursor-pointer will-change-transform ${
+          img.className || ""
+        }`}
+        style={{
+          top: position.top,
+          left: position.left,
+          transform: "translate(-50%, -50%)",
+          width: `${dimensions.width}px`,
+          height: `${dimensions.height}px`,
+          zIndex: img.zIndex ?? index,
+        }}
         animate={{ x: [0, 300] }}
-        transition={{ x: { duration: 7, ease: "linear", repeat: Infinity }, scale: { duration: 0.3 } }}
+        transition={{
+          x: { duration: 7, ease: "linear", repeat: Infinity },
+          scale: { duration: 0.3 },
+        }}
         whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       >
-        <Image src={img.src} alt={img.alt} width={dimensions.width} height={dimensions.height} className="object-contain w-full h-full pointer-events-none" priority={index < 2} />
+        <Image
+          src={img.src}
+          alt={img.alt}
+          width={dimensions.width}
+          height={dimensions.height}
+          className="object-contain w-full h-full pointer-events-none"
+          priority={index < 2}
+        />
       </motion.div>
     );
   }
@@ -823,7 +864,9 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
   return (
     <motion.div
       ref={ref}
-      className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
+      className={`absolute cursor-pointer will-change-transform ${
+        img.className || ""
+      }`}
       style={{ ...baseStyle, x: springX, y: springY }}
       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
@@ -868,9 +911,19 @@ export default function ConceptDevelopment() {
 
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
-      {audioSegments.filter((s) => s.type === "background").map((segment) => (
-        <TimedAudio key={segment.id} src={segment.src} start={segment.start} volume={segment.volume} fixed loop className="z-[70]" />
-      ))}
+      {audioSegments
+        .filter((s) => s.type === "background")
+        .map((segment) => (
+          <TimedAudio
+            key={segment.id}
+            src={segment.src}
+            start={segment.start}
+            volume={segment.volume}
+            fixed
+            loop
+            className="z-[70]"
+          />
+        ))}
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <Heading text="CONCEPT DEVELOPMENT" />
@@ -884,8 +937,12 @@ export default function ConceptDevelopment() {
         <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4 lg:items-center">
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
-            onMouseEnter={() => breakpoint !== "mobile" && setIsTextHovered(true)}
-            onMouseLeave={() => breakpoint !== "mobile" && setIsTextHovered(false)}
+            onMouseEnter={() =>
+              breakpoint !== "mobile" && setIsTextHovered(true)
+            }
+            onMouseLeave={() =>
+              breakpoint !== "mobile" && setIsTextHovered(false)
+            }
             animate={{
               scale:
                 breakpoint === "mobile"
@@ -918,8 +975,12 @@ export default function ConceptDevelopment() {
 
           <motion.div
             className="w-full lg:w-2/3 relative aspect-video"
-            onMouseEnter={() => breakpoint !== "mobile" && setIsImageHovered(true)}
-            onMouseLeave={() => breakpoint !== "mobile" && setIsImageHovered(false)}
+            onMouseEnter={() =>
+              breakpoint !== "mobile" && setIsImageHovered(true)
+            }
+            onMouseLeave={() =>
+              breakpoint !== "mobile" && setIsImageHovered(false)
+            }
             animate={{
               scale:
                 breakpoint === "mobile"
@@ -948,7 +1009,12 @@ export default function ConceptDevelopment() {
             }}
           >
             {images.map((img, idx) => (
-              <ImageItem key={idx} img={img} index={idx} breakpoint={breakpoint} />
+              <ImageItem
+                key={idx}
+                img={img}
+                index={idx}
+                breakpoint={breakpoint}
+              />
             ))}
           </motion.div>
         </div>

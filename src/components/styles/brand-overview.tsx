@@ -39,7 +39,7 @@ const CONFIG = {
     {
       src: "/assets/images/brand-overview/space-edit/hangover-clothes.png",
       alt: "hanger",
-      top: "8%",
+      top: "15%",
       left: "5%",
       width: 130,
       height: 80,
@@ -59,7 +59,7 @@ const CONFIG = {
     {
       src: "/assets/images/brand-overview/space-edit/disco-ball.png",
       alt: "disco ball",
-      top: "5%",
+      top: "12%",
       left: "7%",
       width: 80,
       height: 175,
@@ -319,7 +319,7 @@ const CONFIG = {
     {
       src: "/assets/images/brand-overview/brand-shoots/girl-painting.png",
       alt: "girl",
-      top: "8%",
+      top: "12%",
       left: "88%",
       width: 90,
       height: 125,
@@ -339,7 +339,7 @@ const CONFIG = {
     {
       src: "/assets/images/brand-overview/style-drop/gift-packs.png",
       alt: "gift",
-      top: "10%",
+      top: "12%",
       left: "90%",
       width: 100,
       height: 125,
@@ -640,26 +640,35 @@ function ImageItem({
       initial={{ x: -30, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
       animate={{
-        scale: bp === "mobile"
-          ? (isHovered ? 1.08 : isOtherHovered ? 0.92 : 1)
-          : (isHovered ? 1.25 : isOtherHovered ? 0.88 : 1),
+        scale:
+          bp === "mobile"
+            ? isHovered
+              ? 1.08
+              : isOtherHovered
+              ? 0.92
+              : 1
+            : isHovered
+            ? 1.25
+            : isOtherHovered
+            ? 0.88
+            : 1,
         filter: isOtherHovered ? "blur(6px)" : "blur(0px)",
         opacity: isOtherHovered ? 0.45 : 1,
       }}
       viewport={{ once: true }}
       transition={{
-        scale: { 
+        scale: {
           type: "spring",
           stiffness: 300,
           damping: 25,
           mass: 0.8,
         },
-        filter: { 
+        filter: {
           type: "tween",
           duration: 0.35,
           ease: [0.22, 1, 0.36, 1],
         },
-        opacity: { 
+        opacity: {
           type: "tween",
           duration: 0.3,
           ease: "easeOut",
@@ -713,8 +722,10 @@ function BadgeItem({
     isOtherHovered = hovered && hovered !== badge.cat;
 
   // Responsive positioning
-  const badgeTop = bp === "mobile" && badge.mobileTop ? badge.mobileTop : badge.top;
-  const badgeLeft = bp === "mobile" && badge.mobileLeft ? badge.mobileLeft : badge.left;
+  const badgeTop =
+    bp === "mobile" && badge.mobileTop ? badge.mobileTop : badge.top;
+  const badgeLeft =
+    bp === "mobile" && badge.mobileLeft ? badge.mobileLeft : badge.left;
 
   // Responsive badge sizing
   const badgePadding = {
@@ -755,9 +766,18 @@ function BadgeItem({
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       animate={{
-        scale: bp === "mobile" 
-          ? (isHovered ? 1.05 : isOtherHovered ? 0.95 : 1)
-          : (isHovered ? 1.12 : isOtherHovered ? 0.92 : 1),
+        scale:
+          bp === "mobile"
+            ? isHovered
+              ? 1.05
+              : isOtherHovered
+              ? 0.95
+              : 1
+            : isHovered
+            ? 1.12
+            : isOtherHovered
+            ? 0.92
+            : 1,
         filter: isOtherHovered ? "blur(3px)" : "blur(0px)",
         opacity: isOtherHovered ? 0.5 : 1,
       }}
@@ -847,16 +867,16 @@ export default function BrandOverview({
   return (
     <motion.section
       className={`relative w-full flex items-center justify-center bg-landing ${
-        bp === "mobile" 
-          ? "h-screen overflow-hidden px-3" 
-          : bp === "tablet" 
-          ? "h-screen overflow-hidden px-8" 
+        bp === "mobile"
+          ? "h-screen overflow-hidden px-3"
+          : bp === "tablet"
+          ? "h-screen overflow-hidden px-8"
           : "h-screen overflow-hidden px-12"
       }`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ 
+      transition={{
         duration: 0.8,
         ease: [0.22, 1, 0.36, 1],
       }}

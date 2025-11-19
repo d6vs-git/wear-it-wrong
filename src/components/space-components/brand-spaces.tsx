@@ -161,7 +161,7 @@ const images: ImageConfig[] = [
   },
   {
     src: "/assets/images/space/brand-spaces/3.png",
-    alt: "table",
+    alt: "table-1",
     dimensions: {
       mobile: { width: 95, height: 95 },
       tablet: { width: 127, height: 127 },
@@ -171,6 +171,21 @@ const images: ImageConfig[] = [
       mobile: { top: "84%", left: "69%" },
       tablet: { top: "83%", left: "71%" },
       desktop: { top: "82%", left: "72%" },
+    },
+    zIndex: 5,
+  },
+  {
+    src: "/assets/images/space/brand-spaces/2.png",
+    alt: "chair-right",
+    dimensions: {
+      mobile: { width: 120, height: 120 },
+      tablet: { width: 160, height: 160 },
+      desktop: { width: 200, height: 200 },
+    },
+    position: {
+      mobile: { top: "79%", left: "77%" },
+      tablet: { top: "77%", left: "77%" },
+      desktop: { top: "77%", left: "82%" },
     },
     zIndex: 5,
   },
