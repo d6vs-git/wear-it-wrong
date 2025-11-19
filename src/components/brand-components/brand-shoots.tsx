@@ -64,7 +64,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "10%", left: "3%" },
+      mobile: { top: "10%", left: "20%" },
       tablet: { top: "15%", left: "3%" },
       desktop: { top: "15%", left: "3%" },
     },
@@ -79,7 +79,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "10%", left: "3%" },
+      mobile: { top: "10%", left: "20%" },
       tablet: { top: "15%", left: "3%" },
       desktop: { top: "15%", left: "3%" },
     },
@@ -95,7 +95,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "10%", left: "18%" },
+      mobile: { top: "10%", left: "35%" },
       tablet: { top: "15%", left: "18%" },
       desktop: { top: "15%", left: "18%" },
     },
@@ -110,7 +110,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "10%", left: "18%" },
+      mobile: { top: "10%", left: "35%" },
       tablet: { top: "15%", left: "18%" },
       desktop: { top: "15%", left: "18%" },
     },
@@ -125,7 +125,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "10%", left: "33%" },
+      mobile: { top: "10%", left: "50%" },
       tablet: { top: "15%", left: "33%" },
       desktop: { top: "15%", left: "33%" },
     },
@@ -140,7 +140,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "10%", left: "33%" },
+      mobile: { top: "10%", left: "50%" },
       tablet: { top: "15%", left: "33%" },
       desktop: { top: "15%", left: "33%" },
     },
@@ -155,7 +155,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "10%", left: "48%" },
+      mobile: { top: "90%", left: "20%" },
       tablet: { top: "15%", left: "48%" },
       desktop: { top: "15%", left: "48%" },
     },
@@ -170,7 +170,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "10%", left: "48%" },
+      mobile: { top: "90%", left: "20%" },
       tablet: { top: "15%", left: "48%" },
       desktop: { top: "15%", left: "48%" },
     },
@@ -186,7 +186,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "10%", left: "63%" },
+      mobile: { top: "90%", left: "35%" },
       tablet: { top: "15%", left: "63%" },
       desktop: { top: "15%", left: "63%" },
     },
@@ -201,7 +201,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "10%", left: "63%" },
+      mobile: { top: "90%", left: "35%" },
       tablet: { top: "15%", left: "63%" },
       desktop: { top: "15%", left: "63%" },
     },
@@ -216,7 +216,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "10%", left: "78%" },
+      mobile: { top: "90%", left: "50%" },
       tablet: { top: "15%", left: "78%" },
       desktop: { top: "15%", left: "78%" },
     },
@@ -231,7 +231,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "10%", left: "78%" },
+      mobile: { top: "90%", left: "50%" },
       tablet: { top: "15%", left: "78%" },
       desktop: { top: "15%", left: "78%" },
     },
@@ -248,7 +248,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "55%", left: "3%" },
+      mobile: { top: "50%", left: "20%" },
       tablet: { top: "35%", left: "10.5%" },
       desktop: { top: "55%", left: "3%" },
     },
@@ -263,7 +263,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "55%", left: "3%" },
+      mobile: { top: "50%", left: "20%" },
       tablet: { top: "35%", left: "10.5%" },
       desktop: { top: "55%", left: "3%" },
     },
@@ -278,7 +278,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "55%", left: "18%" },
+      mobile: { top: "50%", left: "35%" },
       tablet: { top: "35%", left: "25.5%" },
       desktop: { top: "55%", left: "18%" },
     },
@@ -293,7 +293,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "55%", left: "18%" },
+      mobile: { top: "50%", left: "35%" },
       tablet: { top: "35%", left: "25.5%" },
       desktop: { top: "55%", left: "18%" },
     },
@@ -308,7 +308,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "55%", left: "33%" },
+      mobile: { top: "50%", left: "50%" },
       tablet: { top: "35%", left: "40.5%" },
       desktop: { top: "55%", left: "33%" },
     },
@@ -323,7 +323,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "55%", left: "33%" },
+      mobile: { top: "50%", left: "50%" },
       tablet: { top: "35%", left: "40.5%" },
       desktop: { top: "55%", left: "33%" },
     },
@@ -339,7 +339,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "55%", left: "48%" },
+      mobile: { top: "130%", left: "20%" },
       tablet: { top: "35%", left: "55.5%" },
       desktop: { top: "55%", left: "48%" },
     },
@@ -354,7 +354,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "55%", left: "48%" },
+      mobile: { top: "130%", left: "20%" },
       tablet: { top: "35%", left: "55.5%" },
       desktop: { top: "55%", left: "48%" },
     },
@@ -369,7 +369,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "55%", left: "63%" },
+      mobile: { top: "130%", left: "35%" },
       tablet: { top: "35%", left: "70.5%" },
       desktop: { top: "55%", left: "63%" },
     },
@@ -384,7 +384,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "55%", left: "63%" },
+      mobile: { top: "130%", left: "35%" },
       tablet: { top: "35%", left: "70.5%" },
       desktop: { top: "55%", left: "63%" },
     },
@@ -399,7 +399,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "55%", left: "78%" },
+      mobile: { top: "130%", left: "50%" },
       tablet: { top: "35%", left: "85.5%" },
       desktop: { top: "55%", left: "78%" },
     },
@@ -414,7 +414,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "55%", left: "78%" },
+      mobile: { top: "130%", left: "50%" },
       tablet: { top: "35%", left: "85.5%" },
       desktop: { top: "55%", left: "78%" },
     },
@@ -537,7 +537,8 @@ export default function BrandShoots() {
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
+        <div className="flex flex-col-reverse lg:flex-row gap-40 md:gap-10 lg:gap-4">
+          
           <motion.div
             className="w-full lg:w-1/3 shrink-0"
             onMouseEnter={() =>
@@ -558,7 +559,8 @@ export default function BrandShoots() {
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
+
+            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed ">
               Your shoot should feel like your brand and not a random Pinterest
               board.
               <br></br>I help you build the entire visual direction: from
