@@ -90,7 +90,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "32%", left: "30%" },
+      mobile: { top: "75%", left: "47%" },
       tablet: { top: "22%", left: "42%" },
       desktop: { top: "21%", left: "40%" },
     },
@@ -100,12 +100,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/3.png",
     alt: "carpet",
     dimensions: {
-      mobile: { width: 200, height: 200 },
+      mobile: { width: 250, height: 250 },
       tablet: { width: 300, height: 300 },
       desktop: { width: 380, height: 380 },
     },
     position: {
-      mobile: { top: "58%", left: "52%" },
+      mobile: { top: "120%", left: "56%" },
       tablet: { top: "47%", left: "63%" },
       desktop: { top: "46%", left: "61%" },
     },
@@ -115,12 +115,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/4.png",
     alt: "Cake-2",
     dimensions: {
-      mobile: { width: 145, height: 145 },
+      mobile: { width: 170, height: 170 },
       tablet: { width: 215, height: 215 },
       desktop: { width: 270, height: 270 },
     },
     position: {
-      mobile: { top: "28%", left: "47%" },
+      mobile: { top: "28%", left: "54%" },
       tablet: { top: "18%", left: "58%" },
       desktop: { top: "17%", left: "57%" },
     },
@@ -135,7 +135,7 @@ const images: ImageConfig[] = [
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "8%", left: "53%" },
+      mobile: { top: "-2%", left: "62%" },
       tablet: { top: "0%", left: "64%" },
       desktop: { top: "-2%", left: "63%" },
     },
@@ -147,17 +147,17 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/6.png",
     alt: "roller with cloths in it",
     dimensions: {
-      mobile: { width: 220, height: 220 },
+      mobile: { width: 250, height: 250 },
       tablet: { width: 320, height: 320 },
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "13%", left: "63%" },
+      mobile: { top: "70%", left: "53%" },
       tablet: { top: "4%", left: "74%" },
       desktop: { top: "3%", left: "72%" },
     },
     className: "animate-carpet-shuttle-flex-slow",
-    zIndex: 1,
+    zIndex: 10,
     customStyle: {
       "--carpet-back": "-95px",
       "--carpet-front": "2px",
@@ -167,12 +167,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/image55.png",
     alt: "wooden blocks",
     dimensions: {
-      mobile: { width: 110, height: 110 },
+      mobile: { width: 150, height: 110 },
       tablet: { width: 160, height: 160 },
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "28%", left: "18%" },
+      mobile: { top: "77%", left: "28%" },
       tablet: { top: "18%", left: "32%" },
       desktop: { top: "17%", left: "31%" },
     },
@@ -182,43 +182,43 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/style-drop/7.png",
     alt: "lamp",
     dimensions: {
-      mobile: { width: 125, height: 125 },
+      mobile: { width: 200, height: 200 },
       tablet: { width: 185, height: 185 },
       desktop: { width: 230, height: 230 },
     },
     position: {
-      mobile: { top: "33%", left: "12%" },
+      mobile: { top: "93%", left: "2%" },
       tablet: { top: "23%", left: "26%" },
       desktop: { top: "22%", left: "25%" },
     },
     className: "animate-light-flicker-slow",
-    zIndex: 10,
+    zIndex: 6,
   },
   {
     src: "/assets/images/people/style-drop/8.png",
-    alt: "dress3",
+    alt: "sofa",
     dimensions: {
-      mobile: { width: 165, height: 165 },
+      mobile: { width: 220, height: 220 },
       tablet: { width: 240, height: 240 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "67%", left: "15%" },
+      mobile: { top: "130%", left: "8%" },
       tablet: { top: "55%", left: "29%" },
       desktop: { top: "54%", left: "28%" },
     },
-    zIndex: 8,
+    zIndex: 19,
   },
   {
     src: "/assets/images/people/style-drop/9.png",
     alt: "table",
     dimensions: {
-      mobile: { width: 140, height: 85 },
+      mobile: { width: 100, height: 100 },
       tablet: { width: 200, height: 120 },
       desktop: { width: 250, height: 150 },
     },
     position: {
-      mobile: { top: "85%", left: "3%" },
+      mobile: { top: "170%", left: "-5%" },
       tablet: { top: "76%", left: "15%" },
       desktop: { top: "75%", left: "14%" },
     },
@@ -349,7 +349,8 @@ export default function StyleDrop() {
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
         <div className="flex flex-col-reverse lg:flex-row gap-16 md:gap-12 lg:gap-4">
           <motion.div
-            className="w-full lg:w-1/3 shrink-0"
+          className="w-full lg:w-1/3 shrink-0 mt-63 sm:mt-0"
+
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsTextHovered(true)
             }
@@ -368,7 +369,7 @@ export default function StyleDrop() {
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
+            <p className="text-[17px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               You fill out a quick form or send me a moodboard to show your
               vibe. We talk through what you already have and what you&apos;re
               looking for; maybe you&apos;re updating your basics, building work
