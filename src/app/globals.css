@@ -337,7 +337,21 @@
    ALWAYS-ON ANIMATIONS
    (Use these when you want animation on page load)
    ============================================ */
+@keyframes pendulum-vertical {
+  0% {
+    transform: rotate(-80deg);
+  }
+  50% {
+    transform: rotate(-100deg);
+  }
+  100% {
+    transform: rotate(-80deg);
+  }
+}
 
+.animate-vertical-pendulum {
+  animation: pendulum-vertical 3s ease-in-out infinite;
+}
 /* Always animating */
 .animate-always-subtle {
   animation: pendulum-subtle 2s ease-in-out infinite;
