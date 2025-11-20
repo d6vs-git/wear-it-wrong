@@ -405,7 +405,7 @@ export default function OccasionStyling() {
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-[17px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
+            <p className="text-[17px] word-spacing-[40px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               Tell me about your occasion; the event, the mood you&apos;re going
               for, and any ideas you already have. I&apos;ll take a look at your
               wardrobe, see what pieces you want to wear, and figure out how to

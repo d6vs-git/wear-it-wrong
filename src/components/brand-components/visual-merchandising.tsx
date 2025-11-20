@@ -57,7 +57,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/1.png",
     alt: "frame-1",
     dimensions: {
-      mobile: { width: 200, height: 200 },
+      mobile: { width: 240, height: 240 },
       tablet: { width: 220, height: 220 },
       desktop: { width: 300, height: 300 },
     },
@@ -72,12 +72,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/4.png",
     alt: "prada-hermlies",
     dimensions: {
-      mobile: { width: 220, height: 300 },
+      mobile: { width: 250, height: 300 },
       tablet: { width: 320, height: 320 },
       desktop: { width: 420, height: 420 },
     },
     position: {
-      mobile: { top: "-30%", left: "45%" },
+      mobile: { top: "-25%", left: "45%" },
       tablet: { top: "-12%", left: "48%" },
       desktop: { top: "-14%", left: "46%" },
     },
@@ -87,27 +87,27 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/2.png",
     alt: "frame-2",
     dimensions: {
-      mobile: { width: 200, height: 220 },
+      mobile: { width: 220, height: 220 },
       tablet: { width: 220, height: 220 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "55%", left: "-5%" },
+      mobile: { top: "59%", left: "-5%" },
       tablet: { top: "43%", left: "12%" },
       desktop: { top: "41%", left: "12%" },
     },
-    zIndex: 3,
+    zIndex: 1,
   },
   {
     src: "/assets/images/brand/visual-merch/3.png",
     alt: "H",
     dimensions: {
-      mobile: { width: 260, height: 220 },
+      mobile: { width: 280, height: 280 },
       tablet: { width: 280, height: 280 },
       desktop: { width: 380, height: 380 },
     },
     position: {
-      mobile: { top: "60%", left: "40%" },
+      mobile: { top: "69%", left: "40%" },
       tablet: { top: "42%", left: "48%" },
       desktop: { top: "40%", left: "46%" },
     },
@@ -123,7 +123,7 @@ const images: ImageConfig[] = [
       desktop: { width: 140, height: 140 },
     },
     position: {
-      mobile: { top: "152%", left: "-10%" },
+      mobile: { top: "180%", left: "-10%" },
       tablet: { top: "84%", left: "2%" },
       desktop: { top: "85%", left: "1%" },
     },
@@ -139,7 +139,7 @@ const images: ImageConfig[] = [
       desktop: { width: 140, height: 140 },
     },
     position: {
-      mobile: { top: "152%", left: "77%" },
+      mobile: { top: "180%", left: "77%" },
       tablet: { top: "84%", left: "85%" },
       desktop: { top: "85%", left: "87%" },
     },
@@ -155,11 +155,11 @@ const images: ImageConfig[] = [
       desktop: { width: 480, height: 480 },
     },
     position: {
-      mobile: { top: "20%", left: "80%" },
+      mobile: { top: "38%", left: "80%" },
       tablet: { top: "8%", left: "88%" },
       desktop: { top: "6%", left: "88%" },
     },
-    zIndex: 1,
+    zIndex: 3,
      className: "animate-always-slow",     // ✅ NEW
   transformOrigin: "50% 50%",            // ✅ NEW (hangs from top)
   },
@@ -172,7 +172,7 @@ const images: ImageConfig[] = [
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "104%", left: "-16%" },
+      mobile: { top: "140%", left: "-16%" },
       tablet: { top: "64%", left: "0%" },
       desktop: { top: "64%", left: "-1%" },
     },
@@ -184,16 +184,16 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/7.png",
     alt: "frame with nike",
     dimensions: {
-      mobile: { width: 180, height: 180 },
+      mobile: { width: 200, height: 200 },
       tablet: { width: 190, height: 190 },
       desktop: { width: 240, height: 240 },
     },
     position: {
-      mobile: { top: "118%", left: "5%" },
+      mobile: { top: "140%", left: "5%" },
       tablet: { top: "79%", left: "20%" },
       desktop: { top: "79%", left: "18%" },
     },
-    zIndex: 1,
+    zIndex: 2,
   },
 ];
 
@@ -383,12 +383,12 @@ export default function VisualMerchandising() {
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-4 lg:gap-12">
+        <div className="flex flex-col-reverse lg:flex-row gap-30 lg:gap-12">
           {/* Text Section */}
           <motion.div
  className="
     w-full lg:w-1/3 shrink-0 
-    max-h-[80vh] overflow-auto lg:overflow-visible lg:max-h-none 
+    overflow-auto 
   "
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsTextHovered(true)
@@ -408,7 +408,7 @@ export default function VisualMerchandising() {
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
+            <p className="text-[17px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               How your store looks says everything before anything else. I help
               you make sure it&apos;s saying the right thing.
               <br /> From window displays and shelf styling to layout flow and

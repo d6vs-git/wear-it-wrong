@@ -1,9 +1,11 @@
+
 import type { Metadata } from "next";
 import "./globals.css";
 import AuthProvider from "@/components/auth/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import ConditionalNavbar from "@/components/conditional-navbar";
-import FooterClient from "./Footer-client";
+import Footer from "@/components/footer";
+
 
 export const metadata: Metadata = {
   title: "Wear It Wrong",
@@ -12,11 +14,15 @@ export const metadata: Metadata = {
 };
 import dynamic from "next/dynamic";
 
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>)
+
+{
   return (
     <html lang="en" className="overflow-x-hidden">
       <body className="overflow-x-hidden h-screen">
@@ -66,7 +72,7 @@ export default function RootLayout({
             }}
           />
         </AuthProvider>
-        <FooterClient />
+       
       </body>
       
     </html>
