@@ -644,7 +644,7 @@ export default function PersonalShopping() {
           </motion.div>
         </div>
       </div>
-      <Footer />
+      
     </div>
   );
 }

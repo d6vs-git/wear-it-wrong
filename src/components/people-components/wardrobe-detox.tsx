@@ -1,3 +1,5 @@
+
+ 
 "use client";
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
@@ -33,46 +35,45 @@ type ImageConfig = {
 const images: ImageConfig[] = [
   {
     src: "/assets/images/people/wardrobe-detox/1.png",
-    alt: "flower pot with leaves",
+    alt: "bags",
     dimensions: {
-      mobile: { width: 170, height: 170 }, // slightly larger, sits near center-left
+      mobile: { width: 140, height: 140 },
       tablet: { width: 220, height: 220 },
       desktop: { width: 280, height: 280 },
     },
     position: {
-      mobile: { top: "40%", left: "18%" }, // visible left, slightly lower to cover text hint
+      mobile: { top: "63%", left: "29%" },
       tablet: { top: "43%", left: "34%" },
       desktop: { top: "42%", left: "32%" },
     },
     zIndex: 5,
+    
   },
-
   {
     src: "/assets/images/people/wardrobe-detox/2.png",
     alt: "hanger-with cloths on it",
     dimensions: {
-      mobile: { width: 320, height: 320 }, // big, main cover element
+      mobile: { width: 330, height: 330},
       tablet: { width: 390, height: 390 },
       desktop: { width: 500, height: 500 },
     },
     position: {
-      mobile: { top: "22%", left: "8%" }, // pulled toward top-left so its lower part covers the text area
+      mobile: { top: "-10%", left: "-2%" },
       tablet: { top: "-27%", left: "2%" },
       desktop: { top: "-29%", left: "1%" },
     },
     zIndex: 3,
   },
-
   {
     src: "/assets/images/people/wardrobe-detox/3.png",
     alt: "bag",
     dimensions: {
-      mobile: { width: 140, height: 140 }, // slightly larger accent
+      mobile: { width: 130, height: 130 },
       tablet: { width: 175, height: 175 },
       desktop: { width: 220, height: 220 },
     },
     position: {
-      mobile: { top: "18%", left: "30%" }, // overlaps hanger, upper area
+      mobile: { top: "1%", left: "25%" },
       tablet: { top: "-15%", left: "19%" },
       desktop: { top: "-17%", left: "18%" },
     },
@@ -81,153 +82,145 @@ const images: ImageConfig[] = [
     transformOrigin: "50% 0%",
     fixedTop: true,
   },
-
   {
     src: "/assets/images/people/wardrobe-detox/4.png",
     alt: "umbrella",
     dimensions: {
-      mobile: { width: 260, height: 260 }, // large supporting element right side
+      mobile: { width: 230, height: 230 },
       tablet: { width: 330, height: 330 },
       desktop: { width: 420, height: 420 },
     },
     position: {
-      mobile: { top: "36%", left: "62%" }, // sits right and drops down to cover text hint
+      mobile: { top: "97%", left: "46%" },
       tablet: { top: "35%", left: "56%" },
       desktop: { top: "34%", left: "54%" },
     },
     zIndex: 1,
   },
-
   {
     src: "/assets/images/people/wardrobe-detox/5.png",
     alt: "frame-1",
     dimensions: {
-      mobile: { width: 90, height: 90 },
+      mobile: { width: 40, height: 40},
       tablet: { width: 110, height: 110 },
       desktop: { width: 140, height: 140 },
     },
     position: {
-      mobile: { top: "10%", left: "70%" }, // small top-right accent
+      mobile: { top: "8%", left: "57%" },
       tablet: { top: "-2%", left: "69%" },
       desktop: { top: "-3%", left: "68%" },
     },
     zIndex: 4,
   },
-
   {
     src: "/assets/images/people/wardrobe-detox/6.png",
     alt: "frame-2",
     dimensions: {
-      mobile: { width: 90, height: 90 },
+      mobile: { width: 120, height: 120 },
       tablet: { width: 110, height: 110 },
       desktop: { width: 140, height: 140 },
     },
     position: {
-      mobile: { top: "22%", left: "56%" }, // near the dress area
+      mobile: { top: "53%", left: "5%" },
       tablet: { top: "7%", left: "61%" },
       desktop: { top: "6%", left: "60%" },
     },
     zIndex: 5,
   },
-
   {
     src: "/assets/images/people/wardrobe-detox/7.png",
     alt: "clock",
     dimensions: {
-      mobile: { width: 100, height: 100 }, // a bit bigger so it reads on mobile
+      mobile: { width: 120, height: 120 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 150, height: 150 },
     },
     position: {
-      mobile: { top: "8%", left: "78%" }, // top-right counter accent
+      mobile: { top: "12%", left: "75%" },
       tablet: { top: "-3%", left: "80%" },
       desktop: { top: "-4%", left: "79%" },
     },
     zIndex: 7,
-    className: "animate-rotate-360-slow"
+    className:"animate-rotate-360-slow"
   },
-
   {
     src: "/assets/images/people/wardrobe-detox/8.png",
     alt: "dress3",
     dimensions: {
-      mobile: { width: 340, height: 340 }, // MAIN focal: large and center-right
+      mobile: { width: 300, height: 300 },
       tablet: { width: 355, height: 355 },
       desktop: { width: 450, height: 450 },
     },
     position: {
-      mobile: { top: "28%", left: "54%" }, // center-right, its lower half will cover text area strongly
+      mobile: { top: "40%", left: "52%" },
       tablet: { top: "22%", left: "70%" },
       desktop: { top: "21%", left: "68%" },
     },
     zIndex: 8,
   },
-
   {
     src: "/assets/images/people/wardrobe-detox/9.png",
     alt: "Shoes-2",
     dimensions: {
-      mobile: { width: 190, height: 190 }, // larger to form bottom overlap
+      mobile: { width: 200, height: 200 },
       tablet: { width: 240, height: 240 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "62%", left: "12%" }, // low-left so it overlaps text bottom-left
+      mobile: { top: "99%", left: "6%" },
       tablet: { top: "58%", left: "4%" },
       desktop: { top: "57%", left: "3%" },
     },
     zIndex: 10,
   },
-
   {
     src: "/assets/images/people/wardrobe-detox/10.png",
     alt: "poster",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 100, height: 100 },
       tablet: { width: 95, height: 95 },
       desktop: { width: 120, height: 120 },
     },
     position: {
-      mobile: { top: "24%", left: "72%" }, // tucked near dress upper-right
+      mobile: { top: "10%", left: "67%" },
       tablet: { top: "19%", left: "73%" },
       desktop: { top: "18%", left: "72%" },
     },
-    zIndex: 1,
-    className: "animate-popup-loop"
+    zIndex: 6,
+    className: "animate-popup-loop"  
   },
-
   {
     src: "/assets/images/people/wardrobe-detox/11.png",
-    alt: "dress",
+    alt: "shoes-1",
     dimensions: {
-      mobile: { width: 170, height: 170 }, // supporting dress to the right-bottom
+      mobile: { width: 200, height: 200 },
       tablet: { width: 190, height: 190 },
       desktop: { width: 240, height: 240 },
     },
     position: {
-      mobile: { top: "68%", left: "68%" }, // sits low-right to cover the last bit of text
+      mobile: { top: "107%", left: "62%" },
       tablet: { top: "70%", left: "87%" },
       desktop: { top: "69%", left: "86%" },
     },
     zIndex: 2,
   },
-
   {
     src: "/assets/images/people/wardrobe-detox/12.png",
     alt: "high heels",
     dimensions: {
-      mobile: { width: 110, height: 110 }, // larger heel near bottom-center
+      mobile: { width: 85, height: 85 },
       tablet: { width: 127, height: 127 },
       desktop: { width: 160, height: 160 },
     },
     position: {
-      mobile: { top: "74%", left: "36%" }, // overlaps bottom area, helps hide text
+      mobile: { top: "85%", left: "35%" },
       tablet: { top: "74%", left: "44%" },
       desktop: { top: "73%", left: "43%" },
     },
     zIndex: 6,
     className: "animate-always-slow",
-    transformOrigin: "50% 50%"
+   transformOrigin: "50% 50%"  
+    
   },
 ];
 
@@ -391,7 +384,7 @@ export default function WardrobeDetox() {
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
         <div className="flex flex-col-reverse lg:flex-row gap-8 md:gap-10 lg:gap-4">
           <motion.div
-            className="w-full lg:w-1/3 shrink-0 "
+             className="w-full lg:w-1/3 shrink-0 mt-50 sm:mt-0"
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsTextHovered(true)
             }
@@ -410,7 +403,7 @@ export default function WardrobeDetox() {
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
+            <p className="text-[17px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               We go through your wardrobe together: what you wear often, what
               just sits there, and what you actually love. I&apos;ll ask a few
               questions, get you to try some pieces, and understand your style
@@ -454,7 +447,6 @@ export default function WardrobeDetox() {
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
             style={{
-              height: "82vh" ,
               overflow: "visible",
               padding:
                 breakpoint === "mobile"
@@ -470,7 +462,6 @@ export default function WardrobeDetox() {
                 img={img}
                 index={idx}
                 breakpoint={breakpoint}
-                
               />
             ))}
           </motion.div>
