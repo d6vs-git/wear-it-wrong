@@ -49,7 +49,7 @@ export default function StyleSection() {
   return (
     <motion.section
       ref={ref}
-      className="bg-background text-foreground min-h-screen px-4 py-8 md:py-0 flex flex-col items-center justify-center relative overflow-hidden"
+      className="bg-background text-foreground  px-4 py-8 md:py-0 flex flex-col items-center justify-center relative overflow-hidden"
       variants={sectionVariants}
       initial="hidden"
       animate={controls}

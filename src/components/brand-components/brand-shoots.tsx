@@ -539,8 +539,12 @@ export default function BrandShoots() {
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
         <div className="flex flex-col-reverse lg:flex-row gap-40 md:gap-10 lg:gap-4">
           
-          <motion.div
-            className="w-full lg:w-1/3 shrink-0"
+       <motion.div
+  className={`
+    w-full lg:w-1/3 shrink-0
+    ${breakpoint === "mobile" ? "mt-6 overflow-auto" : ""}
+  `}
+
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsTextHovered(true)
             }
@@ -581,7 +585,11 @@ export default function BrandShoots() {
           </motion.div>
 
           <motion.div
-            className="w-full lg:w-2/3 relative aspect-video"
+  className={`
+    w-full relative
+    ${breakpoint === "mobile" ? "h-[35vh] aspect-auto" : "lg:w-2/3 aspect-video"}
+  `}
+
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsImageHovered(true)
             }
@@ -613,6 +621,7 @@ export default function BrandShoots() {
                   : breakpoint === "tablet"
                   ? "60px"
                   : "80px",
+                  transform: breakpoint === "mobile" ? "scale(1)" : undefined,
             }}
           >
             {images.map((img, idx) => (

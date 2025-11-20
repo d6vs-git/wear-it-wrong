@@ -57,12 +57,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/1.png",
     alt: "frame-1",
     dimensions: {
-      mobile: { width: 220, height: 220 },
+      mobile: { width: 200, height: 200 },
       tablet: { width: 220, height: 220 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "-15%", left: "0%" },
+      mobile: { top: "-15%", left: "-5%" },
       tablet: { top: "0%", left: "12%" },
       desktop: { top: "-3%", left: "12%" },
     },
@@ -72,12 +72,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/4.png",
     alt: "prada-hermlies",
     dimensions: {
-      mobile: { width: 300, height: 300 },
+      mobile: { width: 220, height: 300 },
       tablet: { width: 320, height: 320 },
       desktop: { width: 420, height: 420 },
     },
     position: {
-      mobile: { top: "-30%", left: "54%" },
+      mobile: { top: "-30%", left: "45%" },
       tablet: { top: "-12%", left: "48%" },
       desktop: { top: "-14%", left: "46%" },
     },
@@ -87,12 +87,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/2.png",
     alt: "frame-2",
     dimensions: {
-      mobile: { width: 220, height: 220 },
+      mobile: { width: 200, height: 220 },
       tablet: { width: 220, height: 220 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "55%", left: "0%" },
+      mobile: { top: "55%", left: "-5%" },
       tablet: { top: "43%", left: "12%" },
       desktop: { top: "41%", left: "12%" },
     },
@@ -102,16 +102,16 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/3.png",
     alt: "H",
     dimensions: {
-      mobile: { width: 280, height: 280 },
+      mobile: { width: 260, height: 220 },
       tablet: { width: 280, height: 280 },
       desktop: { width: 380, height: 380 },
     },
     position: {
-      mobile: { top: "55%", left: "54%" },
+      mobile: { top: "60%", left: "40%" },
       tablet: { top: "42%", left: "48%" },
       desktop: { top: "40%", left: "46%" },
     },
-    zIndex: 6,
+    zIndex: 2,  
   },
 
   {
@@ -139,7 +139,7 @@ const images: ImageConfig[] = [
       desktop: { width: 140, height: 140 },
     },
     position: {
-      mobile: { top: "152%", left: "122%" },
+      mobile: { top: "152%", left: "77%" },
       tablet: { top: "84%", left: "85%" },
       desktop: { top: "85%", left: "87%" },
     },
@@ -155,7 +155,7 @@ const images: ImageConfig[] = [
       desktop: { width: 480, height: 480 },
     },
     position: {
-      mobile: { top: "20%", left: "120%" },
+      mobile: { top: "20%", left: "80%" },
       tablet: { top: "8%", left: "88%" },
       desktop: { top: "6%", left: "88%" },
     },
@@ -383,10 +383,13 @@ export default function VisualMerchandising() {
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-8 md:gap-12 lg:gap-8 xl:gap-12">
+        <div className="flex flex-col-reverse lg:flex-row gap-4 lg:gap-12">
           {/* Text Section */}
           <motion.div
-            className="w-full lg:w-1/3 shrink-0 mt-[100px] sm:mt-0"
+ className="
+    w-full lg:w-1/3 shrink-0 
+    max-h-[80vh] overflow-auto lg:overflow-visible lg:max-h-none 
+  "
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsTextHovered(true)
             }
@@ -423,7 +426,12 @@ export default function VisualMerchandising() {
           </motion.div>
 
           {/* Image Composition Section */}
-          <div className="w-full lg:w-2/3 relative">
+          <div
+  className={`
+    w-full relative
+    ${breakpoint === "mobile" ? "h-[50vh]" : "lg:w-2/3"}
+  `}
+>
             <motion.div
               onMouseEnter={() =>
                 breakpoint !== "mobile" && setIsImageHovered(true)
@@ -456,7 +464,9 @@ export default function VisualMerchandising() {
                 <div
                   className="absolute inset-0"
                   style={{
-                    transform: `scale(${containerScale})`,
+               transform: breakpoint === "mobile"
+  ? "scale(1)"         // full normal scale on mobile hero
+  : `scale(${containerScale})`,
                     transformOrigin: "top left",
                   }}
                 >
