@@ -231,10 +231,8 @@ const imagePositions = [
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "concept",
-    zIndex: 10,
-    type: "walk",
-    moveDuration: 6,
-    walkTargetFraction: 0.5,
+    zIndex: 34,
+    className: "animate-walk-forward-loop",
     utilId: "util-people",
   },
   // //brand-shoot images
@@ -288,6 +286,7 @@ const imagePositions = [
     animation: { x: -30, y: 0, opacity: 0, rotate: -110 },
     category: "brandShoot",
     zIndex: 5,
+    className: "pendulum-normal",
     transformOrigin: "85% 8%",
     utilId: "util-camera",
   },
@@ -631,6 +630,7 @@ function BadgeItem({
       onMouseEnter={onHoverStart}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => {
+        handleMouseLeave();
         handleMouseLeave();
         onHoverEnd();
       }}

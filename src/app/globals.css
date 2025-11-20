@@ -910,3 +910,29 @@
 .animate-light-flicker-subtle {
   animation: light-flicker-subtle 3s ease-in-out infinite;
 }
+
+/* ============================================
+   CONTINUOUS WALK (left to right, resets, no reverse)
+   ============================================ */
+@keyframes walk-forward-loop {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  99% {
+    transform: translateX(30vw);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-walk-forward-loop {
+  animation: walk-forward-loop 6s linear infinite;
+}
+
+/* ============================================
+   SWING BOTTOM (Gentle swing at the bottom)
+   ============================================ */
