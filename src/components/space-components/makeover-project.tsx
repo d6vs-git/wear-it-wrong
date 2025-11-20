@@ -256,12 +256,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/14.png",
     alt: "favorite person",
     dimensions: {
-      mobile: { width: 48, height: 48 },
+      mobile: { width: 70, height: 50 },
       tablet: { width: 64, height: 64 },
       desktop: { width: 80, height: 80 },
     },
     position: {
-      mobile: { top: "15%", left: "29%" },
+      mobile: { top: "-120%", left: "48%" },
       tablet: { top: "13%", left: "27%" },
       desktop: { top: "12%", left: "26%" },
     },
@@ -308,7 +308,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "21%", left: "7%" },
+      mobile: { top: "-70%", left: "7%" },
       tablet: { top: "19%", left: "5%" },
       desktop: { top: "18%", left: "4%" },
     },
@@ -323,7 +323,7 @@ const images: ImageConfig[] = [
       desktop: { width: 70, height: 80 },
     },
     position: {
-      mobile: { top: "30%", left: "30%" },
+      mobile: { top: "-100%", left: "30%" },
       tablet: { top: "28%", left: "28%" },
       desktop: { top: "27%", left: "27%" },
     },
@@ -333,12 +333,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/19.png",
     alt: "heyy text",
     dimensions: {
-      mobile: { width: 70, height: 70 },
+      mobile: { width: 100, height: 100 },
       tablet: { width: 95, height: 95 },
       desktop: { width: 120, height: 120 },
     },
     position: {
-      mobile: { top: "10%", left: "2%" },
+      mobile: { top: "-120%", left: "10%" },
       tablet: { top: "8%", left: "0%" },
       desktop: { top: "-4%", left: "-1%" },
     },
@@ -349,12 +349,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/20.png",
     alt: "hanger-with clothes",
     dimensions: {
-      mobile: { width: 95, height: 95 },
+      mobile: { width: 190, height: 190 },
       tablet: { width: 127, height: 127 },
       desktop: { width: 160, height: 160 },
     },
     position: {
-      mobile: { top: "13%", left: "1%" },
+      mobile: { top: "-120%", left: "1%" },
       tablet: { top: "11%", left: "-1%" },
       desktop: { top: "10%", left: "-2%" },
     },
@@ -567,7 +567,7 @@ export default function MakeoverProject() {
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
+            <p className="text-[17px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               If you&apos;re setting up a new space or ready to give your
               current one a proper refresh, this is for you. We start by
               understanding your space, what it needs to feel like, and how you
@@ -585,7 +585,7 @@ export default function MakeoverProject() {
           </motion.div>
 
           <motion.div
-            className="w-full lg:w-2/3 relative aspect-video"
+            className="w-full lg:w-2/3 relative aspect-video mt-69 sm:mt-0"
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsImageHovered(true)
             }

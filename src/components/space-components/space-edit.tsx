@@ -59,12 +59,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting1.png",
     alt: "painting-top-1",
     dimensions: {
-      mobile: { width: 55, height: 55 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 87, height: 87 },
       desktop: { width: 155, height: 155 },
     },
     position: {
-      mobile: { top: "5%", left: "1%" },
+      mobile: { top: "-55%", left: "-3%" },
       tablet: { top: "5%", left: "4%" }, // was 4%
       desktop: { top: "9%", left: "12%" },
     },
@@ -75,12 +75,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting5.png",
     alt: "painting-top-2",
     dimensions: {
-      mobile: { width: 90, height: 90 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 127, height: 127 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "2%", left: "12%" }, // was 17%
+      mobile: { top: "-55%", left: "7%" }, // was 17%
       tablet: { top: "3%", left: "15%" }, // was 20%
       desktop: { top: "7%", left: "24%" },
     },
@@ -90,12 +90,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting3.png",
     alt: "painting-top-3",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 113, height: 113 },
       desktop: { width: 165, height: 165 },
     },
     position: {
-      mobile: { top: "6%", left: "33%" }, // was 38%
+      mobile: { top: "-55%", left: "30%" }, // was 38%
       tablet: { top: "4%", left: "32%" }, // was 37%
       desktop: { top: "8%", left: "41%" },
     },
@@ -105,12 +105,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting4.png",
     alt: "painting-top-4",
     dimensions: {
-      mobile: { width: 95, height: 95 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 133, height: 133 },
       desktop: { width: 190, height: 195 },
     },
     position: {
-      mobile: { top: "6%", left: "50%" }, // was 56%
+      mobile: { top: "-55%", left: "47%" }, // was 56%
       tablet: { top: "2%", left: "50%" }, // was 55%
       desktop: { top: "6%", left: "57%" },
     },
@@ -120,12 +120,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting3.png",
     alt: "painting-top-5",
     dimensions: {
-      mobile: { width: 75, height: 75 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 107, height: 107 },
       desktop: { width: 155, height: 155 },
     },
     position: {
-      mobile: { top: "7%", left: "68%" }, // was 73%
+      mobile: { top: "-55%", left: "62%" }, // was 73%
       tablet: { top: "5%", left: "67%" }, // was 72%
       desktop: { top: "9%", left: "76%" },
     },
@@ -136,12 +136,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting5.png",
     alt: "painting-top-6",
     dimensions: {
-      mobile: { width: 85, height: 85 },
+      mobile: { width: 105, height: 105 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 170, height: 170 },
     },
     position: {
-      mobile: { top: "5%", left: "83%" }, // was 88%
+      mobile: { top: "-55%", left: "80%" }, // was 88%
       tablet: { top: "3%", left: "82%" }, // was 87%
       desktop: { top: "7%", left: "91%" },
     },
@@ -159,7 +159,7 @@ const images: ImageConfig[] = [
       desktop: { width: 50, height: 50 },
     },
     position: {
-      mobile: { top: "68%", left: "75%" },
+      mobile: { top: "63%", left: "75%" },
       tablet: { top: "60%", left: "75%" },
       desktop: { top: "65%", left: "85%" },
     },
@@ -173,12 +173,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting2.png",
     alt: "painting-middle-1",
     dimensions: {
-      mobile: { width: 75, height: 75 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 107, height: 107 },
       desktop: { width: 155, height: 155 },
     },
     position: {
-      mobile: { top: "25%", left: "1%" },
+      mobile: { top: "-10%", left: "-5%" },
       tablet: { top: "23%", left: "15%" },
       desktop: { top: "27%", left: "11%" },
     },
@@ -188,12 +188,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting4.png",
     alt: "painting-middle-2",
     dimensions: {
-      mobile: { width: 75, height: 75 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 107, height: 107 },
       desktop: { width: 160, height: 165 },
     },
     position: {
-      mobile: { top: "25%", left: "16%" }, // was 21%
+      mobile: { top: "-10%", left: "10%" }, // was 21%
       tablet: { top: "23%", left: "15%" }, // was 20%
       desktop: { top: "27%", left: "25%" },
     },
@@ -203,13 +203,13 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting1.png",
     alt: "painting-middle-3",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 113, height: 113 },
       desktop: { width: 165, height: 165 },
       
     },
     position: {
-      mobile: { top: "24%", left: "33%" }, // was 38%
+      mobile: { top: "-10%", left: "27%" }, // was 38%
       tablet: { top: "22%", left: "32%" }, // was 37%
       desktop: { top: "26%", left: "41%" },
     },
@@ -220,12 +220,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting3.png",
     alt: "painting-middle-4",
     dimensions: {
-      mobile: { width: 85, height: 85 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 170, height: 170 },
     },
     position: {
-      mobile: { top: "23%", left: "51%" }, // was 56%
+      mobile: { top: "-10%", left: "46%" }, // was 56%
       tablet: { top: "21%", left: "50%" }, // was 55%
       desktop: { top: "25%", left: "59%" },
     },
@@ -235,12 +235,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting6.png",
     alt: "painting-middle-5",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 113, height: 113 },
       desktop: { width: 165, height: 165 },
     },
     position: {
-      mobile: { top: "24%", left: "68%" }, // was 73%
+      mobile: { top: "-10%", left: "62%" }, // was 73%
       tablet: { top: "22%", left: "67%" }, // was 72%
       desktop: { top: "26%", left: "76%" },
     },
@@ -250,12 +250,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/painting4.png",
     alt: "painting-middle-6",
     dimensions: {
-      mobile: { width: 75, height: 75 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 107, height: 107 },
       desktop: { width: 155, height: 155 },
     },
     position: {
-      mobile: { top: "25%", left: "83%" }, // was 88%
+      mobile: { top: "-10%", left: "78%" }, // was 88%
       tablet: { top: "23%", left: "82%" }, // was 87%
       desktop: { top: "27%", left: "91%" },
     },
@@ -267,12 +267,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/lamp.png",
     alt: "standing-lamp",
     dimensions: {
-      mobile: { width: 120, height: 150 },
+      mobile: { width: 190, height: 180 },
       tablet: { width: 200, height: 250 },
       desktop: { width: 300, height: 400 },
     },
     position: {
-      mobile: { top: "40%", left: "6%" },
+      mobile: { top: "25%", left: "-10%" },
       tablet: { top: "30%", left: "15%" },
       desktop: { top: "20%", left: "10%" },
     },
@@ -284,12 +284,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/sofa.png",
     alt: "sofa",
     dimensions: {
-      mobile: { width: 200, height: 200 },
+      mobile: { width: 250, height: 250 },
       tablet: { width: 300, height: 300 },
       desktop: { width: 530, height: 309 },
     },
     position: {
-      mobile: { top: "45%", left: "20%" },
+      mobile: { top: "30%", left: "13%" },
       tablet: { top: "45%", left: "30%" },
       desktop: { top: "55%", left: "25%" },
     },
@@ -301,12 +301,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/table.png",
     alt: "side-table",
     dimensions: {
-      mobile: { width: 80, height: 60 },
+      mobile: { width: 150, height: 70 },
       tablet: { width: 120, height: 120 },
       desktop: { width: 165, height: 165 },
     },
     position: {
-      mobile: { top: "80%", left: "65%" },
+      mobile: { top: "75%", left: "60%" },
       tablet: { top: "66%", left: "68%" },
       desktop: { top: "72%", left: "78%" },
     },
@@ -318,12 +318,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/cactus.png",
     alt: "small-cactus",
     dimensions: {
-      mobile: { width: 50, height: 50 },
+      mobile: { width: 50, height: 55 },
       tablet: { width: 60, height: 60 },
       desktop: { width: 80, height: 80 },
     },
     position: {
-      mobile: { top: "60%", left: "66%" },
+      mobile: { top: "55%", left: "76%" },
       tablet: { top: "55%", left: "70%" },
       desktop: { top: "60%", left: "79%" },
     },
@@ -335,7 +335,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/flowerpot.png",
     alt: "large-flowerpot",
     dimensions: {
-      mobile: { width: 80, height: 125 },
+      mobile: { width: 120, height: 130 },
       tablet: { width: 180, height: 180 },
       desktop: { width: 300, height: 300 },
     },
@@ -479,7 +479,7 @@ export default function SpaceEdit() {
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
+            <p className="text-[17px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               Sometimes your space just needs a few small shifts to feel right
               again — not a full change, just the things that were slightly off
               or no longer working for you. This one&apos;s for when you
@@ -497,7 +497,7 @@ export default function SpaceEdit() {
           </motion.div>
 
           <motion.div
-            className="w-full lg:w-2/3 relative aspect-video"
+            className="w-full lg:w-2/3 relative aspect-video mt-40 sm:mt-0"
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsImageHovered(true)
             }
