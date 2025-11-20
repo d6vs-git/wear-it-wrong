@@ -79,12 +79,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/occasion-styling/flower-pot.png",
     alt: "flower pot with leaves",
     dimensions: {
-      mobile: { width: 120, height: 120 },
+      mobile: { width: 150, height: 150 },
       tablet: { width: 160, height: 160 },
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "70%", left: "-15%" },
+      mobile: { top: "93%", left: "-15%" },
       tablet: { top: "59%", left: "-8%" },
       desktop: { top: "58%", left: "-11%" },
     },
@@ -94,12 +94,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/occasion-styling/table.png",
     alt: "table",
     dimensions: {
-      mobile: { width: 100, height: 100 },
+      mobile: { width: 120, height: 120 },
       tablet: { width: 135, height: 135 },
       desktop: { width: 170, height: 170 },
     },
     position: {
-      mobile: { top: "74%", left: "25%" },
+      mobile: { top: "88%", left: "22%" },
       tablet: { top: "63%", left: "36%" },
       desktop: { top: "62%", left: "34%" },
     },
@@ -109,7 +109,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/occasion-styling/dress-roller.png",
     alt: "Standing Dress Roller",
     dimensions: {
-      mobile: { width: 280, height: 280 },
+      mobile: { width: 300, height: 300 },
       tablet: { width: 390, height: 390 },
       desktop: { width: 500, height: 500 },
     },
@@ -132,7 +132,7 @@ const images: ImageConfig[] = [
       desktop: { width: 420, height: 420 },
     },
     position: {
-      mobile: { top: "38%", left: "-8%" },
+      mobile: { top: "45%", left: "-8%" },
       tablet: { top: "26%", left: "0%" },
       desktop: { top: "25%", left: "-1%" },
     },
@@ -142,7 +142,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/occasion-styling/box.png",
     alt: "box",
     dimensions: {
-      mobile: { width: 80, height: 80 },
+      mobile: { width: 100, height: 100 },
       tablet: { width: 110, height: 110 },
       desktop: { width: 140, height: 140 },
     },
@@ -157,12 +157,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/occasion-styling/carpet1.png",
     alt: "Carpet 1",
     dimensions: {
-      mobile: { width: 300, height: 300 },
+      mobile: { width: 330, height: 330 },
       tablet: { width: 420, height: 420 },
       desktop: { width: 530, height: 530 },
     },
     position: {
-      mobile: { top: "28%", left: "35%" },
+      mobile: { top: "59%", left: "35%" },
       tablet: { top: "16%", left: "45%" },
       desktop: { top: "15%", left: "43%" },
     },
@@ -172,12 +172,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/occasion-styling/dress2.png",
     alt: "dress2",
     dimensions: {
-      mobile: { width: 120, height: 120 },
+      mobile: { width: 140, height: 140 },
       tablet: { width: 160, height: 160 },
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "40%", left: "57%" },
+      mobile: { top: "53%", left: "57%" },
       tablet: { top: "28%", left: "58%" },
       desktop: { top: "27%", left: "56%" },
     },
@@ -188,12 +188,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/occasion-styling/dress3.png",
     alt: "dress3",
     dimensions: {
-      mobile: { width: 240, height: 240 },
+      mobile: { width: 290, height: 290 },
       tablet: { width: 320, height: 320 },
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "13%", left: "23%" },
+      mobile: { top: "19%", left: "16%" },
       tablet: { top: "1%", left: "34%" },
       desktop: { top: "-1%", left: "32%" },
     },
@@ -206,12 +206,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/occasion-styling/hanging-lamp.png",
     alt: "Hanging Lamp",
     dimensions: {
-      mobile: { width: 120, height: 120 },
+      mobile: { width: 130, height: 130 },
       tablet: { width: 160, height: 160 },
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "-5%", left: "21%" },
+      mobile: { top: "-8%", left: "25%" },
       tablet: { top: "-17%", left: "32%" },
       desktop: { top: "-19%", left: "30%" },
     },
@@ -222,12 +222,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/occasion-styling/shoes.png",
     alt: "Shoes",
     dimensions: {
-      mobile: { width: 60, height: 60 },
+      mobile: { width: 70, height: 70 },
       tablet: { width: 80, height: 80 },
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "62%", left: "28%" },
+      mobile: { top: "77%", left: "28%" },
       tablet: { top: "51%", left: "39%" },
       desktop: { top: "50%", left: "38%" },
     },
@@ -239,12 +239,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/occasion-styling/dress1.png",
     alt: "dress-4",
     dimensions: {
-      mobile: { width: 140, height: 140 },
+      mobile: { width: 160, height: 160 },
       tablet: { width: 190, height: 190 },
       desktop: { width: 240, height: 240 },
     },
     position: {
-      mobile: { top: "19%", left: "53%" },
+      mobile: { top: "29%", left: "53%" },
       tablet: { top: "7%", left: "54%" },
       desktop: { top: "6%", left: "53%" },
     },
@@ -260,7 +260,7 @@ const images: ImageConfig[] = [
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "31%", left: "63%" },
+      mobile: { top: "35%", left: "63%" },
       tablet: { top: "19%", left: "64%" },
       desktop: { top: "18%", left: "62%" },
     },
@@ -277,7 +277,7 @@ const images: ImageConfig[] = [
       desktop: { width: 360, height: 360 },
     },
     position: {
-      mobile: { top: "-8%", left: "54%" },
+      mobile: { top: "-1%", left: "54%" },
       tablet: { top: "-26%", left: "55%" },
       desktop: { top: "-28%", left: "54%" },
     },
@@ -394,9 +394,10 @@ export default function OccasionStyling() {
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-8 md:gap-10 lg:gap-4">
+        <div className="flex flex-col-reverse lg:flex-row gap-39 md:gap-10 lg:gap-4">
           <motion.div
-            className="w-full lg:w-1/3 shrink-0"
+            className="w-full lg:w-1/3 shrink-0 "
+
             onMouseEnter={() => breakpoint !== "mobile" && setIsTextHovered(true)}
             onMouseLeave={() => breakpoint !== "mobile" && setIsTextHovered(false)}
             animate={{
@@ -404,7 +405,7 @@ export default function OccasionStyling() {
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
+            <p className="text-[17px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               Tell me about your occasion; the event, the mood you&apos;re going
               for, and any ideas you already have. I&apos;ll take a look at your
               wardrobe, see what pieces you want to wear, and figure out how to
