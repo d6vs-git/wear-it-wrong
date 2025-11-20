@@ -115,7 +115,57 @@ const images: ImageConfig[] = [
     type: "flower",
     zIndex: 0,
   },
-
+ {
+    src: "/assets/images/people/personal-shopping/bg-1.png",
+    alt: "Background Element 4",
+    dimensions: {
+      mobile: { width: 180, height: 180 },
+      tablet: { width: 0, height: 0 },
+      desktop: { width: 0, height: 0 },
+    },
+    position: {
+      mobile: { top: "60%", left: "0%" },
+      tablet: { top: "-8%", left: "0%" },
+      desktop: { top: "-10%", left: "0%" },
+    },
+    className: "animate-light-fade",
+    type: "flower",
+    zIndex: 0,
+  },
+  {
+    src: "/assets/images/people/personal-shopping/bg-2.png",
+    alt: "Background Element 5",
+    dimensions: {
+      mobile: { width: 180, height: 180 },
+      tablet: { width: 0, height: 0 },
+      desktop: { width: 0, height: 0 },
+    },
+    position: {
+      mobile: { top: "65%", left: "32%" },
+      tablet: { top: "-8%", left: "32%" },
+      desktop: { top: "-10%", left: "32%" },
+    },
+    className: "animate-light-fade",
+    type: "flower",
+    zIndex: 0,
+  },
+  {
+    src: "/assets/images/people/personal-shopping/bg-1.png",
+    alt: "Background Element 6",
+    dimensions: {
+      mobile: { width: 180, height: 180 },
+      tablet: { width: 0, height: 0 },
+      desktop: { width: 0, height: 0 },
+    },
+    position: {
+      mobile: { top: "60%", left: "66%" },
+      tablet: { top: "-8%", left: "66%" },
+      desktop: { top: "-10%", left: "66%" },
+    },
+    className: "animate-light-fade",
+    type: "flower",
+    zIndex: 0,
+  },
   // Carpets - middle row (behind everything)
   {
     src: "/assets/images/people/personal-shopping/carpet1.jpg",
@@ -126,7 +176,7 @@ const images: ImageConfig[] = [
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "45%", left: "0%" },
+      mobile: { top: "120%", left: "0%" },
       tablet: { top: "43%", left: "0%" },
       desktop: { top: "42%", left: "0%" },
     },
@@ -142,7 +192,7 @@ const images: ImageConfig[] = [
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "45%", left: "36%" },
+      mobile: { top: "120%", left: "36%" },
       tablet: { top: "43%", left: "36%" },
       desktop: { top: "42%", left: "36%" },
     },
@@ -158,7 +208,7 @@ const images: ImageConfig[] = [
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "45%", left: "70%" },
+      mobile: { top: "120%", left: "70%" },
       tablet: { top: "43%", left: "70%" },
       desktop: { top: "42%", left: "70%" },
     },
@@ -176,7 +226,7 @@ const images: ImageConfig[] = [
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "8%", left: "18%" },
+      mobile: { top: "70%", left: "18%" },
       tablet: { top: "6%", left: "18%" },
       desktop: { top: "5%", left: "18%" },
     },
@@ -197,7 +247,7 @@ const images: ImageConfig[] = [
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "8%", left: "55%" },
+      mobile: { top: "70%", left: "55%" },
       tablet: { top: "6%", left: "55%" },
       desktop: { top: "5%", left: "55%" },
     },
@@ -220,7 +270,7 @@ const images: ImageConfig[] = [
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "42%", left: "0%" },
+      mobile: { top: "110%", left: "0%" },
       tablet: { top: "40%", left: "0%" },
       desktop: { top: "38%", left: "0%" },
     },
@@ -239,7 +289,7 @@ const images: ImageConfig[] = [
       desktop: { width: 240, height: 240 },
     },
     position: {
-      mobile: { top: "64%", left: "48%" },
+      mobile: { top: "140%", left: "48%" },
       tablet: { top: "62%", left: "48%" },
       desktop: { top: "60%", left: "48%" },
     },
@@ -258,7 +308,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "54%", left: "75%" },
+      mobile: { top: "130%", left: "75%" },
       tablet: { top: "52%", left: "75%" },
       desktop: { top: "50%", left: "75%" },
     },
@@ -278,7 +328,7 @@ const images: ImageConfig[] = [
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "76%", left: "75%" },
+      mobile: { top: "150%", left: "75%" },
       tablet: { top: "74%", left: "75%" },
       desktop: { top: "72%", left: "75%" },
     },
@@ -545,10 +595,10 @@ export default function PersonalShopping() {
         </div>
       </div>
 
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12 ">
+        <div className="flex flex-col-reverse lg:flex-row gap-8 md:gap-10 lg:gap-4">
           <motion.div
-            className="w-full lg:w-1/3 shrink-0"
+           className="w-full lg:w-1/3 shrink-0 mt-69 sm:mt-0"
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsTextHovered(true)
             }
@@ -567,7 +617,7 @@ export default function PersonalShopping() {
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
+            <p className="text-[17px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               You start by filling out a quick form so I can get to know your
               style, routine, and what you&apos;re shopping for. Based on that,
               I create a moodboard and we meet to go through it; talk about what
@@ -620,7 +670,7 @@ export default function PersonalShopping() {
                   ? "20px"
                   : breakpoint === "tablet"
                   ? "40px"
-                  : "60px",
+                  : "60px", 
             }}
           >
             {images.map((img, idx) => (
@@ -644,7 +694,6 @@ export default function PersonalShopping() {
           </motion.div>
         </div>
       </div>
-      
     </div>
   );
 }
