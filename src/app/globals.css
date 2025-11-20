@@ -863,6 +863,45 @@
   }
 }
 
+/* Flexible carpet shuttle using CSS variables */
+@keyframes carpet-shuttle-flex {
+  0% {
+    transform: translateX(var(--carpet-back, -18px));
+  }
+  50% {
+    transform: translateX(var(--carpet-front, 18px));
+  }
+  100% {
+    transform: translateX(var(--carpet-back, -18px));
+  }
+}
+
+/* Flexible vertical shuttle */
+@keyframes carpet-shuttle-flex-vertical {
+  0% {
+    transform: translateY(var(--carpet-back, -18px));
+  }
+  50% {
+    transform: translateY(var(--carpet-front, 18px));
+  }
+  100% {
+    transform: translateY(var(--carpet-back, -18px));
+  }
+}
+
+/* Flexible diagonal shuttle */
+@keyframes carpet-shuttle-flex-diagonal {
+  0% {
+    transform: translate(var(--carpet-back-x, -15px), var(--carpet-back-y, -15px));
+  }
+  50% {
+    transform: translate(var(--carpet-front-x, 15px), var(--carpet-front-y, 15px));
+  }
+  100% {
+    transform: translate(var(--carpet-back-x, -15px), var(--carpet-back-y, -15px));
+  }
+}
+
 /* Default speed */
 .animate-carpet-shuttle {
   animation: carpet-shuttle 3.2s ease-in-out infinite;
@@ -875,6 +914,27 @@
 
 .animate-carpet-shuttle-fast {
   animation: carpet-shuttle 2.6s ease-in-out infinite;
+}
+
+/* Flexible carpet shuttle classes */
+.animate-carpet-shuttle-flex {
+  animation: carpet-shuttle-flex 3.2s ease-in-out infinite;
+}
+
+.animate-carpet-shuttle-flex-slow {
+  animation: carpet-shuttle-flex 4.8s ease-in-out infinite;
+}
+
+.animate-carpet-shuttle-flex-fast {
+  animation: carpet-shuttle-flex 2.6s ease-in-out infinite;
+}
+
+.animate-carpet-shuttle-flex-vertical {
+  animation: carpet-shuttle-flex-vertical 3.2s ease-in-out infinite;
+}
+
+.animate-carpet-shuttle-flex-diagonal {
+  animation: carpet-shuttle-flex-diagonal 3.2s ease-in-out infinite;
 }
 
 /* ============================================
@@ -950,3 +1010,47 @@
 /* ============================================
    SWING BOTTOM (Gentle swing at the bottom)
    ============================================ */
+/* Slow fade invisible → visible with a small flicker */
+@keyframes light-fade {
+  0% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+
+  /* fades out */
+  25% {
+    opacity: 0.6;
+    filter: brightness(0.6);
+  }
+
+  /* slight flicker while dim (optional) */
+  30% {
+    opacity: 0.3;
+    filter: brightness(0.3);
+  }
+  35% {
+    opacity: 0.5;
+    filter: brightness(0.5);
+  }
+
+  /* completely invisible */
+  50% {
+    opacity: 0;
+    filter: brightness(0);
+  }
+
+  /* starts fading back in */
+  70% {
+    opacity: 0.4;
+    filter: brightness(0.4);
+  }
+
+  /* fully visible again */
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+.animate-light-fade {
+  animation: light-flicker-subtle 3s ease-in-out infinite;
+}

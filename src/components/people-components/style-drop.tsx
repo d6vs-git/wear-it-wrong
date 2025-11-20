@@ -62,6 +62,7 @@ type ImageConfig = {
   zIndex?: number;
   className?: string;
   transformOrigin?: string;
+  customStyle?: React.CSSProperties;
 };
 
 const images: ImageConfig[] = [
@@ -155,8 +156,12 @@ const images: ImageConfig[] = [
       tablet: { top: "4%", left: "74%" },
       desktop: { top: "3%", left: "72%" },
     },
-    className: "animate-carpet-shuttle",
+    className: "animate-carpet-shuttle-flex-slow",
     zIndex: 1,
+    customStyle: {
+      "--carpet-back": "-95px",
+      "--carpet-front": "2px",
+    } as React.CSSProperties,
   },
   {
     src: "/assets/images/people/style-drop/image55.png",
@@ -289,6 +294,7 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
           width: "100%", 
           height: "100%",
           transformOrigin: img.transformOrigin ?? "50% 50%",
+          ...img.customStyle,
         }}
       >
         <Image

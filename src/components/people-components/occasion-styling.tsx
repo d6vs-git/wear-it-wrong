@@ -70,6 +70,8 @@ type ImageConfig = {
   className?: string;
   transformOrigin?: string;
   utilId?: string; // added explicit util sound id mapping
+  customStyle?: React.CSSProperties;
+
 };
 
 const images: ImageConfig[] = [

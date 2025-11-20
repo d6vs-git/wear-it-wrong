@@ -280,7 +280,7 @@ const imagePositions = [
     },
     position: {
       mobile: { top: "92%", left: "10%" },
-      tablet: { top: "25%", left: "77%" },
+      tablet: { top: "25%",  left: "77%" },
       desktop: { top: "15%", left: "67%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: -110 },

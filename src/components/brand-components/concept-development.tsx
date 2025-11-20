@@ -665,11 +665,12 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "45%", left: "70%" },
+      mobile: { top: "45%", left: "72%" },
       tablet: { top: "45%", left: "68%" },
       desktop: { top: "40%", left: "64%" },
     },
     zIndex: 10,
+    className:"animate-always"
   },
   {
     src: "/assets/images/brand/concept-development/14.png",
