@@ -4,7 +4,7 @@ import "./globals.css";
 import AuthProvider from "@/components/auth/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import ConditionalNavbar from "@/components/conditional-navbar";
-import Footer from "@/components/footer";
+import FooterClient from "./Footer-client";
 
 
 export const metadata: Metadata = {
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     "Wear It Wrong is a creative styling studio that helps people, brands, and spaces find their expression and look good doing it.",
 };
 import dynamic from "next/dynamic";
+
 
 
 
@@ -72,9 +73,8 @@ export default function RootLayout({
             }}
           />
         </AuthProvider>
-       
-      </body>
-      
+       <FooterClient />
+      </body>      
     </html>
   );
 }
