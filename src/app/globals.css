@@ -1052,5 +1052,5 @@
   }
 }
 .animate-light-fade {
-  animation: light-flicker-subtle 3s ease-in-out infinite;
+  animation: light-fade 3s ease-in-out infinite;
 }

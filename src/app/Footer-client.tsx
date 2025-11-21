@@ -5,9 +5,7 @@ import Footer from "@/components/footer";
 
 export default function FooterClient() {
   const params = useSearchParams();
+  const hasParams = params.toString().length > 0;
 
-  // hide footer when no query params
-
-
-   return params.toString() && <Footer /> ;
+  return hasParams ? <Footer /> : null;
 }

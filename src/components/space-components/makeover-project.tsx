@@ -265,6 +265,7 @@ const images: ImageConfig[] = [
       tablet: { top: "13%", left: "27%" },
       desktop: { top: "12%", left: "26%" },
     },
+    className: "animate-light-flicker-slow",
     zIndex: 5,
   },
   {
