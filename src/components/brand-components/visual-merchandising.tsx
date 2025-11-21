@@ -57,12 +57,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/1.png",
     alt: "frame-1",
     dimensions: {
-      mobile: { width: 240, height: 240 },
+      mobile: { width: 330, height: 300 },
       tablet: { width: 220, height: 220 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "-15%", left: "-5%" },
+      mobile: { top: "-140%", left: "-6%" },
       tablet: { top: "0%", left: "12%" },
       desktop: { top: "-3%", left: "12%" },
     },
@@ -72,12 +72,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/4.png",
     alt: "prada-hermlies",
     dimensions: {
-      mobile: { width: 250, height: 300 },
+      mobile: { width: 380, height: 340 },
       tablet: { width: 320, height: 320 },
       desktop: { width: 420, height: 420 },
     },
     position: {
-      mobile: { top: "-25%", left: "45%" },
+      mobile: { top: "-150%", left: "63%" },
       tablet: { top: "-12%", left: "48%" },
       desktop: { top: "-14%", left: "46%" },
     },
@@ -87,43 +87,43 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/2.png",
     alt: "frame-2",
     dimensions: {
-      mobile: { width: 220, height: 220 },
+      mobile: { width: 280, height: 280 },
       tablet: { width: 220, height: 220 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "59%", left: "-5%" },
+      mobile: { top: "-30%", left: "0%" },
       tablet: { top: "43%", left: "12%" },
       desktop: { top: "41%", left: "12%" },
     },
-    zIndex: 1,
+    zIndex: 3,
   },
   {
     src: "/assets/images/brand/visual-merch/3.png",
     alt: "H",
     dimensions: {
-      mobile: { width: 280, height: 280 },
+      mobile: { width: 410, height: 420 },
       tablet: { width: 280, height: 280 },
       desktop: { width: 380, height: 380 },
     },
     position: {
-      mobile: { top: "69%", left: "40%" },
+      mobile: { top: "-45%", left: "53%" },
       tablet: { top: "42%", left: "48%" },
       desktop: { top: "40%", left: "46%" },
     },
-    zIndex: 2,  
+    zIndex: 6,
   },
 
   {
     src: "/assets/images/brand/visual-merch/5.png",
-    alt: "fence",
+    alt: "fence-left",
     dimensions: {
-      mobile: { width: 110, height: 110 },
+      mobile: { width: 150, height: 150 },
       tablet: { width: 110, height: 110 },
       desktop: { width: 140, height: 140 },
     },
     position: {
-      mobile: { top: "180%", left: "-10%" },
+      mobile: { top: "130%", left: "-5%" },
       tablet: { top: "84%", left: "2%" },
       desktop: { top: "85%", left: "1%" },
     },
@@ -132,14 +132,14 @@ const images: ImageConfig[] = [
   },
   {
     src: "/assets/images/brand/visual-merch/5.png",
-    alt: "fence",
+    alt: "fence-right",
     dimensions: {
-      mobile: { width: 110, height: 110 },
+      mobile: { width: 150, height: 150 },
       tablet: { width: 110, height: 110 },
       desktop: { width: 140, height: 140 },
     },
     position: {
-      mobile: { top: "180%", left: "77%" },
+      mobile: { top: "130%", left: "115%" },
       tablet: { top: "84%", left: "85%" },
       desktop: { top: "85%", left: "87%" },
     },
@@ -155,11 +155,11 @@ const images: ImageConfig[] = [
       desktop: { width: 480, height: 480 },
     },
     position: {
-      mobile: { top: "38%", left: "80%" },
+      mobile: { top: "20%", left: "120%" },
       tablet: { top: "8%", left: "88%" },
       desktop: { top: "6%", left: "88%" },
     },
-    zIndex: 3,
+    zIndex: 6,
      className: "animate-always-slow",     // ✅ NEW
   transformOrigin: "50% 50%",            // ✅ NEW (hangs from top)
   },
@@ -172,7 +172,7 @@ const images: ImageConfig[] = [
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "140%", left: "-16%" },
+      mobile: { top: "89%", left: "-7%" },
       tablet: { top: "64%", left: "0%" },
       desktop: { top: "64%", left: "-1%" },
     },
@@ -184,16 +184,16 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/visual-merch/7.png",
     alt: "frame with nike",
     dimensions: {
-      mobile: { width: 200, height: 200 },
+      mobile: { width: 250, height: 220 },
       tablet: { width: 190, height: 190 },
       desktop: { width: 240, height: 240 },
     },
     position: {
-      mobile: { top: "140%", left: "5%" },
+      mobile: { top: "60%", left: "-6%" },
       tablet: { top: "79%", left: "20%" },
       desktop: { top: "79%", left: "18%" },
     },
-    zIndex: 2,
+    zIndex: 1,
   },
 ];
 
@@ -383,13 +383,10 @@ export default function VisualMerchandising() {
       </div>
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
-        <div className="flex flex-col-reverse lg:flex-row gap-30 lg:gap-12">
+        <div className="flex flex-col-reverse lg:flex-row gap-8 md:gap-12 lg:gap-8 xl:gap-12">
           {/* Text Section */}
           <motion.div
- className="
-    w-full lg:w-1/3 shrink-0 
-    overflow-auto 
-  "
+            className="w-full lg:w-1/3 shrink-0 mt-[100px] sm:mt-0"
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsTextHovered(true)
             }
@@ -426,12 +423,7 @@ export default function VisualMerchandising() {
           </motion.div>
 
           {/* Image Composition Section */}
-          <div
-  className={`
-    w-full relative
-    ${breakpoint === "mobile" ? "h-[50vh]" : "lg:w-2/3"}
-  `}
->
+          <div className="w-full lg:w-2/3 relative  mt-50 sm:mt-0">
             <motion.div
               onMouseEnter={() =>
                 breakpoint !== "mobile" && setIsImageHovered(true)
@@ -464,9 +456,7 @@ export default function VisualMerchandising() {
                 <div
                   className="absolute inset-0"
                   style={{
-               transform: breakpoint === "mobile"
-  ? "scale(1)"         // full normal scale on mobile hero
-  : `scale(${containerScale})`,
+                    transform: `scale(${containerScale})`,
                     transformOrigin: "top left",
                   }}
                 >

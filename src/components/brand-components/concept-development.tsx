@@ -524,12 +524,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/concept-development/1.png",
     alt: "Building",
     dimensions: {
-      mobile: { width: 200, height: 200 },
+      mobile: { width: 300, height: 280 },
       tablet: { width: 320, height: 320 },
       desktop: { width: 450, height: 450 },
     },
     position: {
-      mobile: { top: "20%", left: "50%" },
+      mobile: { top: "100%", left: "38%" },
       tablet: { top: "18%", left: "48%" },
       desktop: { top: "15%", left: "46%" },
     },
@@ -539,12 +539,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/concept-development/2.png",
     alt: "cafe -> mon bar a couture",
     dimensions: {
-      mobile: { width: 180, height: 180 },
+      mobile: { width: 240, height: 220 },
       tablet: { width: 280, height: 280 },
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "8%", left: "15%" },
+      mobile: { top: "-10%", left: "46%" },
       tablet: { top: "8%", left: "12%" },
       desktop: { top: "3%", left: "6%" },
     },
@@ -554,12 +554,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/concept-development/3.png",
     alt: "dress roller stand",
     dimensions: {
-      mobile: { width: 90, height: 90 },
+      mobile: { width: 130, height: 130 },
       tablet: { width: 150, height: 150 },
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "28%", left: "38%" },
+      mobile: { top: "60%", left: "30%" },
       tablet: { top: "28%", left: "38%" },
       desktop: { top: "24%", left: "40%" },
     },
@@ -569,12 +569,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/concept-development/6.png",
     alt: "Cafe-2",
     dimensions: {
-      mobile: { width: 130, height: 130 },
+      mobile: { width: 200, height: 160 },
       tablet: { width: 220, height: 220 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "22%", left: "8%" },
+      mobile: { top: "0%", left: "-2%" },
       tablet: { top: "22%", left: "8%" },
       desktop: { top: "18%", left: "2%" },
     },
@@ -589,7 +589,7 @@ const images: ImageConfig[] = [
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "52%", left: "8%" },
+      mobile: { top: "53%", left: "0%" },
       tablet: { top: "52%", left: "5%" },
       desktop: { top: "47%", left: "-1%" },
     },
@@ -599,12 +599,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/concept-development/8.png",
     alt: "Cafe-3",
     dimensions: {
-      mobile: { width: 130, height: 130 },
+      mobile: { width: 210, height: 210 },
       tablet: { width: 220, height: 220 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "35%", left: "25%" },
+      mobile: { top: "120%", left: "-3%" },
       tablet: { top: "35%", left: "25%" },
       desktop: { top: "29%", left: "24%" },
     },
@@ -619,7 +619,7 @@ const images: ImageConfig[] = [
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "68%", left: "6%" },
+      mobile: { top: "94%", left: "15%" },
       tablet: { top: "72%", left: "8%" },
       desktop: { top: "64%", left: "1%" },
     },
@@ -630,12 +630,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/concept-development/11.png",
     alt: "Cat",
     dimensions: {
-      mobile: { width: 60, height: 60 },
+      mobile: { width: 90, height: 70 },
       tablet: { width: 100, height: 100 },
       desktop: { width: 130, height: 130 },
     },
     position: {
-      mobile: { top: "78%", left: "6%" },
+      mobile: { top: "105%", left: "9%" },
       tablet: { top: "78%", left: "8%" },
       desktop: { top: "73%", left: "1%" },
     },
@@ -645,12 +645,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/concept-development/12.png",
     alt: "Girl-with-dog",
     dimensions: {
-      mobile: { width: 90, height: 90 },
+      mobile: { width: 110, height: 110 },
       tablet: { width: 150, height: 150 },
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "72%", left: "20%" },
+      mobile: { top: "160%", left: "20%" },
       tablet: { top: "72%", left: "20%" },
       desktop: { top: "68%", left: "14%" },
     },
@@ -665,7 +665,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "45%", left: "72%" },
+      mobile: { top: "148%", left: "69%" },
       tablet: { top: "45%", left: "68%" },
       desktop: { top: "40%", left: "64%" },
     },
@@ -676,12 +676,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/concept-development/14.png",
     alt: "ladies",
     dimensions: {
-      mobile: { width: 100, height: 100 },
+      mobile: { width: 120, height: 120 },
       tablet: { width: 180, height: 180 },
       desktop: { width: 230, height: 230 },
     },
     position: {
-      mobile: { top: "62%", left: "68%" },
+      mobile: { top: "165%", left: "61%" },
       tablet: { top: "62%", left: "65%" },
       desktop: { top: "57%", left: "60%" },
     },
@@ -696,7 +696,7 @@ const images: ImageConfig[] = [
       desktop: { width: 240, height: 240 },
     },
     position: {
-      mobile: { top: "55%", left: "42%" },
+      mobile: { top: "165%", left: "30%" },
       tablet: { top: "55%", left: "42%" },
       desktop: { top: "50%", left: "36%" },
     },
@@ -711,7 +711,7 @@ const images: ImageConfig[] = [
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "62%", left: "85%" },
+      mobile: { top: "175%", left: "85%" },
       tablet: { top: "62%", left: "82%" },
       desktop: { top: "58%", left: "80%" },
     },
@@ -722,12 +722,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/brand/concept-development/17.png",
     alt: "Silver carpet",
     dimensions: {
-      mobile: { width: 180, height: 180 },
+      mobile: { width: 200, height: 210 },
       tablet: { width: 280, height: 280 },
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "18%", left: "24%" },
+      mobile: { top: "118%", left: "24%" },
       tablet: { top: "18%", left: "24%" },
       desktop: { top: "13%", left: "20%" },
     },
@@ -937,7 +937,7 @@ export default function ConceptDevelopment() {
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
         <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4 lg:items-center">
           <motion.div
-            className="w-full lg:w-1/3 shrink-0"
+            className="w-full lg:w-1/3 shrink-0 mt-69 sm:mt-0"
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsTextHovered(true)
             }
@@ -956,7 +956,7 @@ export default function ConceptDevelopment() {
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
+            <p className="text-[17px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               Each brand has its own unique vision that defines its identity,
               and I help bring that vision to life. Whether you&apos;re
               embarking on a new project, establishing a pop-up, or redefining
