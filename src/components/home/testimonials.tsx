@@ -36,7 +36,7 @@ const imagePositions: SectionImage[] = [
     src: "/assets/images/testimonial/image240.png",
     alt: "love icons cluster 1",
     dimensions: {
-      mobile: { width: 230, height: 230 },
+      mobile: { width: 250, height: 250 },
       tablet: { width: 300, height: 300 },
       desktop: { width: 400, height: 400 },
     },
@@ -58,7 +58,7 @@ const imagePositions: SectionImage[] = [
       desktop: { width: 300, height: 200 },
     },
     position: {
-      mobile: { top: "5%", left: "7%" },
+      mobile: { top: "13%", left: "7%" },
       tablet: { top: "16%", left: "27%" },
       desktop: { top: "30%", left: "11%" },
     },
@@ -75,7 +75,7 @@ const imagePositions: SectionImage[] = [
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "59%", left: "25%" },
+      mobile: { top: "30%", left: "37%" },
       tablet: { top: "46%", left: "62%" },
       desktop: { top: "25%", left: "69%" },
     },
@@ -87,12 +87,12 @@ const imagePositions: SectionImage[] = [
     src: "/assets/images/testimonial/comment2-removebg-preview.png",
     alt: "quote box 2",
     dimensions: {
-      mobile: { width: 200, height: 220 },
+      mobile: { width: 230, height: 230 },
       tablet: { width: 190, height: 150 },
       desktop: { width: 300, height: 200 },
     },
     position: {
-      mobile: { top: "59%", left: "35%" },
+      mobile: { top: "38%", left: "40%" },
       tablet: { top: "46%", left: "71%" },
       desktop: { top: "43%", left: "74%" },
     },
@@ -104,12 +104,12 @@ const imagePositions: SectionImage[] = [
     src: "/assets/images/testimonial/image240.png",
     alt: "love icons cluster 2",
     dimensions: {
-      mobile: { width: 250, height: 200 },
+      mobile: { width: 250, height: 250 },
       tablet: { width: 300, height: 300 },
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "59%", left: "25%" },
+      mobile: { top: "55%", left: "2%" },
       tablet: { top: "46%", left: "62%" },
       desktop: { top: "45%", left: "38%" },
     },
@@ -121,12 +121,12 @@ const imagePositions: SectionImage[] = [
     src: "/assets/images/testimonial/3comment-removebg-preview.png",
     alt: "quote box 2",
     dimensions: {
-      mobile: { width: 200, height: 220 },
+      mobile: { width: 230, height: 230 },
       tablet: { width: 190, height: 150 },
       desktop: { width: 300, height: 200 },
     },
     position: {
-      mobile: { top: "59%", left: "35%" },
+      mobile: { top: "63%", left: "5%" },
       tablet: { top: "46%", left: "71%" },
       desktop: { top: "62%", left: "45%" },
     },
@@ -225,7 +225,7 @@ function SectionImageItem({ img, index }: { img: SectionImage; index: number }) 
 export default function Testimonials() {
   return (
     <motion.section
-      className="relative w-full min-h-[120vh] sm:min-h-[100vh] md:h-[100vh] flex items-center justify-center bg-landing overflow-hidden"
+      className="relative w-full min-h-[120vh] sm:min-h-[100vh] md:h-[100vh] flex items-center justify-center bg-landing overflow-y-auto"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
