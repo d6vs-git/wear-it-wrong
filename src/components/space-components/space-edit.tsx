@@ -209,7 +209,7 @@ const images: ImageConfig[] = [
       
     },
     position: {
-      mobile: { top: "-10%", left: "27%" }, // was 38%
+      mobile: { top: "-15%", left: "27%" }, // was 38%
       tablet: { top: "22%", left: "32%" }, // was 37%
       desktop: { top: "26%", left: "41%" },
     },
@@ -267,12 +267,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/lamp.png",
     alt: "standing-lamp",
     dimensions: {
-      mobile: { width: 190, height: 180 },
+      mobile: { width: 195, height: 205 },
       tablet: { width: 200, height: 250 },
       desktop: { width: 300, height: 400 },
     },
     position: {
-      mobile: { top: "25%", left: "-10%" },
+      mobile: { top: "25%", left: "-17%" },
       tablet: { top: "30%", left: "15%" },
       desktop: { top: "20%", left: "10%" },
     },
@@ -284,12 +284,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/sofa.png",
     alt: "sofa",
     dimensions: {
-      mobile: { width: 250, height: 250 },
+      mobile: { width: 300, height: 300 },
       tablet: { width: 300, height: 300 },
       desktop: { width: 530, height: 309 },
     },
     position: {
-      mobile: { top: "30%", left: "13%" },
+      mobile: { top: "30%", left: "6%" },
       tablet: { top: "45%", left: "30%" },
       desktop: { top: "55%", left: "25%" },
     },
@@ -335,7 +335,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/space-edit/flowerpot.png",
     alt: "large-flowerpot",
     dimensions: {
-      mobile: { width: 120, height: 130 },
+      mobile: { width: 120, height: 150 },
       tablet: { width: 180, height: 180 },
       desktop: { width: 300, height: 300 },
     },

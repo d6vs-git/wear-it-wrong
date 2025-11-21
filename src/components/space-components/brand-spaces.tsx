@@ -56,7 +56,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/1.png",
     alt: "chair-left",
     dimensions: {
-      mobile: { width: 120, height: 120 },
+      mobile: { width: 160, height: 160 },
       tablet: { width: 160, height: 160 },
       desktop: { width: 200, height: 200 },
     },
@@ -71,7 +71,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/2.png",
     alt: "chair-right",
     dimensions: {
-      mobile: { width: 120, height: 120 },
+      mobile: { width: 160, height: 160 },
       tablet: { width: 160, height: 160 },
       desktop: { width: 200, height: 200 },
     },
@@ -86,7 +86,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/3.png",
     alt: "table",
     dimensions: {
-      mobile: { width: 95, height: 95 },
+      mobile: { width: 120, height:120 },
       tablet: { width: 127, height: 127 },
       desktop: { width: 160, height: 160 },
     },
@@ -101,12 +101,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/4.png",
     alt: "lamp",
     dimensions: {
-      mobile: { width: 60, height: 60 },
+      mobile: { width: 70, height: 70 },
       tablet: { width: 80, height: 80 },
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "14%", left: "24%" },
+      mobile: { top: "14%", left: "29%" },
       tablet: { top: "13%", left: "22%" },
       desktop: { top: "12%", left: "21%" },
     },
@@ -117,12 +117,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/5.png",
     alt: "seat-sofa",
     dimensions: {
-      mobile: { width: 280, height: 280 },
+      mobile: { width: 360, height: 360 },
       tablet: { width: 390, height: 390 },
       desktop: { width: 500, height: 500 },
     },
     position: {
-      mobile: { top: "13%", left: "44%" },
+      mobile: { top: "75%", left: "25%" },
       tablet: { top: "11%", left: "42%" },
       desktop: { top: "10%", left: "40%" },
     },
@@ -132,12 +132,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/3.png",
     alt: "table",
     dimensions: {
-      mobile: { width: 95, height: 95 },
+      mobile: { width: 120, height:120 },
       tablet: { width: 127, height: 127 },
       desktop: { width: 160, height: 160 },
     },
     position: {
-      mobile: { top: "63%", left: "84%" },
+      mobile: { top: "45%", left: "70%" },
       tablet: { top: "62%", left: "86%" },
       desktop: { top: "61%", left: "87%" },
     },
@@ -147,12 +147,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/4.png",
     alt: "lamp",
     dimensions: {
-      mobile: { width: 60, height: 60 },
+      mobile: { width: 70, height: 70 },
       tablet: { width: 80, height: 80 },
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "53%", left: "87%" },
+      mobile: { top: "34%", left: "77%" },
       tablet: { top: "52%", left: "89%" },
       desktop: { top: "51%", left: "90%" },
     },
@@ -161,14 +161,14 @@ const images: ImageConfig[] = [
   },
   {
     src: "/assets/images/space/brand-spaces/3.png",
-    alt: "table-1",
+    alt: "table",
     dimensions: {
-      mobile: { width: 95, height: 95 },
+      mobile: { width: 130, height: 130 },
       tablet: { width: 127, height: 127 },
       desktop: { width: 160, height: 160 },
     },
     position: {
-      mobile: { top: "84%", left: "69%" },
+      mobile: { top: "165%", left: "50%" },
       tablet: { top: "83%", left: "71%" },
       desktop: { top: "82%", left: "72%" },
     },
@@ -176,14 +176,14 @@ const images: ImageConfig[] = [
   },
   {
     src: "/assets/images/space/brand-spaces/2.png",
-    alt: "chair-right",
+    alt: "chair-right-1",
     dimensions: {
-      mobile: { width: 120, height: 120 },
+      mobile: { width: 160, height: 160 },
       tablet: { width: 160, height: 160 },
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "79%", left: "77%" },
+      mobile: { top: "155%", left: "69%" },
       tablet: { top: "77%", left: "77%" },
       desktop: { top: "77%", left: "82%" },
     },
@@ -193,12 +193,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/4.png",
     alt: "lamp",
     dimensions: {
-      mobile: { width: 60, height: 60 },
+      mobile: { width: 70, height: 70 },
       tablet: { width: 80, height: 80 },
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "74%", left: "72%" },
+      mobile: { top: "153%", left: "59%" },
       tablet: { top: "73%", left: "74%" },
       desktop: { top: "72%", left: "75%" },
     },
@@ -210,7 +210,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/1.png",
     alt: "chair-left",
     dimensions: {
-      mobile: { width: 120, height: 120 },
+      mobile: { width: 160, height: 160 },
       tablet: { width: 160, height: 160 },
       desktop: { width: 200, height: 200 },
     },
@@ -225,7 +225,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/2.png",
     alt: "chair-right",
     dimensions: {
-      mobile: { width: 120, height: 120 },
+      mobile: { width: 160, height: 160 },
       tablet: { width: 160, height: 160 },
       desktop: { width: 200, height: 200 },
     },
@@ -240,12 +240,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/3.png",
     alt: "table",
     dimensions: {
-      mobile: { width: 95, height: 95 },
+      mobile: { width: 120, height: 120 },
       tablet: { width: 127, height: 127 },
       desktop: { width: 160, height: 160 },
     },
     position: {
-      mobile: { top: "74%", left: "11%" },
+      mobile: { top: "80%", left: "11%" },
       tablet: { top: "73%", left: "9%" },
       desktop: { top: "72%", left: "8%" },
     },
@@ -255,12 +255,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/4.png",
     alt: "lamp",
     dimensions: {
-      mobile: { width: 60, height: 60 },
+      mobile: { width: 70, height: 70 },
       tablet: { width: 80, height: 80 },
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "64%", left: "14%" },
+      mobile: { top: "138%", left: "10%" },
       tablet: { top: "63%", left: "12%" },
       desktop: { top: "62%", left: "11%" },
     },
@@ -271,12 +271,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/3.png",
     alt: "table",
     dimensions: {
-      mobile: { width: 95, height: 95 },
+      mobile: { width: 130, height: 130 },
       tablet: { width: 127, height: 127 },
       desktop: { width: 160, height: 160 },
     },
     position: {
-      mobile: { top: "59%", left: "45%" },
+      mobile: { top: "115%", left: "30%" },
       tablet: { top: "58%", left: "43%" },
       desktop: { top: "57%", left: "42%" },
     },
@@ -286,12 +286,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/4.png",
     alt: "lamp",
     dimensions: {
-      mobile: { width: 60, height: 60 },
+      mobile: { width: 70, height: 70 },
       tablet: { width: 80, height: 80 },
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "49%", left: "48%" },
+      mobile: { top: "70%", left: "20%" },
       tablet: { top: "48%", left: "46%" },
       desktop: { top: "47%", left: "45%" },
     },
@@ -302,12 +302,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/3.png",
     alt: "table",
     dimensions: {
-      mobile: { width: 95, height: 95 },
+      mobile: { width: 120, height: 120 },
       tablet: { width: 127, height: 127 },
       desktop: { width: 160, height: 160 },
     },
     position: {
-      mobile: { top: "96%", left: "35%" },
+      mobile: { top: "155%", left: "5%" },
       tablet: { top: "80%", left: "39%" },
       desktop: { top: "79%", left: "38%" },
     },
@@ -317,12 +317,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/brand-spaces/4.png",
     alt: "lamp",
     dimensions: {
-      mobile: { width: 60, height: 60 },
+      mobile: { width: 70, height: 70 },
       tablet: { width: 80, height: 80 },
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "83%", left: "40%" },
+      mobile: { top: "107%", left: "38%" },
       tablet: { top: "70%", left: "42%" },
       desktop: { top: "69%", left: "41%" },
     },
@@ -450,7 +450,7 @@ export default function BrandSpaces() {
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mt-6 sm:mt-8 mb-8 sm:mb-12">
         <div className="flex flex-col-reverse lg:flex-row gap-12 md:gap-10 lg:gap-4 mt-8 sm:mt-10">
           <motion.div
-            className="w-full lg:w-1/3 shrink-0 mt-8 lg:mt-0"
+            className="w-full lg:w-1/3 shrink-0 mt-69 sm:mt-0"
             onMouseEnter={() =>
               breakpoint !== "mobile" && setIsTextHovered(true)
             }
@@ -469,7 +469,7 @@ export default function BrandSpaces() {
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            <p className="text-[13px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
+            <p className="text-[17px] sm:text-[15px] md:text-base lg:text-lg text-black leading-relaxed">
               Your space is often the first time someone experiences your brand,
               so it should tell your story without saying a word.
               <br></br> I help brands design and style their physical spaces;

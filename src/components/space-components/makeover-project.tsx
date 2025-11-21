@@ -63,7 +63,7 @@ const images: ImageConfig[] = [
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "-12%", left: "57%" },
+      mobile: { top: "-136%", left: "57%" },
       tablet: { top: "4%", left: "71%" },
       desktop: { top: "3%", left: "70%" },
     },
@@ -73,12 +73,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/2.png",
     alt: "bed",
     dimensions: {
-      mobile: { width: 180, height: 180 },
+      mobile: { width: 220, height: 255 },
       tablet: { width: 240, height: 240 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "59%", left: "-3%" },
+      mobile: { top: "40%", left: "-3%" },
       tablet: { top: "58%", left: "0%" },
       desktop: { top: "57%", left: "-1%" },
     },
@@ -103,12 +103,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/4.png",
     alt: "pillow covers",
     dimensions: {
-      mobile: { width: 60, height: 60 },
+      mobile: { width: 75, height: 70 },
       tablet: { width: 80, height: 80 },
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "69%", left: "10%" },
+      mobile: { top: "65%", left: "15%" },
       tablet: { top: "65%", left: "8%" },
       desktop: { top: "64%", left: "7%" },
     },
@@ -118,12 +118,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/5.png",
     alt: "chair",
     dimensions: {
-      mobile: { width: 120, height: 120 },
+      mobile: { width: 135, height: 120 },
       tablet: { width: 160, height: 160 },
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "67%", left: "29%" },
+      mobile: { top: "0%", left: "15%" },
       tablet: { top: "66%", left: "25%" },
       desktop: { top: "65%", left: "26%" },
     },
@@ -138,7 +138,7 @@ const images: ImageConfig[] = [
       desktop: { width: 200, height: 200 },
     },
     position: {
-      mobile: { top: "67%", left: "52%" },
+      mobile: { top: "0%", left: "57%" },
       tablet: { top: "66%", left: "50%" },
       desktop: { top: "65%", left: "49%" },
     },
@@ -148,12 +148,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/7.png",
     alt: "lamp",
     dimensions: {
-      mobile: { width: 70, height: 70 },
+      mobile: { width: 70, height: 85 },
       tablet: { width: 95, height: 95 },
       desktop: { width: 120, height: 120 },
     },
     position: {
-      mobile: { top: "56%", left: "65%" },
+      mobile: { top: "-27%", left: "43%" },
       tablet: { top: "54%", left: "63%" },
       desktop: { top: "53%", left: "62%" },
     },
@@ -163,12 +163,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/8.png",
     alt: "slippers",
     dimensions: {
-      mobile: { width: 87, height: 95 },
+      mobile: { width: 105, height: 110 },
       tablet: { width: 127, height: 127 },
       desktop: { width: 160, height: 160 },
     },
     position: {
-      mobile: { top: "90%", left: "-6%" },
+      mobile: { top: "90%", left: "0%" },
       tablet: { top: "84%", left: "3%" },
       desktop: { top: "83%", left: "2%" },
     },
@@ -178,7 +178,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/9.png",
     alt: "flower",
     dimensions: {
-      mobile: { width: 40, height: 40 },
+      mobile: { width: 65, height:65 },
       tablet: { width: 55, height: 55 },
       desktop: { width: 70, height: 70 },
     },
@@ -195,12 +195,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/10.png",
     alt: "pot",
     dimensions: {
-      mobile: { width: 180, height: 180 },
+      mobile: { width: 180, height: 215 },
       tablet: { width: 240, height: 240 },
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "33%", left: "65%" },
+      mobile: { top: "-65%", left: "70%" },
       tablet: { top: "31%", left: "63%" },
       desktop: { top: "30%", left: "62%" },
     },
@@ -210,12 +210,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/11.png",
     alt: "sofa",
     dimensions: {
-      mobile: { width: 100, height: 150 },
+      mobile: { width: 180, height: 145 },
       tablet: { width: 200, height: 200 },
-      desktop: { width: 250, height: 250 },
+      desktop: { width: 250, height: 250 }, 
     },
     position: {
-      mobile: { top: "75%", left: "80%" },
+      mobile: { top: "71%", left: "59%" },
       tablet: { top: "64%", left: "81%" },
       desktop: { top: "63%", left: "80%" },
     },
@@ -225,12 +225,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/12.png",
     alt: "frame",
     dimensions: {
-      mobile: { width: 95, height: 95 },
+      mobile: { width: 150, height: 150 },
       tablet: { width: 127, height: 127 },
       desktop: { width: 160, height: 160 },
     },
     position: {
-      mobile: { top: "21%", left: "83%" },
+      mobile: { top: "-122%", left: "60%" },
       tablet: { top: "19%", left: "81%" },
       desktop: { top: "18%", left: "80%" },
     },
@@ -240,12 +240,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/13.png",
     alt: "cat",
     dimensions: {
-      mobile: { width: 48, height: 48 },
+      mobile: { width: 60, height: 70 },
       tablet: { width: 64, height: 64 },
       desktop: { width: 80, height: 80 },
     },
     position: {
-      mobile: { top: "88%", left: "89%" },
+      mobile: { top: "73%", left: "70%" },
       tablet: { top: "74%", left: "89%" },
       desktop: { top: "73%", left: "88%" },
     },
@@ -261,7 +261,7 @@ const images: ImageConfig[] = [
       desktop: { width: 80, height: 80 },
     },
     position: {
-      mobile: { top: "-120%", left: "48%" },
+      mobile: { top: "-120%", left: "44%" },
       tablet: { top: "13%", left: "27%" },
       desktop: { top: "12%", left: "26%" },
     },
@@ -276,7 +276,7 @@ const images: ImageConfig[] = [
       desktop: { width: 160, height: 160 },
     },
     position: {
-      mobile: { top: "43%", left: "50%" },
+      mobile: { top: "51%", left: "50%" },
       tablet: { top: "41%", left: "48%" },
       desktop: { top: "40%", left: "47%" },
     },
@@ -286,12 +286,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/16.png",
     alt: "16",
     dimensions: {
-      mobile: { width: 54, height: 54 },
+      mobile: { width: 55, height: 54 },
       tablet: { width: 72, height: 72 },
       desktop: { width: 90, height: 90 },
     },
     position: {
-      mobile: { top: "57%", left: "49%" },
+      mobile: { top: "-10%", left: "49%" },
       tablet: { top: "56%", left: "47%" },
       desktop: { top: "55%", left: "46%" },
     },
@@ -301,14 +301,14 @@ const images: ImageConfig[] = [
   },
   {
     src: "/assets/images/space/makeover/17.png",
-    alt: "table",
+    alt: "music-player",
     dimensions: {
-      mobile: { width: 110, height: 110 },
+      mobile: { width: 120, height: 130 },
       tablet: { width: 145, height: 145 },
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "-70%", left: "7%" },
+      mobile: { top: "-60%", left: "15%" },
       tablet: { top: "19%", left: "5%" },
       desktop: { top: "18%", left: "4%" },
     },
@@ -318,12 +318,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/18.png",
     alt: "frame-with a women in it",
     dimensions: {
-      mobile: { width: 42, height: 48 },
+      mobile: { width: 60, height: 84 },
       tablet: { width: 56, height: 64 },
       desktop: { width: 70, height: 80 },
     },
     position: {
-      mobile: { top: "-100%", left: "30%" },
+      mobile: { top: "-100%", left: "45%" },
       tablet: { top: "28%", left: "28%" },
       desktop: { top: "27%", left: "27%" },
     },
@@ -338,7 +338,7 @@ const images: ImageConfig[] = [
       desktop: { width: 120, height: 120 },
     },
     position: {
-      mobile: { top: "-120%", left: "10%" },
+      mobile: { top: "-120%", left: "16%" },
       tablet: { top: "8%", left: "0%" },
       desktop: { top: "-4%", left: "-1%" },
     },
@@ -369,7 +369,7 @@ const images: ImageConfig[] = [
       desktop: { width: 110, height: 110 },
     },
     position: {
-      mobile: { top: "-8%", left: "86%" },
+      mobile: { top: "-120%", left: "86%" },
       tablet: { top: "14%", left: "92%" },
       desktop: { top: "13%", left: "93%" },
     },
@@ -380,12 +380,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/22.png",
     alt: "car",
     dimensions: {
-      mobile: { width: 60, height: 65 },
+      mobile: { width: 90, height: 60 },
       tablet: { width: 87, height: 87 },
       desktop: { width: 100, height: 110 },
     },
     position: {
-      mobile: { top: "34%", left: "87%" },
+      mobile: { top: "-90%", left: "67%" },
       tablet: { top: "30%", left: "83%" },
       desktop: { top: "26%", left: "83%" },
     },
@@ -395,12 +395,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/23.png",
     alt: "radio tape",
     dimensions: {
-      mobile: { width: 48, height: 48 },
+      mobile: { width: 50, height: 65 },
       tablet: { width: 64, height: 64 },
       desktop: { width: 80, height: 80 },
     },
     position: {
-      mobile: { top: "43%", left: "73%" },
+      mobile: { top: "-50%", left: "67%" },
       tablet: { top: "41%", left: "71%" },
       desktop: { top: "40%", left: "70%" },
     },
@@ -410,12 +410,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/image6.png",
     alt: "cupboard -pink color",
     dimensions: {
-      mobile: { width: 100, height: 100 },
+      mobile: { width: 120, height: 185 },
       tablet: { width: 135, height: 135 },
       desktop: { width: 170, height: 170 },
     },
     position: {
-      mobile: { top: "31%", left: "25%" },
+      mobile: { top: "-95%", left: "39%" },
       tablet: { top: "29%", left: "23%" },
       desktop: { top: "28%", left: "22%" },
     },
@@ -425,12 +425,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/image10.png",
     alt: "table",
     dimensions: {
-      mobile: { width: 180, height: 120 },
+      mobile: { width: 170, height: 135 },
       tablet: { width: 240, height: 160 },
       desktop: { width: 300, height: 200 },
     },
     position: {
-      mobile: { top: "67%", left: "33%" },
+      mobile: { top: "0%", left: "30%" },
       tablet: { top: "66%", left: "33%" },
       desktop: { top: "65%", left: "32%" },
     },
