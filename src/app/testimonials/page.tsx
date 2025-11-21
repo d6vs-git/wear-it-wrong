@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function TestimonialsPage() {
   return (
-    <main className="bg-background text-foreground overflow-x-hidden">
+    <main className="bg-background text-foreground overflow-x-hidden overflow-y-hidden">
       <Testimonials />
     </main>
   );

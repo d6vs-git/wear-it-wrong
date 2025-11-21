@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState, useRef, MouseEvent, useEffect } from "react";
 import Badge from "@/components/badge";
 import Footer from "../footer";
-
+import TimedAudio from "../audio/timed-audio";
 type ResponsivePosition = {
   mobile: { top: string; left: string };
   tablet: { top: string; left: string };
@@ -753,11 +753,13 @@ export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
   };
 
   return (
-    <motion.section
-      className="relative w-full h-screen md:h-screen flex items-center justify-center bg-landing overflow-hidden md:overflow-hidden overflow-y-auto"
-      style={{
-        minHeight: typeof window !== 'undefined' && window.innerWidth < 768 ? '120vh' : '100vh',
-      }}
+    <div className="absolute inset-0">
+
+      <motion.section
+        className="relative w-full h-screen md:h-screen flex items-center justify-center bg-landing overflow-hidden md:overflow-hidden overflow-y-auto"
+        style={{
+          minHeight: typeof window !== 'undefined' && window.innerWidth < 768 ? '120vh' : '100vh',
+        }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -766,6 +768,15 @@ export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
         ease: [0.22, 1, 0.36, 1],
       }}
     >
+    <TimedAudio
+        src="/assets/sounds/page9/people_walking.mp3"
+        start={0}
+        volume={0.0}
+        autoPlay={false}
+        fixed
+        loop={false}
+        className="z-[70]"
+      />
       {/* Hidden audio elements */}
       <audio ref={ambientRef} src="/assets/sounds/page4/Rustling_paper.mp3" preload="auto" playsInline />
       <audio ref={segmentRef} src="/assets/sounds/page4/21_savage_redrum.mp3" preload="auto" playsInline />
@@ -797,6 +808,6 @@ export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
       ))}
       
     </motion.section>
-
+</div>
   );
 }

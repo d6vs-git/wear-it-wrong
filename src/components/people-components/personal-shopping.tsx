@@ -396,6 +396,7 @@ const ImageItem = ({
   // Flower animation
   if (img.type === "flower") {
     return (
+     
       <motion.div
         className="absolute cursor-pointer"
         style={baseStyle}

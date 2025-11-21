@@ -704,15 +704,7 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
       {/* Global audio toggle icon (no background track) */}
-      <TimedAudio
-        src="/assets/sounds/page9/people_walking.mp3"
-        start={0}
-        volume={0.0}
-        autoPlay={false}
-        fixed
-        loop={false}
-        className="z-[70]"
-      />
+      
 
       {/* Images */}
       {imagePositions.map((img: any, index: number) => (
