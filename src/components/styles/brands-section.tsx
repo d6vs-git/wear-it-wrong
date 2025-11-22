@@ -4,7 +4,6 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, MouseEvent, useEffect } from "react";
 import Badge from "../badge";
-import TimedAudio from "@/components/audio/timed-audio";
 import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
 
 // Page 9 util audio config (ids used by images via utilId)
@@ -105,7 +104,7 @@ const imagePositions = [
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "merchandising",
-    zIndex: 3,
+    zIndex: 6,
     utilId: "util-chairs",
   },
   {
@@ -220,12 +219,12 @@ const imagePositions = [
     src: "/assets/images/brand/main/image64.png",
     alt: "women with dog",
     dimensions: {
-      mobile: { width: 200, height: 200 },
+      mobile: { width: 150, height: 150 },
       tablet: { width: 127, height: 112 },
       desktop: { width: 170, height: 150 },
     },
     position: {
-      mobile: { top: "40%", left: "11%" },
+      mobile: { top: "35%", left: "11%" },
       tablet: { top: "68%", left: "13%" },
       desktop: { top: "67%", left: "12%" },
     },
@@ -279,7 +278,7 @@ const imagePositions = [
       desktop: { width: 230, height: 230 },
     },
     position: {
-      mobile: { top: "92%", left: "10%" },
+      mobile: { top: "89%", left: "14%" },
       tablet: { top: "25%",  left: "77%" },
       desktop: { top: "15%", left: "67%" },
     },

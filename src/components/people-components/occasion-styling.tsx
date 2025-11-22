@@ -380,7 +380,7 @@ export default function OccasionStyling() {
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
       {audioSegments.filter(s=>s.type==="background").map(segment => (
-        <TimedAudio key={segment.id} src={segment.src} start={segment.start} volume={segment.volume} fixed loop className="z-[70]" />
+        <TimedAudio key={segment.id} src={segment.src} start={segment.start} volume={segment.volume} fixed loop className="z-70" />
       ))}
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">

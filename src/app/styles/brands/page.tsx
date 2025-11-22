@@ -32,7 +32,6 @@ function BrandsContent() {
 
   return (
     <>
-      {/* Removed global background audio for Brands to avoid hydration issues and per requirements (no background song here) */}
       {renderServiceComponent()}
     </>
   );

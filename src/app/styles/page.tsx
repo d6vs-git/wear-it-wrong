@@ -12,7 +12,7 @@ export default function FoldersPage() {
         fixed
         loop
       />
-      <div className="container mx-auto px-4 py-6">
+      <div className="flex justify-center items-start md:items-center min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)]">
         {/* Style Folders Section */}
         <StyleSection />
       </div>

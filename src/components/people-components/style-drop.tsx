@@ -176,7 +176,7 @@ const images: ImageConfig[] = [
       tablet: { top: "18%", left: "32%" },
       desktop: { top: "17%", left: "31%" },
     },
-    zIndex: 9,
+    zIndex: 4,
   },
   {
     src: "/assets/images/people/style-drop/7.png",

@@ -10,7 +10,6 @@ export const metadata: Metadata = {
   description:
     "Wear It Wrong is a creative styling studio that helps people, brands, and spaces find their expression and look good doing it.",
 };
-import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
 export default function RootLayout({

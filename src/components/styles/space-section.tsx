@@ -28,7 +28,7 @@ const springConfig = {
 
 // Page 13 util audio config for Space section
 const page13Utils = [
-  { id: "util-car", src: "/assets/sounds/page13/CAR_SOUND.mp3", start: 3, volume: 0.5 }, // start shifted to 3s
+  { id: "util-car", src: "/assets/sounds/page13/CAR_SOUND.mp3", start: 3, volume: 0.5 },
   { id: "util-plant", src: "/assets/sounds/page13/plant_moving_on_very_low_voice.mp3", start: 0, volume: 0.25 },
 ] as const;
 
@@ -84,6 +84,7 @@ const imagePositions: SectionImage[] = [
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "space-edit",
     zIndex: 10,
+    hasFlicker: true,
   },
   {
     src: "/assets/images/people/main/image78.png",
@@ -269,7 +270,7 @@ const imagePositions: SectionImage[] = [
     position: {
       mobile: { top: "73%", left: "23%" },
       tablet: { top: "31%", left: "76%" },
-      desktop: { top: "34%", left: "72%" },
+      desktop: { top: "34%", left: "70%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "makeover-projects",
@@ -286,7 +287,7 @@ const imagePositions: SectionImage[] = [
     position: {
       mobile: { top: "73%", left: "56%" },
       tablet: { top: "31%", left: "92%" },
-      desktop: { top: "34%", left: "85.5%" },
+      desktop: { top: "34%", left: "87%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "makeover-projects",
@@ -359,6 +360,7 @@ const imagePositions: SectionImage[] = [
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "makeover-projects",
     zIndex: 5,
+    hasFlicker: true,
   },
   {
     src: "/assets/images/space/main/image83.png",
@@ -447,9 +449,10 @@ type SectionImage = {
   animation?: { x: number; y: number; opacity: number; rotate: number };
   category: string;
   zIndex?: number;
-  utilId?: string; // hover audio id
-  className?: string; // allow animation classes like brands-section
-  transformOrigin?: string; // pivot point for rotations
+  utilId?: string;
+  hasFlicker?: boolean;
+  className?: string;
+  transformOrigin?: string;
 };
 
 function SectionImageItem({
@@ -587,7 +590,7 @@ function SectionImageItem({
     );
   }
 
-  // Regular images with wiggle effect
+  // Regular images with wiggle effect and flicker
   return (
     <motion.div
       ref={ref}
@@ -616,7 +619,15 @@ function SectionImageItem({
       }}
       animate={{
         scale: isHovered ? 1.25 : isOtherHovered ? 0.88 : 1,
-        filter: isOtherHovered ? "blur(6px)" : "blur(0px)",
+        filter: isOtherHovered ? "blur(6px)" : img.hasFlicker ? [
+          "blur(0px) brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))",
+          "blur(0px) brightness(1.3) drop-shadow(0 0 8px rgba(255,255,200,0.6))",
+          "blur(0px) brightness(0.9) drop-shadow(0 0 4px rgba(255,255,200,0.3))",
+          "blur(0px) brightness(1.2) drop-shadow(0 0 10px rgba(255,255,200,0.8))",
+          "blur(0px) brightness(1) drop-shadow(0 0 6px rgba(255,255,200,0.4))",
+          "blur(0px) brightness(1.1) drop-shadow(0 0 5px rgba(255,255,200,0.5))",
+          "blur(0px) brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))",
+        ] : "blur(0px)",
         opacity: isOtherHovered ? 0.45 : isFavouritePerson ? [1, 0.3, 1] : 1,
       }}
       viewport={{ once: true }}
@@ -627,7 +638,12 @@ function SectionImageItem({
           damping: 25,
           mass: 0.8,
         },
-        filter: { 
+        filter: img.hasFlicker ? {
+          duration: 3,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.2, 0.4, 0.6, 0.8, 1],
+        } : { 
           type: "tween",
           duration: 0.35,
           ease: [0.22, 1, 0.36, 1],
@@ -768,7 +784,10 @@ function BadgeItem({
         },
       }}
     >
-      <Badge text={badge.text} isHovered={isBadgeHovered} />
+      <Badge 
+        text={badge.text} 
+        isHovered={isBadgeHovered}
+      />
     </motion.div>
   );
 }

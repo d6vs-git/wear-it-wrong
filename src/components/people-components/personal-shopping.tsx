@@ -7,7 +7,7 @@ import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
 import TimedAudio from "@/components/audio/timed-audio";
 import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
-import Footer from "../footer";
+
 // Unified audio config (page4)
 // Extended: include background and util segments in one array
 type AudioSegment = {
@@ -68,7 +68,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/personal-shopping/bg-1.png",
     alt: "Background Element 1",
     dimensions: {
-      mobile: { width: 180, height: 180 },
+      mobile: { width: 150, height: 150 },
       tablet: { width: 260, height: 260 },
       desktop: { width: 350, height: 350 },
     },
@@ -85,7 +85,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/personal-shopping/bg-2.png",
     alt: "Background Element 2",
     dimensions: {
-      mobile: { width: 180, height: 180 },
+      mobile: { width: 150, height: 150 },
       tablet: { width: 260, height: 260 },
       desktop: { width: 350, height: 350 },
     },
@@ -102,7 +102,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/personal-shopping/bg-1.png",
     alt: "Background Element 3",
     dimensions: {
-      mobile: { width: 180, height: 180 },
+      mobile: { width: 150, height: 150 },
       tablet: { width: 260, height: 260 },
       desktop: { width: 350, height: 350 },
     },
@@ -119,7 +119,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/personal-shopping/bg-1.png",
     alt: "Background Element 4",
     dimensions: {
-      mobile: { width: 180, height: 180 },
+      mobile: { width: 150, height: 150 },
       tablet: { width: 0, height: 0 },
       desktop: { width: 0, height: 0 },
     },
@@ -136,7 +136,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/personal-shopping/bg-2.png",
     alt: "Background Element 5",
     dimensions: {
-      mobile: { width: 180, height: 180 },
+      mobile: { width: 150, height: 150 },
       tablet: { width: 0, height: 0 },
       desktop: { width: 0, height: 0 },
     },
@@ -153,7 +153,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/personal-shopping/bg-1.png",
     alt: "Background Element 6",
     dimensions: {
-      mobile: { width: 180, height: 180 },
+      mobile: { width: 150, height: 150 },
       tablet: { width: 0, height: 0 },
       desktop: { width: 0, height: 0 },
     },
@@ -171,12 +171,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/personal-shopping/carpet1.jpg",
     alt: "Carpet 1",
     dimensions: {
-      mobile: { width: 200, height: 200 },
+      mobile: { width: 300, height: 300 },
       tablet: { width: 300, height: 300 },
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "120%", left: "0%" },
+      mobile: { top: "110%", left: "0%" },
       tablet: { top: "43%", left: "0%" },
       desktop: { top: "42%", left: "0%" },
     },
@@ -187,7 +187,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/personal-shopping/carpet2.jpg",
     alt: "Carpet 2",
     dimensions: {
-      mobile: { width: 200, height: 200 },
+      mobile: { width: 0, height: 0 },
       tablet: { width: 300, height: 300 },
       desktop: { width: 400, height: 400 },
     },
@@ -203,12 +203,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/personal-shopping/carpet1.jpg",
     alt: "Carpet 3",
     dimensions: {
-      mobile: { width: 200, height: 200 },
+      mobile: { width: 300, height: 300 },
       tablet: { width: 300, height: 300 },
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "120%", left: "70%" },
+      mobile: { top: "110%", left: "70%" },
       tablet: { top: "43%", left: "70%" },
       desktop: { top: "42%", left: "70%" },
     },
@@ -221,12 +221,12 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/personal-shopping/1.png",
     alt: "Clothing Rack",
     dimensions: {
-      mobile: { width: 200, height: 200 },
+      mobile: { width: 250, height: 250 },
       tablet: { width: 300, height: 300 },
       desktop: { width: 400, height: 400 },
     },
     position: {
-      mobile: { top: "70%", left: "18%" },
+      mobile: { top: "70%", left: "5%" },
       tablet: { top: "6%", left: "18%" },
       desktop: { top: "5%", left: "18%" },
     },
@@ -242,7 +242,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/people/personal-shopping/3.png",
     alt: "clothing rack with clothes",
     dimensions: {
-      mobile: { width: 200, height: 200 },
+      mobile: { width: 250, height: 250 },
       tablet: { width: 300, height: 300 },
       desktop: { width: 400, height: 400 },
     },
@@ -270,7 +270,7 @@ const images: ImageConfig[] = [
       desktop: { width: 300, height: 300 },
     },
     position: {
-      mobile: { top: "110%", left: "0%" },
+      mobile: { top: "150%", left: "0%" },
       tablet: { top: "40%", left: "0%" },
       desktop: { top: "38%", left: "0%" },
     },
@@ -289,7 +289,7 @@ const images: ImageConfig[] = [
       desktop: { width: 240, height: 240 },
     },
     position: {
-      mobile: { top: "140%", left: "48%" },
+      mobile: { top: "160%", left: "48%" },
       tablet: { top: "62%", left: "48%" },
       desktop: { top: "60%", left: "48%" },
     },
@@ -308,7 +308,7 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "130%", left: "75%" },
+      mobile: { top: "150%", left: "75%" },
       tablet: { top: "52%", left: "75%" },
       desktop: { top: "50%", left: "75%" },
     },
@@ -360,7 +360,6 @@ const ImageItem = ({
   areaWidth,
   breakpoint,
   onWalkHover,
-  utilSegmentId,
 }: ImageItemProps) => {
   const [key, setKey] = useState(0);
   const hoverAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -582,7 +581,7 @@ export default function PersonalShopping() {
           fadeDuration={seg.fadeDuration}
           fixed
           loop
-          className="z-[70]"
+          className="z-70"
         />
       ))}
 

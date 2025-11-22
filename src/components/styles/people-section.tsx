@@ -4,7 +4,6 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, MouseEvent, useEffect } from "react";
 import Badge from "@/components/badge";
-import Footer from "../footer";
 import TimedAudio from "../audio/timed-audio";
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -78,23 +77,7 @@ const imagePositions = [
     category: "package-offers",
     zIndex: 4,
   },
-    {
-  src: "/assets/images/people/main/image47.png", // your extra image path
-  alt: "extra music player cd",
-  dimensions: {
-    mobile: { width: 140, height: 150 },
-    tablet: { width: 0, height: 0 }, // hide on tablet
-    desktop: { width: 0, height: 0 }, // hide on desktop
-  },
-  position: {
-    mobile: { top: "100%", left: "60%" }, 
-    tablet: { top: "-9999px", left: "-9999px" }, // move off-screen
-    desktop: { top: "-9999px", left: "-9999px" }, // move off-screen
-  },
-  animation: { x: 0, y: 0, opacity: 0, rotate: 0 },
-  category: "package-offers",
-  zIndex: 4,
-},
+    
   {
     src: "/assets/images/people/main/image42.png",
     alt: "paper",
@@ -293,7 +276,7 @@ const badgePositions = [
       desktop: { width: 300, height: 60 },
     },
     position: {
-      mobile: { top: "97%", left: "47%" },
+      mobile: { top: "108%", left: "40%" },
       tablet: { top: "47%", left: "37%" },
       desktop: { top: "51%", left: "37%" },
     },
@@ -338,7 +321,7 @@ const badgePositions = [
       desktop: { width: 350, height: 60 },
     },
     position: {
-      mobile: { top: "109%", left: "50%" },
+      mobile: { top: "27%", left: "5%" },
       tablet: { top: "75%", left: "8%" },
       desktop: { top: "84%", left: "8%" },
     },
@@ -775,7 +758,7 @@ export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
         autoPlay={false}
         fixed
         loop={false}
-        className="z-[70]"
+        className="z-70"
       />
       {/* Hidden audio elements */}
       <audio ref={ambientRef} src="/assets/sounds/page4/Rustling_paper.mp3" preload="auto" playsInline />

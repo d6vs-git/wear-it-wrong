@@ -49,7 +49,7 @@ export default function StyleSection() {
   return (
     <motion.section
       ref={ref}
-      className="bg-background text-foreground  px-4 py-8 md:py-0 flex flex-col items-center justify-center relative overflow-hidden"
+      className="w-full px-4 py-12 md:py-4 flex flex-col items-center justify-start md:justify-center relative overflow-visible min-h-screen md:min-h-0"
       variants={sectionVariants}
       initial="hidden"
       animate={controls}
@@ -62,10 +62,10 @@ export default function StyleSection() {
         transition={{ duration: 0.3 }}
       />
 
-      <div className="w-full max-w-6xl mx-auto flex flex-col relative z-20">
+      <div className="w-full max-w-7xl h-[60vh] mx-auto flex flex-col items-center justify-between relative z-20 space-y-32 sm:space-y-36 md:space-y-20 lg:space-y-24">
         {/* Search Bar */}
         <motion.div
-          className="flex justify-center items-center pb-8 md:pb-12 relative mb-16 md:mb-20 w-full max-w-[95%] md:max-w-[800px] mx-auto"
+          className="flex justify-center items-center w-full max-w-[90%] sm:max-w-[85%] md:max-w-[600px] pt-8 md:pt-0"
           animate={{
             opacity: hoveredFolder ? 0.3 : 1,
             scale: hoveredFolder ? 0.95 : 1,
@@ -85,14 +85,14 @@ export default function StyleSection() {
 
         {/* Folders Grid */}
         <motion.div
-          className="flex justify-center w-full pt-8 md:pt-12 mt-8 md:mt-8"
+          className="flex justify-center w-full overflow-visible pb-12 md:pb-0"
           variants={foldersContainerVariants}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-32 md:gap-40 w-full max-w-7xl px-4 md:px-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-32 sm:gap-36 md:gap-10 lg:gap-16 w-full max-w-md md:max-w-full px-2 md:px-4">
             {folders.map((folder) => (
               <motion.div
                 key={folder.path}
-                className="flex justify-center relative"
+                className="flex justify-center relative w-full"
                 animate={{
                   opacity:
                     hoveredFolder && hoveredFolder !== folder.path ? 0.2 : 1,

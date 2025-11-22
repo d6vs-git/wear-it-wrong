@@ -6,9 +6,7 @@ import { Heading } from "../heading";
 import { BookNowButton } from "../book-now-button";
 import { useState, useRef, useEffect } from "react";
 import TimedAudio from "@/components/audio/timed-audio";
-import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
 
-// Audio config for page7
 type AudioSegment = {
   id: string;
   type: "background" | "utils";
@@ -28,8 +26,8 @@ const audioSegments: AudioSegment[] = [
     start: 0,
     volume: 0.38,
     loopSegment: false,
-  },];
-
+  },
+];
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -51,6 +49,7 @@ type ImageConfig = {
   zIndex?: number;
   className?: string;
   transformOrigin?: string;
+  hasFlicker?: boolean;
 };
 
 const images: ImageConfig[] = [
@@ -178,7 +177,7 @@ const images: ImageConfig[] = [
     src: "/assets/images/space/makeover/9.png",
     alt: "flower",
     dimensions: {
-      mobile: { width: 65, height:65 },
+      mobile: { width: 65, height: 65 },
       tablet: { width: 55, height: 55 },
       desktop: { width: 70, height: 70 },
     },
@@ -212,7 +211,7 @@ const images: ImageConfig[] = [
     dimensions: {
       mobile: { width: 180, height: 145 },
       tablet: { width: 200, height: 200 },
-      desktop: { width: 250, height: 250 }, 
+      desktop: { width: 250, height: 250 },
     },
     position: {
       mobile: { top: "71%", left: "59%" },
@@ -265,7 +264,7 @@ const images: ImageConfig[] = [
       tablet: { top: "13%", left: "27%" },
       desktop: { top: "12%", left: "26%" },
     },
-    className: "animate-light-flicker-slow",
+    hasFlicker: true,
     zIndex: 5,
   },
   {
@@ -343,7 +342,7 @@ const images: ImageConfig[] = [
       tablet: { top: "8%", left: "0%" },
       desktop: { top: "-4%", left: "-1%" },
     },
-    className: "animate-light-flicker-slow",
+    hasFlicker: true,
     zIndex: 5,
   },
   {
@@ -374,7 +373,7 @@ const images: ImageConfig[] = [
       tablet: { top: "14%", left: "92%" },
       desktop: { top: "13%", left: "93%" },
     },
-    className: "animate-light-flicker-slow",
+    hasFlicker: true,
     zIndex: 1,
   },
   {
@@ -388,7 +387,7 @@ const images: ImageConfig[] = [
     position: {
       mobile: { top: "-90%", left: "67%" },
       tablet: { top: "30%", left: "83%" },
-      desktop: { top: "26%", left: "83%" },
+      desktop: { top: "30%", left: "83%" },
     },
     zIndex: 5,
   },
@@ -492,11 +491,37 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
     <motion.div
       ref={ref}
       className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
-      style={{ ...baseStyle, x: springX, y: springY, transformOrigin: img.transformOrigin }}
+      style={{
+        ...baseStyle,
+        x: springX,
+        y: springY,
+        transformOrigin: img.transformOrigin,
+      }}
       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
+      animate={{
+        filter: img.hasFlicker
+          ? [
+              "blur(0px) brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))",
+              "blur(0px) brightness(1.3) drop-shadow(0 0 8px rgba(255,255,200,0.6))",
+              "blur(0px) brightness(0.9) drop-shadow(0 0 4px rgba(255,255,200,0.3))",
+              "blur(0px) brightness(1.2) drop-shadow(0 0 10px rgba(255,255,200,0.8))",
+              "blur(0px) brightness(1) drop-shadow(0 0 6px rgba(255,255,200,0.4))",
+              "blur(0px) brightness(1.1) drop-shadow(0 0 5px rgba(255,255,200,0.5))",
+              "blur(0px) brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))",
+            ]
+          : undefined,
+      }}
       transition={{
         scale: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
+        filter: img.hasFlicker
+          ? {
+              duration: 3,
+              repeat: Infinity,
+              ease: "linear",
+              times: [0, 0.1, 0.2, 0.4, 0.6, 0.8, 1],
+            }
+          : undefined,
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -536,9 +561,19 @@ export default function MakeoverProject() {
 
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
-        {audioSegments.filter(s=>s.type==="background").map(segment => (
-                          <TimedAudio key={segment.id} src={segment.src} start={segment.start} volume={segment.volume} fixed loop className="z-[70]" />
-                        ))}
+      {audioSegments
+        .filter((s) => s.type === "background")
+        .map((segment) => (
+          <TimedAudio
+            key={segment.id}
+            src={segment.src}
+            start={segment.start}
+            volume={segment.volume}
+            fixed
+            loop
+            className="z-[70]"
+          />
+        ))}
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex justify-between items-center gap-3">
           <Heading text="MAKEOVER PROJECT" />
@@ -561,10 +596,10 @@ export default function MakeoverProject() {
                 breakpoint === "mobile"
                   ? 1
                   : isImageHovered
-                  ? 0.92
-                  : isTextHovered
-                  ? 1.08
-                  : 1,
+                    ? 0.92
+                    : isTextHovered
+                      ? 1.08
+                      : 1,
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
@@ -598,16 +633,16 @@ export default function MakeoverProject() {
                 breakpoint === "mobile"
                   ? 1
                   : isTextHovered
-                  ? 0.92
-                  : isImageHovered
-                  ? 1.08
-                  : 1,
+                    ? 0.92
+                    : isImageHovered
+                      ? 1.08
+                      : 1,
               filter:
                 breakpoint === "mobile"
                   ? "blur(0px)"
                   : isTextHovered
-                  ? "blur(2px)"
-                  : "blur(0px)",
+                    ? "blur(2px)"
+                    : "blur(0px)",
             }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
             style={{
@@ -616,8 +651,8 @@ export default function MakeoverProject() {
                 breakpoint === "mobile"
                   ? "40px"
                   : breakpoint === "tablet"
-                  ? "60px"
-                  : "80px",
+                    ? "60px"
+                    : "80px",
             }}
           >
             {images.map((img, idx) => (

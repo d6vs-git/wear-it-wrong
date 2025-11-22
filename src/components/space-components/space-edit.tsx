@@ -51,6 +51,7 @@ type ImageConfig = {
   zIndex?: number;
   className?: string;
   transformOrigin?: string;
+  hasFlicker?: boolean;
 };
 
 const images: ImageConfig[] = [
@@ -65,7 +66,7 @@ const images: ImageConfig[] = [
     },
     position: {
       mobile: { top: "-55%", left: "-3%" },
-      tablet: { top: "5%", left: "4%" }, // was 4%
+      tablet: { top: "5%", left: "4%" },
       desktop: { top: "9%", left: "12%" },
     },
     zIndex: 3,
@@ -80,8 +81,8 @@ const images: ImageConfig[] = [
       desktop: { width: 180, height: 180 },
     },
     position: {
-      mobile: { top: "-55%", left: "7%" }, // was 17%
-      tablet: { top: "3%", left: "15%" }, // was 20%
+      mobile: { top: "-55%", left: "7%" },
+      tablet: { top: "3%", left: "15%" },
       desktop: { top: "7%", left: "24%" },
     },
     zIndex: 3,
@@ -95,8 +96,8 @@ const images: ImageConfig[] = [
       desktop: { width: 165, height: 165 },
     },
     position: {
-      mobile: { top: "-55%", left: "30%" }, // was 38%
-      tablet: { top: "4%", left: "32%" }, // was 37%
+      mobile: { top: "-55%", left: "30%" },
+      tablet: { top: "4%", left: "32%" },
       desktop: { top: "8%", left: "41%" },
     },
     zIndex: 3,
@@ -110,8 +111,8 @@ const images: ImageConfig[] = [
       desktop: { width: 190, height: 195 },
     },
     position: {
-      mobile: { top: "-55%", left: "47%" }, // was 56%
-      tablet: { top: "2%", left: "50%" }, // was 55%
+      mobile: { top: "-55%", left: "47%" },
+      tablet: { top: "2%", left: "50%" },
       desktop: { top: "6%", left: "57%" },
     },
     zIndex: 3,
@@ -125,8 +126,8 @@ const images: ImageConfig[] = [
       desktop: { width: 155, height: 155 },
     },
     position: {
-      mobile: { top: "-55%", left: "62%" }, // was 73%
-      tablet: { top: "5%", left: "67%" }, // was 72%
+      mobile: { top: "-55%", left: "62%" },
+      tablet: { top: "5%", left: "67%" },
       desktop: { top: "9%", left: "76%" },
     },
     zIndex: 3,
@@ -141,8 +142,8 @@ const images: ImageConfig[] = [
       desktop: { width: 170, height: 170 },
     },
     position: {
-      mobile: { top: "-55%", left: "80%" }, // was 88%
-      tablet: { top: "3%", left: "82%" }, // was 87%
+      mobile: { top: "-55%", left: "80%" },
+      tablet: { top: "3%", left: "82%" },
       desktop: { top: "7%", left: "91%" },
     },
     zIndex: 3,
@@ -164,7 +165,7 @@ const images: ImageConfig[] = [
       desktop: { top: "65%", left: "85%" },
     },
     zIndex: 8,
-        className: "animate-always-wide-slow",
+    className: "animate-always-wide-slow",
     transformOrigin: "50% 50%",
   },
 
@@ -193,8 +194,8 @@ const images: ImageConfig[] = [
       desktop: { width: 160, height: 165 },
     },
     position: {
-      mobile: { top: "-10%", left: "10%" }, // was 21%
-      tablet: { top: "23%", left: "15%" }, // was 20%
+      mobile: { top: "-10%", left: "10%" },
+      tablet: { top: "23%", left: "15%" },
       desktop: { top: "27%", left: "25%" },
     },
     zIndex: 3,
@@ -209,8 +210,8 @@ const images: ImageConfig[] = [
       
     },
     position: {
-      mobile: { top: "-15%", left: "27%" }, // was 38%
-      tablet: { top: "22%", left: "32%" }, // was 37%
+      mobile: { top: "-15%", left: "27%" },
+      tablet: { top: "22%", left: "32%" },
       desktop: { top: "26%", left: "41%" },
     },
     zIndex: 3,
@@ -225,8 +226,8 @@ const images: ImageConfig[] = [
       desktop: { width: 170, height: 170 },
     },
     position: {
-      mobile: { top: "-10%", left: "46%" }, // was 56%
-      tablet: { top: "21%", left: "50%" }, // was 55%
+      mobile: { top: "-10%", left: "46%" },
+      tablet: { top: "21%", left: "50%" },
       desktop: { top: "25%", left: "59%" },
     },
     zIndex: 3,
@@ -240,8 +241,8 @@ const images: ImageConfig[] = [
       desktop: { width: 165, height: 165 },
     },
     position: {
-      mobile: { top: "-10%", left: "62%" }, // was 73%
-      tablet: { top: "22%", left: "67%" }, // was 72%
+      mobile: { top: "-10%", left: "62%" },
+      tablet: { top: "22%", left: "67%" },
       desktop: { top: "26%", left: "76%" },
     },
     zIndex: 3,
@@ -255,14 +256,14 @@ const images: ImageConfig[] = [
       desktop: { width: 155, height: 155 },
     },
     position: {
-      mobile: { top: "-10%", left: "78%" }, // was 88%
-      tablet: { top: "23%", left: "82%" }, // was 87%
+      mobile: { top: "-10%", left: "78%" },
+      tablet: { top: "23%", left: "82%" },
       desktop: { top: "27%", left: "91%" },
     },
     zIndex: 3,
     className: "animate-popdown-loop-slow"
   },
-  // Lamp (standing, left side, below perfume)
+  // Lamp (standing, left side, below perfume) - WITH FLICKER
   {
     src: "/assets/images/space/space-edit/lamp.png",
     alt: "standing-lamp",
@@ -277,6 +278,7 @@ const images: ImageConfig[] = [
       desktop: { top: "20%", left: "10%" },
     },
     zIndex: 4,
+    hasFlicker: true,
   },
 
   // Bottom Section - Large Sofa (Center)
@@ -401,13 +403,33 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
     <motion.div
       ref={ref}
       className={`absolute cursor-pointer will-change-transform ${img.className || ""}`}
-      style={{ ...baseStyle, x: springX, y: springY,
+      style={{ 
+        ...baseStyle, 
+        x: springX, 
+        y: springY,
         transformOrigin: img.transformOrigin ?? "50% 50%",
-       }}
+      }}
       whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
       whileTap={{ scale: breakpoint === "mobile" ? 0.95 : 1 }}
+      animate={{
+        filter: img.hasFlicker ? [
+          "blur(0px) brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))",
+          "blur(0px) brightness(1.3) drop-shadow(0 0 8px rgba(255,255,200,0.6))",
+          "blur(0px) brightness(0.9) drop-shadow(0 0 4px rgba(255,255,200,0.3))",
+          "blur(0px) brightness(1.2) drop-shadow(0 0 10px rgba(255,255,200,0.8))",
+          "blur(0px) brightness(1) drop-shadow(0 0 6px rgba(255,255,200,0.4))",
+          "blur(0px) brightness(1.1) drop-shadow(0 0 5px rgba(255,255,200,0.5))",
+          "blur(0px) brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))",
+        ] : undefined,
+      }}
       transition={{
         scale: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
+        filter: img.hasFlicker ? {
+          duration: 3,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.2, 0.4, 0.6, 0.8, 1],
+        } : undefined,
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
