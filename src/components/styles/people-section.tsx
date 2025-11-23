@@ -3,8 +3,10 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, MouseEvent, useEffect } from "react";
-import Badge from "@/components/badge";
+import BadgeItem, { BadgeType } from "@/components/ui/badge";
 import TimedAudio from "../audio/timed-audio";
+import { useBreakpoint } from "@/hooks/useBreakPoints";
+
 type ResponsivePosition = {
   mobile: { top: string; left: string };
   tablet: { top: string; left: string };
@@ -248,17 +250,15 @@ const imagePositions = [
     category: "occasion-styling",
     zIndex: 11,
   },
-
-
 ];
 
-const badgePositions = [
+const badgePositions: readonly BadgeType[] = [
   {
     text: "WARDROBE DETOX",
     dimensions: {
-      mobile: { width: 200, height: 44 },
-      tablet: { width: 320, height: 66 },
-      desktop: { width: 270, height: 60 },
+      mobile: { width: 150, height: 28 },
+      tablet: { width: 200, height: 36 },
+      desktop: { width: 230, height: 44 },
     },
     position: {
       mobile: { top: "10%", left: "25%" },
@@ -266,14 +266,14 @@ const badgePositions = [
       desktop: { top: "30%", left: "29%" },
     },
     category: "wardrobe-detox",
-    zIndex: 10,
+    zIndex: 50,
   },
   {
     text: "OCCASION STYLING",
     dimensions: {
-      mobile: { width: 215, height: 44 },
-      tablet: { width: 355, height: 66 },
-      desktop: { width: 300, height: 60 },
+      mobile: { width: 170, height: 28 },
+      tablet: { width: 220, height: 36 },
+      desktop: { width: 260, height: 44 },
     },
     position: {
       mobile: { top: "108%", left: "40%" },
@@ -281,14 +281,14 @@ const badgePositions = [
       desktop: { top: "51%", left: "37%" },
     },
     category: "occasion-styling",
-    zIndex: 10,
+    zIndex: 50,
   },
   {
     text: "STYLE DROP",
     dimensions: {
-      mobile: { width: 150, height: 44 },
-      tablet: { width: 250, height: 66 },
-      desktop: { width: 210, height: 60 },
+      mobile: { width: 110, height: 28 },
+      tablet: { width: 145, height: 36 },
+      desktop: { width: 170, height: 44 },
     },
     position: {
       mobile: { top: "51%", left: "30%" },
@@ -296,14 +296,14 @@ const badgePositions = [
       desktop: { top: "82%", left: "43%" },
     },
     category: "style-drop",
-    zIndex: 10,
+    zIndex: 50,
   },
   {
     text: "PERSONAL SHOPPER",
     dimensions: {
-      mobile: { width: 220, height: 44 },
-      tablet: { width: 365, height: 66 },
-      desktop: { width: 310, height: 60 },
+      mobile: { width: 180, height: 28 },
+      tablet: { width: 230, height: 36 },
+      desktop: { width: 270, height: 44 },
     },
     position: {
       mobile: { top: "67%", left: "24%" },
@@ -311,14 +311,14 @@ const badgePositions = [
       desktop: { top: "66%", left: "75%" },
     },
     category: "personal-shopper",
-    zIndex: 10,
+    zIndex: 50,
   },
   {
     text: "PACKAGE AND OFFERS",
     dimensions: {
-      mobile: { width: 250, height: 44 },
-      tablet: { width: 410, height: 66 },
-      desktop: { width: 350, height: 60 },
+      mobile: { width: 195, height: 28 },
+      tablet: { width: 260, height: 36 },
+      desktop: { width: 300, height: 44 },
     },
     position: {
       mobile: { top: "27%", left: "5%" },
@@ -326,22 +326,13 @@ const badgePositions = [
       desktop: { top: "84%", left: "8%" },
     },
     category: "package-offers",
-    zIndex: 10,
+    zIndex: 50,
   },
-  
 ];
 
 interface PeopleSectionProps {
   onBadgeClick: (service: string) => void;
 }
-
-type Badge = {
-  text: string;
-  dimensions: ResponsiveDimensions;
-  position: ResponsivePosition;
-  category: string;
-  zIndex?: number;
-};
 
 type SectionImage = {
   src: string;
@@ -369,7 +360,7 @@ function SectionImageItem({
   onPaperHover?: (hovering: boolean) => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">("desktop");
+  const breakpoint = useBreakpoint();
   
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -380,21 +371,6 @@ function SectionImageItem({
   const springY = useSpring(y, springConfig);
   const springRotateX = useSpring(rotateX, springConfig);
   const springRotateY = useSpring(rotateY, springConfig);
-
-  // Update breakpoint based on window width
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    
-    const updateBreakpoint = () => {
-      if (window.innerWidth < 640) setBreakpoint("mobile");
-      else if (window.innerWidth < 1024) setBreakpoint("tablet");
-      else setBreakpoint("desktop");
-    };
-
-    updateBreakpoint();
-    window.addEventListener("resize", updateBreakpoint);
-    return () => window.removeEventListener("resize", updateBreakpoint);
-  }, []);
 
   const isHovered = hoveredCategory === img.category;
   const isOtherHovered = hoveredCategory !== null && hoveredCategory !== img.category;
@@ -496,124 +472,6 @@ function SectionImageItem({
   );
 }
 
-function BadgeItem({
-  badge,
-  hoveredCategory,
-  onHoverStart,
-  onHoverEnd,
-  onClick,
-}: {
-  badge: typeof badgePositions[0];
-  hoveredCategory: string | null;
-  onHoverStart: () => void;
-  onHoverEnd: () => void;
-  onClick: () => void;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">("desktop");
-  
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateZ = useMotionValue(0);
-
-  const springX = useSpring(x, { ...springConfig, stiffness: 200 });
-  const springY = useSpring(y, { ...springConfig, stiffness: 200 });
-  const springRotateZ = useSpring(rotateZ, { ...springConfig, stiffness: 250 });
-
-  // Update breakpoint based on window width
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    
-    const updateBreakpoint = () => {
-      if (window.innerWidth < 640) setBreakpoint("mobile");
-      else if (window.innerWidth < 1024) setBreakpoint("tablet");
-      else setBreakpoint("desktop");
-    };
-
-    updateBreakpoint();
-    window.addEventListener("resize", updateBreakpoint);
-    return () => window.removeEventListener("resize", updateBreakpoint);
-  }, []);
-
-  const isBadgeHovered = hoveredCategory === badge.category;
-  const isOtherBadgeHovered = hoveredCategory !== null && hoveredCategory !== badge.category;
-
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-
-    const rect = ref.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const deltaX = e.clientX - centerX;
-    const deltaY = e.clientY - centerY;
-
-    const wiggleStrength = 0.25;
-    x.set(deltaX * wiggleStrength);
-    y.set(deltaY * wiggleStrength);
-    rotateZ.set((deltaX / rect.width) * 4);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-    rotateZ.set(0);
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      className="absolute cursor-pointer"
-      style={{
-        top: badge.position[breakpoint].top,
-        left: badge.position[breakpoint].left,
-        transform: "translate(-50%, -50%)",
-        x: springX,
-        y: springY,
-        rotate: springRotateZ,
-        zIndex: badge.zIndex ?? 30,
-      }}
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      animate={{
-        scale: isBadgeHovered ? 1.12 : isOtherBadgeHovered ? 0.92 : 1,
-        filter: isOtherBadgeHovered ? "blur(3px)" : "blur(0px)",
-        opacity: isOtherBadgeHovered ? 0.5 : 1,
-      }}
-      onMouseEnter={onHoverStart}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => {
-        handleMouseLeave();
-        onHoverEnd();
-      }}
-      onClick={onClick}
-      viewport={{ once: true }}
-      transition={{
-        scale: {
-          type: "spring",
-          stiffness: 350,
-          damping: 22,
-          mass: 0.6,
-        },
-        filter: {
-          type: "tween",
-          duration: 0.3,
-          ease: [0.22, 1, 0.36, 1],
-        },
-        opacity: {
-          type: "tween",
-          duration: 0.25,
-          ease: "easeOut",
-        },
-      }}
-    >
-      <Badge 
-        text={badge.text} 
-        isHovered={isBadgeHovered}
-      />
-    </motion.div>
-  );
-}
-
 // Smooth fade helper (clamps volume)
 function fadeAudio(audio: HTMLAudioElement, target: number, duration: number) {
   const clamp = (v: number) => Math.max(0, Math.min(1, v));
@@ -641,13 +499,11 @@ export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
     "personal-shopper": "personal-shopping",
   };
 
-  const ambientRef = useRef<HTMLAudioElement | null>(null); // used for rustling on hover only
-  const segmentRef = useRef<HTMLAudioElement | null>(null); // red rum
+  const ambientRef = useRef<HTMLAudioElement | null>(null);
+  const segmentRef = useRef<HTMLAudioElement | null>(null);
   const barkRef = useRef<HTMLAudioElement | null>(null);
   const barkTimeoutRef = useRef<number | null>(null);
   const cdHoveringRef = useRef(false);
-
-  // Remove previous auto-play of ambient; rustling should only play on hover
 
   // Handle CD hover controlled segment playback with clamped volume
   useEffect(() => {
@@ -706,7 +562,7 @@ export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
     cdHoveringRef.current = hovering;
     if (hovering) {
       seg.currentTime = 40;
-      seg.volume = 0; // start silent
+      seg.volume = 0;
       seg.play().catch(()=>{});
       fadeAudio(seg, BASE_VOL, 0.7);
     } else {
@@ -737,60 +593,59 @@ export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
 
   return (
     <div className="absolute inset-0">
-
       <motion.section
         className="relative w-full h-screen md:h-screen flex items-center justify-center bg-landing overflow-hidden md:overflow-hidden overflow-y-auto"
         style={{
           minHeight: typeof window !== 'undefined' && window.innerWidth < 768 ? '120vh' : '100vh',
         }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ 
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-    >
-    <TimedAudio
-        src="/assets/sounds/page9/people_walking.mp3"
-        start={0}
-        volume={0.0}
-        autoPlay={false}
-        fixed
-        loop={false}
-        className="z-70"
-      />
-      {/* Hidden audio elements */}
-      <audio ref={ambientRef} src="/assets/sounds/page4/Rustling_paper.mp3" preload="auto" playsInline />
-      <audio ref={segmentRef} src="/assets/sounds/page4/21_savage_redrum.mp3" preload="auto" playsInline />
-      <audio ref={barkRef} src="/assets/sounds/page4/puppy_barking.mp3" preload="auto" playsInline />
-
-      {/* Images */}
-      {imagePositions.map((img, index) => (
-        <SectionImageItem
-          key={index}
-          img={img}
-          index={index}
-          hoveredCategory={hoveredCategory}
-          onDogHover={img.src.includes("personal-shopper2.png") ? handleDogHover : undefined}
-          onCdHover={img.src.includes("image47.png") ? handleCdHover : undefined}
-          onPaperHover={img.src.includes("image42.png") || img.src.includes("image44.png") ? handlePaperHover : undefined}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ 
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
+        <TimedAudio
+          src="/assets/sounds/page9/21-savage-redrum-3.mp3"
+          start={0}
+          volume={0.0}
+          autoPlay={false}
+          fixed
+          loop={false}
+          className="z-70"
         />
-      ))}
 
-      {/* Badges */}
-      {badgePositions.map((badge, index) => (
-        <BadgeItem
-          key={`badge-${index}`}
-          badge={badge}
-          hoveredCategory={hoveredCategory}
-          onHoverStart={() => setHoveredCategory(badge.category)}
-          onHoverEnd={() => setHoveredCategory(null)}
-          onClick={() => onBadgeClick(serviceMap[badge.category])}
-        />
-      ))}
-      
-    </motion.section>
-</div>
+        {/* Hidden audio elements */}
+        <audio ref={ambientRef} src="/assets/sounds/page4/21-savage-redrum-3.mp3" preload="auto" playsInline />
+        <audio ref={segmentRef} src="/assets/sounds/page4/21-savage-redrum-1.mp3" preload="auto" playsInline />
+        <audio ref={barkRef} src="/assets/sounds/page4/21-savage-redrum-4.mp3" preload="auto" playsInline />
+
+        {/* Images */}
+        {imagePositions.map((img, index) => (
+          <SectionImageItem
+            key={index}
+            img={img}
+            index={index}
+            hoveredCategory={hoveredCategory}
+            onDogHover={img.src.includes("personal-shopper2.png") ? handleDogHover : undefined}
+            onCdHover={img.src.includes("image47.png") ? handleCdHover : undefined}
+            onPaperHover={img.src.includes("image42.png") || img.src.includes("image44.png") ? handlePaperHover : undefined}
+          />
+        ))}
+
+        {/* Badges */}
+        {badgePositions.map((badge, index) => (
+          <BadgeItem
+            key={`badge-${index}`}
+            badge={badge}
+            hoveredCategory={hoveredCategory}
+            onHoverStart={() => setHoveredCategory(badge.category)}
+            onHoverEnd={() => setHoveredCategory(null)}
+            onClick={() => onBadgeClick(serviceMap[badge.category])}
+          />
+        ))}
+      </motion.section>
+    </div>
   );
 }

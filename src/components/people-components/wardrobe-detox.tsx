@@ -5,7 +5,7 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { Heading } from "../heading";
-import { BookNowButton } from "../book-now-button";
+import { BookNowButton } from "../ui/book-now-button";
 import { useState, useRef, useEffect } from "react";
 import TimedAudio from "@/components/audio/timed-audio";
 
@@ -243,17 +243,18 @@ export default function WardrobeDetox() {
 
   // listen to global mute changes from TimedAudio
   useEffect(() => {
-    const handler = (e: any) => {
-      if (e?.detail && typeof e.detail.muted === 'boolean') {
-        setMuted(e.detail.muted);
-        if (e.detail.muted && clockTickRef.current) {
+    const handler = (e: Event) => {
+      const ce = e as CustomEvent<{ muted: boolean }>;
+      if (ce?.detail && typeof ce.detail.muted === 'boolean') {
+        setMuted(ce.detail.muted);
+        if (ce.detail.muted && clockTickRef.current) {
           clockTickRef.current.pause();
           clockTickRef.current.currentTime = 0;
         }
       }
     };
-    window.addEventListener('wiw-audio-mute-change', handler as any);
-    return () => window.removeEventListener('wiw-audio-mute-change', handler as any);
+    window.addEventListener('wiw-audio-mute-change', handler as EventListener);
+    return () => window.removeEventListener('wiw-audio-mute-change', handler as EventListener);
   }, []);
 
   useEffect(() => {
@@ -363,14 +364,14 @@ export default function WardrobeDetox() {
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
       <TimedAudio
-        src="/assets/sounds/page6/HALFWAYTHRU- CHELSEA JORDAN.mp3" // page6 audio
+        src="/assets/sounds/page6/21-savage-redrum-1.mp3" // page6 audio
         start={0}
         volume={0.35}
         fixed
         loop
-        className="z-[70]"
+        className="z-70"
       />
-      <audio ref={clockTickRef} src="/assets/sounds/page6/clock ticking sound effect.mp3" preload="auto" playsInline loop />
+      <audio ref={clockTickRef} src="/assets/sounds/page6/21-savage-redrum-2.mp3" preload="auto" playsInline loop />
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
         <div className="flex justify-between items-center gap-3">
           <Heading text="WARDROBE DETOX" />

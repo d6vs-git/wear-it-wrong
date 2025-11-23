@@ -124,6 +124,7 @@ export const BookNowButton = ({
         onClick={handleClick}
         disabled={isLoading || status === "loading"}
         aria-label={ariaLabel ?? label}
+        data-session-type={sessionType}
         className={base}
       >
         {isLoading ? "BOOKING..." : label}

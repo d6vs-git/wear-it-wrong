@@ -3,11 +3,10 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { Heading } from "../heading";
-import { BookNowButton } from "../book-now-button";
+import { BookNowButton } from "../ui/book-now-button";
 import { useState, useRef, useEffect } from "react";
 import TimedAudio from "@/components/audio/timed-audio";
-import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
-import Footer from "../footer";
+
 // Audio config for page7
 type AudioSegment = {
   id: string;
@@ -24,7 +23,7 @@ const audioSegments: AudioSegment[] = [
   {
     id: "bg-occasion",
     type: "background",
-    src: "/assets/sounds/page11/ANGEL- KID_CUDI.mp3",
+    src: "/assets/sounds/page11/21-savage-redrum-1.mp3",
     start: 0,
     volume: 0.38,
     loopSegment: false,
@@ -49,7 +48,7 @@ type ImageConfig = {
   dimensions: ResponsiveDimensions;
   position: ResponsivePosition;
   zIndex?: number;
-  className?: string; // NEW: Animation class
+  className?: string;
   transformOrigin?: string;
 };
 
@@ -332,7 +331,12 @@ const ImageItem = ({ img, index, breakpoint }: ImageItemProps) => {
         }}
         animate={{ x: [0, -300] }}
         transition={{
-          x: { duration: 4, ease: "linear", repeat: Infinity, repeatType: "loop" },
+          x: {
+            duration: 4,
+            ease: "linear",
+            repeat: Infinity,
+            repeatType: "loop",
+          },
           scale: { duration: 0.3 },
         }}
         whileHover={{ scale: breakpoint === "mobile" ? 1 : 1.08 }}
@@ -456,7 +460,7 @@ export default function ConceptDevelopment() {
             volume={segment.volume}
             fixed
             loop
-            className="z-[70]"
+            className="z-70"
           />
         ))}
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">

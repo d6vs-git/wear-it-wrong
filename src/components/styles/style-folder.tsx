@@ -112,7 +112,7 @@ export default function StyleFolder({
               animate={
                 shouldShowImages
                   ? {
-                      x: imageData.hover.x * (isMobile ? 0.6 : 1), // Scale down on mobile
+                      x: imageData.hover.x * (isMobile ? 0.6 : 1), 
                       y: imageData.hover.y * (isMobile ? 0.6 : 1),
                       rotate: imageData.hover.rotate,
                       opacity: 1,
@@ -160,7 +160,7 @@ export default function StyleFolder({
 
       {/* Folder title - Responsive text */}
       <motion.p
-        className="font-open-sans text-xl md:text-2xl font-bold text-center text-primary tracking-wide"
+        className="font-badtyp text-xl md:text-2xl font-bold text-center text-primary tracking-wide"
         animate={{
           scale: isHovered ? 1.08 : 1,
           y: isHovered ? -5 : 0,

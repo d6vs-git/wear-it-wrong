@@ -7,7 +7,7 @@ import PersonalShopping from "@/components/people-components/personal-shopping";
 import OccasionStyling from "@/components/people-components/occasion-styling";
 import StyleDrop from "@/components/people-components/style-drop";
 import WardrobeDetox from "@/components/people-components/wardrobe-detox";
-import TimedAudio from "@/components/audio/timed-audio";
+// TimedAudio not required in this page (removed unused import)
 
 function PeopleContent() {
   const searchParams = useSearchParams();

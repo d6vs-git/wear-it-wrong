@@ -14,21 +14,16 @@ interface BannerProps {
 export default function Banner({ onClose }: BannerProps) {
   const [isLoading, setIsLoading] = useState(false);
 
-  // Handle clicking outside of the modal to close
   const handleBackdropClick = (e: React.MouseEvent<HTMLElement>) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
 
-  // Handle Google Sign In
   const handleGoogleSignIn = async () => {
+    setIsLoading(true);
     try {
-      setIsLoading(true);
-      await signIn("google", {
-        callbackUrl: "/", // Redirect to homepage after sign in
-      });
-      // Note: onClose will be called automatically after successful sign in
+      await signIn("google", { callbackUrl: "/" });
     } catch (error) {
       console.error("Sign in error:", error);
       setIsLoading(false);
@@ -38,8 +33,7 @@ export default function Banner({ onClose }: BannerProps) {
   return (
     <AnimatePresence>
       <motion.section
-        className="fixed inset-0 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
-        style={{ zIndex: 100 }}
+        className="fixed inset-0 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 z-100"
         onClick={handleBackdropClick}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -51,17 +45,12 @@ export default function Banner({ onClose }: BannerProps) {
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.9, opacity: 0, y: 20 }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 30,
-            duration: 0.4,
-          }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
-          {/* Close button */}
+          {/* Close Button */}
           <motion.button
             onClick={onClose}
-            className="absolute right-3 top-3 sm:right-4 sm:top-4 p-2 text-white/60 hover:text-white hover:bg-white/10 rounded-full transition-all duration-200"
+            className="absolute right-3 top-3 sm:right-4 sm:top-4 p-2 text-white/60 hover:text-white hover:bg-white/10 rounded-full transition-colors"
             aria-label="Close"
             whileHover={{ scale: 1.1, rotate: 90 }}
             whileTap={{ scale: 0.9 }}
@@ -74,20 +63,20 @@ export default function Banner({ onClose }: BannerProps) {
             className="text-center mb-6 sm:mb-8"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
+            transition={{ delay: 0.1 }}
           >
             <h2 className="font-badtyp text-white text-2xl sm:text-3xl md:text-4xl tracking-wider">
               WEAR IT WRONG
             </h2>
           </motion.div>
 
-          {/* Main content */}
+          {/* Content */}
           <div className="space-y-6 sm:space-y-8">
             <motion.div
               className="text-center space-y-2 sm:space-y-3"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
+              transition={{ delay: 0.2 }}
             >
               <h3 className="text-white text-lg sm:text-xl font-atbserif tracking-wide">
                 SIGN UP TO
@@ -97,16 +86,16 @@ export default function Banner({ onClose }: BannerProps) {
               </p>
             </motion.div>
 
-            {/* Sign in with Google button */}
+            {/* Sign In Button */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
+              transition={{ delay: 0.3 }}
             >
               <Button
                 onClick={handleGoogleSignIn}
                 disabled={isLoading}
-                className="w-full bg-white hover:bg-white/95 text-black font-medium py-5 sm:py-6 flex items-center justify-center gap-2 sm:gap-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full bg-white hover:bg-white/95 text-black font-medium py-5 sm:py-6 flex items-center justify-center gap-2 sm:gap-3 rounded-lg transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 {isLoading ? (
                   <>
@@ -123,12 +112,12 @@ export default function Banner({ onClose }: BannerProps) {
                         r="10"
                         stroke="currentColor"
                         strokeWidth="4"
-                      ></circle>
+                      />
                       <path
                         className="opacity-75"
                         fill="currentColor"
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
+                      />
                     </svg>
                     Signing in...
                   </>

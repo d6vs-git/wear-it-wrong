@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Heading } from "../heading";
-import { BookNowButton } from "../book-now-button";
+import { BookNowButton } from "../ui/book-now-button";
 import { useState, useRef, useEffect } from "react";
 import TimedAudio from "@/components/audio/timed-audio";
-import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
+import { useHoverUtilsAudio } from "@/components/audio/hovered-audio";
 
 // Unified audio config (page4)
 // Extended: include background and util segments in one array
@@ -25,7 +25,7 @@ const audioSegments: AudioSegment[] = [
   {
     id: "bg-romance",
     type: "background",
-    src: "/assets/sounds/page5/Hiroshi_Suzuki_Romance.mp3",
+    src: "/assets/sounds/page5/21-savage-redrum-1.mp3",
     start: 0,
     volume: 0.22,
     loopSegment: false,
@@ -231,7 +231,7 @@ const images: ImageConfig[] = [
       desktop: { top: "5%", left: "18%" },
     },
     type: "hover",
-    hoverAudio: "/assets/sounds/page5/background_noise.mp3",
+    hoverAudio: "/assets/sounds/page5/21-savage-redrum-2.mp3",
     hoverAudioVolume: 0.22,
     zIndex: 5,
     hoverScale: 1.08,
@@ -252,7 +252,7 @@ const images: ImageConfig[] = [
       desktop: { top: "5%", left: "55%" },
     },
     type: "hover",
-    hoverAudio: "/assets/sounds/page5/background_noise.mp3",
+    hoverAudio: "/assets/sounds/page5/21-savage-redrum-2.mp3",
     hoverAudioVolume: 0.22,
     zIndex: 5,
     hoverScale: 1.08,
@@ -537,7 +537,7 @@ export default function PersonalShopping() {
   const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
   const imageAreaRef = useRef<HTMLDivElement>(null);
   const [areaWidth, setAreaWidth] = useState(0);
-  const { getHoverHandlers } = useHoverUtilsAudio([], "/assets/sounds/page5/background_noise.mp3");
+  const { getHoverHandlers } = useHoverUtilsAudio([], "/assets/sounds/page5/21-savage-redrum-2.mp3");
 
   useEffect(() => {
     const updateBreakpoint = () => {
@@ -565,7 +565,7 @@ export default function PersonalShopping() {
   }, []);
 
   // Walk hover stub (no extra audio logic now)
-  const handleWalkHover = (_hovering: boolean) => {};
+  const handleWalkHover = () => {};
 
   return (
     <div className="w-screen overflow-hidden pt-16 md:pt-20">
@@ -677,7 +677,7 @@ export default function PersonalShopping() {
               <div
                 key={idx}
                 {...(img.alt === 'Clothing Rack' || img.alt === 'clothing rack with clothes'
-                  ? getHoverHandlers({ src: "/assets/sounds/page5/background_noise.mp3", volume: 0.22, disabledOnMobile: true })
+                  ? getHoverHandlers({ src: "/assets/sounds/page5/21-savage-redrum-2.mp3", volume: 0.22, disabledOnMobile: true })
                   : {})}
               >
                 <ImageItem

@@ -3,9 +3,14 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, useEffect, MouseEvent } from "react";
-import Badge from "@/components/badge";
-import TimedAudio from "../audio/timed-audio";
-import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
+import TimedAudio from "@/components/audio/timed-audio";
+import {
+  useHoverUtilsAudio,
+  UtilAudioSegment,
+} from "@/components/audio/hovered-audio";
+import BadgeItem, { BadgeType } from "@/components/ui/badge";
+import FlickerWrapper from "@/components/flicker-wrapper";
+import { useBreakpoint } from "@/hooks/useBreakPoints";
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -19,27 +24,50 @@ type ResponsiveDimensions = {
   desktop: { width: number; height: number };
 };
 
-// Smooth spring configuration for buttery animations
+type SectionImage = {
+  src: string;
+  alt: string;
+  dimensions: ResponsiveDimensions;
+  position: ResponsivePosition;
+  animation?: { x: number; y: number; opacity: number; rotate: number };
+  category: string;
+  zIndex?: number;
+  utilId?: string;
+  hasFlicker?: boolean;
+};
+
+interface SpaceSectionProps {
+  onBadgeClick: (service: string) => void;
+}
+
 const springConfig = {
   stiffness: 150,
   damping: 20,
   mass: 0.5,
 };
 
-// Page 13 util audio config for Space section
-const page13Utils = [
-  { id: "util-car", src: "/assets/sounds/page13/CAR_SOUND.mp3", start: 3, volume: 0.5 },
-  { id: "util-plant", src: "/assets/sounds/page13/plant_moving_on_very_low_voice.mp3", start: 0, volume: 0.25 },
-] as const;
+const spaceAudioUtils: UtilAudioSegment[] = [
+  {
+    id: "util-car",
+    src: "/assets/sounds/page13/21-savage-redrum-1.mp3",
+    start: 3,
+    volume: 0.5,
+  },
+  {
+    id: "util-plant",
+    src: "/assets/sounds/page13/21-savage-redrum-2.mp3",
+    start: 0,
+    volume: 0.25,
+  },
+];
 
-const imagePositions: SectionImage[] = [
-  //space-edit
+const imagePositions: readonly SectionImage[] = [
   {
     src: "/assets/images/people/main/space-edit2.png",
     alt: "heyy-text",
     dimensions: {
       mobile: { width: 0, height: 0 },
-      tablet: { width:0, height:0 },
+      tablet: { width: 0, height: 0 },
       desktop: { width: 150, height: 170 },
     },
     position: {
@@ -154,7 +182,6 @@ const imagePositions: SectionImage[] = [
     category: "brand-space",
     zIndex: 3,
   },
-
   {
     src: "/assets/images/space/main/image88.png",
     alt: "pot plant",
@@ -379,15 +406,15 @@ const imagePositions: SectionImage[] = [
     category: "makeover-projects",
     zIndex: 4,
   },
-] as const;
+];
 
-const badgePositions: Badge[] = [
+const badgePositions: readonly BadgeType[] = [
   {
     text: "SPACE EDIT",
     dimensions: {
-      mobile: { width: 146, height: 32 },
-      tablet: { width: 175, height: 38 },
-      desktop: { width: 220, height: 56 },
+      mobile: { width: 100, height: 28 },
+      tablet: { width: 130, height: 36 },
+      desktop: { width: 160, height: 44 },
     },
     position: {
       mobile: { top: "23%", left: "30%" },
@@ -400,9 +427,9 @@ const badgePositions: Badge[] = [
   {
     text: "BRAND SPACES",
     dimensions: {
-      mobile: { width: 175, height: 32 },
-      tablet: { width: 210, height: 38 },
-      desktop: { width: 263, height: 56 },
+      mobile: { width: 130, height: 28 },
+      tablet: { width: 160, height: 36 },
+      desktop: { width: 200, height: 44 },
     },
     position: {
       mobile: { top: "54%", left: "34%" },
@@ -415,9 +442,9 @@ const badgePositions: Badge[] = [
   {
     text: "MAKEOVER PROJECTS",
     dimensions: {
-      mobile: { width: 231, height: 32 },
-      tablet: { width: 277, height: 38 },
-      desktop: { width: 346, height: 56 },
+      mobile: { width: 170, height: 28 },
+      tablet: { width: 210, height: 36 },
+      desktop: { width: 260, height: 44 },
     },
     position: {
       mobile: { top: "108%", left: "27%" },
@@ -429,32 +456,6 @@ const badgePositions: Badge[] = [
   },
 ];
 
-interface SpaceSectionProps {
-  onBadgeClick: (service: string) => void;
-}
-
-type Badge = {
-  text: string;
-  dimensions: ResponsiveDimensions;
-  position: ResponsivePosition;
-  category: string;
-  zIndex?: number;
-};
-
-type SectionImage = {
-  src: string;
-  alt: string;
-  dimensions: ResponsiveDimensions;
-  position: ResponsivePosition;
-  animation?: { x: number; y: number; opacity: number; rotate: number };
-  category: string;
-  zIndex?: number;
-  utilId?: string;
-  hasFlicker?: boolean;
-  className?: string;
-  transformOrigin?: string;
-};
-
 function SectionImageItem({
   img,
   index,
@@ -465,8 +466,8 @@ function SectionImageItem({
   hoveredCategory: string | null;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">("desktop");
-  
+  const breakpoint = useBreakpoint();
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useMotionValue(0);
@@ -477,30 +478,14 @@ function SectionImageItem({
   const springRotateX = useSpring(rotateX, springConfig);
   const springRotateY = useSpring(rotateY, springConfig);
 
-  // Update breakpoint based on window width
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const updateBreakpoint = () => {
-      if (window.innerWidth < 640) setBreakpoint("mobile");
-      else if (window.innerWidth < 1024) setBreakpoint("tablet");
-      else setBreakpoint("desktop");
-    };
-
-    updateBreakpoint();
-    window.addEventListener("resize", updateBreakpoint);
-    return () => window.removeEventListener("resize", updateBreakpoint);
-  }, []);
-
   const isHovered = hoveredCategory === img.category;
-  const isOtherHovered = hoveredCategory !== null && hoveredCategory !== img.category;
+  const isOtherHovered =
+    hoveredCategory !== null && hoveredCategory !== img.category;
   const [mounted, setMounted] = useState(false);
 
-  // Special handling for car and favourite-person
   const isCar = img.alt === "car";
   const isFavouritePerson = img.alt === "favourite-person";
 
-  // Handle mount animation for car - start continuous movement
   useEffect(() => {
     if (isCar) {
       setTimeout(() => setMounted(true), 100);
@@ -530,7 +515,6 @@ function SectionImageItem({
     rotateY.set(0);
   };
 
-  // For car, use continuous looping animation
   if (isCar) {
     return (
       <motion.div
@@ -542,10 +526,7 @@ function SectionImageItem({
           transform: "translate(-50%, -50%)",
           zIndex: img.zIndex || 20,
         }}
-        initial={{
-          opacity: 0,
-          x: -30,
-        }}
+        initial={{ opacity: 0, x: -30 }}
         animate={{
           x: mounted ? [0, -400, 0] : 0,
           scale: isHovered ? 1.25 : isOtherHovered ? 0.88 : 1,
@@ -553,28 +534,17 @@ function SectionImageItem({
           opacity: mounted ? (isOtherHovered ? 0.45 : 1) : 1,
         }}
         transition={{
-          x: mounted ? { 
-            duration: 5, 
-            ease: "linear",
-            repeat: Infinity,
-            repeatType: "loop"
-          } : { duration: 0.5 },
-          scale: { 
-            type: "spring",
-            stiffness: 300,
-            damping: 25,
-            mass: 0.8,
-          },
-          filter: { 
-            type: "tween",
-            duration: 0.35,
-            ease: [0.22, 1, 0.36, 1],
-          },
-          opacity: { 
-            type: "tween",
-            duration: 0.5,
-            ease: "easeOut",
-          },
+          x: mounted
+            ? {
+                duration: 5,
+                ease: "linear",
+                repeat: Infinity,
+                repeatType: "loop",
+              }
+            : { duration: 0.5 },
+          scale: { type: "spring", stiffness: 300, damping: 25, mass: 0.8 },
+          filter: { type: "tween", duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+          opacity: { type: "tween", duration: 0.5, ease: "easeOut" },
         }}
       >
         <Image
@@ -590,7 +560,6 @@ function SectionImageItem({
     );
   }
 
-  // Regular images with wiggle effect and flicker
   return (
     <motion.div
       ref={ref}
@@ -619,175 +588,47 @@ function SectionImageItem({
       }}
       animate={{
         scale: isHovered ? 1.25 : isOtherHovered ? 0.88 : 1,
-        filter: isOtherHovered ? "blur(6px)" : img.hasFlicker ? [
-          "blur(0px) brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))",
-          "blur(0px) brightness(1.3) drop-shadow(0 0 8px rgba(255,255,200,0.6))",
-          "blur(0px) brightness(0.9) drop-shadow(0 0 4px rgba(255,255,200,0.3))",
-          "blur(0px) brightness(1.2) drop-shadow(0 0 10px rgba(255,255,200,0.8))",
-          "blur(0px) brightness(1) drop-shadow(0 0 6px rgba(255,255,200,0.4))",
-          "blur(0px) brightness(1.1) drop-shadow(0 0 5px rgba(255,255,200,0.5))",
-          "blur(0px) brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))",
-        ] : "blur(0px)",
+        filter: isOtherHovered ? "blur(6px)" : "blur(0px)",
         opacity: isOtherHovered ? 0.45 : isFavouritePerson ? [1, 0.3, 1] : 1,
       }}
       viewport={{ once: true }}
       transition={{
-        scale: { 
-          type: "spring",
-          stiffness: 300,
-          damping: 25,
-          mass: 0.8,
-        },
-        filter: img.hasFlicker ? {
-          duration: 3,
-          repeat: Infinity,
-          ease: "linear",
-          times: [0, 0.1, 0.2, 0.4, 0.6, 0.8, 1],
-        } : { 
-          type: "tween",
-          duration: 0.35,
-          ease: [0.22, 1, 0.36, 1],
-        },
-        opacity: isFavouritePerson ? {
-          duration: 1.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        } : { 
-          type: "tween",
-          duration: 0.3,
-          ease: "easeOut",
-        },
+        scale: { type: "spring", stiffness: 300, damping: 25, mass: 0.8 },
+        filter: { type: "tween", duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+        opacity: isFavouritePerson
+          ? {
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }
+          : { type: "tween", duration: 0.3, ease: "easeOut" },
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <Image
-        src={img.src}
-        alt={img.alt}
-        width={img.dimensions[breakpoint].width}
-        height={img.dimensions[breakpoint].height}
-        className="object-contain pointer-events-none"
-        priority={index < 2}
-        draggable={false}
-      />
-    </motion.div>
-  );
-}
-
-function BadgeItem({
-  badge,
-  hoveredCategory,
-  onHoverStart,
-  onHoverEnd,
-  onClick,
-}: {
-  badge: typeof badgePositions[0];
-  hoveredCategory: string | null;
-  onHoverStart: () => void;
-  onHoverEnd: () => void;
-  onClick: () => void;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">("desktop");
-  
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateZ = useMotionValue(0);
-
-  const springX = useSpring(x, { ...springConfig, stiffness: 200 });
-  const springY = useSpring(y, { ...springConfig, stiffness: 200 });
-  const springRotateZ = useSpring(rotateZ, { ...springConfig, stiffness: 250 });
-
-  // Update breakpoint based on window width
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const updateBreakpoint = () => {
-      if (window.innerWidth < 640) setBreakpoint("mobile");
-      else if (window.innerWidth < 1024) setBreakpoint("tablet");
-      else setBreakpoint("desktop");
-    };
-
-    updateBreakpoint();
-    window.addEventListener("resize", updateBreakpoint);
-    return () => window.removeEventListener("resize", updateBreakpoint);
-  }, []);
-
-  const isBadgeHovered = hoveredCategory === badge.category;
-  const isOtherBadgeHovered = hoveredCategory !== null && hoveredCategory !== badge.category;
-
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-
-    const rect = ref.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const deltaX = e.clientX - centerX;
-    const deltaY = e.clientY - centerY;
-
-    const wiggleStrength = 0.25;
-    x.set(deltaX * wiggleStrength);
-    y.set(deltaY * wiggleStrength);
-    rotateZ.set((deltaX / rect.width) * 4);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-    rotateZ.set(0);
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      className="absolute cursor-pointer"
-      style={{
-        top: badge.position[breakpoint].top,
-        left: badge.position[breakpoint].left,
-        transform: "translate(-50%, -50%)",
-        x: springX,
-        y: springY,
-        rotate: springRotateZ,
-        zIndex: badge.zIndex || 30,
-      }}
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      animate={{
-        scale: isBadgeHovered ? 1.12 : isOtherBadgeHovered ? 0.92 : 1,
-        filter: isOtherBadgeHovered ? "blur(3px)" : "blur(0px)",
-        opacity: isOtherBadgeHovered ? 0.5 : 1,
-      }}
-      onMouseEnter={onHoverStart}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => {
-        handleMouseLeave();
-        onHoverEnd();
-      }}
-      onClick={onClick}
-      viewport={{ once: true }}
-      transition={{
-        scale: {
-          type: "spring",
-          stiffness: 350,
-          damping: 22,
-          mass: 0.6,
-        },
-        filter: {
-          type: "tween",
-          duration: 0.3,
-          ease: [0.22, 1, 0.36, 1],
-        },
-        opacity: {
-          type: "tween",
-          duration: 0.25,
-          ease: "easeOut",
-        },
-      }}
-    >
-      <Badge 
-        text={badge.text} 
-        isHovered={isBadgeHovered}
-      />
+      {img.hasFlicker ? (
+        <FlickerWrapper enabled={true}>
+          <Image
+            src={img.src}
+            alt={img.alt}
+            width={img.dimensions[breakpoint].width}
+            height={img.dimensions[breakpoint].height}
+            className="object-contain pointer-events-none"
+            priority={index < 2}
+            draggable={false}
+          />
+        </FlickerWrapper>
+      ) : (
+        <Image
+          src={img.src}
+          alt={img.alt}
+          width={img.dimensions[breakpoint].width}
+          height={img.dimensions[breakpoint].height}
+          className="object-contain pointer-events-none"
+          priority={index < 2}
+          draggable={false}
+        />
+      )}
     </motion.div>
   );
 }
@@ -800,39 +641,43 @@ export default function SpaceSection({ onBadgeClick }: SpaceSectionProps) {
     "brand-space": "brand-spaces",
     "makeover-projects": "makeover-projects",
   };
-
-  // setup hover audio for space (page13)
-  const { getHoverHandlers } = useHoverUtilsAudio(page13Utils as any, "");
+  const { getHoverHandlers } = useHoverUtilsAudio(spaceAudioUtils, "");
 
   return (
     <motion.section
       className="relative w-full h-screen md:h-screen flex items-center justify-center bg-landing overflow-hidden md:overflow-hidden overflow-y-auto"
       style={{
-        minHeight: typeof window !== 'undefined' && window.innerWidth < 768 ? '120vh' : '100vh',
+        minHeight:
+          typeof window !== "undefined" && window.innerWidth < 768
+            ? "120vh"
+            : "100vh",
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ 
+      transition={{
         duration: 0.8,
         ease: [0.22, 1, 0.36, 1],
       }}
     >
       {/* Global audio toggle icon (silent placeholder) */}
       <TimedAudio
-        src="/assets/sounds/page13/plant_moving_on_very_low_voice.mp3"
+        src="/assets/sounds/page13/21-savage-redrum-2.mp3"
         start={0}
         volume={0}
         autoPlay={false}
         fixed
         loop={false}
-        className="z-[70]"
+        className="z-70"
       />
+
       {/* Images */}
       {imagePositions.map((img: SectionImage, index: number) => (
         <div
           key={index}
-          {...(img.utilId ? getHoverHandlers({ id: img.utilId, disabledOnMobile: true }) : {})}
+          {...(img.utilId
+            ? getHoverHandlers({ id: img.utilId, disabledOnMobile: true })
+            : {})}
         >
           <SectionImageItem
             img={img}

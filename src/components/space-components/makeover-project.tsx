@@ -3,7 +3,7 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { Heading } from "../heading";
-import { BookNowButton } from "../book-now-button";
+import { BookNowButton } from "../ui/book-now-button";
 import { useState, useRef, useEffect } from "react";
 import TimedAudio from "@/components/audio/timed-audio";
 
@@ -22,7 +22,7 @@ const audioSegments: AudioSegment[] = [
   {
     id: "bg-occasion",
     type: "background",
-    src: "/assets/sounds/page15/The_Strokes_Ode_To_The_Mets.mp3",
+    src: "/assets/sounds/page15/21-savage-redrum-2.mp3",
     start: 0,
     volume: 0.38,
     loopSegment: false,
@@ -571,7 +571,7 @@ export default function MakeoverProject() {
             volume={segment.volume}
             fixed
             loop
-            className="z-[70]"
+            className="z-70"
           />
         ))}
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">

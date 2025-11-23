@@ -43,7 +43,6 @@ export const useTypewriter = ({
         return;
       }
 
-      const delta = shouldDelete ? -1 : 1;
       const nextText = shouldDelete
         ? currentText.slice(0, -1)
         : currentWord.slice(0, currentText.length + 1);

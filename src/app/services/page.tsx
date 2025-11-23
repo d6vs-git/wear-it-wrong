@@ -1,6 +1,6 @@
-// src/app/services/page.tsx
 "use client"
-import UnifiedServicesSection from "@/components/styles/brand-overview";
+
+import UnifiedServicesSection from "@/components/styles/all-services-overview";
 export default function ServicesPage() {
 const handleBadgeClick = (service: string) => {
     console.log("Selected service:", service);

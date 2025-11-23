@@ -225,7 +225,7 @@ function SectionImageItem({ img, index }: { img: SectionImage; index: number }) 
 export default function Testimonials() {
   return (
     <motion.section
-      className="relative w-full min-h-[120vh] sm:min-h-[100vh] md:h-[100vh] flex items-center justify-center bg-landing overflow-y-hidden"
+      className="relative w-full min-h-[120vh] sm:min-h-screen md:h-screen flex items-center justify-center bg-landing overflow-y-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

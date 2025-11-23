@@ -3,10 +3,10 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { Heading } from "../heading";
-import { BookNowButton } from "../book-now-button";
+import { BookNowButton } from "../ui/book-now-button";
 import { useState, useRef, useEffect } from "react";
 import TimedAudio from "@/components/audio/timed-audio";
-import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
+import { useHoverUtilsAudio } from "@/components/audio/hovered-audio";
 
 // Audio config for page7
 type AudioSegment = {
@@ -24,7 +24,7 @@ const audioSegments: AudioSegment[] = [
   {
     id: "bg-occasion",
     type: "background",
-    src: "/assets/sounds/page7/Heera-Peter_Cat_Recording_Co._ Music.mp3",
+    src: "/assets/sounds/page7/21-savage-redrum-2.mp3",
     start: 0,
     volume: 0.38,
     loopSegment: false,
@@ -32,7 +32,7 @@ const audioSegments: AudioSegment[] = [
   {
     id: "util-clothes", // fixed unique id
     type: "utils",
-    src: "/assets/sounds/page7/CLOTHES MOVING SLOW SOUND.mp3",
+    src: "/assets/sounds/page7/21-savage-redrum-1.mp3",
     start: 0,
     volume: 0.55,
     loopSegment: false,

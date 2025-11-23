@@ -2,13 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
-import Hero from "../components/home/hero";
-import About from "../components/home/about";
-import LandingNavbar from "@/components/landing-navbar";
+import Hero from "@/components/home/hero";
 import Banner from "@/components/home/banner";
-import UnifiedServicesSection from "@/components/styles/brand-overview";
-import Footer from "@/components/footer";
-import Testimonials from "@/components/home/testimonials";
 
 export default function Home() {
   const { status } = useSession();
@@ -34,25 +29,10 @@ export default function Home() {
     sessionStorage.setItem("bannerShown", "true");
   };
 
-  const handleBadgeClick = (service: string) => {
-    console.log("Selected service:", service);
-    // Add your logic here - navigate to service page, show modal, etc.
-  };
-
   return (
     <main className="bg-background text-foreground overflow-x-hidden">
       {showBanner && <Banner onClose={handleCloseBanner} />}
-      <LandingNavbar />
-      
-      <div className="snap-y snap-mandatory">
-        
-        <Hero />
-        {/* <About /> */}
-        {/* <UnifiedServicesSection onBadgeClick={handleBadgeClick} /> */}
-        {/* <Testimonials /> */}
-        {/* <Footer/> */}
-
-      </div>
+      <Hero />
     </main>
   );
 }

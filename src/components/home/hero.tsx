@@ -20,7 +20,13 @@ export default function Hero() {
 
   return (
     <section className="h-screen w-full flex items-center justify-center px-4 sm:px-6 md:px-8 bg-background text-foreground overflow-hidden relative">
-      <TimedAudio src="/assets/sounds/page1/Ebb%20Tide.mp3" start={0} volume={0.6} fixed loop />
+      <TimedAudio
+        src="/assets/sounds/page1/21-savage-redrum.mp3"
+        start={0}
+        volume={0.6}
+        fixed
+        loop
+      />
       <div className="text-center w-full max-w-6xl mx-auto">
         <motion.button
           type="button"
@@ -31,7 +37,7 @@ export default function Hero() {
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 200, damping: 15 }}
         >
-          {/* --- Black logo (default) --- */}
+          {/* Black logo (default) */}
           <motion.div
             initial={{ opacity: 1 }}
             animate={{ opacity: isClicked ? 0 : 1 }}
@@ -49,7 +55,7 @@ export default function Hero() {
             />
           </motion.div>
 
-          {/* --- Silver logo with shimmer --- */}
+          {/* Silver logo with shimmer */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: isClicked ? 1 : 0 }}
@@ -75,34 +81,6 @@ export default function Hero() {
           </motion.div>
         </motion.button>
       </div>
-
-      {/* Shimmer CSS */}
-      <style jsx>{`
-        .shimmer {
-          position: absolute;
-          top: 0;
-          left: -150%;
-          width: 50%;
-          height: 100%;
-          background: linear-gradient(
-            120deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.4) 50%,
-            rgba(255, 255, 255, 0) 100%
-          );
-          transform: skewX(-25deg);
-          animation: shimmer 1.5s infinite;
-        }
-
-        @keyframes shimmer {
-          0% {
-            left: -150%;
-          }
-          100% {
-            left: 150%;
-          }
-        }
-      `}</style>
     </section>
   );
 }

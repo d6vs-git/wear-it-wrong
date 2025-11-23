@@ -3,20 +3,25 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, MouseEvent, useEffect } from "react";
-import Badge from "../badge";
-import { useHoverUtilsAudio } from "@/components/audio/useHoverUtilsAudio";
+import BadgeItem, { BadgeType } from "@/components/ui/badge";
+import FlickerWrapper from "@/components/flicker-wrapper";
+import { useBreakpoint } from "@/hooks/useBreakPoints";
+import {
+  useHoverUtilsAudio,
+  UtilAudioSegment,
+} from "@/components/audio/hovered-audio";
 
-// Page 9 util audio config (ids used by images via utilId)
-const page9Utils = [
+// Page 9 util audio config
+const page9Utils: UtilAudioSegment[] = [
   {
     id: "util-camera",
-    src: "/assets/sounds/page9/camera_click.mp3",
+    src: "/assets/sounds/page9/21-savage-redrum-1.mp3",
     start: 0,
     volume: 0.55,
   },
   {
     id: "util-chairs",
-    src: "/assets/sounds/page9/chiar_noise_people_walking.mp3",
+    src: "/assets/sounds/page9/21-savage-redrum-2.mp3",
     start: 0,
     volume: 0.45,
     loopSegment: true,
@@ -25,14 +30,14 @@ const page9Utils = [
   },
   {
     id: "util-people",
-    src: "/assets/sounds/page9/people_walking.mp3",
+    src: "/assets/sounds/page9/21-savage-redrum-3.mp3",
     start: 0,
     volume: 0.5,
     loopSegment: true,
     end: 5.2,
     fadeDuration: 0.6,
   },
-] as const;
+];
 
 type ResponsivePosition = {
   mobile: { top: string; left: string };
@@ -46,15 +51,34 @@ type ResponsiveDimensions = {
   desktop: { width: number; height: number };
 };
 
-// Smooth spring configuration for buttery animations
+type SectionImage = {
+  src: string;
+  alt: string;
+  dimensions: ResponsiveDimensions;
+  position: ResponsivePosition;
+  animation?: { x: number; y: number; opacity: number; rotate: number };
+  category: string;
+  zIndex?: number;
+  type?: "walk";
+  moveDuration?: number;
+  className?: string;
+  walkTargetFraction?: number;
+  transformOrigin?: string;
+  utilId?: string;
+  hasFlicker?: boolean;
+};
+
+interface BrandsSectionProps {
+  onBadgeClick: (service: string) => void;
+}
+
 const springConfig = {
   stiffness: 150,
   damping: 20,
   mass: 0.5,
 };
 
-// Add utilId to images for hover sounds
-const imagePositions = [
+const imagePositions: readonly SectionImage[] = [
   {
     src: "/assets/images/brand/concept-development/2.png",
     alt: "cafe -> mon bar a couture",
@@ -124,6 +148,7 @@ const imagePositions = [
     category: "merchandising",
     zIndex: 6,
     className: "animate-always",
+    hasFlicker: true,
   },
   {
     src: "/assets/images/brand/main/image70.png",
@@ -142,8 +167,8 @@ const imagePositions = [
     category: "merchandising",
     zIndex: 6,
     className: "animate-always",
+    hasFlicker: true,
   },
-  //concept-development image
   {
     src: "/assets/images/brand/concept-development/9.png",
     alt: "cafe-23vins Hotel",
@@ -233,8 +258,10 @@ const imagePositions = [
     zIndex: 34,
     className: "animate-walk-forward-loop",
     utilId: "util-people",
+    type: "walk",
+    moveDuration: 6,
+    walkTargetFraction: 0.9,
   },
-  // //brand-shoot images
   {
     src: "/assets/images/brand/concept-development/1.png",
     alt: "apartment",
@@ -279,7 +306,7 @@ const imagePositions = [
     },
     position: {
       mobile: { top: "89%", left: "14%" },
-      tablet: { top: "25%",  left: "77%" },
+      tablet: { top: "25%", left: "77%" },
       desktop: { top: "15%", left: "67%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: -110 },
@@ -291,7 +318,7 @@ const imagePositions = [
   },
 ];
 
-const badgePositions: Badge[] = [
+const badgePositions: readonly BadgeType[] = [
   {
     text: "VISUAL MERCHANDISING",
     dimensions: {
@@ -339,87 +366,39 @@ const badgePositions: Badge[] = [
   },
 ];
 
-interface BrandsSectionProps {
-  onBadgeClick: (service: string) => void;
-}
-
-type Badge = {
-  text: string;
-  dimensions: ResponsiveDimensions;
-  position: ResponsivePosition;
-  category: string;
-  zIndex?: number;
-};
-
-type SectionImage = {
-  src: string;
-  alt: string;
-  dimensions: ResponsiveDimensions;
-  position: ResponsivePosition;
-  animation?: { x: number; y: number; opacity: number; rotate: number };
-  category: string;
-  zIndex?: number;
-  type?: "walk";
-  moveDuration?: number;
-  className?: string;
-  // Optional fraction (0..1) of container width to walk to (center=0.5)
-  walkTargetFraction?: number;
-  // Optional pendulum swing settings
-  swing?: boolean;
-  swingAmplitude?: number; // degrees around base rotate
-  swingDuration?: number; // seconds for half-cycle
-  transformOrigin?: string; // CSS transform-origin to pivot around tip
-  utilId?: string; // Added utilId for hover audio
-};
-
-type SectionImageItemProps = {
-  img: SectionImage;
-  index: number;
-  hoveredCategory: string | null;
-  areaWidth: number; // added
-};
-
 function SectionImageItem({
   img,
   index,
   hoveredCategory,
   areaWidth,
-}: SectionImageItemProps) {
+}: {
+  img: SectionImage;
+  index: number;
+  hoveredCategory: string | null;
+  areaWidth: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
-  const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">(
-    "desktop"
-  );
+  const breakpoint = useBreakpoint();
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
+
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
   const springRotateX = useSpring(rotateX, springConfig);
   const springRotateY = useSpring(rotateY, springConfig);
+
   const [isWalking, setIsWalking] = useState(false);
-
-  // Update breakpoint based on window width
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const updateBreakpoint = () => {
-      if (window.innerWidth < 640) setBreakpoint("mobile");
-      else if (window.innerWidth < 1024) setBreakpoint("tablet");
-      else setBreakpoint("desktop");
-    };
-
-    updateBreakpoint();
-    window.addEventListener("resize", updateBreakpoint);
-    return () => window.removeEventListener("resize", updateBreakpoint);
-  }, []);
 
   const isHovered = hoveredCategory === img.category;
   const isOtherHovered =
     hoveredCategory !== null && hoveredCategory !== img.category;
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!ref.current || isWalking) return; // disable wiggle while walking
+    if (!ref.current || isWalking) return;
+
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -448,15 +427,26 @@ function SectionImageItem({
     }
   };
 
-  // compute walking target distance (to the chosen fraction of width)
   let walkTargetX = 0;
   if (isWalking) {
-    const leftPercent = parseFloat(img.position[breakpoint].left) / 100; // starting left % (center-based)
-    const startLeftPx = areaWidth * leftPercent; // element center X in px
-    const fraction = img.walkTargetFraction ?? 0.9; // default closer to right if not specified
+    const leftPercent = parseFloat(img.position[breakpoint].left) / 100;
+    const startLeftPx = areaWidth * leftPercent;
+    const fraction = img.walkTargetFraction ?? 0.9;
     const targetCenterX = areaWidth * fraction;
-    walkTargetX = targetCenterX - startLeftPx; // displacement needed
+    walkTargetX = targetCenterX - startLeftPx;
   }
+
+  const imageElement = (
+    <Image
+      src={img.src}
+      alt={img.alt}
+      width={img.dimensions[breakpoint].width}
+      height={img.dimensions[breakpoint].height}
+      className="object-contain pointer-events-none h-auto"
+      priority={index < 2}
+      draggable={false}
+    />
+  );
 
   return (
     <motion.div
@@ -468,7 +458,6 @@ function SectionImageItem({
         transform: "translate(-50%, -50%)",
         zIndex: img.zIndex ?? 20,
         transformOrigin: img.transformOrigin ?? "50% 50%",
-        // Bind motion values only when not walking and not shaking
         ...(!isWalking
           ? {
               x: springX,
@@ -485,7 +474,6 @@ function SectionImageItem({
         rotate: img.animation?.rotate ?? 0,
       }}
       whileInView={{
-        // Let animate control rotate/x for pendulum and shake
         y: 0,
         opacity: 1,
       }}
@@ -495,22 +483,23 @@ function SectionImageItem({
         opacity: isOtherHovered ? 0.45 : 1,
         x: isWalking ? walkTargetX : 0,
       }}
+      viewport={{ once: true }}
       transition={{
         scale: {
+          type: "spring",
           stiffness: 300,
           damping: 25,
           mass: 0.8,
-          type: "spring",
         },
         filter: {
+          type: "tween",
           duration: 0.35,
           ease: [0.22, 1, 0.36, 1],
-          type: "tween",
         },
         opacity: {
+          type: "tween",
           duration: 0.3,
           ease: "easeOut",
-          type: "tween",
         },
         x: isWalking
           ? { duration: img.moveDuration ?? 6, ease: [0, 0, 1, 1] }
@@ -522,7 +511,6 @@ function SectionImageItem({
       onAnimationComplete={() => {
         if (isWalking) {
           setIsWalking(false);
-          // Reset motion values for future wiggle interactions
           x.set(0);
           y.set(0);
           rotateX.set(0);
@@ -530,160 +518,29 @@ function SectionImageItem({
         }
       }}
     >
-      <Image
-        src={img.src}
-        alt={img.alt}
-        width={img.dimensions[breakpoint].width}
-        height={img.dimensions[breakpoint].height}
-        className="object-contain pointer-events-none h-auto"
-        priority={index < 2}
-        draggable={false}
-      />
-    </motion.div>
-  );
-}
-
-function BadgeItem({
-  badge,
-  hoveredCategory,
-  onHoverStart,
-  onHoverEnd,
-  onClick,
-}: {
-  badge: (typeof badgePositions)[0];
-  hoveredCategory: string | null;
-  onHoverStart: () => void;
-  onHoverEnd: () => void;
-  onClick: () => void;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [breakpoint, setBreakpoint] = useState<"mobile" | "tablet" | "desktop">(
-    "desktop"
-  );
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateZ = useMotionValue(0);
-  const springX = useSpring(x, { ...springConfig, stiffness: 200 });
-  const springY = useSpring(y, { ...springConfig, stiffness: 200 });
-  const springRotateZ = useSpring(rotateZ, { ...springConfig, stiffness: 250 });
-
-  // Update breakpoint based on window width
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const updateBreakpoint = () => {
-      if (window.innerWidth < 640) setBreakpoint("mobile");
-      else if (window.innerWidth < 1024) setBreakpoint("tablet");
-      else setBreakpoint("desktop");
-    };
-
-    updateBreakpoint();
-    window.addEventListener("resize", updateBreakpoint);
-    return () => window.removeEventListener("resize", updateBreakpoint);
-  }, []);
-
-  const isBadgeHovered = hoveredCategory === badge.category;
-  const isOtherBadgeHovered =
-    hoveredCategory !== null && hoveredCategory !== badge.category;
-
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-
-    const rect = ref.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const deltaX = e.clientX - centerX;
-    const deltaY = e.clientY - centerY;
-
-    const wiggleStrength = 0.25;
-    x.set(deltaX * wiggleStrength);
-    y.set(deltaY * wiggleStrength);
-    rotateZ.set((deltaX / rect.width) * 4);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-    rotateZ.set(0);
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      className="absolute z-30 cursor-pointer"
-      style={{
-        top: badge.position[breakpoint].top,
-        left: badge.position[breakpoint].left,
-        transform: "translate(-50%, -50%)",
-        x: springX,
-        y: springY,
-        rotate: springRotateZ,
-      }}
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      animate={{
-        scale: isBadgeHovered ? 1.12 : isOtherBadgeHovered ? 0.92 : 1,
-        filter: isOtherBadgeHovered ? "blur(3px)" : "blur(0px)",
-        opacity: isOtherBadgeHovered ? 0.5 : 1,
-      }}
-      onMouseEnter={onHoverStart}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => {
-        handleMouseLeave();
-        handleMouseLeave();
-        onHoverEnd();
-      }}
-      onClick={onClick}
-      viewport={{ once: true }}
-      transition={{
-        scale: {
-          type: "spring",
-          stiffness: 350,
-          damping: 22,
-          mass: 0.6,
-        },
-        filter: {
-          type: "tween",
-          duration: 0.3,
-          ease: [0.22, 1, 0.36, 1],
-        },
-        opacity: {
-          type: "tween",
-          duration: 0.25,
-          ease: "easeOut",
-        },
-      }}
-    >
-      <Badge
-        text={badge.text}
-        isHovered={isBadgeHovered}
-        dimensions={badge.dimensions[breakpoint]}
-      />
+      {img.hasFlicker ? (
+        <FlickerWrapper enabled={true}>{imageElement}</FlickerWrapper>
+      ) : (
+        imageElement
+      )}
     </motion.div>
   );
 }
 
 export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+
   const serviceMap: Record<string, string> = {
     merchandising: "visual-merchandising",
     concept: "concept-development",
     brandShoot: "brand-shoots",
   };
 
-  // util audio setup (use top-level page9Utils config)
-  const { getHoverHandlers } = useHoverUtilsAudio(page9Utils as any, "");
-  // Log preload state once
-  useEffect(() => {
-    console.debug(
-      "[brands] util audio ids ready:",
-      page9Utils.map((u) => u.id)
-    );
-  }, []);
+  const { getHoverHandlers } = useHoverUtilsAudio(page9Utils, "");
 
-  // measure container width
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [areaWidth, setAreaWidth] = useState(0);
+
   useEffect(() => {
     const measure = () => {
       if (containerRef.current) setAreaWidth(containerRef.current.offsetWidth);
@@ -700,13 +557,13 @@ export default function BrandsSection({ onBadgeClick }: BrandsSectionProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
+      }}
     >
-      {/* Global audio toggle icon (no background track) */}
-      
-
       {/* Images */}
-      {imagePositions.map((img: any, index: number) => (
+      {imagePositions.map((img: SectionImage, index: number) => (
         <div
           key={index}
           {...(img.utilId
