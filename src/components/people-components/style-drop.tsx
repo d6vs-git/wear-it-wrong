@@ -58,7 +58,7 @@ type ImageConfig = {
 
 const images: ImageConfig[] = [
   {
-    src: "/assets/images/people/style-drop/1.png",
+    src: "/assets/images/people/style-drop/1.webp",
     alt: "Frame-1",
     dimensions: {
       mobile: { width: 250, height: 250 },
@@ -73,7 +73,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/people/style-drop/2.png",
+    src: "/assets/images/people/style-drop/2.webp",
     alt: "wooden-box-1",
     dimensions: {
       mobile: { width: 90, height: 90 },
@@ -88,7 +88,7 @@ const images: ImageConfig[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/people/style-drop/3.png",
+    src: "/assets/images/people/style-drop/3.webp",
     alt: "carpet",
     dimensions: {
       mobile: { width: 250, height: 250 },
@@ -103,7 +103,7 @@ const images: ImageConfig[] = [
     zIndex: 0,
   },
   {
-    src: "/assets/images/people/style-drop/4.png",
+    src: "/assets/images/people/style-drop/4.webp",
     alt: "Cake-2",
     dimensions: {
       mobile: { width: 170, height: 170 },
@@ -118,7 +118,7 @@ const images: ImageConfig[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/people/style-drop/5.png",
+    src: "/assets/images/people/style-drop/5.webp",
     alt: "flowers",
     dimensions: {
       mobile: { width: 110, height: 110 },
@@ -135,7 +135,7 @@ const images: ImageConfig[] = [
     transformOrigin: "50% 50%",
   },
   {
-    src: "/assets/images/people/style-drop/6.png",
+    src: "/assets/images/people/style-drop/6.webp",
     alt: "roller with cloths in it",
     dimensions: {
       mobile: { width: 250, height: 250 },
@@ -155,7 +155,7 @@ const images: ImageConfig[] = [
     } as React.CSSProperties,
   },
   {
-    src: "/assets/images/people/style-drop/image55.png",
+    src: "/assets/images/people/style-drop/image55.webp",
     alt: "wooden blocks",
     dimensions: {
       mobile: { width: 150, height: 110 },
@@ -170,7 +170,7 @@ const images: ImageConfig[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/people/style-drop/7.png",
+    src: "/assets/images/people/style-drop/7.webp",
     alt: "lamp",
     dimensions: {
       mobile: { width: 200, height: 200 },
@@ -186,7 +186,7 @@ const images: ImageConfig[] = [
     zIndex: 6,
   },
   {
-    src: "/assets/images/people/style-drop/8.png",
+    src: "/assets/images/people/style-drop/8.webp",
     alt: "sofa",
     dimensions: {
       mobile: { width: 220, height: 220 },
@@ -201,7 +201,7 @@ const images: ImageConfig[] = [
     zIndex: 19,
   },
   {
-    src: "/assets/images/people/style-drop/9.png",
+    src: "/assets/images/people/style-drop/9.webp",
     alt: "table",
     dimensions: {
       mobile: { width: 100, height: 100 },

@@ -19,7 +19,7 @@ export default function Footer({
   linkedinY?: number;
 } = {}) {
   const router = useRouter();
-  const image_path = "/assets/logo/logo-silver.png";
+  const image_path = "/assets/logo/logo-silver.webp";
 
   return (
     <footer className="w-full border-t border-black/10 mt-20 ">

@@ -6,7 +6,7 @@ export default function FoldersPage() {
     <div className="min-h-screen pt-16 md:pt-20 relative">
       {/* Page audio: same track as hero, with short snippet */}
       <TimedAudio
-        src="/assets/sounds/page1/Ebb%20Tide.mp3"
+        src="/assets/sounds/hero-section/ebb-tide.mp3"
         start={0}
         volume={0.6}
         fixed

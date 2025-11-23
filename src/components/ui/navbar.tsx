@@ -61,7 +61,7 @@ export default function Navbar() {
               <Link href="/" className="flex items-center h-full">
                 <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
                   <Image
-                    src="/assets/logo/logo-navbar.png"
+                    src="/assets/logo/logo-navbar.webp"
                     alt="Wear It Wrong Logo"
                     width={150}
                     height={75}
@@ -79,7 +79,7 @@ export default function Navbar() {
               <Link href="/" className="flex items-center h-full">
                 <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
                   <Image
-                    src="/assets/logo/logo-navbar.png"
+                    src="/assets/logo/logo-navbar.webp"
                     alt="Wear It Wrong Logo"
                     width={150}
                     height={75}

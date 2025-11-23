@@ -29,7 +29,7 @@ const springConfig = {
 const imagePositions = [
   //wardrobe-detox
   {
-    src: "/assets/images/people/main/wardrobe-detox.png",
+    src: "/assets/images/people/main/wardrobe-detox.webp",
     alt: "jacket on hanger",
     dimensions: {
       mobile: { width: 120, height: 180 },
@@ -46,7 +46,7 @@ const imagePositions = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/people/main/image49.png",
+    src: "/assets/images/people/main/image49.webp",
     alt: "nob",
     dimensions: {
       mobile: { width: 65, height: 65 },
@@ -63,7 +63,7 @@ const imagePositions = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/people/main/image47.png",
+    src: "/assets/images/people/main/image47.webp",
     alt: "music player cd",
     dimensions: {
       mobile: { width: 140, height: 155 },
@@ -81,7 +81,7 @@ const imagePositions = [
   },
     
   {
-    src: "/assets/images/people/main/image42.png",
+    src: "/assets/images/people/main/image42.webp",
     alt: "paper",
     dimensions: {
       mobile: { width: 185, height: 185 },
@@ -98,7 +98,7 @@ const imagePositions = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/people/main/image44.png",
+    src: "/assets/images/people/main/image44.webp",
     alt: "paper-2",
     dimensions: {
       mobile: { width: 180, height: 140 },
@@ -115,7 +115,7 @@ const imagePositions = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/people/main/image41.jpg",
+    src: "/assets/images/people/main/image41.webp",
     alt: "web-view",
     dimensions: {
       mobile: { width: 250, height: 160 },
@@ -132,7 +132,7 @@ const imagePositions = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/people/main/image55.png",
+    src: "/assets/images/people/main/image55.webp",
     alt: "blocks",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -149,7 +149,7 @@ const imagePositions = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/people/main/image53.png",
+    src: "/assets/images/people/main/image53.webp",
     alt: "bags",
     dimensions: {
       mobile: { width: 220, height: 170 },
@@ -166,7 +166,7 @@ const imagePositions = [
     zIndex: 9,
   },
   {
-    src: "/assets/images/people/main/personal-shopper1.png",
+    src: "/assets/images/people/main/personal-shopper1.webp",
     alt: "2-ppl-walk",
     dimensions: {
       mobile: { width: 180, height: 185 },
@@ -183,7 +183,7 @@ const imagePositions = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/people/main/image21.png",
+    src: "/assets/images/people/main/image21.webp",
     alt: "girl-with bag",
     dimensions: {
       mobile: { width: 120, height: 185 },
@@ -200,7 +200,7 @@ const imagePositions = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/people/main/personal-shopper2.png",
+    src: "/assets/images/people/main/personal-shopper2.webp",
     alt: "girl-with dog",
     dimensions: {
       mobile: { width: 165, height: 180 },
@@ -217,7 +217,7 @@ const imagePositions = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/people/main/image.png",
+    src: "/assets/images/people/main/image.webp",
     alt: "beauty-products",
     dimensions: {
       mobile: { width: 260, height: 180 },
@@ -234,7 +234,7 @@ const imagePositions = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/people/main/image72.jpg",
+    src: "/assets/images/people/main/image72.webp",
     alt: "photo-frame",
     dimensions: {
       mobile: { width: 60, height: 75 },
@@ -628,9 +628,9 @@ export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
             img={img}
             index={index}
             hoveredCategory={hoveredCategory}
-            onDogHover={img.src.includes("personal-shopper2.png") ? handleDogHover : undefined}
-            onCdHover={img.src.includes("image47.png") ? handleCdHover : undefined}
-            onPaperHover={img.src.includes("image42.png") || img.src.includes("image44.png") ? handlePaperHover : undefined}
+            onDogHover={img.src.includes("personal-shopper2.webp") ? handleDogHover : undefined}
+            onCdHover={img.src.includes("image47.webp") ? handleCdHover : undefined}
+            onPaperHover={img.src.includes("image42.webp") || img.src.includes("image44.webp") ? handlePaperHover : undefined}
           />
         ))}
 

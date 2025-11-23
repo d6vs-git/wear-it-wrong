@@ -54,7 +54,7 @@ type ImageConfig = {
 
 const images: ImageConfig[] = [
   {
-    src: "/assets/images/brand/concept-development/1.png",
+    src: "/assets/images/brand/concept-development/1.webp",
     alt: "Building",
     dimensions: {
       mobile: { width: 300, height: 280 },
@@ -69,7 +69,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/brand/concept-development/2.png",
+    src: "/assets/images/brand/concept-development/2.webp",
     alt: "cafe -> mon bar a couture",
     dimensions: {
       mobile: { width: 240, height: 220 },
@@ -84,7 +84,7 @@ const images: ImageConfig[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/brand/concept-development/3.png",
+    src: "/assets/images/brand/concept-development/3.webp",
     alt: "dress roller stand",
     dimensions: {
       mobile: { width: 130, height: 130 },
@@ -99,7 +99,7 @@ const images: ImageConfig[] = [
     zIndex: 6,
   },
   {
-    src: "/assets/images/brand/concept-development/6.png",
+    src: "/assets/images/brand/concept-development/6.webp",
     alt: "Cafe-2",
     dimensions: {
       mobile: { width: 200, height: 160 },
@@ -114,7 +114,7 @@ const images: ImageConfig[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/brand/concept-development/7.png",
+    src: "/assets/images/brand/concept-development/7.webp",
     alt: "chairs",
     dimensions: {
       mobile: { width: 130, height: 130 },
@@ -129,7 +129,7 @@ const images: ImageConfig[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/brand/concept-development/8.png",
+    src: "/assets/images/brand/concept-development/8.webp",
     alt: "Cafe-3",
     dimensions: {
       mobile: { width: 210, height: 210 },
@@ -144,7 +144,7 @@ const images: ImageConfig[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/brand/concept-development/10.png",
+    src: "/assets/images/brand/concept-development/10.webp",
     alt: "My-girl",
     dimensions: {
       mobile: { width: 50, height: 50 },
@@ -160,7 +160,7 @@ const images: ImageConfig[] = [
     className: "animate-always",
   },
   {
-    src: "/assets/images/brand/concept-development/11.png",
+    src: "/assets/images/brand/concept-development/11.webp",
     alt: "Cat",
     dimensions: {
       mobile: { width: 90, height: 70 },
@@ -175,7 +175,7 @@ const images: ImageConfig[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/brand/concept-development/12.png",
+    src: "/assets/images/brand/concept-development/12.webp",
     alt: "Girl-with-dog",
     dimensions: {
       mobile: { width: 110, height: 110 },
@@ -190,7 +190,7 @@ const images: ImageConfig[] = [
     zIndex: 18,
   },
   {
-    src: "/assets/images/brand/concept-development/13.png",
+    src: "/assets/images/brand/concept-development/13.webp",
     alt: "Camera",
     dimensions: {
       mobile: { width: 80, height: 80 },
@@ -206,7 +206,7 @@ const images: ImageConfig[] = [
     className: "animate-always",
   },
   {
-    src: "/assets/images/brand/concept-development/14.png",
+    src: "/assets/images/brand/concept-development/14.webp",
     alt: "ladies",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -221,7 +221,7 @@ const images: ImageConfig[] = [
     zIndex: 9,
   },
   {
-    src: "/assets/images/brand/concept-development/15.png",
+    src: "/assets/images/brand/concept-development/15.webp",
     alt: "girl with cigarette",
     dimensions: {
       mobile: { width: 110, height: 110 },
@@ -236,7 +236,7 @@ const images: ImageConfig[] = [
     zIndex: 10,
   },
   {
-    src: "/assets/images/brand/concept-development/16.png",
+    src: "/assets/images/brand/concept-development/16.webp",
     alt: "girl-walking", // renamed from Carpet 1 for walking logic
     dimensions: {
       mobile: { width: 90, height: 90 },
@@ -252,7 +252,7 @@ const images: ImageConfig[] = [
     className: "walk", // marker for left walking loop
   },
   {
-    src: "/assets/images/brand/concept-development/17.png",
+    src: "/assets/images/brand/concept-development/17.webp",
     alt: "Silver carpet",
     dimensions: {
       mobile: { width: 200, height: 210 },

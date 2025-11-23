@@ -54,7 +54,7 @@ type ImageConfig = {
 
 const images: ImageConfig[] = [
   {
-    src: "/assets/images/space/makeover/1.png",
+    src: "/assets/images/space/makeover/1.webp",
     alt: "bar-table",
     dimensions: {
       mobile: { width: 180, height: 180 },
@@ -69,7 +69,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/2.png",
+    src: "/assets/images/space/makeover/2.webp",
     alt: "bed",
     dimensions: {
       mobile: { width: 220, height: 255 },
@@ -84,7 +84,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/3.png",
+    src: "/assets/images/space/makeover/3.webp",
     alt: "pillow",
     dimensions: {
       mobile: { width: 60, height: 60 },
@@ -99,7 +99,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/4.png",
+    src: "/assets/images/space/makeover/4.webp",
     alt: "pillow covers",
     dimensions: {
       mobile: { width: 75, height: 70 },
@@ -114,7 +114,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/5.png",
+    src: "/assets/images/space/makeover/5.webp",
     alt: "chair",
     dimensions: {
       mobile: { width: 135, height: 120 },
@@ -129,7 +129,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/6.png",
+    src: "/assets/images/space/makeover/6.webp",
     alt: "chair",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -144,7 +144,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/7.png",
+    src: "/assets/images/space/makeover/7.webp",
     alt: "lamp",
     dimensions: {
       mobile: { width: 70, height: 85 },
@@ -159,7 +159,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/8.png",
+    src: "/assets/images/space/makeover/8.webp",
     alt: "slippers",
     dimensions: {
       mobile: { width: 105, height: 110 },
@@ -174,7 +174,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/9.png",
+    src: "/assets/images/space/makeover/9.webp",
     alt: "flower",
     dimensions: {
       mobile: { width: 65, height: 65 },
@@ -191,7 +191,7 @@ const images: ImageConfig[] = [
     transformOrigin: "50% 0%",
   },
   {
-    src: "/assets/images/space/makeover/10.png",
+    src: "/assets/images/space/makeover/10.webp",
     alt: "pot",
     dimensions: {
       mobile: { width: 180, height: 215 },
@@ -206,7 +206,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/11.png",
+    src: "/assets/images/space/makeover/11.webp",
     alt: "sofa",
     dimensions: {
       mobile: { width: 180, height: 145 },
@@ -221,7 +221,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/12.png",
+    src: "/assets/images/space/makeover/12.webp",
     alt: "frame",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -236,7 +236,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/13.png",
+    src: "/assets/images/space/makeover/13.webp",
     alt: "cat",
     dimensions: {
       mobile: { width: 60, height: 70 },
@@ -252,7 +252,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/14.png",
+    src: "/assets/images/space/makeover/14.webp",
     alt: "favorite person",
     dimensions: {
       mobile: { width: 70, height: 50 },
@@ -268,7 +268,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/15.png",
+    src: "/assets/images/space/makeover/15.webp",
     alt: "frame",
     dimensions: {
       mobile: { width: 95, height: 95 },
@@ -283,7 +283,7 @@ const images: ImageConfig[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/space/makeover/16.png",
+    src: "/assets/images/space/makeover/16.webp",
     alt: "16",
     dimensions: {
       mobile: { width: 55, height: 54 },
@@ -300,7 +300,7 @@ const images: ImageConfig[] = [
     transformOrigin: "50% 50%",
   },
   {
-    src: "/assets/images/space/makeover/17.png",
+    src: "/assets/images/space/makeover/17.webp",
     alt: "music-player",
     dimensions: {
       mobile: { width: 120, height: 130 },
@@ -315,7 +315,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/18.png",
+    src: "/assets/images/space/makeover/18.webp",
     alt: "frame-with a women in it",
     dimensions: {
       mobile: { width: 60, height: 84 },
@@ -330,7 +330,7 @@ const images: ImageConfig[] = [
     zIndex: 9,
   },
   {
-    src: "/assets/images/space/makeover/19.png",
+    src: "/assets/images/space/makeover/19.webp",
     alt: "heyy text",
     dimensions: {
       mobile: { width: 100, height: 100 },
@@ -346,7 +346,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/20.png",
+    src: "/assets/images/space/makeover/20.webp",
     alt: "hanger-with clothes",
     dimensions: {
       mobile: { width: 190, height: 190 },
@@ -361,7 +361,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/21.png",
+    src: "/assets/images/space/makeover/21.webp",
     alt: "disco ball",
     dimensions: {
       mobile: { width: 60, height: 65 },
@@ -377,7 +377,7 @@ const images: ImageConfig[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/space/makeover/22.png",
+    src: "/assets/images/space/makeover/22.webp",
     alt: "car",
     dimensions: {
       mobile: { width: 90, height: 60 },
@@ -392,7 +392,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/23.png",
+    src: "/assets/images/space/makeover/23.webp",
     alt: "radio tape",
     dimensions: {
       mobile: { width: 50, height: 65 },
@@ -407,7 +407,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/image6.png",
+    src: "/assets/images/space/makeover/image6.webp",
     alt: "cupboard -pink color",
     dimensions: {
       mobile: { width: 120, height: 185 },
@@ -422,7 +422,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/image10.png",
+    src: "/assets/images/space/makeover/image10.webp",
     alt: "table",
     dimensions: {
       mobile: { width: 170, height: 135 },

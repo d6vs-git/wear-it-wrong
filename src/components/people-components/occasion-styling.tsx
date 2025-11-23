@@ -76,7 +76,7 @@ type ImageConfig = {
 
 const images: ImageConfig[] = [
   {
-    src: "/assets/images/people/occasion-styling/flower-pot.png",
+    src: "/assets/images/people/occasion-styling/flower-pot.webp",
     alt: "flower pot with leaves",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -91,7 +91,7 @@ const images: ImageConfig[] = [
     zIndex: 10,
   },
   {
-    src: "/assets/images/people/occasion-styling/table.png",
+    src: "/assets/images/people/occasion-styling/table.webp",
     alt: "table",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -106,7 +106,7 @@ const images: ImageConfig[] = [
     zIndex: 12,
   },
   {
-    src: "/assets/images/people/occasion-styling/dress-roller.png",
+    src: "/assets/images/people/occasion-styling/dress-roller.webp",
     alt: "Standing Dress Roller",
     dimensions: {
       mobile: { width: 300, height: 300 },
@@ -124,7 +124,7 @@ const images: ImageConfig[] = [
     transformOrigin: "50% 90%",
   },
   {
-    src: "/assets/images/people/occasion-styling/carpet2.png",
+    src: "/assets/images/people/occasion-styling/carpet2.webp",
     alt: "Carpet",
     dimensions: {
       mobile: { width: 240, height: 240 },
@@ -139,7 +139,7 @@ const images: ImageConfig[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/people/occasion-styling/box.png",
+    src: "/assets/images/people/occasion-styling/box.webp",
     alt: "box",
     dimensions: {
       mobile: { width: 100, height: 100 },
@@ -154,7 +154,7 @@ const images: ImageConfig[] = [
     zIndex: 10,
   },
   {
-    src: "/assets/images/people/occasion-styling/carpet1.png",
+    src: "/assets/images/people/occasion-styling/carpet1.webp",
     alt: "Carpet 1",
     dimensions: {
       mobile: { width: 330, height: 330 },
@@ -169,7 +169,7 @@ const images: ImageConfig[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/people/occasion-styling/dress2.png",
+    src: "/assets/images/people/occasion-styling/dress2.webp",
     alt: "dress2",
     dimensions: {
       mobile: { width: 140, height: 140 },
@@ -185,7 +185,7 @@ const images: ImageConfig[] = [
     utilId: "util-clothes",
   },
   {
-    src: "/assets/images/people/occasion-styling/dress3.png",
+    src: "/assets/images/people/occasion-styling/dress3.webp",
     alt: "dress3",
     dimensions: {
       mobile: { width: 290, height: 290 },
@@ -203,7 +203,7 @@ const images: ImageConfig[] = [
     utilId: "util-clothes",
   },
   {
-    src: "/assets/images/people/occasion-styling/hanging-lamp.png",
+    src: "/assets/images/people/occasion-styling/hanging-lamp.webp",
     alt: "Hanging Lamp",
     dimensions: {
       mobile: { width: 130, height: 130 },
@@ -219,7 +219,7 @@ const images: ImageConfig[] = [
     className: "animate-light-flicker-slow",
   },
   {
-    src: "/assets/images/people/occasion-styling/shoes.png",
+    src: "/assets/images/people/occasion-styling/shoes.webp",
     alt: "Shoes",
     dimensions: {
       mobile: { width: 70, height: 70 },
@@ -236,7 +236,7 @@ const images: ImageConfig[] = [
     transformOrigin: "50% 50%",
   },
   {
-    src: "/assets/images/people/occasion-styling/dress1.png",
+    src: "/assets/images/people/occasion-styling/dress1.webp",
     alt: "dress-4",
     dimensions: {
       mobile: { width: 160, height: 160 },
@@ -252,7 +252,7 @@ const images: ImageConfig[] = [
     utilId: "util-clothes",
   },
   {
-    src: "/assets/images/people/occasion-styling/dress4.png",
+    src: "/assets/images/people/occasion-styling/dress4.webp",
     alt: "dress-5",
     dimensions: {
       mobile: { width: 240, height: 240 },
@@ -269,7 +269,7 @@ const images: ImageConfig[] = [
     transformOrigin: "50% 0%",
   },
   {
-    src: "/assets/images/people/occasion-styling/rod.png",
+    src: "/assets/images/people/occasion-styling/rod.webp",
     alt: "rod",
     dimensions: {
       mobile: { width: 200, height: 200 },

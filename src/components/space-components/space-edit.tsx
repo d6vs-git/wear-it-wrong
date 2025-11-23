@@ -56,7 +56,7 @@ type ImageConfig = {
 const images: ImageConfig[] = [
   // Top Row - 6 Paintings (Left to Right)
   {
-    src: "/assets/images/space/space-edit/painting1.png",
+    src: "/assets/images/space/space-edit/painting1.webp",
     alt: "painting-top-1",
     dimensions: {
       mobile: { width: 110, height: 110 },
@@ -72,7 +72,7 @@ const images: ImageConfig[] = [
    className: "animate-popdown-loop-slow"
   },
   {
-    src: "/assets/images/space/space-edit/painting5.png",
+    src: "/assets/images/space/space-edit/painting5.webp",
     alt: "painting-top-2",
     dimensions: {
       mobile: { width: 110, height: 110 },
@@ -87,7 +87,7 @@ const images: ImageConfig[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/space/space-edit/painting3.png",
+    src: "/assets/images/space/space-edit/painting3.webp",
     alt: "painting-top-3",
     dimensions: {
       mobile: { width: 110, height: 110 },
@@ -102,7 +102,7 @@ const images: ImageConfig[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/space/space-edit/painting4.png",
+    src: "/assets/images/space/space-edit/painting4.webp",
     alt: "painting-top-4",
     dimensions: {
       mobile: { width: 110, height: 110 },
@@ -117,7 +117,7 @@ const images: ImageConfig[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/space/space-edit/painting3.png",
+    src: "/assets/images/space/space-edit/painting3.webp",
     alt: "painting-top-5",
     dimensions: {
       mobile: { width: 110, height: 110 },
@@ -133,7 +133,7 @@ const images: ImageConfig[] = [
     className: "animate-popdown-loop-slow"
   },
   {
-    src: "/assets/images/space/space-edit/painting5.png",
+    src: "/assets/images/space/space-edit/painting5.webp",
     alt: "painting-top-6",
     dimensions: {
       mobile: { width: 105, height: 105 },
@@ -151,7 +151,7 @@ const images: ImageConfig[] = [
 
   // Middle Row - 5 Paintings
   {
-    src: "/assets/images/space/space-edit/perfume.png",
+    src: "/assets/images/space/space-edit/perfume.webp",
     alt: "perfume",
     dimensions: {
       mobile: { width: 30, height: 30 },
@@ -170,7 +170,7 @@ const images: ImageConfig[] = [
 
   // Middle Row - 5 Paintings
   {
-    src: "/assets/images/space/space-edit/painting2.png",
+    src: "/assets/images/space/space-edit/painting2.webp",
     alt: "painting-middle-1",
     dimensions: {
       mobile: { width: 110, height: 110 },
@@ -185,7 +185,7 @@ const images: ImageConfig[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/space/space-edit/painting4.png",
+    src: "/assets/images/space/space-edit/painting4.webp",
     alt: "painting-middle-2",
     dimensions: {
       mobile: { width: 110, height: 110 },
@@ -200,7 +200,7 @@ const images: ImageConfig[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/space/space-edit/painting1.png",
+    src: "/assets/images/space/space-edit/painting1.webp",
     alt: "painting-middle-3",
     dimensions: {
       mobile: { width: 110, height: 110 },
@@ -217,7 +217,7 @@ const images: ImageConfig[] = [
     className: "animate-popdown-loop-slow" 
   },
   {
-    src: "/assets/images/space/space-edit/painting3.png",
+    src: "/assets/images/space/space-edit/painting3.webp",
     alt: "painting-middle-4",
     dimensions: {
       mobile: { width: 110, height: 110 },
@@ -232,7 +232,7 @@ const images: ImageConfig[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/space/space-edit/painting6.png",
+    src: "/assets/images/space/space-edit/painting6.webp",
     alt: "painting-middle-5",
     dimensions: {
       mobile: { width: 110, height: 110 },
@@ -247,7 +247,7 @@ const images: ImageConfig[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/space/space-edit/painting4.png",
+    src: "/assets/images/space/space-edit/painting4.webp",
     alt: "painting-middle-6",
     dimensions: {
       mobile: { width: 110, height: 110 },
@@ -264,7 +264,7 @@ const images: ImageConfig[] = [
   },
   // Lamp (standing, left side, below perfume) - WITH FLICKER
   {
-    src: "/assets/images/space/space-edit/lamp.png",
+    src: "/assets/images/space/space-edit/lamp.webp",
     alt: "standing-lamp",
     dimensions: {
       mobile: { width: 195, height: 205 },
@@ -282,7 +282,7 @@ const images: ImageConfig[] = [
 
   // Bottom Section - Large Sofa (Center)
   {
-    src: "/assets/images/space/space-edit/sofa.png",
+    src: "/assets/images/space/space-edit/sofa.webp",
     alt: "sofa",
     dimensions: {
       mobile: { width: 300, height: 300 },
@@ -299,7 +299,7 @@ const images: ImageConfig[] = [
 
   // Bottom Right - Side Table (right of sofa)
   {
-    src: "/assets/images/space/space-edit/table.png",
+    src: "/assets/images/space/space-edit/table.webp",
     alt: "side-table",
     dimensions: {
       mobile: { width: 150, height: 70 },
@@ -316,7 +316,7 @@ const images: ImageConfig[] = [
 
   // Small Cactus on table✅
   {
-    src: "/assets/images/space/space-edit/cactus.png",
+    src: "/assets/images/space/space-edit/cactus.webp",
     alt: "small-cactus",
     dimensions: {
       mobile: { width: 50, height: 55 },
@@ -333,7 +333,7 @@ const images: ImageConfig[] = [
 
   // Large Flowerpot with plant (far right) ✅
   {
-    src: "/assets/images/space/space-edit/flowerpot.png",
+    src: "/assets/images/space/space-edit/flowerpot.webp",
     alt: "large-flowerpot",
     dimensions: {
       mobile: { width: 120, height: 150 },

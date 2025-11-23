@@ -34,7 +34,7 @@ type ImageConfig = {
 
 const images: ImageConfig[] = [
   {
-    src: "/assets/images/people/wardrobe-detox/1.png",
+    src: "/assets/images/people/wardrobe-detox/1.webp",
     alt: "bags",
     dimensions: {
       mobile: { width: 140, height: 140 },
@@ -50,7 +50,7 @@ const images: ImageConfig[] = [
     
   },
   {
-    src: "/assets/images/people/wardrobe-detox/2.png",
+    src: "/assets/images/people/wardrobe-detox/2.webp",
     alt: "hanger-with cloths on it",
     dimensions: {
       mobile: { width: 330, height: 330},
@@ -65,7 +65,7 @@ const images: ImageConfig[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/people/wardrobe-detox/3.png",
+    src: "/assets/images/people/wardrobe-detox/3.webp",
     alt: "bag",
     dimensions: {
       mobile: { width: 130, height: 130 },
@@ -83,7 +83,7 @@ const images: ImageConfig[] = [
     fixedTop: true,
   },
   {
-    src: "/assets/images/people/wardrobe-detox/4.png",
+    src: "/assets/images/people/wardrobe-detox/4.webp",
     alt: "umbrella",
     dimensions: {
       mobile: { width: 230, height: 230 },
@@ -98,7 +98,7 @@ const images: ImageConfig[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/people/wardrobe-detox/5.png",
+    src: "/assets/images/people/wardrobe-detox/5.webp",
     alt: "frame-1",
     dimensions: {
       mobile: { width: 40, height: 40},
@@ -113,7 +113,7 @@ const images: ImageConfig[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/people/wardrobe-detox/6.png",
+    src: "/assets/images/people/wardrobe-detox/6.webp",
     alt: "frame-2",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -128,7 +128,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/people/wardrobe-detox/7.png",
+    src: "/assets/images/people/wardrobe-detox/7.webp",
     alt: "clock",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -144,7 +144,7 @@ const images: ImageConfig[] = [
     className:"animate-rotate-360-slow"
   },
   {
-    src: "/assets/images/people/wardrobe-detox/8.png",
+    src: "/assets/images/people/wardrobe-detox/8.webp",
     alt: "dress3",
     dimensions: {
       mobile: { width: 300, height: 300 },
@@ -159,7 +159,7 @@ const images: ImageConfig[] = [
     zIndex: 8,
   },
   {
-    src: "/assets/images/people/wardrobe-detox/9.png",
+    src: "/assets/images/people/wardrobe-detox/9.webp",
     alt: "Shoes-2",
     dimensions: {
       mobile: { width: 200, height: 200 },
@@ -174,7 +174,7 @@ const images: ImageConfig[] = [
     zIndex: 10,
   },
   {
-    src: "/assets/images/people/wardrobe-detox/10.png",
+    src: "/assets/images/people/wardrobe-detox/10.webp",
     alt: "poster",
     dimensions: {
       mobile: { width: 100, height: 100 },
@@ -190,7 +190,7 @@ const images: ImageConfig[] = [
     className: "animate-popup-loop"  
   },
   {
-    src: "/assets/images/people/wardrobe-detox/11.png",
+    src: "/assets/images/people/wardrobe-detox/11.webp",
     alt: "shoes-1",
     dimensions: {
       mobile: { width: 200, height: 200 },
@@ -205,7 +205,7 @@ const images: ImageConfig[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/people/wardrobe-detox/12.png",
+    src: "/assets/images/people/wardrobe-detox/12.webp",
     alt: "high heels",
     dimensions: {
       mobile: { width: 85, height: 85 },

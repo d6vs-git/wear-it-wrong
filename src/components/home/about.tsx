@@ -56,7 +56,7 @@ export default function About() {
                 }}
               >
                 <Image
-                  src="/assets/images/about/cutie.png"
+                  src="/assets/images/about/cutie.webp"
                   alt="star decoration"
                   width={28}
                   height={28}

@@ -31,7 +31,7 @@ const getFolderAnimations = (folderPath: string) => {
 
     return {
       id: i + 1,
-      filename: `${i + 1}.png`,
+      filename: `${i + 1}.webp`,
       hover: {
         x: xOffset,
         y: yOffset,
@@ -148,7 +148,7 @@ export default function StyleFolder({
         {/* Folder image */}
         <div className="absolute inset-0 z-10">
           <Image
-            src="/assets/images/styles/folder.png"
+            src="/assets/images/styles/folder.webp"
             alt={`${title} folder`}
             fill
             className="object-contain"

@@ -33,7 +33,7 @@ interface SectionImage {
 // Responsive image set (adapted from original static positions)
 const imagePositions: SectionImage[] = [
   {
-    src: "/assets/images/testimonial/image240.png",
+    src: "/assets/images/testimonial/image240.webp",
     alt: "love icons cluster 1",
     dimensions: {
       mobile: { width: 250, height: 250 },
@@ -50,7 +50,7 @@ const imagePositions: SectionImage[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/testimonial/comment1-removebg-preview.png",
+    src: "/assets/images/testimonial/comment1-removebg-preview.webp",
     alt: "quote box 1",
     dimensions: {
       mobile: { width: 230, height: 230 },
@@ -67,7 +67,7 @@ const imagePositions: SectionImage[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/testimonial/image240.png",
+    src: "/assets/images/testimonial/image240.webp",
     alt: "love icons cluster 2",
     dimensions: {
       mobile: { width: 250, height: 200 },
@@ -84,7 +84,7 @@ const imagePositions: SectionImage[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/testimonial/comment2-removebg-preview.png",
+    src: "/assets/images/testimonial/comment2-removebg-preview.webp",
     alt: "quote box 2",
     dimensions: {
       mobile: { width: 230, height: 230 },
@@ -101,7 +101,7 @@ const imagePositions: SectionImage[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/testimonial/image240.png",
+    src: "/assets/images/testimonial/image240.webp",
     alt: "love icons cluster 2",
     dimensions: {
       mobile: { width: 250, height: 250 },
@@ -118,7 +118,7 @@ const imagePositions: SectionImage[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/testimonial/3comment-removebg-preview.png",
+    src: "/assets/images/testimonial/3comment-removebg-preview.webp",
     alt: "quote box 2",
     dimensions: {
       mobile: { width: 230, height: 230 },

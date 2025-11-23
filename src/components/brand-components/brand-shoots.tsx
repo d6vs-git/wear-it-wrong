@@ -55,7 +55,7 @@ type ImageConfig = {
 const images: ImageConfig[] = [
   // First row
   {
-    src: "/assets/images/brand/brandshoots/bg.png",
+    src: "/assets/images/brand/brandshoots/bg.webp",
     alt: "bg",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -70,7 +70,7 @@ const images: ImageConfig[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/brand/brandshoots/1.png",
+    src: "/assets/images/brand/brandshoots/1.webp",
     alt: "1",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -86,7 +86,7 @@ const images: ImageConfig[] = [
     className: "animate-popup-loop",
   },
   {
-    src: "/assets/images/brand/brandshoots/bg.png",
+    src: "/assets/images/brand/brandshoots/bg.webp",
     alt: "bg",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -101,7 +101,7 @@ const images: ImageConfig[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/brand/brandshoots/2.png",
+    src: "/assets/images/brand/brandshoots/2.webp",
     alt: "2",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -116,7 +116,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/brand/brandshoots/bg.png",
+    src: "/assets/images/brand/brandshoots/bg.webp",
     alt: "bg",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -131,7 +131,7 @@ const images: ImageConfig[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/brand/brandshoots/3.png",
+    src: "/assets/images/brand/brandshoots/3.webp",
     alt: "3",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -146,7 +146,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/brand/brandshoots/bg.png",
+    src: "/assets/images/brand/brandshoots/bg.webp",
     alt: "bg",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -161,7 +161,7 @@ const images: ImageConfig[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/brand/brandshoots/4.png",
+    src: "/assets/images/brand/brandshoots/4.webp",
     alt: "4",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -177,7 +177,7 @@ const images: ImageConfig[] = [
     className: "animate-popup-loop",
   },
   {
-    src: "/assets/images/brand/brandshoots/bg.png",
+    src: "/assets/images/brand/brandshoots/bg.webp",
     alt: "bg",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -192,7 +192,7 @@ const images: ImageConfig[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/brand/brandshoots/5.png",
+    src: "/assets/images/brand/brandshoots/5.webp",
     alt: "5",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -207,7 +207,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/brand/brandshoots/bg.png",
+    src: "/assets/images/brand/brandshoots/bg.webp",
     alt: "bg",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -222,7 +222,7 @@ const images: ImageConfig[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/brand/brandshoots/6.png",
+    src: "/assets/images/brand/brandshoots/6.webp",
     alt: "6",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -239,7 +239,7 @@ const images: ImageConfig[] = [
 
   // Second row
   {
-    src: "/assets/images/brand/brandshoots/bg.png",
+    src: "/assets/images/brand/brandshoots/bg.webp",
     alt: "bg",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -254,7 +254,7 @@ const images: ImageConfig[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/brand/brandshoots/7.png",
+    src: "/assets/images/brand/brandshoots/7.webp",
     alt: "7",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -269,7 +269,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/brand/brandshoots/bg.png",
+    src: "/assets/images/brand/brandshoots/bg.webp",
     alt: "bg",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -284,7 +284,7 @@ const images: ImageConfig[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/brand/brandshoots/8.png",
+    src: "/assets/images/brand/brandshoots/8.webp",
     alt: "8",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -299,7 +299,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/brand/brandshoots/bg.png",
+    src: "/assets/images/brand/brandshoots/bg.webp",
     alt: "bg",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -314,7 +314,7 @@ const images: ImageConfig[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/brand/brandshoots/9.png",
+    src: "/assets/images/brand/brandshoots/9.webp",
     alt: "9",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -330,7 +330,7 @@ const images: ImageConfig[] = [
     className: "animate-popup-loop",
   },
   {
-    src: "/assets/images/brand/brandshoots/bg.png",
+    src: "/assets/images/brand/brandshoots/bg.webp",
     alt: "bg",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -345,7 +345,7 @@ const images: ImageConfig[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/brand/brandshoots/10.png",
+    src: "/assets/images/brand/brandshoots/10.webp",
     alt: "10",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -360,7 +360,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/brand/brandshoots/bg.png",
+    src: "/assets/images/brand/brandshoots/bg.webp",
     alt: "bg",
     dimensions: {
       mobile: { width: 120, height: 120},
@@ -375,7 +375,7 @@ const images: ImageConfig[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/brand/brandshoots/11.png",
+    src: "/assets/images/brand/brandshoots/11.webp",
     alt: "11",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -390,7 +390,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/brand/brandshoots/bg.png",
+    src: "/assets/images/brand/brandshoots/bg.webp",
     alt: "bg",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -405,7 +405,7 @@ const images: ImageConfig[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/brand/brandshoots/12.png",
+    src: "/assets/images/brand/brandshoots/12.webp",
     alt: "12",
     dimensions: {
       mobile: { width: 120, height: 120 },

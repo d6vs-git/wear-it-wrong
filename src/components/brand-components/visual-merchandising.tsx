@@ -53,7 +53,7 @@ type ImageConfig = {
 
 const images: ImageConfig[] = [
   {
-    src: "/assets/images/brand/visual-merch/1.png",
+    src: "/assets/images/brand/visual-merch/1.webp",
     alt: "frame-1",
     dimensions: {
       mobile: { width: 330, height: 300 },
@@ -68,7 +68,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/brand/visual-merch/4.png",
+    src: "/assets/images/brand/visual-merch/4.webp",
     alt: "prada-hermlies",
     dimensions: {
       mobile: { width: 380, height: 340 },
@@ -83,7 +83,7 @@ const images: ImageConfig[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/brand/visual-merch/2.png",
+    src: "/assets/images/brand/visual-merch/2.webp",
     alt: "frame-2",
     dimensions: {
       mobile: { width: 280, height: 280 },
@@ -98,7 +98,7 @@ const images: ImageConfig[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/brand/visual-merch/3.png",
+    src: "/assets/images/brand/visual-merch/3.webp",
     alt: "H",
     dimensions: {
       mobile: { width: 410, height: 420 },
@@ -114,7 +114,7 @@ const images: ImageConfig[] = [
   },
 
   {
-    src: "/assets/images/brand/visual-merch/5.png",
+    src: "/assets/images/brand/visual-merch/5.webp",
     alt: "fence-left",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -130,7 +130,7 @@ const images: ImageConfig[] = [
     className: "animate-always-subtle",
   },
   {
-    src: "/assets/images/brand/visual-merch/5.png",
+    src: "/assets/images/brand/visual-merch/5.webp",
     alt: "fence-right",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -146,7 +146,7 @@ const images: ImageConfig[] = [
     className: "animate-always-subtle",
   },
   {
-    src: "/assets/images/brand/visual-merch/6.png",
+    src: "/assets/images/brand/visual-merch/6.webp",
     alt: "tree",
     dimensions: {
       mobile: { width: 300, height: 300 },
@@ -163,7 +163,7 @@ const images: ImageConfig[] = [
   transformOrigin: "50% 50%",            // ✅ NEW (hangs from top)
   },
   {
-    src: "/assets/images/brand/visual-merch/6.png",
+    src: "/assets/images/brand/visual-merch/6.webp",
     alt: "tree",
     dimensions: {
       mobile: { width: 160, height: 160 },
@@ -180,7 +180,7 @@ const images: ImageConfig[] = [
     transformOrigin: "50% 100%",
   },
   {
-    src: "/assets/images/brand/visual-merch/7.png",
+    src: "/assets/images/brand/visual-merch/7.webp",
     alt: "frame with nike",
     dimensions: {
       mobile: { width: 250, height: 220 },

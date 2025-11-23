@@ -80,7 +80,7 @@ const springConfig = {
 
 const imagePositions: readonly SectionImage[] = [
   {
-    src: "/assets/images/brand/concept-development/2.png",
+    src: "/assets/images/brand/concept-development/2.webp",
     alt: "cafe -> mon bar a couture",
     dimensions: {
       mobile: { width: 330, height: 300 },
@@ -97,7 +97,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/brand/concept-development/6.png",
+    src: "/assets/images/brand/concept-development/6.webp",
     alt: "cafe-2",
     dimensions: {
       mobile: { width: 230, height: 230 },
@@ -114,7 +114,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/brand/concept-development/7.png",
+    src: "/assets/images/brand/concept-development/7.webp",
     alt: "chairs",
     dimensions: {
       mobile: { width: 175, height: 175 },
@@ -132,7 +132,7 @@ const imagePositions: readonly SectionImage[] = [
     utilId: "util-chairs",
   },
   {
-    src: "/assets/images/brand/main/image69.png",
+    src: "/assets/images/brand/main/image69.webp",
     alt: "M symbol",
     dimensions: {
       mobile: { width: 35, height: 25 },
@@ -151,7 +151,7 @@ const imagePositions: readonly SectionImage[] = [
     hasFlicker: true,
   },
   {
-    src: "/assets/images/brand/main/image70.png",
+    src: "/assets/images/brand/main/image70.webp",
     alt: "V symbol",
     dimensions: {
       mobile: { width: 35, height: 25 },
@@ -170,7 +170,7 @@ const imagePositions: readonly SectionImage[] = [
     hasFlicker: true,
   },
   {
-    src: "/assets/images/brand/concept-development/9.png",
+    src: "/assets/images/brand/concept-development/9.webp",
     alt: "cafe-23vins Hotel",
     dimensions: {
       mobile: { width: 250, height: 250 },
@@ -187,7 +187,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/brand/concept-development/8.png",
+    src: "/assets/images/brand/concept-development/8.webp",
     alt: "cafe-23vins Hotel-2",
     dimensions: {
       mobile: { width: 225, height: 225 },
@@ -204,7 +204,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/brand/main/image62.png",
+    src: "/assets/images/brand/main/image62.webp",
     alt: "my-girl",
     dimensions: {
       mobile: { width: 55, height: 55 },
@@ -224,7 +224,7 @@ const imagePositions: readonly SectionImage[] = [
     utilId: "util-people",
   },
   {
-    src: "/assets/images/space/main/makeover1.png",
+    src: "/assets/images/space/main/makeover1.webp",
     alt: "cat",
     dimensions: {
       mobile: { width: 50, height: 50 },
@@ -241,7 +241,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/brand/main/image64.png",
+    src: "/assets/images/brand/main/image64.webp",
     alt: "women with dog",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -263,7 +263,7 @@ const imagePositions: readonly SectionImage[] = [
     walkTargetFraction: 0.9,
   },
   {
-    src: "/assets/images/brand/concept-development/1.png",
+    src: "/assets/images/brand/concept-development/1.webp",
     alt: "apartment",
     dimensions: {
       mobile: { width: 300, height: 300 },
@@ -280,7 +280,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/brand/main/image65.png",
+    src: "/assets/images/brand/main/image65.webp",
     alt: "ladies group",
     dimensions: {
       mobile: { width: 175, height: 150 },
@@ -297,7 +297,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/brand/main/brand-shoots2.png",
+    src: "/assets/images/brand/main/brand-shoots2.webp",
     alt: "camera",
     dimensions: {
       mobile: { width: 140, height: 115 },

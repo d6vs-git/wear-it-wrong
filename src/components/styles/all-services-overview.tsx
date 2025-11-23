@@ -43,7 +43,7 @@ const springConfig = {
 
 const imagePositions: readonly SectionImage[] = [
   {
-    src: "/assets/images/brand-overview/space-edit/hangover-clothes.png",
+    src: "/assets/images/brand-overview/space-edit/hangover-clothes.webp",
     alt: "hanger",
     dimensions: {
       mobile: { width: 75, height: 46 },
@@ -60,7 +60,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 25,
   },
   {
-    src: "/assets/images/brand-overview/space-edit/hey.png",
+    src: "/assets/images/brand-overview/space-edit/hey.webp",
     alt: "hey text",
     dimensions: {
       mobile: { width: 81, height: 102 },
@@ -77,7 +77,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 22,
   },
   {
-    src: "/assets/images/brand-overview/space-edit/disco-ball.png",
+    src: "/assets/images/brand-overview/space-edit/disco-ball.webp",
     alt: "disco ball",
     dimensions: {
       mobile: { width: 46, height: 102 },
@@ -95,7 +95,7 @@ const imagePositions: readonly SectionImage[] = [
     hasFlicker: true,
   },
   {
-    src: "/assets/images/brand-overview/space-edit/pink-pot.png",
+    src: "/assets/images/brand-overview/space-edit/pink-pot.webp",
     alt: "plant",
     dimensions: {
       mobile: { width: 70, height: 38 },
@@ -112,7 +112,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 23,
   },
   {
-    src: "/assets/images/brand-overview/space-edit/radio-caset.png",
+    src: "/assets/images/brand-overview/space-edit/radio-caset.webp",
     alt: "cassette",
     dimensions: {
       mobile: { width: 46, height: 73 },
@@ -129,7 +129,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 20,
   },
   {
-    src: "/assets/images/brand-overview/wardrobe-detox/hangover-clothes.png",
+    src: "/assets/images/brand-overview/wardrobe-detox/hangover-clothes.webp",
     alt: "coat",
     dimensions: {
       mobile: { width: 104, height: 75 },
@@ -146,7 +146,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/brand-overview/wardrobe-detox/hand-bags.png",
+    src: "/assets/images/brand-overview/wardrobe-detox/hand-bags.webp",
     alt: "bags",
     dimensions: {
       mobile: { width: 122, height: 75 },
@@ -163,7 +163,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 23,
   },
   {
-    src: "/assets/images/brand-overview/style-drop/cd.png",
+    src: "/assets/images/brand-overview/style-drop/cd.webp",
     alt: "vinyl",
     dimensions: {
       mobile: { width: 58, height: 58 },
@@ -180,7 +180,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 22,
   },
   {
-    src: "/assets/images/brand-overview/style-drop/paper.png",
+    src: "/assets/images/brand-overview/style-drop/paper.webp",
     alt: "papers",
     dimensions: {
       mobile: { width: 93, height: 73 },
@@ -197,7 +197,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 21,
   },
   {
-    src: "/assets/images/brand-overview/wardrobe-detox/c-pin.png",
+    src: "/assets/images/brand-overview/wardrobe-detox/c-pin.webp",
     alt: "pin",
     dimensions: {
       mobile: { width: 46, height: 78 },
@@ -214,7 +214,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/brand-overview/style-drop/mac-notes.jpg",
+    src: "/assets/images/brand-overview/style-drop/mac-notes.webp",
     alt: "notes",
     dimensions: {
       mobile: { width: 110, height: 107 },
@@ -231,7 +231,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 23,
   },
   {
-    src: "/assets/images/brand-overview/concept-development/old-cafe.png",
+    src: "/assets/images/brand-overview/concept-development/old-cafe.webp",
     alt: "cafe",
     dimensions: {
       mobile: { width: 93, height: 61 },
@@ -248,7 +248,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 21,
   },
   {
-    src: "/assets/images/brand-overview/concept-development/blue-cafe.png",
+    src: "/assets/images/brand-overview/concept-development/blue-cafe.webp",
     alt: "cafe2",
     dimensions: {
       mobile: { width: 93, height: 73 },
@@ -265,7 +265,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/brand-overview/concept-development/my-girl.png",
+    src: "/assets/images/brand-overview/concept-development/my-girl.webp",
     alt: "girl",
     dimensions: {
       mobile: { width: 52, height: 61 },
@@ -282,7 +282,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 22,
   },
   {
-    src: "/assets/images/brand-overview/concept-development/cats.png",
+    src: "/assets/images/brand-overview/concept-development/cats.webp",
     alt: "cats",
     dimensions: {
       mobile: { width: 58, height: 61 },
@@ -299,7 +299,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 20,
   },
   {
-    src: "/assets/images/brand-overview/concept-development/girl-with-dog.png",
+    src: "/assets/images/brand-overview/concept-development/girl-with-dog.webp",
     alt: "girl-dog",
     dimensions: {
       mobile: { width: 75, height: 61 },
@@ -316,7 +316,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 21,
   },
   {
-    src: "/assets/images/brand-overview/concept-development/favorite-person.png",
+    src: "/assets/images/brand-overview/concept-development/favorite-person.webp",
     alt: "logo",
     dimensions: {
       mobile: { width: 46, height: 32 },
@@ -334,7 +334,7 @@ const imagePositions: readonly SectionImage[] = [
     hasFlicker: true,
   },
   {
-    src: "/assets/images/brand-overview/occasion-styling/girl-painting.png",
+    src: "/assets/images/brand-overview/occasion-styling/girl-painting.webp",
     alt: "painting",
     dimensions: {
       mobile: { width: 75, height: 61 },
@@ -351,7 +351,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 22,
   },
   {
-    src: "/assets/images/brand-overview/occasion-styling/girl-with-cap.png",
+    src: "/assets/images/brand-overview/occasion-styling/girl-with-cap.webp",
     alt: "cap",
     dimensions: {
       mobile: { width: 75, height: 61 },
@@ -368,7 +368,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 23,
   },
   {
-    src: "/assets/images/brand-overview/occasion-styling/walking-women.png",
+    src: "/assets/images/brand-overview/occasion-styling/walking-women.webp",
     alt: "walk",
     dimensions: {
       mobile: { width: 87, height: 61 },
@@ -385,7 +385,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 21,
   },
   {
-    src: "/assets/images/brand-overview/personal-shopper/slippers.png",
+    src: "/assets/images/brand-overview/personal-shopper/slippers.webp",
     alt: "slippers",
     dimensions: {
       mobile: { width: 75, height: 61 },
@@ -402,7 +402,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 24,
   },
   {
-    src: "/assets/images/brand-overview/personal-shopper/girl-with-dog.png",
+    src: "/assets/images/brand-overview/personal-shopper/girl-with-dog.webp",
     alt: "girl-with-dog-1",
     dimensions: {
       mobile: { width: 87, height: 61 },
@@ -419,7 +419,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 2,
   },
   {
-    src: "/assets/images/brand-overview/visual-merchandising/moon-cafe.png",
+    src: "/assets/images/brand-overview/visual-merchandising/moon-cafe.webp",
     alt: "moon",
     dimensions: {
       mobile: { width: 151, height: 177 },
@@ -436,7 +436,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 25,
   },
   {
-    src: "/assets/images/brand-overview/visual-merchandising/green-chairs.png",
+    src: "/assets/images/brand-overview/visual-merchandising/green-chairs.webp",
     alt: "green-chairs",
     dimensions: {
       mobile: { width: 75, height: 177 },
@@ -453,7 +453,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 25,
   },
   {
-    src: "/assets/images/brand-overview/visual-merchandising/light-blue-cafe.png",
+    src: "/assets/images/brand-overview/visual-merchandising/light-blue-cafe.webp",
     alt: "moon",
     dimensions: {
       mobile: { width: 133, height: 177 },
@@ -470,7 +470,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 25,
   },
   {
-    src: "/assets/images/brand-overview/brand-shoots/white-house.png",
+    src: "/assets/images/brand-overview/brand-shoots/white-house.webp",
     alt: "house",
     dimensions: {
       mobile: { width: 133, height: 61 },
@@ -487,7 +487,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 22,
   },
   {
-    src: "/assets/images/brand-overview/brand-shoots/models.png",
+    src: "/assets/images/brand-overview/brand-shoots/models.webp",
     alt: "models",
     dimensions: {
       mobile: { width: 87, height: 119 },
@@ -504,7 +504,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 23,
   },
   {
-    src: "/assets/images/brand-overview/brand-spaces/cars.png",
+    src: "/assets/images/brand-overview/brand-spaces/cars.webp",
     alt: "car",
     dimensions: {
       mobile: { width: 75, height: 73 },
@@ -521,7 +521,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 21,
   },
   {
-    src: "/assets/images/brand-overview/brand-shoots/girl-painting.png",
+    src: "/assets/images/brand-overview/brand-shoots/girl-painting.webp",
     alt: "girl",
     dimensions: {
       mobile: { width: 52, height: 73 },
@@ -538,7 +538,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 24,
   },
   {
-    src: "/assets/images/brand-overview/brand-shoots/sleeping-man.png",
+    src: "/assets/images/brand-overview/brand-shoots/sleeping-man.webp",
     alt: "man",
     dimensions: {
       mobile: { width: 87, height: 73 },
@@ -555,7 +555,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 22,
   },
   {
-    src: "/assets/images/brand-overview/style-drop/gift-packs.png",
+    src: "/assets/images/brand-overview/style-drop/gift-packs.webp",
     alt: "gift",
     dimensions: {
       mobile: { width: 58, height: 73 },
@@ -572,7 +572,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 20,
   },
   {
-    src: "/assets/images/brand-overview/brand-shoots/camera.png",
+    src: "/assets/images/brand-overview/brand-shoots/camera.webp",
     alt: "camera",
     dimensions: {
       mobile: { width: 64, height: 73 },
@@ -589,7 +589,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 23,
   },
   {
-    src: "/assets/images/brand-overview/personal-shopper/face-utils.png",
+    src: "/assets/images/brand-overview/personal-shopper/face-utils.webp",
     alt: "face",
     dimensions: {
       mobile: { width: 133, height: 119 },
@@ -606,7 +606,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 25,
   },
   {
-    src: "/assets/images/brand-overview/makeover-projects/blue-storage.png",
+    src: "/assets/images/brand-overview/makeover-projects/blue-storage.webp",
     alt: "storage",
     dimensions: {
       mobile: { width: 75, height: 61 },
@@ -623,7 +623,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 21,
   },
   {
-    src: "/assets/images/brand-overview/makeover-projects/dining-table.png",
+    src: "/assets/images/brand-overview/makeover-projects/dining-table.webp",
     alt: "table",
     dimensions: {
       mobile: { width: 110, height: 61 },
@@ -640,7 +640,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 24,
   },
   {
-    src: "/assets/images/brand-overview/makeover-projects/brown-pot.png",
+    src: "/assets/images/brand-overview/makeover-projects/brown-pot.webp",
     alt: "pot1",
     dimensions: {
       mobile: { width: 51, height: 55 },
@@ -657,7 +657,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 22,
   },
   {
-    src: "/assets/images/brand-overview/makeover-projects/brown-pot.png",
+    src: "/assets/images/brand-overview/makeover-projects/brown-pot.webp",
     alt: "pot2",
     dimensions: {
       mobile: { width: 51, height: 55 },
@@ -674,7 +674,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 22,
   },
   {
-    src: "/assets/images/brand-overview/makeover-projects/green-chair.png",
+    src: "/assets/images/brand-overview/makeover-projects/green-chair.webp",
     alt: "chair1",
     dimensions: {
       mobile: { width: 58, height: 58 },
@@ -691,7 +691,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 23,
   },
   {
-    src: "/assets/images/brand-overview/makeover-projects/gold-chair.png",
+    src: "/assets/images/brand-overview/makeover-projects/gold-chair.webp",
     alt: "chair2",
     dimensions: {
       mobile: { width: 58, height: 58 },
@@ -708,7 +708,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 23,
   },
   {
-    src: "/assets/images/brand-overview/makeover-projects/blue-chair.png",
+    src: "/assets/images/brand-overview/makeover-projects/blue-chair.webp",
     alt: "chair3",
     dimensions: {
       mobile: { width: 41, height: 41 },
@@ -725,7 +725,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 21,
   },
   {
-    src: "/assets/images/brand-overview/makeover-projects/lamp.png",
+    src: "/assets/images/brand-overview/makeover-projects/lamp.webp",
     alt: "lamp",
     dimensions: {
       mobile: { width: 32, height: 32 },

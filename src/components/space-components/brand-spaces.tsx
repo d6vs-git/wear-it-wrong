@@ -53,7 +53,7 @@ type ImageConfig = {
 
 const images: ImageConfig[] = [
   {
-    src: "/assets/images/space/brand-spaces/1.png",
+    src: "/assets/images/space/brand-spaces/1.webp",
     alt: "chair-left",
     dimensions: {
       mobile: { width: 160, height: 160 },
@@ -68,7 +68,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/2.png",
+    src: "/assets/images/space/brand-spaces/2.webp",
     alt: "chair-right",
     dimensions: {
       mobile: { width: 160, height: 160 },
@@ -83,7 +83,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/3.png",
+    src: "/assets/images/space/brand-spaces/3.webp",
     alt: "table",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -98,7 +98,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/4.png",
+    src: "/assets/images/space/brand-spaces/4.webp",
     alt: "lamp",
     dimensions: {
       mobile: { width: 70, height: 70 },
@@ -114,7 +114,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/5.png",
+    src: "/assets/images/space/brand-spaces/5.webp",
     alt: "seat-sofa",
     dimensions: {
       mobile: { width: 360, height: 360 },
@@ -129,7 +129,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/3.png",
+    src: "/assets/images/space/brand-spaces/3.webp",
     alt: "table",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -144,7 +144,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/4.png",
+    src: "/assets/images/space/brand-spaces/4.webp",
     alt: "lamp",
     dimensions: {
       mobile: { width: 70, height: 70 },
@@ -160,7 +160,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/3.png",
+    src: "/assets/images/space/brand-spaces/3.webp",
     alt: "table",
     dimensions: {
       mobile: { width: 130, height: 130 },
@@ -175,7 +175,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/2.png",
+    src: "/assets/images/space/brand-spaces/2.webp",
     alt: "chair-right-1",
     dimensions: {
       mobile: { width: 160, height: 160 },
@@ -190,7 +190,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/4.png",
+    src: "/assets/images/space/brand-spaces/4.webp",
     alt: "lamp",
     dimensions: {
       mobile: { width: 70, height: 70 },
@@ -206,7 +206,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/1.png",
+    src: "/assets/images/space/brand-spaces/1.webp",
     alt: "chair-left",
     dimensions: {
       mobile: { width: 160, height: 160 },
@@ -221,7 +221,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/2.png",
+    src: "/assets/images/space/brand-spaces/2.webp",
     alt: "chair-right",
     dimensions: {
       mobile: { width: 160, height: 160 },
@@ -236,7 +236,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/3.png",
+    src: "/assets/images/space/brand-spaces/3.webp",
     alt: "table",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -251,7 +251,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/4.png",
+    src: "/assets/images/space/brand-spaces/4.webp",
     alt: "lamp",
     dimensions: {
       mobile: { width: 70, height: 70 },
@@ -267,7 +267,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/3.png",
+    src: "/assets/images/space/brand-spaces/3.webp",
     alt: "table",
     dimensions: {
       mobile: { width: 130, height: 130 },
@@ -282,7 +282,7 @@ const images: ImageConfig[] = [
     zIndex: 0,
   },
   {
-    src: "/assets/images/space/brand-spaces/4.png",
+    src: "/assets/images/space/brand-spaces/4.webp",
     alt: "lamp",
     dimensions: {
       mobile: { width: 70, height: 70 },
@@ -298,7 +298,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/brand-spaces/3.png",
+    src: "/assets/images/space/brand-spaces/3.webp",
     alt: "table",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -313,7 +313,7 @@ const images: ImageConfig[] = [
     zIndex: 9,
   },
   {
-    src: "/assets/images/space/brand-spaces/4.png",
+    src: "/assets/images/space/brand-spaces/4.webp",
     alt: "lamp",
     dimensions: {
       mobile: { width: 70, height: 70 },

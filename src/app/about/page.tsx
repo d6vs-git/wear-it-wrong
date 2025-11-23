@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function About() {
   const floatingImages = [
     {
-      src: "/assets/images/about/safety-pin-1.png",
+      src: "/assets/images/about/safety-pin-1.webp",
       alt: "safety pin 1",
       top: { mobile: "0%", desktop: "0rem" },
       right: { mobile: "8%", desktop: "-65rem" },
@@ -14,7 +14,7 @@ export default function About() {
       height: { mobile: "18px", desktop: "30px" },
     },
     {
-      src: "/assets/images/about/safety-pin-2.png",
+      src: "/assets/images/about/safety-pin-2.webp",
       alt: "safety pin 2",
       top: { mobile: "5%", desktop: "-1rem" },
       right: { mobile: "12%", desktop: "-65rem" },
@@ -23,7 +23,7 @@ export default function About() {
       translateY: "10%",
     },
     {
-      src: "/assets/images/about/dior.png",
+      src: "/assets/images/about/dior.webp",
       alt: "dior logo",
       top: { mobile: "10%", desktop: "1rem" },
       right: { mobile: "10%", desktop: "-64rem" },
@@ -124,7 +124,7 @@ export default function About() {
                   }}
                 >
                   <Image
-                    src="/assets/images/about/cutie.png"
+                    src="/assets/images/about/cutie.webp"
                     alt="star decoration"
                     width={50}
                     height={50}

@@ -65,7 +65,7 @@ type ImageConfig = {
 const images: ImageConfig[] = [
   // Floating flowers - top row
   {
-    src: "/assets/images/people/personal-shopping/bg-1.png",
+    src: "/assets/images/people/personal-shopping/bg-1.webp",
     alt: "Background Element 1",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -82,7 +82,7 @@ const images: ImageConfig[] = [
     zIndex: 0,
   },
   {
-    src: "/assets/images/people/personal-shopping/bg-2.png",
+    src: "/assets/images/people/personal-shopping/bg-2.webp",
     alt: "Background Element 2",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -99,7 +99,7 @@ const images: ImageConfig[] = [
     zIndex: 0,
   },
   {
-    src: "/assets/images/people/personal-shopping/bg-1.png",
+    src: "/assets/images/people/personal-shopping/bg-1.webp",
     alt: "Background Element 3",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -116,7 +116,7 @@ const images: ImageConfig[] = [
     zIndex: 0,
   },
  {
-    src: "/assets/images/people/personal-shopping/bg-1.png",
+    src: "/assets/images/people/personal-shopping/bg-1.webp",
     alt: "Background Element 4",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -133,7 +133,7 @@ const images: ImageConfig[] = [
     zIndex: 0,
   },
   {
-    src: "/assets/images/people/personal-shopping/bg-2.png",
+    src: "/assets/images/people/personal-shopping/bg-2.webp",
     alt: "Background Element 5",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -150,7 +150,7 @@ const images: ImageConfig[] = [
     zIndex: 0,
   },
   {
-    src: "/assets/images/people/personal-shopping/bg-1.png",
+    src: "/assets/images/people/personal-shopping/bg-1.webp",
     alt: "Background Element 6",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -168,7 +168,7 @@ const images: ImageConfig[] = [
   },
   // Carpets - middle row (behind everything)
   {
-    src: "/assets/images/people/personal-shopping/carpet1.jpg",
+    src: "/assets/images/people/personal-shopping/carpet1.webp",
     alt: "Carpet 1",
     dimensions: {
       mobile: { width: 300, height: 300 },
@@ -184,7 +184,7 @@ const images: ImageConfig[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/people/personal-shopping/carpet2.jpg",
+    src: "/assets/images/people/personal-shopping/carpet2.webp",
     alt: "Carpet 2",
     dimensions: {
       mobile: { width: 0, height: 0 },
@@ -200,7 +200,7 @@ const images: ImageConfig[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/people/personal-shopping/carpet1.jpg",
+    src: "/assets/images/people/personal-shopping/carpet1.webp",
     alt: "Carpet 3",
     dimensions: {
       mobile: { width: 300, height: 300 },
@@ -218,7 +218,7 @@ const images: ImageConfig[] = [
 
   // Clothing racks - on top of carpets
   {
-    src: "/assets/images/people/personal-shopping/1.png",
+    src: "/assets/images/people/personal-shopping/1.webp",
     alt: "Clothing Rack",
     dimensions: {
       mobile: { width: 250, height: 250 },
@@ -239,7 +239,7 @@ const images: ImageConfig[] = [
     hoverRotate: 2,
   },
   {
-    src: "/assets/images/people/personal-shopping/3.png",
+    src: "/assets/images/people/personal-shopping/3.webp",
     alt: "clothing rack with clothes",
     dimensions: {
       mobile: { width: 250, height: 250 },
@@ -262,7 +262,7 @@ const images: ImageConfig[] = [
 
   // Woman - walks across
   {
-    src: "/assets/images/people/personal-shopping/4.png",
+    src: "/assets/images/people/personal-shopping/4.webp",
     alt: "Woman with Bags",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -281,7 +281,7 @@ const images: ImageConfig[] = [
 
   // Mat - center bottom
   {
-    src: "/assets/images/people/personal-shopping/mat.png",
+    src: "/assets/images/people/personal-shopping/mat.webp",
     alt: "Mat",
     dimensions: {
       mobile: { width: 120, height: 120 },
@@ -300,7 +300,7 @@ const images: ImageConfig[] = [
 
   // Shopping bags and shoes - front right
   {
-    src: "/assets/images/people/personal-shopping/2.png",
+    src: "/assets/images/people/personal-shopping/2.webp",
     alt: "Shopping Bags",
     dimensions: {
       mobile: { width: 90, height: 90 },
@@ -320,7 +320,7 @@ const images: ImageConfig[] = [
     hoverRotate: 3,
   },
   {
-    src: "/assets/images/people/personal-shopping/5.png",
+    src: "/assets/images/people/personal-shopping/5.webp",
     alt: "Shoes",
     dimensions: {
       mobile: { width: 50, height: 50 },

@@ -45,7 +45,7 @@ export default function Hero() {
             className="relative"
           >
             <Image
-              src="/assets/logo/logo-black.png"
+              src="/assets/logo/logo-black.webp"
               alt="Wear It Wrong Logo Black"
               width={500}
               height={400}
@@ -64,7 +64,7 @@ export default function Hero() {
           >
             <div className="relative">
               <Image
-                src="/assets/logo/logo-silver.png"
+                src="/assets/logo/logo-silver.webp"
                 alt="Wear It Wrong Logo Silver"
                 width={500}
                 height={400}
