@@ -23,7 +23,7 @@ const audioSegments: AudioSegment[] = [
   {
     id: "bg-occasion",
     type: "background",
-    src: "/assets/sounds/page14/21-savage-redrum-2.mp3",
+    src: "/assets/sounds/space-edit/flickering-lamp.mp3",
     start: 0,
     volume: 0.38,
     loopSegment: false,

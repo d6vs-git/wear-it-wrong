@@ -15,13 +15,13 @@ import {
 const page9Utils: UtilAudioSegment[] = [
   {
     id: "util-camera",
-    src: "/assets/sounds/page9/21-savage-redrum-1.mp3",
+    src: "/assets/sounds/brands-section/camera-click.mp3",
     start: 0,
     volume: 0.55,
   },
   {
     id: "util-chairs",
-    src: "/assets/sounds/page9/21-savage-redrum-2.mp3",
+    src: "/assets/sounds/brands-section/chiar-noise-people-walking.mp3",
     start: 0,
     volume: 0.45,
     loopSegment: true,
@@ -30,7 +30,7 @@ const page9Utils: UtilAudioSegment[] = [
   },
   {
     id: "util-people",
-    src: "/assets/sounds/page9/21-savage-redrum-3.mp3",
+    src: "/assets/sounds/brands-section/people-walking.mp3",
     start: 0,
     volume: 0.5,
     loopSegment: true,

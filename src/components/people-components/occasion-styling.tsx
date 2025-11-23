@@ -24,7 +24,7 @@ const audioSegments: AudioSegment[] = [
   {
     id: "bg-occasion",
     type: "background",
-    src: "/assets/sounds/page7/21-savage-redrum-2.mp3",
+    src: "/assets/sounds/occasion-styling/heera-peter-cat-recording-co-music.mp3",
     start: 0,
     volume: 0.38,
     loopSegment: false,
@@ -32,7 +32,7 @@ const audioSegments: AudioSegment[] = [
   {
     id: "util-clothes", // fixed unique id
     type: "utils",
-    src: "/assets/sounds/page7/21-savage-redrum-1.mp3",
+    src: "/assets/sounds/occasion-styling/clothes-moving-slow-sound.mp3",
     start: 0,
     volume: 0.55,
     loopSegment: false,

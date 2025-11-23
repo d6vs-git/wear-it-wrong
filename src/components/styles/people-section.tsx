@@ -607,7 +607,7 @@ export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
         }}
       >
         <TimedAudio
-          src="/assets/sounds/page9/21-savage-redrum-3.mp3"
+          src="/assets/sounds/brands-section/people-walking.mp3"
           start={0}
           volume={0.0}
           autoPlay={false}
@@ -617,9 +617,9 @@ export default function PeopleSection({ onBadgeClick }: PeopleSectionProps) {
         />
 
         {/* Hidden audio elements */}
-        <audio ref={ambientRef} src="/assets/sounds/page4/21-savage-redrum-3.mp3" preload="auto" playsInline />
-        <audio ref={segmentRef} src="/assets/sounds/page4/21-savage-redrum-1.mp3" preload="auto" playsInline />
-        <audio ref={barkRef} src="/assets/sounds/page4/21-savage-redrum-4.mp3" preload="auto" playsInline />
+        <audio ref={ambientRef} src="/assets/sounds/people-section/puppy-barking.mp3" preload="auto" playsInline />
+        <audio ref={segmentRef} src="/assets/sounds/people-section/21-savage-redrum.mp3" preload="auto" playsInline />
+        <audio ref={barkRef} src="/assets/sounds/people-section/rustling-paper.mp3" preload="auto" playsInline />
 
         {/* Images */}
         {imagePositions.map((img, index) => (

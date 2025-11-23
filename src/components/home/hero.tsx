@@ -21,7 +21,7 @@ export default function Hero() {
   return (
     <section className="h-screen w-full flex items-center justify-center px-4 sm:px-6 md:px-8 bg-background text-foreground overflow-hidden relative">
       <TimedAudio
-        src="/assets/sounds/page1/21-savage-redrum.mp3"
+        src="/assets/sounds/hero-section/ebb-tide.mp3"
         start={0}
         volume={0.6}
         fixed

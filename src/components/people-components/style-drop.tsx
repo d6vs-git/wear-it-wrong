@@ -24,7 +24,7 @@ const audioSegments: AudioSegment[] = [
   {
     id: "bg-occasion",
     type: "background",
-    src: "/assets/sounds/page8/21-savage-redrum.mp3",
+    src: "/assets/sounds/style-drop/weekend-privlages.mp3",
     start: 0,
     volume: 0.38,
     loopSegment: false,

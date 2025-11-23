@@ -22,7 +22,7 @@ const audioSegments: AudioSegment[] = [
   {
     id: "bg-occasion",
     type: "background",
-    src: "/assets/sounds/page15/21-savage-redrum-2.mp3",
+    src: "/assets/sounds/makeover-project/the-strokes-ode-to-the-mets.mp3",
     start: 0,
     volume: 0.38,
     loopSegment: false,

@@ -25,7 +25,7 @@ const audioSegments: AudioSegment[] = [
   {
     id: "bg-romance",
     type: "background",
-    src: "/assets/sounds/page5/21-savage-redrum-1.mp3",
+    src: "/assets/sounds/personal-shopping/background-noise.mp3",
     start: 0,
     volume: 0.22,
     loopSegment: false,
@@ -231,7 +231,7 @@ const images: ImageConfig[] = [
       desktop: { top: "5%", left: "18%" },
     },
     type: "hover",
-    hoverAudio: "/assets/sounds/page5/21-savage-redrum-2.mp3",
+    hoverAudio: "/assets/sounds/personal-shopping/hiroshi-suzuki-romance.mp3",
     hoverAudioVolume: 0.22,
     zIndex: 5,
     hoverScale: 1.08,
@@ -252,7 +252,7 @@ const images: ImageConfig[] = [
       desktop: { top: "5%", left: "55%" },
     },
     type: "hover",
-    hoverAudio: "/assets/sounds/page5/21-savage-redrum-2.mp3",
+    hoverAudio: "/assets/sounds/personal-shopping/hiroshi-suzuki-romance.mp3",
     hoverAudioVolume: 0.22,
     zIndex: 5,
     hoverScale: 1.08,
@@ -537,7 +537,7 @@ export default function PersonalShopping() {
   const [breakpoint, setBreakpoint] = useState<Breakpoint>("desktop");
   const imageAreaRef = useRef<HTMLDivElement>(null);
   const [areaWidth, setAreaWidth] = useState(0);
-  const { getHoverHandlers } = useHoverUtilsAudio([], "/assets/sounds/page5/21-savage-redrum-2.mp3");
+  const { getHoverHandlers } = useHoverUtilsAudio([], "/assets/sounds/personal-shopping/hiroshi-suzuki-romance.mp3");
 
   useEffect(() => {
     const updateBreakpoint = () => {
@@ -677,7 +677,7 @@ export default function PersonalShopping() {
               <div
                 key={idx}
                 {...(img.alt === 'Clothing Rack' || img.alt === 'clothing rack with clothes'
-                  ? getHoverHandlers({ src: "/assets/sounds/page5/21-savage-redrum-2.mp3", volume: 0.22, disabledOnMobile: true })
+                  ? getHoverHandlers({ src: "/assets/sounds/personal-shopping/hiroshi-suzuki-romance.mp3", volume: 0.22, disabledOnMobile: true })
                   : {})}
               >
                 <ImageItem

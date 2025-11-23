@@ -49,13 +49,13 @@ const springConfig = {
 const spaceAudioUtils: UtilAudioSegment[] = [
   {
     id: "util-car",
-    src: "/assets/sounds/page13/21-savage-redrum-1.mp3",
+    src: "/assets/sounds/space-section/car-sound.mp3",
     start: 3,
     volume: 0.5,
   },
   {
     id: "util-plant",
-    src: "/assets/sounds/page13/21-savage-redrum-2.mp3",
+    src: "/assets/sounds/space-section/plant-moving-on-very-low-voice.mp3",
     start: 0,
     volume: 0.25,
   },
@@ -662,7 +662,7 @@ export default function SpaceSection({ onBadgeClick }: SpaceSectionProps) {
     >
       {/* Global audio toggle icon (silent placeholder) */}
       <TimedAudio
-        src="/assets/sounds/page13/21-savage-redrum-2.mp3"
+        src="/assets/sounds/space-section/plant-moving-on-very-low-voice.mp3"
         start={0}
         volume={0}
         autoPlay={false}

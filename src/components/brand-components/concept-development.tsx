@@ -23,7 +23,7 @@ const audioSegments: AudioSegment[] = [
   {
     id: "bg-occasion",
     type: "background",
-    src: "/assets/sounds/page11/21-savage-redrum-1.mp3",
+    src: "/assets/sounds/concept-development/angel-kid-cudi.mp3",
     start: 0,
     volume: 0.38,
     loopSegment: false,
