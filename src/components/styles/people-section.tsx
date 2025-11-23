@@ -46,7 +46,7 @@ const imagePositions = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/people/main/image49.webp",
+    src: "/assets/images/people/main/nob.webp",
     alt: "nob",
     dimensions: {
       mobile: { width: 65, height: 65 },
@@ -63,7 +63,7 @@ const imagePositions = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/people/main/image47.webp",
+    src: "/assets/images/people/main/music-player-cd.webp",
     alt: "music player cd",
     dimensions: {
       mobile: { width: 140, height: 155 },
@@ -81,7 +81,7 @@ const imagePositions = [
   },
     
   {
-    src: "/assets/images/people/main/image42.webp",
+    src: "/assets/images/people/main/paper.webp",
     alt: "paper",
     dimensions: {
       mobile: { width: 185, height: 185 },
@@ -98,7 +98,7 @@ const imagePositions = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/people/main/image44.webp",
+    src: "/assets/images/people/main/paper-2.webp",
     alt: "paper-2",
     dimensions: {
       mobile: { width: 180, height: 140 },
@@ -115,7 +115,7 @@ const imagePositions = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/people/main/image41.webp",
+    src: "/assets/images/people/main/web-view.webp",
     alt: "web-view",
     dimensions: {
       mobile: { width: 250, height: 160 },
@@ -149,7 +149,7 @@ const imagePositions = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/people/main/image53.webp",
+    src: "/assets/images/people/main/bags.webp",
     alt: "bags",
     dimensions: {
       mobile: { width: 220, height: 170 },
@@ -183,7 +183,7 @@ const imagePositions = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/people/main/image21.webp",
+    src: "/assets/images/people/main/girl-with-bag.webp",
     alt: "girl-with bag",
     dimensions: {
       mobile: { width: 120, height: 185 },
@@ -217,7 +217,7 @@ const imagePositions = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/people/main/image.webp",
+    src: "/assets/images/people/main/beauty-products.webp",
     alt: "beauty-products",
     dimensions: {
       mobile: { width: 260, height: 180 },
@@ -234,7 +234,7 @@ const imagePositions = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/people/main/image72.webp",
+    src: "/assets/images/people/main/photo-frame.webp",
     alt: "photo-frame",
     dimensions: {
       mobile: { width: 60, height: 75 },

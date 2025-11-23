@@ -115,7 +115,7 @@ const imagePositions: readonly SectionImage[] = [
     hasFlicker: true,
   },
   {
-    src: "/assets/images/people/main/image78.webp",
+    src: "/assets/images/people/main/favourite-person.webp",
     alt: "favourite-person",
     dimensions: {
       mobile: { width: 0, height: 0 },
@@ -132,7 +132,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 6,
   },
   {
-    src: "/assets/images/space/main/image54.webp",
+    src: "/assets/images/space/main/portrait-frame.webp",
     alt: "portrait frame",
     dimensions: {
       mobile: { width: 200, height: 200 },
@@ -149,7 +149,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/space/main/image90.webp",
+    src: "/assets/images/space/main/photo-frame.webp",
     alt: "photo frame",
     dimensions: {
       mobile: { width: 110, height: 113 },
@@ -166,7 +166,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/space/main/image77.webp",
+    src: "/assets/images/space/main/recorder.webp",
     alt: "recorder",
     dimensions: {
       mobile: { width: 80, height: 113 },
@@ -183,7 +183,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/space/main/image88.webp",
+    src: "/assets/images/space/main/pot-plant.webp",
     alt: "pot plant",
     dimensions: {
       mobile: { width: 110, height: 113 },
@@ -201,7 +201,7 @@ const imagePositions: readonly SectionImage[] = [
     utilId: "util-plant",
   },
   {
-    src: "/assets/images/space/main/image87.webp",
+    src: "/assets/images/space/main/necklace.webp",
     alt: "necklace",
     dimensions: {
       mobile: { width: 78, height: 113 },
@@ -218,7 +218,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/main/image71.webp",
+    src: "/assets/images/space/main/music-player.webp",
     alt: "music-player",
     dimensions: {
       mobile: { width: 130, height: 113 },
@@ -235,7 +235,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/space/main/image76.webp",
+    src: "/assets/images/space/main/car.webp",
     alt: "car",
     dimensions: {
       mobile: { width: 180, height: 133 },
@@ -270,7 +270,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 6,
   },
   {
-    src: "/assets/images/space/main/image79.webp",
+    src: "/assets/images/space/main/cupboard.webp",
     alt: "cupboard",
     dimensions: {
       mobile: { width: 120, height: 133 },
@@ -287,7 +287,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/space/main/image81.webp",
+    src: "/assets/images/space/main/flower-pots.webp",
     alt: "flower-pots",
     dimensions: {
       mobile: { width: 85, height: 133 },
@@ -304,7 +304,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/space/main/image81.webp",
+    src: "/assets/images/space/main/flower-pots.webp",
     alt: "flower-pots-2",
     dimensions: {
       mobile: { width: 85, height: 133 },
@@ -321,7 +321,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 1,
   },
   {
-    src: "/assets/images/space/main/image80.webp",
+    src: "/assets/images/space/main/chair-1.webp",
     alt: "chair-1",
     dimensions: {
       mobile: { width: 90, height: 80 },
@@ -338,7 +338,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/space/main/image82.webp",
+    src: "/assets/images/space/main/chair-3.webp",
     alt: "chair-3",
     dimensions: {
       mobile: { width: 120, height: 47 },
@@ -355,7 +355,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/space/main/image84.webp",
+    src: "/assets/images/space/main/table.webp",
     alt: "table",
     dimensions: {
       mobile: { width: 180, height: 133 },
@@ -372,7 +372,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/main/image85.webp",
+    src: "/assets/images/space/main/flower-vase.webp",
     alt: "flower vase",
     dimensions: {
       mobile: { width: 65, height: 47 },
@@ -390,7 +390,7 @@ const imagePositions: readonly SectionImage[] = [
     hasFlicker: true,
   },
   {
-    src: "/assets/images/space/main/image83.webp",
+    src: "/assets/images/space/main/chair-2.webp",
     alt: "chair-2",
     dimensions: {
       mobile: { width: 120, height: 47 },

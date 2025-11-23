@@ -132,7 +132,7 @@ const imagePositions: readonly SectionImage[] = [
     utilId: "util-chairs",
   },
   {
-    src: "/assets/images/brand/main/image69.webp",
+    src: "/assets/images/brand/main/m-symbol.webp",
     alt: "M symbol",
     dimensions: {
       mobile: { width: 35, height: 25 },
@@ -151,7 +151,7 @@ const imagePositions: readonly SectionImage[] = [
     hasFlicker: true,
   },
   {
-    src: "/assets/images/brand/main/image70.webp",
+    src: "/assets/images/brand/main/v-symbol.webp",
     alt: "V symbol",
     dimensions: {
       mobile: { width: 35, height: 25 },
@@ -204,7 +204,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 4,
   },
   {
-    src: "/assets/images/brand/main/image62.webp",
+    src: "/assets/images/brand/main/my-girl.webp",
     alt: "my-girl",
     dimensions: {
       mobile: { width: 55, height: 55 },
@@ -241,7 +241,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/brand/main/image64.webp",
+    src: "/assets/images/brand/main/women-with-dog.webp",
     alt: "women with dog",
     dimensions: {
       mobile: { width: 150, height: 150 },
@@ -280,7 +280,7 @@ const imagePositions: readonly SectionImage[] = [
     zIndex: 3,
   },
   {
-    src: "/assets/images/brand/main/image65.webp",
+    src: "/assets/images/brand/main/ladies-group.webp",
     alt: "ladies group",
     dimensions: {
       mobile: { width: 175, height: 150 },

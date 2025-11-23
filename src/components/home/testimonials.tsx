@@ -33,7 +33,7 @@ interface SectionImage {
 // Responsive image set (adapted from original static positions)
 const imagePositions: SectionImage[] = [
   {
-    src: "/assets/images/testimonial/image240.webp",
+    src: "/assets/images/testimonial/love-icons-cluster-1.webp",
     alt: "love icons cluster 1",
     dimensions: {
       mobile: { width: 250, height: 250 },
@@ -67,7 +67,7 @@ const imagePositions: SectionImage[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/testimonial/image240.webp",
+    src: "/assets/images/testimonial/love-icons-cluster-1.webp",
     alt: "love icons cluster 2",
     dimensions: {
       mobile: { width: 250, height: 200 },
@@ -101,7 +101,7 @@ const imagePositions: SectionImage[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/testimonial/image240.webp",
+    src: "/assets/images/testimonial/love-icons-cluster-1.webp",
     alt: "love icons cluster 2",
     dimensions: {
       mobile: { width: 250, height: 250 },

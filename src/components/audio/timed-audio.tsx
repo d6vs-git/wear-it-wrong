@@ -29,7 +29,7 @@ export default function TimedAudio({
   fixed = false,
   loopSegment = false,
   loop = true,
-  iconSrc = "/assets/images/people/main/image47.webp",
+  iconSrc = "/assets/images/people/main/music-player-cd.webp",
 }: TimedAudioProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const rafId = useRef<number | null>(null);

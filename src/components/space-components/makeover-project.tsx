@@ -407,7 +407,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/image6.webp",
+    src: "/assets/images/space/makeover/cupboard-pink-color.webp",
     alt: "cupboard -pink color",
     dimensions: {
       mobile: { width: 120, height: 185 },
@@ -422,7 +422,7 @@ const images: ImageConfig[] = [
     zIndex: 5,
   },
   {
-    src: "/assets/images/space/makeover/image10.webp",
+    src: "/assets/images/space/makeover/table.webp",
     alt: "table",
     dimensions: {
       mobile: { width: 170, height: 135 },

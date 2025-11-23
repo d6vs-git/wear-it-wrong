@@ -155,7 +155,7 @@ const images: ImageConfig[] = [
     } as React.CSSProperties,
   },
   {
-    src: "/assets/images/people/style-drop/image55.webp",
+    src: "/assets/images/people/style-drop/wooden-blocks.webp",
     alt: "wooden blocks",
     dimensions: {
       mobile: { width: 150, height: 110 },
