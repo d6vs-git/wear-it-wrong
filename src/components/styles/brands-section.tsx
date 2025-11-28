@@ -4,7 +4,6 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, MouseEvent, useEffect } from "react";
 import BadgeItem, { BadgeType } from "@/components/ui/badge";
-import FlickerWrapper from "@/components/flicker-wrapper";
 import { useBreakpoint } from "@/hooks/useBreakPoints";
 import {
   useHoverUtilsAudio,
@@ -519,7 +518,7 @@ function SectionImageItem({
       }}
     >
       {img.hasFlicker ? (
-        <FlickerWrapper enabled={true}>{imageElement}</FlickerWrapper>
+        <span className="inline-block animate-light-flicker">{imageElement}</span>
       ) : (
         imageElement
       )}

@@ -12,7 +12,7 @@ import { useRouter, usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { label: "About Us", href: "/about" },
-  { label: "All Services", href: "/unified-services" },
+  { label: "All Services", href: "/services" },
   { label: "Testimonials", href: "/testimonials" },
 ];
 

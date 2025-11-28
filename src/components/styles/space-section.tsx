@@ -9,7 +9,6 @@ import {
   UtilAudioSegment,
 } from "@/components/audio/hovered-audio";
 import BadgeItem, { BadgeType } from "@/components/ui/badge";
-import FlickerWrapper from "@/components/flicker-wrapper";
 import { useBreakpoint } from "@/hooks/useBreakPoints";
 
 type ResponsivePosition = {
@@ -607,7 +606,7 @@ function SectionImageItem({
       onMouseLeave={handleMouseLeave}
     >
       {img.hasFlicker ? (
-        <FlickerWrapper enabled={true}>
+        <span className="inline-block animate-light-flicker">
           <Image
             src={img.src}
             alt={img.alt}
@@ -617,7 +616,7 @@ function SectionImageItem({
             priority={index < 2}
             draggable={false}
           />
-        </FlickerWrapper>
+        </span>
       ) : (
         <Image
           src={img.src}
