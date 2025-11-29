@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 import Hero from "@/components/home/hero";
 import Banner from "@/components/home/banner";
-import Footer from "@/components/ui/footer";
 
 export default function Home() {
   const { status } = useSession();

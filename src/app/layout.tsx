@@ -5,7 +5,6 @@ import Navbar from "@/components/ui/navbar";
 import { Toaster } from "react-hot-toast";
 import { Suspense } from "react";
 import FooterRender from "@/utils/footerRender";
-import Footer from "@/components/ui/footer";
 
 export const metadata: Metadata = {
   title: "Wear It Wrong",
