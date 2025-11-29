@@ -34,7 +34,7 @@ export default function Home() {
     <main className="bg-background text-foreground overflow-x-hidden">
       {showBanner && <Banner onClose={handleCloseBanner} />}
       <Hero />
-      <Footer/>
+
     </main>
   );
 }

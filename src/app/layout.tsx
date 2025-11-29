@@ -3,6 +3,9 @@ import "./globals.css";
 import AuthProvider from "@/components/auth/AuthProvider";
 import Navbar from "@/components/ui/navbar";
 import { Toaster } from "react-hot-toast";
+import { Suspense } from "react";
+import FooterRender from "@/utils/footerRender";
+import Footer from "@/components/ui/footer";
 
 export const metadata: Metadata = {
   title: "Wear It Wrong",
@@ -17,13 +20,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="h-screen flex flex-col">
+      <body className="bg-background text-foreground overflow-x-hidden flex flex-col min-h-screen">
         <AuthProvider>
           <Navbar/>
           <main className="flex-1">{children}</main>
         </AuthProvider>
         <Toaster position="top-center" />
+        <Suspense fallback={null}>
+          <FooterRender />
+        </Suspense>
       </body>
+      
     </html>
   );
 }
