@@ -102,7 +102,7 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 120, height: 65 },
     },
     position: {
-      mobile: { top: "12%", left: "16%" },
+      mobile: { top: "18%", left: "16%" },
       tablet: { top: "12%", left: "16%" },
       desktop: { top: "12%", left: "16%" },
     },
@@ -119,9 +119,9 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 80, height: 125 },
     },
     position: {
-      mobile: { top: "36%", left: "15%" },
+      mobile: { top: "36%", left: "10%" },
       tablet: { top: "36%", left: "15%" },
-      desktop: { top: "36%", left: "15%" },
+      desktop: { top: "36%", left: "10%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "space-edit",
@@ -136,9 +136,9 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 180, height: 130 },
     },
     position: {
-      mobile: { top: "50%", left: "13%" },
+      mobile: { top: "50%", left: "5%" },
       tablet: { top: "50%", left: "13%" },
-      desktop: { top: "50%", left: "13%" },
+      desktop: { top: "45%", left: "20%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "wardrobe-detox",
@@ -153,7 +153,7 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 210, height: 130 },
     },
     position: {
-      mobile: { top: "30%", left: "25%" },
+      mobile: { top: "42%", left: "15%" },
       tablet: { top: "30%", left: "25%" },
       desktop: { top: "30%", left: "25%" },
     },
@@ -238,7 +238,7 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 160, height: 105 },
     },
     position: {
-      mobile: { top: "10%", left: "32%" },
+      mobile: { top: "15%", left: "32%" },
       tablet: { top: "10%", left: "32%" },
       desktop: { top: "10%", left: "32%" },
     },
@@ -255,7 +255,7 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 160, height: 125 },
     },
     position: {
-      mobile: { top: "40%", left: "41%" },
+      mobile: { top: "34%", left: "33%" },
       tablet: { top: "40%", left: "41%" },
       desktop: { top: "40%", left: "41%" },
     },
@@ -272,13 +272,13 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 90, height: 105 },
     },
     position: {
-      mobile: { top: "36%", left: "42%" },
+      mobile: { top: "27%", left: "38%" },
       tablet: { top: "36%", left: "42%" },
-      desktop: { top: "36%", left: "42%" },
+      desktop: { top: "25%", left: "44%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "concept",
-    zIndex: 22,
+    zIndex: 20,
   },
   {
     src: "/assets/images/brand-overview/concept-development/cats.webp",
@@ -289,9 +289,9 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 100, height: 105 },
     },
     position: {
-      mobile: { top: "40%", left: "40%" },
+      mobile: { top: "30%", left: "38%" },
       tablet: { top: "40%", left: "40%" },
-      desktop: { top: "40%", left: "40%" },
+      desktop: { top: "32%", left: "44%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "concept",
@@ -323,7 +323,7 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 80, height: 55 },
     },
     position: {
-      mobile: { top: "60%", left: "46%" },
+      mobile: { top: "58%", left: "55%" },
       tablet: { top: "60%", left: "46%" },
       desktop: { top: "60%", left: "46%" },
     },
@@ -341,7 +341,7 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 130, height: 105 },
     },
     position: {
-      mobile: { top: "55%", left: "32%" },
+      mobile: { top: "60%", left: "53%" },
       tablet: { top: "55%", left: "32%" },
       desktop: { top: "55%", left: "32%" },
     },
@@ -358,9 +358,9 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 130, height: 105 },
     },
     position: {
-      mobile: { top: "69%", left: "48%" },
+      mobile: { top: "60%", left: "26%" },
       tablet: { top: "69%", left: "48%" },
-      desktop: { top: "69%", left: "48%" },
+      desktop: { top: "60%", left: "52%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "occasion-styling",
@@ -375,9 +375,9 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 150, height: 105 },
     },
     position: {
-      mobile: { top: "80%", left: "40%" },
+      mobile: { top: "80%", left: "55%" },
       tablet: { top: "80%", left: "40%" },
-      desktop: { top: "80%", left: "40%" },
+      desktop: { top: "77%", left: "40%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "occasion-styling",
@@ -392,7 +392,7 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 130, height: 105 },
     },
     position: {
-      mobile: { top: "93%", left: "49%" },
+      mobile: { top: "87%", left: "49%" },
       tablet: { top: "93%", left: "49%" },
       desktop: { top: "93%", left: "49%" },
     },
@@ -409,9 +409,9 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 150, height: 105 },
     },
     position: {
-      mobile: { top: "75%", left: "53%" },
+      mobile: { top: "82%", left: "75%" },
       tablet: { top: "75%", left: "53%" },
-      desktop: { top: "75%", left: "53%" },
+      desktop: { top: "70%", left: "63%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "personal-shopper",
@@ -443,9 +443,9 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 130, height: 305 },
     },
     position: {
-      mobile: { top: "32%", left: "52%" },
+      mobile: { top: "25%", left: "55%" },
       tablet: { top: "32%", left: "52%" },
-      desktop: { top: "32%", left: "52%" },
+      desktop: { top: "38%", left: "52%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "visual-merchandising",
@@ -494,7 +494,7 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 150, height: 205 },
     },
     position: {
-      mobile: { top: "24%", left: "76%" },
+      mobile: { top: "30%", left: "61%" },
       tablet: { top: "24%", left: "76%" },
       desktop: { top: "24%", left: "76%" },
     },
@@ -579,7 +579,7 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 110, height: 125 },
     },
     position: {
-      mobile: { top: "20%", left: "78%" },
+      mobile: { top: "28%", left: "65%" },
       tablet: { top: "20%", left: "78%" },
       desktop: { top: "20%", left: "78%" },
     },
@@ -598,7 +598,7 @@ const imagePositions: readonly SectionImage[] = [
     position: {
       mobile: { top: "45%", left: "58%" },
       tablet: { top: "45%", left: "58%" },
-      desktop: { top: "45%", left: "58%" },
+      desktop: { top: "35%", left: "58%" },
     },
     animation: { x: -30, y: 0, opacity: 0, rotate: 0 },
     category: "brand-spaces",
@@ -613,7 +613,7 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 130, height: 105 },
     },
     position: {
-      mobile: { top: "50%", left: "84%" },
+      mobile: { top: "55%", left: "80%" },
       tablet: { top: "50%", left: "84%" },
       desktop: { top: "50%", left: "84%" },
     },
@@ -676,12 +676,12 @@ const imagePositions: readonly SectionImage[] = [
     src: "/assets/images/brand-overview/makeover-projects/green-chair.webp",
     alt: "chair1",
     dimensions: {
-      mobile: { width: 58, height: 58 },
+      mobile: { width: 50, height: 50 },
       tablet: { width: 75, height: 75 },
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "68%", left: "78%" },
+      mobile: { top: "74%", left: "75%" },
       tablet: { top: "68%", left: "78%" },
       desktop: { top: "68%", left: "78%" },
     },
@@ -698,7 +698,7 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 100, height: 100 },
     },
     position: {
-      mobile: { top: "68%", left: "90%" },
+      mobile: { top: "75%", left: "90%" },
       tablet: { top: "68%", left: "90%" },
       desktop: { top: "68%", left: "90%" },
     },
@@ -715,7 +715,7 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 70, height: 70 },
     },
     position: {
-      mobile: { top: "68%", left: "85%" },
+      mobile: { top: "73%", left: "84%" },
       tablet: { top: "68%", left: "85%" },
       desktop: { top: "68%", left: "85%" },
     },
@@ -732,7 +732,7 @@ const imagePositions: readonly SectionImage[] = [
       desktop: { width: 55, height: 55 },
     },
     position: {
-      mobile: { top: "67%", left: "86%" },
+      mobile: { top: "74%", left: "86%" },
       tablet: { top: "67%", left: "86%" },
       desktop: { top: "67%", left: "86%" },
     },
@@ -767,9 +767,9 @@ const badgePositions: readonly BadgeType[] = [
       desktop: { width: 220, height: 44 },
     },
     position: {
-      mobile: { top: "40%", left: "22%" },
+      mobile: { top: "55%", left: "10%" },
       tablet: { top: "58%", left: "8%" },
-      desktop: { top: "58%", left: "8%" },
+      desktop: { top: "58%", left: "15%" },
     },
     category: "wardrobe-detox",
     zIndex: 34,
@@ -782,7 +782,7 @@ const badgePositions: readonly BadgeType[] = [
       desktop: { width: 290, height: 44 },
     },
     position: {
-      mobile: { top: "78%", left: "28%" },
+      mobile: { top: "78%", left: "10%" },
       tablet: { top: "75%", left: "8%" },
       desktop: { top: "75%", left: "8%" },
     },
@@ -799,7 +799,7 @@ const badgePositions: readonly BadgeType[] = [
     position: {
       mobile: { top: "92%", left: "32%" },
       tablet: { top: "92%", left: "12%" },
-      desktop: { top: "92%", left: "12%" },
+      desktop: { top: "92%", left: "25%" },
     },
     category: "style-drop",
     zIndex: 32,
@@ -827,9 +827,9 @@ const badgePositions: readonly BadgeType[] = [
       desktop: { width: 250, height: 44 },
     },
     position: {
-      mobile: { top: "60%", left: "48%" },
+      mobile: { top: "71%", left: "20%" },
       tablet: { top: "66%", left: "30%" },
-      desktop: { top: "66%", left: "30%" },
+      desktop: { top: "72%", left: "42%" },
     },
     category: "occasion-styling",
     zIndex: 30,
@@ -844,7 +844,7 @@ const badgePositions: readonly BadgeType[] = [
     position: {
       mobile: { top: "84%", left: "52%" },
       tablet: { top: "78%", left: "35%" },
-      desktop: { top: "78%", left: "35%" },
+      desktop: { top: "78%", left: "62%" },
     },
     category: "personal-shopper",
     zIndex: 36,
@@ -857,7 +857,7 @@ const badgePositions: readonly BadgeType[] = [
       desktop: { width: 290, height: 44 },
     },
     position: {
-      mobile: { top: "24%", left: "58%" },
+      mobile: { top: "20%", left: "58%" },
       tablet: { top: "22%", left: "60%" },
       desktop: { top: "22%", left: "60%" },
     },
@@ -872,7 +872,7 @@ const badgePositions: readonly BadgeType[] = [
       desktop: { width: 210, height: 44 },
     },
     position: {
-      mobile: { top: "42%", left: "68%" },
+      mobile: { top: "35%", left: "56%" },
       tablet: { top: "45%", left: "78%" },
       desktop: { top: "45%", left: "78%" },
     },
@@ -889,7 +889,7 @@ const badgePositions: readonly BadgeType[] = [
     position: {
       mobile: { top: "52%", left: "68%" },
       tablet: { top: "52%", left: "65%" },
-      desktop: { top: "52%", left: "65%" },
+      desktop: { top: "60%", left: "62%" },
     },
     category: "brand-spaces",
     zIndex: 33,
@@ -902,12 +902,12 @@ const badgePositions: readonly BadgeType[] = [
       desktop: { width: 260, height: 44 },
     },
     position: {
-      mobile: { top: "66%", left: "48%" },
+      mobile: { top: "68%", left: "60%" },
       tablet: { top: "90%", left: "75%" },
       desktop: { top: "90%", left: "75%" },
     },
     category: "makeover-projects",
-    zIndex: 10,
+    zIndex: 25,
   },
 ];
 
@@ -1024,7 +1024,9 @@ function SectionImageItem({
       onMouseLeave={handleMouseLeave}
     >
       {img.hasFlicker ? (
-        <span className="inline-block animate-light-flicker">{imageElement}</span>
+        <span className="inline-block animate-light-flicker">
+          {imageElement}
+        </span>
       ) : (
         imageElement
       )}

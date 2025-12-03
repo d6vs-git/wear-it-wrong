@@ -2,6 +2,8 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Instagram, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { RiPinterestFill as Pinterest } from "react-icons/ri";
+import Link from "next/link";
 
 export default function Footer() {
   const router = useRouter();
@@ -98,8 +100,8 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             {/* Social links (left) */}
             <div className="flex items-center gap-3 sm:gap-4">
-              <a
-                href="https://instagram.com/yourprofile"
+              <Link
+                href="https://www.instagram.com/p/DQ6r0p-ErDt/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -109,20 +111,21 @@ export default function Footer() {
                   size={18}
                   className="text-foreground group-hover:text-primary transition-colors"
                 />
-              </a>
-              <a
-                href="https://linkedin.com/in/yourprofile"
+              </Link>
+              <Link
+                href="https://www.pinterest.com/geeedeeee_/?invite_code=609a825935244f2f99fe805ea9bc71f6&sender=234187386781752997"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn"
+                aria-label="Pinterest"
                 className="group relative p-2.5 sm:p-3 bg-card rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
               >
-                <Linkedin
+                <Pinterest
                   size={18}
                   className="text-foreground group-hover:text-primary transition-colors"
                 />
-              </a>
-              <a
+              </Link>
+
+              <Link
                 href="mailto:hello@wearitwrong.com"
                 aria-label="Email"
                 className="group relative p-2.5 sm:p-3 bg-card rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
@@ -131,7 +134,7 @@ export default function Footer() {
                   size={18}
                   className="text-foreground group-hover:text-primary transition-colors"
                 />
-              </a>
+              </Link>
             </div>
 
             {/* Contact info (center) */}
@@ -155,7 +158,7 @@ export default function Footer() {
                   className="text-xs sm:text-sm text-foreground hover:text-primary transition-colors font-medium"
                   href="tel:+1234567890"
                 >
-                  +1 234 567 890
+                  +91 98550 45999
                 </a>
               </div>
             </div>
