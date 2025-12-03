@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Instagram, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Instagram, Mail, ArrowUpRight } from "lucide-react";
 import { RiPinterestFill as Pinterest } from "react-icons/ri";
 import Link from "next/link";
 
